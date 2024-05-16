@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectModifyUnit id="NHbrTimeScaleBuff@DrainingEnergy">
+        <EditorCategories value="Race:NHbr"/>
+        <VitalArray index="Energy">
+            <Change value="-1">
+                <AccumulatorArray value="NHbrTimeScaleBuff@DrainingEnergy"/>
+            </Change>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectRemoveBehavior id="NHbrTimeScaleBuff@RemoveTimeScaleBuff">
+        <EditorCategories value="Race:NHbr"/>
+        <StackAlias value="TimeScaleBuff"/>
+    </CEffectRemoveBehavior>
+    <CValidatorCombine id="NHbrTimeScaleBuff@TargetIsUnderConstructionOrIsProductionStructure">
+        <CombineArray value="UCRUnderConstruction"/>
+        <CombineArray value="NHbrCommon@IsTemple"/>
+        <CombineArray value="NHbrCommon@IsVoidRift"/>
+        <CombineArray value="NHbrCommon@IsStasisCell"/>
+        <CombineArray value="NHbrCommon@IsVespeneConcentrator"/>
+        <CombineArray value="NHbrCommon@IsEngine"/>
+        <CombineArray value="NHbrCommon@IsProcessingCore"/>
+        <CombineArray value="NHbrCommon@IsProcessor"/>
+        <CombineArray value="NHbrCommon@IsVoidPortal"/>
+        <CombineArray value="NHbrCommon@IsCrystallicShrine"/>
+        <CombineArray value="NHbrCommon@IsNemesisCatacomb"/>
+    </CValidatorCombine>
+    <CAccumulatorUnitCustomValue id="NHbrTimeScaleBuff@DrainingEnergy">
+        <ApplicationRule value="Multiply"/>
+        <Index value="1"/>
+    </CAccumulatorUnitCustomValue>
+    <CDataCollectionAbil id="NHbrTimeScaleBuff">
+        <EditorCategories value="DataGroup:Mechanic,Race:NHbr"/>
+        <DataRecord Entry="Behavior,NHbrIonicCrystalTeleport@EnergyRegenSupressed"/>
+        <DataRecord Entry="Behavior,NHbrTimeScaleBuff@TimeScaleController"/>
+        <DataRecord Entry="Effect,NHbrTimeScaleBuff@DrainingEnergy"/>
+        <DataRecord Entry="Effect,NHbrTimeScaleBuff@RemoveTimeScaleBuff"/>
+        <DataRecord Entry="Validator,NHbrTimeScaleBuff@NetworkRegenNotSuppresed"/>
+        <DataRecord Entry="Validator,NHbrTimeScaleBuff@NetworkRegenSupressed"/>
+        <DataRecord Entry="Accumulator,NHbrTimeScaleBuff@DrainingEnergy"/>
+    </CDataCollectionAbil>
+    <CBehaviorBuff id="NHbrTimeScaleBuff@TimeScaleController">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:NHbr,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="NHbrNetwork@ConnectionCombine"/>
+        <RemoveValidatorArray value="NHbrTimeScaleBuff@TargetIsUnderConstructionOrIsProductionStructure"/>
+    </CBehaviorBuff>
+</Catalog>

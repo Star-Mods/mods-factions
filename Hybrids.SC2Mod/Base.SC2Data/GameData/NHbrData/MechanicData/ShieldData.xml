@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorUnitCompareDamageTakenTime id="NHbrProtection@TargetNotInCombat">
+        <Compare value="GE"/>
+        <Value value="7"/>
+    </CValidatorUnitCompareDamageTakenTime>
+    <CAccumulatorSwitch id="NHbrProtection@ShieldRegenSwitch">
+        <CaseArray Validator="NHbrProtection@TargetNotInCombat" Accumulator="NHbrProtection@ShieldRegenAmount"/>
+    </CAccumulatorSwitch>
+    <CAccumulatorConstant id="NHbrProtection@ShieldRegenAmount">
+        <Amount value="2"/>
+    </CAccumulatorConstant>
+    <CDataCollection id="NHbrProtection">
+        <EditorCategories value="DataGroup:Mechanic,Race:NHbr"/>
+        <DataRecord Entry="Validator,NHbrProtection@TargetNotInCombat"/>
+        <DataRecord Entry="Accumulator,NHbrProtection@ShieldRegenSwitch"/>
+        <DataRecord Entry="Accumulator,NHbrProtection@ShieldRegenAmount"/>
+    </CDataCollection>
+</Catalog>

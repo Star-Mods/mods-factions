@@ -1,0 +1,103 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Factions - Hybrids
+//--------------------------------------------------------------------------------------------------
+// Preset Declarations
+const int libNHbr_ge__UnitDataType_Actor = 0;
+const int libNHbr_ge__UnitDataType_Integer = 1;
+const int libNHbr_ge__UnitDataType_Ping = 2;
+const int libNHbr_ge__UnitDataType_Point = 3;
+const int libNHbr_ge__UnitDataType_Region = 4;
+const int libNHbr_ge__UnitDataType_TextTag = 5;
+const int libNHbr_ge__UnitDataType_Unit = 6;
+const int libNHbr_ge__UnitDataType_UnitGroup = 7;
+const int libNHbr_ge_HybridNavigatorCargoUI_Size1 = 0;
+const int libNHbr_ge_HybridNavigatorCargoUI_Size2 = 1;
+const int libNHbr_ge_HybridNavigatorCargoUI_Size4 = 2;
+const int libNHbr_ge_HybridNavigatorCargoUI_Size8 = 3;
+
+// Constants
+const int libNHbr_gv_bALMaxEnginePlayerCount = 15;
+const fixed libNHbr_gv_hybridNetworkStasisCellEnergyIncrease_C = 10.0;
+const int libNHbr_gv_hybridBuildControllerMaxOrderCount_C = 31;
+const int libNHbr_gv_hybridNetworkPowerSourceUnitTypeMaxCount_C = 3;
+const fixed libNHbr_gv_hybridTeleportConstructionTime = 14.0;
+const fixed libNHbr_gv_hybridTimeScaleBuffBonusPerSource = 0.2;
+const int libNHbr_gv_voidBonusUnitCountRequired = 2;
+const int libNHbr_gv_voidBonusUnitCountResourceBonus = 1;
+
+// Variable Declarations
+fixed libNHbr_gv_hybridBuildControllerRange;
+order[libNHbr_gv_hybridBuildControllerMaxOrderCount_C + 1] libNHbr_gv_dEBUGOrderListBefore;
+order[libNHbr_gv_hybridBuildControllerMaxOrderCount_C + 1] libNHbr_gv_dEBUGOrderListAfter;
+order libNHbr_gv_dEBUGFirstOrder;
+unitgroup[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_hybridNetworkNewPowerSourceUnitGroup;
+string[libNHbr_gv_hybridNetworkPowerSourceUnitTypeMaxCount_C + 1] libNHbr_gv_hybridNetworkPowerSourceUnitType;
+int[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_hybridNetworkNewCaseControllerStasisCell;
+int[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_hybridNetworkNewCaseControllerProcessingCore;
+int[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_hybridNetworkNewCaseControllerCrystallicShrine;
+unitgroup[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_hybridTeleportUnitGroup;
+int[libNHbr_gv_bALMaxEnginePlayerCount + 1] libNHbr_gv_voidBonusUnitCountCurrent;
+fixed libNHbr_gv_silentWeaponCooldown;
+fixed libNHbr_gv_silentAttacksPerSecond;
+
+// Function Declarations
+string libNHbr_gf__UnitDataName (int lp_type, unit lp_unit, int lp_index);
+void libNHbr_gf_StoreActorForUnit (unit lp_unit, int lp_index, actor lp_actor);
+actor libNHbr_gf_ActorStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StoreTextTagForUnit (unit lp_unit, int lp_index, int lp_textTag);
+int libNHbr_gf_TextTagStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StorePointForUnit (unit lp_unit, int lp_index, point lp_point);
+point libNHbr_gf_PointStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StoreRegionForUnit (unit lp_unit, int lp_index, region lp_region);
+region libNHbr_gf_RegionStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StorePingForUnit (unit lp_unit, int lp_index, int lp_ping);
+int libNHbr_gf_PingStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StoreIntegerForUnit (unit lp_unit, int lp_index, int lp_value);
+int libNHbr_gf_IntegerStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StoreUnitForUnit (unit lp_unit, int lp_index, unit lp_value);
+unit libNHbr_gf_UnitStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_StoreUnitGroupForUnit (unit lp_unit, int lp_index, unitgroup lp_value);
+unitgroup libNHbr_gf_UnitGroupStoredForUnit (unit lp_unit, int lp_index);
+void libNHbr_gf_RemoveDataFromUnit (string lp__UnitDataName, unit lp_unit);
+void libNHbr_gf_UpgradeButtontoButtonForPlayer (string lp_sourceButton, string lp_targetButton, int lp_player);
+bool libNHbr_gf_RunValidatorOnUnit (string lp_validator, unit lp_sourceUnit, unit lp_targetUnit);
+void libNHbr_gf_HybridNetworkUpdateTempleCountForPlayer (int lp_player);
+void libNHbr_gf_HybridNetworkStasisCellUpdateForPlayer (int lp_player);
+void libNHbr_gf_HybridNetworkStasisCellUpdateUnitTypeForPlayer (string lp_unitType, fixed lp_value, int lp_player);
+bool libNHbr_gf_HybridBuildControllerIsBuildOrder (order lp_order);
+bool libNHbr_gf_HybridBuildControllerIsBuildOrderMain (order lp_order);
+abilcmd libNHbr_gf_HybridBuildControllerReturnMainBuildAbilityCommand (order lp_order);
+abilcmd libNHbr_gf_HybridBuildControllerReturnDefaultBuildAbilityCommand (order lp_order);
+int libNHbr_gf_HybridBuildControllerClosestMainBuildAbilityCommandIndex (unit lp_minion);
+fixed libNHbr_gf_HybridBuildControllerReturnBuildUnitRadius (order lp_order);
+void libNHbr_gf_HybridTimeScaleBuffUpdateMultiplierForPlayer (int lp_player);
+
+// Trigger Declarations
+trigger libNHbr_gt_InitializeNetworkHybridRace;
+trigger libNHbr_gt_HybridNetworkTempleCalculation;
+trigger libNHbr_gt_HybridNetworkTempleCalculationRemoved;
+trigger libNHbr_gt_HybridNetworkStasisCellCalculation;
+trigger libNHbr_gt_HybridNetworkStasisCellCalculationRemoved;
+trigger libNHbr_gt_HybridBuildController;
+trigger libNHbr_gt_HybridNetworkNewCalculate;
+trigger libNHbr_gt_HybridNetworkPowerSourceUnitTypeInitialization;
+trigger libNHbr_gt_HybridNetworkNewCaseController;
+trigger libNHbr_gt_HybridTeleportOverrideTPTime;
+trigger libNHbr_gt_HybridTeleportTurnTargetingOrderOn;
+trigger libNHbr_gt_HybridTeleportTurnTargetingOrderOff;
+trigger libNHbr_gt_HybridTeleportConstructionProgress;
+trigger libNHbr_gt_HybridTeleportTransferDamage;
+trigger libNHbr_gt_HybridDominatorUpgradeToAdvancedDominator;
+trigger libNHbr_gt_HybridReaverUpgradeToAdvancedReaver;
+trigger libNHbr_gt_HybridNemesisUpgradeToAdvancedNemesis;
+trigger libNHbr_gt_SilentWeaponBuff;
+trigger libNHbr_gt_HybridNavigatorCargoUI;
+trigger libNHbr_gt_HybridReaverConsumeDNAAutocastOn;
+trigger libNHbr_gt_HybridReaverConsumeDNAAutocastOff;
+trigger libNHbr_gt_HybridVoidRiftCargoUI;
+
+// Library Initialization
+void libNHbr_InitVariables ();
+

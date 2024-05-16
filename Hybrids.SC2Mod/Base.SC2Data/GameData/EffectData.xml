@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectModifyUnit id="EMPModifyUnit">
+        <ValidatorArray value="NHbrCommon@DefaultEnergyUser"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="FeedbackSet">
+        <ValidatorArray value="NHbrCommon@DefaultEnergyUser"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="GenericRemoveCaster">
+        <EditorCategories value="Race:NHbr"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Caster"/>
+        <ModifyFlags index="Remove" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectSwitch id="DisguiseEx3">
+        <CaseArray Validator="RequiresNHbr" Effect="DisguiseAsWarriorCU"/>
+    </CEffectSwitch>
+    <CEffectCreateUnit id="DisguiseAsWarriorCU" parent="DisguiseEx3CU">
+        <SpawnUnit value="NHbrWarrior@Changeling"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="NHbrVespeneConcentrator@UpdateUnitCountTriggerSet">
+        <EditorCategories value="Race:NHbr"/>
+    </CEffectSet>
+    <CEffectEnumArea id="RadiusTestSearchArea">
+        <EditorCategories value=""/>
+        <DebugTrace value="1"/>
+        <AreaArray/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectAddTrackedUnit id="addtodummytracker">
+        <EditorCategories value=""/>
+        <BehaviorLink value="NHbrHybridUnitTracker"/>
+    </CEffectAddTrackedUnit>
+    <CEffectEnumTrackedUnits id="enumdummy">
+        <EditorCategories value=""/>
+        <BehaviorLink value="NHbrHybridUnitTracker"/>
+        <Effect value="NHbrNetworkNEW@RestoreNetwork"/>
+        <TrackedUnitFilters value="-;Ally,Neutral,Enemy,Missile,Dead,Hidden"/>
+    </CEffectEnumTrackedUnits>
+</Catalog>

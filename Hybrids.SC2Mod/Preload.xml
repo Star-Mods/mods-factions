@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Actor id="SYSTEM_ActorConfig"/>
+<Behavior id="NHbrIonicCrystalTeleport@BuilderSilence"/>
+<Behavior id="NHbrIonicCrystalTeleport@Invulnerability"/>
+<Behavior id="NHbrIonicCrystalTeleport@FromTargetToCrystal"/>
+<Behavior id="NHbrIonicCrystalTeleport@FromCrystalToTarget"/>
+<Behavior id="NHbrIonicCrystalTeleport@TargetDummyDuration"/>
+<Behavior id="NHbrIonicCrystalTeleport@FadeBuff"/>
+<Behavior id="NHbrNetwork@PowerUser"/>
+<Behavior id="NHbrDreadnokPermanentConnection"/>
+<Behavior id="NHbrMinionBuild@InProgress"/>
+<Behavior id="NHbrReaverConsumeDNA@AutocastController"/>
+<Button id="NHbrVoidRiftTrain@WarpInReaver"/>
+<Button id="NHbrVoidRiftTrain@WarpInDominator"/>
+<Button id="NHbrVoidRiftTrain@WarpInNemesis"/>
+<Button id="NHbrVoidRiftTrain@WarpInAdvancedNemesis"/>
+<Button id="NHbrVoidRiftTrain@WarpInAdvancedDominator"/>
+<Button id="NHbrVoidRiftTrain@WarpInAdvancedReaver"/>
+<Commander id="NHbr"/>
+<Effect id="NHbrIonicCrystalTeleport@PersistentBuilder"/>
+<Effect id="NHbrIonicCrystalTeleport@Suicide"/>
+<Effect id="NHbrSilentWeapon@ReduceNetwork"/>
+<Unit id="NHbrNemesisAdvanced"/>
+<Unit id="NHbrSilent"/>
+<Unit id="NHbrHorror"/>
+<Unit id="NHbrNemesis"/>
+<Unit id="NHbrReaver"/>
+<Unit id="NHbrReaverAdvanced"/>
+<Unit id="NHbrNavigator"/>
+<Unit id="NHbrDreadnok"/>
+<Unit id="NHbrWarbringer"/>
+<Unit id="NHbrPollinator"/>
+<Unit id="NHbrDominatorAdvanced"/>
+<Unit id="NHbrDominator"/>
+</Preload>
