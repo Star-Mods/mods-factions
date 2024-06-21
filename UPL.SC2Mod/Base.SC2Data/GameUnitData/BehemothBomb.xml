@@ -4,7 +4,7 @@
         <EditorCategories value="Race:UPL"/>
         <LaunchLocation Value="SourcePoint"/>
         <ImpactLocation Value="TargetPoint"/>
-        <LaunchOffset value="0,0,-2"/>
+        <LaunchOffset value="0,0,-3"/>
         <FinishEffect value="BehemothBombLocationSearch"/>
         <AmmoUnit value="BehemothBomb"/>
         <Movers Link="BehemothBomb"/>
@@ -16,11 +16,10 @@
         <AINotifyFlags index="MajorDanger" value="1"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
-        <AttributeBonus index="Massive" value="75"/>
-        <AttributeBonus index="Structure" value="75"/>
+        <AttributeBonus index="Massive" value="25"/>
         <Visibility value="Visible"/>
         <Flags index="Notification" value="1"/>
-        <Amount value="75"/>
+        <Amount value="50"/>
         <ExcludeArray Value="Target"/>
         <ExcludeArray Value="Target"/>
         <!--AreaArray Radius="1" Fraction="1"/>
@@ -34,7 +33,7 @@
         <ImpactLocation Value="SourcePoint"/>
         <!--Self,-->
         <SearchFilters value="-;Air,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="1.5" Effect="BehemothBombDamage"/>
+        <AreaArray Radius="2" Effect="BehemothBombDamage"/>
         <RevealerParams Duration="1" ShapeExpansion="0.5">
             <RevealFlags index="Unfog" value="1"/>
         </RevealerParams>
@@ -251,6 +250,7 @@
         <LegacyOptions index="NoDeceleration" value="1"/>
         <RandomDelayMin value="0"/>
         <RandomDelayMax value="0"/>
+        <Arc value="360"/>
     </CWeaponLegacy>
     <CMoverMissile id="BehemothBomb">
         <PathMode value="Flying"/>

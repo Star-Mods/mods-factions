@@ -6,7 +6,6 @@
         <AlertName value="Button/Name/AugmentationPit"/>
         <AlertIcon value="Assets\Textures\wireframe-zerg-primalproductiona.dds"/>
         <Hotkey value="Button/Hotkey/AugmentationPit"/>
-        <HotkeyAlias value="AugmentationPit"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton default="1" id="AscendedDragon">
@@ -21,12 +20,18 @@
         <AlertName value="Button/Name/GenesisPit"/>
         <AlertIcon value="Assets\Textures\wireframe-zerg-broodlingnest.dds"/>
         <Hotkey value="Button/Hotkey/GenesisPit"/>
-        <HotkeyAlias value="GenesisPit"/>
         <EditorCategories value="Race:Dragon"/>
+    </CButton>
+    <CButton id="ArkwyrmTerritorialDive">
+        <Icon value="Assets\Textures\btn-ability-zeratul-topbar-directlegions.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zeratul-topbar-directlegions.dds"/>
+        <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="AscendedArkwyrm" parent="AscendedDragon"/>
     <CButton id="AscendedAuroraConduit" parent="AscendedDragon"/>
     <CButton id="AscendedBrimstoneDemolisher" parent="AscendedDragon"/>
+    <CButton id="AscendedRazorback" parent="AscendedDragon"/>
     <CButton id="Berserker">
         <Icon value="Assets\Textures\btn-unit-zerg-primalultralisk.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-primalultralisk.dds"/>
@@ -40,6 +45,7 @@
     <CButton id="BrimstoneDemolisherAdaptiveArmor">
         <Icon value="Assets\Textures\btn-tips-sellzergbiosamples.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="AscendedFlamespitter" parent="AscendedDragon"/>
     <CButton id="AscendedFleshrender" parent="AscendedDragon"/>
@@ -49,10 +55,17 @@
         <TintRacially value="1"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="FleshrenderInfernalEffigy">
-        <Icon value="Assets\Textures\fireballtendril1.dds"/>
-        <AlertIcon value="Assets\Textures\fireballtendril1.dds"/>
+    <CButton id="DragonIndomitableStrength">
+        <Icon value="Assets\Textures\btn-ability-protoss-confusion.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-confusion.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="FleshrenderInfernalEffigy">
+        <Icon value="Assets\Textures\talent-zagara-level04-scourgeresearchbundle.dds"/>
+        <AlertIcon value="Assets\Textures\talent-zagara-level04-scourgeresearchbundle.dds"/>
+        <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="FrontierDeepOneDragonLineage">
         <Icon value="Assets\Textures\btn-unit-zerg-finalboss.dds"/>
@@ -64,52 +77,32 @@
         <AlertIcon value="Assets\Textures\btn-ability-zerg-regenaura.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentSpikedCarapace">
-        <Icon value="Assets\Textures\btn-upgrade-zerg-chitinousplating.dds"/>
-        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-chitinousplating.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
-    <CButton id="AugmentationPitFrontier" parent="AugmentationPit">
-        <Name value="Button/Name/AugmentationPitFrontier"/>
-        <AlertName value="Button/Name/AugmentationPitFrontier"/>
-        <Hotkey value="Button/Hotkey/AugmentationPitFrontier"/>
-    </CButton>
-    <CButton id="AugmentationPitGreater" parent="AugmentationPit">
-        <Name value="Button/Name/AugmentationPitGreater"/>
-        <AlertName value="Button/Name/AugmentationPitGreater"/>
-        <Hotkey value="Button/Hotkey/AugmentationPitGreater"/>
-    </CButton>
+    <CButton id="AugmentationPitFrontier" parent="AugmentationPit"/>
+    <CButton id="AugmentationPitGreater" parent="AugmentationPit"/>
     <CButton id="AugmentationPitLesser" parent="AugmentationPit"/>
     <CButton id="AugmentationPitTowering" parent="AugmentationPit"/>
     <CButton id="AuroraConduitNetherShock">
         <Icon value="Assets\Textures\ui_tipicon_campaign_zerus03-zurvanlightning.dds"/>
         <AlertIcon value="Assets\Textures\ui_tipicon_campaign_zerus03-zurvanlightning.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="BrimstoneDemolisherBrutalThrash">
         <Icon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-anabolicsynthesis.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
-    <CButton id="BrimstoneDemolisherScorchingBlaze">
-        <Icon value="Assets\Textures\btn-tips-walloffire.dds"/>
-        <AlertIcon value="Assets\Textures\btn-tips-walloffire.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
-    <CButton id="DenizenoftheDeepCrystalize">
-        <Icon value="Assets\Textures\btn-doodad-minerals.dds"/>
-        <AlertIcon value="Assets\Textures\btn-doodad-minerals.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
-    <CButton id="DenizenoftheDeepLiquify">
-        <Icon value="Assets\Textures\btn-doodad-vespenegeyser.dds"/>
-        <AlertIcon value="Assets\Textures\btn-doodad-vespenegeyser.dds"/>
+    <CButton id="BrimstoneDemolisherInfernalBreath">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-godzillabreath.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-dehaka-godzillabreath.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="FlamespitterFervor">
         <Icon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="FlamespitterOverheat">
         <Icon value="Assets\Textures\btn-techupgrade-terran-burstcapacitors.dds"/>
@@ -121,97 +114,109 @@
         <Icon value="Assets\Textures\ui_tipicon_campaign_attack.dds"/>
         <AlertIcon value="Assets\Textures\ui_tipicon_campaign_attack.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="GenesisPitGreater" parent="GenesisPit"/>
-    <CButton id="GenesisPitLesser" parent="GenesisPit">
-        <Name value="Button/Name/GenesisPitLesser"/>
-        <AlertName value="Button/Name/GenesisPitLesser"/>
-        <Hotkey value="Button/Hotkey/GenesisPitLesser"/>
-    </CButton>
-    <CButton id="GenesisPitTowering" parent="GenesisPit">
-        <Name value="Button/Name/GenesisPitTowering"/>
-        <AlertName value="Button/Name/GenesisPitTowering"/>
-        <Hotkey value="Button/Hotkey/GenesisPitTowering"/>
-    </CButton>
-    <CButton id="GreaterDeepOneBrimstoneDemolisher">
-        <Icon value="Assets\Textures\btn-unit-zerg-brakk.dds"/>
-        <AlertIcon value="Assets\Textures\btn-unit-zerg-brakk.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
+    <CButton id="GenesisPitLesser" parent="GenesisPit"/>
+    <CButton id="GenesisPitTowering" parent="GenesisPit"/>
     <CButton id="AugmentDragonFireAttacksLevel1">
         <AlertIcon value="Assets\Textures\fireball_6.dds"/>
         <Icon value="Assets\Textures\fireball_6.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonFireAttacksLevel2">
+    <CButton id="AugmentDragonFireAttacksLevel2" parent="AugmentDragonFireAttacksLevel1">
+        <Name value="Button/Name/AugmentDragonFireAttacksLevel2"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonFireAttacksLevel2"/>
         <Icon value="Assets\Textures\fireball_3.dds"/>
+        <AlertName value="Button/Name/AugmentDragonFireAttacksLevel2"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonFireAttacksLevel2"/>
         <AlertIcon value="Assets\Textures\fireball_3.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonFireAttacksLevel3">
+    <CButton id="AugmentDragonFireAttacksLevel3" parent="AugmentDragonFireAttacksLevel1">
+        <Name value="Button/Name/AugmentDragonFireAttacksLevel3"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonFireAttacksLevel3"/>
         <Icon value="Assets\Textures\fireball_1hot.dds"/>
+        <AlertName value="Button/Name/AugmentDragonFireAttacksLevel3"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonFireAttacksLevel3"/>
         <AlertIcon value="Assets\Textures\fireball_1hot.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="AugmentDragonMeleeAttacksLevel1">
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonMeleeAttacksLevel2">
+    <CButton id="AugmentDragonMeleeAttacksLevel2" parent="AugmentDragonMeleeAttacksLevel1">
+        <Name value="Button/Name/AugmentDragonMeleeAttacksLevel2"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonMeleeAttacksLevel2"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
+        <AlertName value="Button/Name/AugmentDragonMeleeAttacksLevel2"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonMeleeAttacksLevel2"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonMeleeAttacksLevel3">
+    <CButton id="AugmentDragonMeleeAttacksLevel3" parent="AugmentDragonMeleeAttacksLevel1">
+        <Name value="Button/Name/AugmentDragonMeleeAttacksLevel3"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonMeleeAttacksLevel3"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
+        <AlertName value="Button/Name/AugmentDragonMeleeAttacksLevel3"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonMeleeAttacksLevel3"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="AugmentDragonPlateArmorLevel1">
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonPlateArmorLevel2">
+    <CButton id="AugmentDragonPlateArmorLevel2" parent="AugmentDragonPlateArmorLevel1">
+        <Name value="Button/Name/AugmentDragonPlateArmorLevel2"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonPlateArmorLevel2"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
+        <AlertName value="Button/Name/AugmentDragonPlateArmorLevel2"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonPlateArmorLevel2"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonPlateArmorLevel3">
+    <CButton id="AugmentDragonPlateArmorLevel3" parent="AugmentDragonPlateArmorLevel1">
+        <Name value="Button/Name/AugmentDragonPlateArmorLevel3"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonPlateArmorLevel3"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
+        <AlertName value="Button/Name/AugmentDragonPlateArmorLevel3"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonPlateArmorLevel3"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="AugmentDragonScaleArmorLevel1">
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="AugmentDragonScaleArmorLevel2">
+    <CButton id="AugmentDragonScaleArmorLevel2" parent="AugmentDragonScaleArmorLevel1">
+        <Name value="Button/Name/AugmentDragonScaleArmorLevel2"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonScaleArmorLevel2"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
+        <AlertName value="Button/Name/AugmentDragonScaleArmorLevel2"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonScaleArmorLevel2"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="AscendedGrimGlider" parent="AscendedDragon"/>
-    <CButton id="AugmentDragonScaleArmorLevel3">
+    <CButton id="AugmentDragonScaleArmorLevel3" parent="AugmentDragonScaleArmorLevel1">
+        <Name value="Button/Name/AugmentDragonScaleArmorLevel3"/>
+        <Tooltip value="Button/Tooltip/AugmentDragonScaleArmorLevel3"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
+        <AlertName value="Button/Name/AugmentDragonScaleArmorLevel3"/>
+        <AlertTooltip value="Button/Tooltip/AugmentDragonScaleArmorLevel3"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="GreaterDeepOneFrenzy">
-        <Icon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-superroar.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-dehaka-superroar.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="GreaterDeepOneInfernalBreath">
-        <Icon value="Assets\Textures\btn-tips-walloffire.dds"/>
-        <AlertIcon value="Assets\Textures\btn-tips-walloffire.dds"/>
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-godzillabreath.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-dehaka-godzillabreath.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="GreaterDeepOneMightyFist">
-        <Icon value="Assets\Textures\ui_tipicon_campaign_hyb02-nullzone.dds"/>
-        <AlertIcon value="Assets\Textures\ui_tipicon_campaign_hyb02-nullzone.dds"/>
+    <CButton id="GreaterDeepOnePortal">
+        <Icon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="AscendedHandofPower" parent="AscendedDragon"/>
@@ -227,14 +232,25 @@
         <AlertIcon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
+    <CButton id="GrimGliderEmaciate">
+        <Icon value="Assets\Textures\ui_tipicon_campaign_hyb02-lifedrain.dds"/>
+        <AlertIcon value="Assets\Textures\ui_tipicon_campaign_hyb02-lifedrain.dds"/>
+        <EditorCategories value="Race:Dragon"/>
+    </CButton>
     <CButton id="GrimGliderMortalitysEclipseActivate">
-        <Icon value="Assets\Textures\btn-tips-fallenheroes.dds"/>
-        <AlertIcon value="Assets\Textures\btn-tips-fallenheroes.dds"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="GrimGliderMortalitysEclipseDeactivate">
         <Icon value="Assets\Textures\btn-command-cancel.dds"/>
         <AlertIcon value="Assets\Textures\btn-command-cancel.dds"/>
+        <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="GrimGliderNullify">
+        <Icon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-beambounce.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="GrimGliderPermanentlyCloaked">
@@ -247,6 +263,7 @@
         <Icon value="Assets\Textures\btn-upgrade-zerg-enduringcorruption.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-enduringcorruption.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="HornedMagusDeactivateInvigorate">
         <Icon value="Assets\Textures\btn-command-cancel.dds"/>
@@ -258,25 +275,23 @@
         <Icon value="Assets\Textures\btn-ability-zerg-dehakacliffjump.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-zerg-dehakacliffjump.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="HunterFeast">
         <Icon value="Assets\Textures\btn-upgrade-zerg-adrenaloverload.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-zerg-adrenaloverload.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="HunterTongueLash">
         <Icon value="Assets\Textures\btn-ability-zerg-drag.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-zerg-drag.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
-    <CButton id="LesserDeepOneFeast">
-        <Icon value="Assets\Textures\btn-upgrade-zerg-adrenaloverload.dds"/>
-        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-adrenaloverload.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
-    <CButton id="LesserDeepOneArcaneEssence">
-        <Icon value="Assets\Textures\btn-tips-biosample.dds"/>
-        <AlertIcon value="Assets\Textures\btn-tips-biosample.dds"/>
+    <CButton id="LesserDeepOneWickedBarbs">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-frenzy.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-frenzy.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="LesserDeepOneFervidReconstitution">
@@ -308,15 +323,15 @@
         <Icon value="Assets\Textures\btn-ability-kerrigan-vespeneefficiency.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="ArcwyrmLoad">
+    <CButton id="ArkwyrmLoad">
         <Icon value="Assets\Textures\btn-ability-terran-load.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-load.dds"/>
+        <EditorCategories value="Race:Dragon"/>
         <TintRacially value="1"/>
         <HotkeyAlias value="BunkerLoad"/>
         <Universal value="1"/>
-        <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="Coagulater">
+    <CButton id="Coagulator">
         <Icon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
         <AlertIcon value="Assets\Textures\btn-building-zerg-lurkerden.dds"/>
         <EditorCategories value="Race:Dragon"/>
@@ -365,10 +380,12 @@
     <CButton id="HandofPowerPortalEntrance">
         <Icon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
     </CButton>
     <CButton id="HandofPowerPortalExit">
         <Icon value="Assets\Textures\btn-ability-neutral-ursadonleap.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-ursadonleap.dds"/>
     </CButton>
     <CButton id="HornedMagus">
         <Icon value="Assets\Textures\btn-critter-tastelope.dds"/>
@@ -376,15 +393,15 @@
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="HornedMagusFireShield">
-        <Icon value="Assets\Textures\btn-ability-terran-electricfield.dds"/>
+        <Icon value="Assets\Textures\btn-ability-stetmann-garytravelingdamageorb.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="HandofPowerFrenzy">
-        <Icon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
+    <CButton id="HornedMagusFrenzy">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-superroar.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-dehaka-superroar.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="HornedMagusShroud">
+    <CButton id="HandofPowerShroud">
         <Icon value="Assets\Textures\btn-ability-protoss-energize.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-protoss-energize.dds"/>
         <EditorCategories value="Race:Dragon"/>
@@ -392,11 +409,6 @@
     <CButton id="DragonHunter">
         <Icon value="Assets\Textures\btn-unit-zerg-ravasaur.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-ravasaur.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
-    <CButton id="LesserDeepOneShroud">
-        <Icon value="Assets\Textures\btn-ability-protoss-energize.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-protoss-energize.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="LesserDeepOne">
@@ -408,6 +420,7 @@
         <Icon value="Assets\Textures\ui_tipicon_campaign_exp02-focusfire.dds"/>
         <AlertIcon value="Assets\Textures\ui_tipicon_campaign_exp02-focusfire.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="BerserkerMadness">
         <Icon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
@@ -417,6 +430,7 @@
     <CButton id="RazorbackSpikedCarapace">
         <Icon value="Assets\Textures\btn-upgrade-zerg-chitinousplating.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="AscendedUnseenBeast" parent="AscendedDragon"/>
     <CButton id="SkyrazerEmberCore">
@@ -424,10 +438,11 @@
         <AlertIcon value="Assets\Textures\ui_tipicon_evolution_baneling-lava.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="LesserDeepOneUnseenBeast">
-        <Icon value="Assets\Textures\wireframe-critter-matriarchsnowbeast.dds"/>
-        <AlertIcon value="Assets\Textures\wireframe-critter-matriarchsnowbeast.dds"/>
+    <CButton id="LesserDeepOneProwl">
+        <Icon value="Assets\Textures\wireframe-critter-snowbeast.dds"/>
+        <AlertIcon value="Assets\Textures\wireframe-critter-snowbeast.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="UnseenBeast">
         <Icon value="Assets\Textures\wireframe-critter-matriarchsnowbeast.dds"/>
@@ -479,11 +494,6 @@
         <AlertIcon value="Assets\Textures\btn-unit-zerg-leviathan.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="ToweringDeepOneGrimGlider">
-        <Icon value="Assets\Textures\btn-critter-sporeray.dds"/>
-        <AlertIcon value="Assets\Textures\btn-critter-sporeray.dds"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CButton>
     <CButton id="ToweringDeepOne">
         <Icon value="Assets\Textures\btn-unit-zerg-nydusdestroyer.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-zerg-nydusdestroyer.dds"/>
@@ -494,19 +504,19 @@
         <AlertIcon value="Assets\Textures\btn-ability-kerrigan-broodlingnest.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="ToweringDeepOneCelerity">
-        <Icon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
+    <CButton id="ToweringDeepOneConduction">
+        <Icon value="Assets\Textures\btn-ability-swarm-kerrigan-chainreaction.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-swarm-kerrigan-chainreaction.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="ToweringDeepOnePlasmaCatalyst">
-        <Icon value="Assets\Textures\btn-ability-kerrigan-chainreaction.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-kerrigan-chainreaction.dds"/>
+        <Icon value="Assets\Textures\btn-ability-spearofadun-shieldovercharge.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-shieldovercharge.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
-    <CButton id="ToweringDeepOneWraithNight">
-        <Icon value="Assets\Textures\btn-upgrade-zerg-enduringcorruption.dds"/>
-        <AlertIcon value="Assets\Textures\btn-upgrade-zerg-enduringcorruption.dds"/>
+    <CButton id="ToweringDeepOneMortalitysEclipse">
+        <Icon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="UnearthDeepOne">
@@ -516,15 +526,16 @@
         <EditorCategories value="Race:Dragon"/>
     </CButton>
     <CButton id="UnseenBeastKeenSenses">
-        <Icon value="Assets\Textures\btn-ability-zerg-viper-ocularparasite.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-zerg-viper-ocularparasite.dds"/>
+        <Icon value="Assets\Textures\btn-ability-dehaka-detector.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-dehaka-detector.dds"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
-    <CButton id="UnseenBeastStealthyHunter">
+    <CButton id="UnseenBeastProwl">
         <Icon value="Assets\Textures\wireframe-critter-snowbeast.dds"/>
         <AlertIcon value="Assets\Textures\wireframe-critter-snowbeast.dds"/>
-        <TintRacially value="1"/>
         <EditorCategories value="Race:Dragon"/>
+        <TintRacially value="1"/>
     </CButton>
     <CButton id="UnseenBeastTeleportAssault">
         <Icon value="Assets\Textures\btn-ability-protoss-blink-zeratul.dds"/>

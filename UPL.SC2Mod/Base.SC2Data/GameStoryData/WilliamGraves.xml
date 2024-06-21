@@ -388,49 +388,6 @@
         <DataRecord Entry="Character,WilliamGraves"/>
         <Pattern value="LotC_Unit"/>
     </CDataCollectionUnit>
-    <CUnit id="WilliamGraves" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/WilliamGraves"/>
-        <AbilArray Link="WilliamGravesCharge"/>
-        <AbilArray Link="WillliamGravesArtilleryStrike"/>
-        <BehaviorArray Link="WilliamGravesMedkit"/>
-        <BehaviorArray Link="WilliamGravesMedkit@Handler"/>
-        <BehaviorArray Link="InfantryOfficerAura"/>
-        <WeaponArray Link="WilliamGraves"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="WilliamGravesMedkit" Type="Passive" Requirements="WilliamGravesMedkit@ChargeAvailable" Row="2" Column="2"/>
-            <LayoutButtons>
-                <Face value="WilliamGravesMedkit"/>
-                <Type value="Passive"/>
-                <Behavior value="WilliamGravesMedkit@Supressed"/>
-                <Requirements value="WilliamGravesMedkit@Have"/>
-                <Row value="2"/>
-                <Column value="2"/>
-            </LayoutButtons>
-            <LayoutButtons Face="WillliamGravesArtilleryStrike" Type="AbilCmd" AbilCmd="WillliamGravesArtilleryStrike,Execute" Row="2" Column="0"/>
-            <LayoutButtons>
-                <Face value="InfantryOfficerInspiration"/>
-                <Type value="Passive"/>
-                <AbilCmd value="WilliamGravesCharge,Execute"/>
-                <Behavior value="InfantryOfficerAura"/>
-                <Row value="1"/>
-                <Column value="0"/>
-            </LayoutButtons>
-        </CardLayouts>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="15"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
-        <Food value="0"/>
-        <SubgroupPriority value="99"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <Attributes index="Armored" value="1"/>
-        <UserTag value="Unit/ShortName/WilliamGraves"/>
-    </CUnit>
-    <CUnit id="WillliamGravesArtilleryStrike@Missile" parent="MISSILE_INVULNERABLE">
-        <Race value="UPL"/>
-        <Mover value="WillliamGravesArtilleryStrike@Mover"/>
-        <EditorCategories value="ObjectFamily:Campaign,ObjectType:Projectile"/>
-    </CUnit>
     <CBehaviorBuff id="WilliamGravesMedkit">
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-ability-upl-medkit.dds"/>

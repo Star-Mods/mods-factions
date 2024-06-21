@@ -69,7 +69,7 @@
         <ImpactLocation Value="SourceUnit"/>
         <ExcludeArray Value="Source"/>
         <SearchFilters value="Ground;Self,Player,Ally,Neutral,Structure,User1,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Benign,Unstoppable,Resistant"/>
-        <AreaArray Radius="3" Effect="Z2JumpJetStun"/>
+        <AreaArray Radius="2.25" Effect="Z2JumpJetStun"/>
         <SearchFlags index="SameCliff" value="1"/>
         <EditorCategories value="Race:UPL"/>
     </CEffectEnumArea>
@@ -143,9 +143,8 @@
         <Flags index="NoDamageTimerReset" value="1"/>
     </CEffectDamage>
     <CEffectDamage id="Z2Damage" parent="DU_WEAP_RANGED">
-        <Amount value="15"/>
+        <Amount value="12"/>
         <ImpactLocation Effect="Z2"/>
-        <AttributeBonus index="Armored" value="10"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="Z2">
         <WhichLocation Value="CasterUnit"/>
@@ -240,7 +239,7 @@
         <Effect index="0" value="Z2AdrenalineApplyBuff"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Vital index="Energy" value="25"/>
+            <Vital index="Energy" value="50"/>
             <Cooldown TimeUse="3"/>
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="Z2Adrenaline">
@@ -493,6 +492,7 @@
         <PlacementModel value="Z2"/>
         <PortraitModel value="Z2Portrait"/>
         <HighlightTooltip value="Unit/Name/Z2"/>
+        <SoundArray index="Birth" value=""/>
         <SoundArray index="Ready" value="Z2_Ready"/>
         <SoundArray index="Help" value="Z2_Help"/>
         <SoundArray index="What" value="Z2_What"/>
@@ -811,7 +811,7 @@
         <Period value="1.2"/>
         <DamagePoint value="0.05"/>
         <Backswing value="2"/>
-        <Range value="7"/>
+        <Range value="6"/>
     </CWeaponLegacy>
     <CMoverMissile id="Z2JumpJet">
         <PathMode value="Flying"/>
@@ -929,7 +929,7 @@
         <Volume value="-1.000000,-1.000000"/>
     </CSound>
     <CSound id="Z2_Ready" parent="UPLHeroReady" Unit="RileyJerico">
-        <AssetArray File="LocalizedData\Sounds\UPLUnitVO\Z1\Z1_Ready00.ogg"/>
+        <AssetArray File="LocalizedData\Sounds\UPLVO\CampaignUnits\RileyJerico\RileyJerico_Attack01.ogg"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
     <CSound id="Z2_Explode" parent="UPLHeroDeath" Unit="RileyJerico">
@@ -1018,14 +1018,14 @@
         <Attributes index="Biological" value="0"/>
         <Attributes index="Mechanical" value="1"/>
         <Attributes index="Psionic" value="1"/>
-        <LifeStart value="250"/>
-        <LifeMax value="250"/>
+        <LifeStart value="180"/>
+        <LifeMax value="180"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLVehiclePlating"/>
         <EnergyStart value="150"/>
         <EnergyMax value="150"/>
         <EnergyRegenRate value="1"/>
-        <Speed value="3.5"/>
+        <Speed value="3.371"/>
         <AbilArray Link="Z2JumpJet"/>
         <AbilArray Link="Z2Lorna"/>
         <AbilArray Link="Z2BadgerBomb"/>
@@ -1045,13 +1045,13 @@
         <CargoSize value="2"/>
         <SubgroupPriority value="94"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryPriority value="51"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
+        <GlossaryPriority value="224"/>
         <Food value="-6"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="300"/>
         <ScoreMake value="500"/>
         <ScoreKill value="500"/>
+        <GlossaryAlias value="UPLZ2"/>
     </CUnit>
     <!--    <CUnit id="Z2" parent="UPLHeroBase">-->
     <!--        <Subtitle value="Unit/Subtitle/Z2"/>-->
@@ -1117,7 +1117,7 @@
         <InfoIcon value="Assets\Textures\btn-upgrade-protoss-alarak-stunnonheroicenemies.dds"/>
         <BehaviorCategories index="Stun" value="1"/>
         <EditorCategories value="Race:UPL,AbilityorEffectType:Units"/>
-        <Duration value="5"/>
+        <Duration value="2.8"/>
         <Modification>
             <StateFlags index="Stun" value="1"/>
         </Modification>
@@ -1141,7 +1141,7 @@
         <BehaviorCategories index="Stun" value="1"/>
         <EditorCategories value="Race:UPL,AbilityorEffectType:Units"/>
         <DisplayDuration index="Self" value="1"/>
-        <Duration value="10"/>
+        <Duration value="5"/>
         <Modification>
             <StateFlags index="Stun" value="1"/>
         </Modification>
@@ -1167,6 +1167,8 @@
         <InfoIcon value="Assets\Textures\btn-ability-terran-stimpack.dds"/>
         <EditorCategories value="Race:UPL,AbilityorEffectType:Units"/>
         <Duration value="10"/>
-        <Modification AttackSpeedMultiplier="3"/>
+        <Modification WeaponRange="9">
+            <DamageDealtAttributeUnscaled index="Massive" value="3"/>
+        </Modification>
     </CBehaviorBuff>
 </Catalog>

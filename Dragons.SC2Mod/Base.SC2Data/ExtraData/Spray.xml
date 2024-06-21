@@ -96,5 +96,6 @@
     </CBehaviorBuff>
     <CUpgrade id="SprayDragon">
         <Race value="Dragon"/>
+        <LeaderAlias value=""/>
     </CUpgrade>
 </Catalog>

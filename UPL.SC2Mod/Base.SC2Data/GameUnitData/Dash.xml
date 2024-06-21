@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectRemoveBehavior id="NovaPsiStrikeStopRB">
+        <EditorCategories value="Race:Zerg"/>
+        <BehaviorLink value="KerriganPsiStrikeDamaged"/>
+    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="ApplyNovaPsiStrikeWalkSpeed">
         <EditorCategories value="Race:Zerg"/>
         <Behavior value="NovaPsiStrikeWalkSpeed"/>
@@ -29,20 +33,6 @@
         <Behavior value="NovaPsiStrikeDamaged"/>
         <ValidatorArray value="EnemyTarget"/>
     </CEffectApplyBehavior>
-    <CEffectEnumArea id="NovaPsiStrikeDummySearch">
-        <SearchFilters value="Ground;Self,Player,Ally,Missile,Item,Stasis,Dead,Hidden"/>
-        <AreaArray RectangleWidth="2.5" RectangleHeight="8" Effect="NovaPsiStrikeDummyImpact"/>
-    </CEffectEnumArea>
-    <CEffectRemoveBehavior id="NovaPsiStrikeStopRB">
-        <EditorCategories value="Race:Zerg"/>
-        <BehaviorLink value="KerriganPsiStrikeDamaged"/>
-    </CEffectRemoveBehavior>
-    <CEffectEnumArea id="NovaPsiStrikeStopSearch">
-        <EditorCategories value="Race:Zerg"/>
-        <SearchFilters value="Ground,Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="10" Effect="NovaPsiStrikeStopRB"/>
-        <ImpactLocation Value="CasterUnit"/>
-    </CEffectEnumArea>
     <CEffectEnumArea id="NovaPsiStrikeTargetSearch">
         <EditorCategories value="Race:Zerg"/>
         <SearchFilters value="Ground,Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -63,9 +53,7 @@
     </CEffectIssueOrder>
     <CEffectSet id="NovaPsiStrikeWalkStopSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="NovaPsiStrikeStopSearch"/>
         <EffectArray value="NovaPsiStrikeWalkStopOrder"/>
-        <EffectArray value="NovaPsiStrikeWalkStopStun"/>
     </CEffectSet>
     <CEffectApplyBehavior id="NovaPsiStrikeWalkStopStun">
         <EditorCategories value="Race:Terran"/>
@@ -74,8 +62,6 @@
     <CAbilEffectTarget id="NovaPsiStrike">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="Transient" value="1"/>
         <Flags index="TransientPreferred" value="1"/>
@@ -91,7 +77,7 @@
         <PrepTime value="0.01"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="NovaWeaponPsiBlade" Requirements="HaveNovaWeaponPsiBlade"/>
         <CursorEffect value="NovaPsiStrikeDummySearch"/>
-        <AutoCastRange value="8"/>
+        <AutoCastRange value="10"/>
         <AutoCastValidatorArray value="NovaBladeDanceCheck"/>
         <UninterruptibleArray index="Cast" value="1"/>
     </CAbilEffectTarget>
@@ -147,11 +133,11 @@
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
     <CModel id="NovaPsiStrikeModel" parent="PersistentSpellFX">
-        <Model value="Assets\Effects\Terran\Nova_DashAttack\Nova_DashAttack.m3"/>
+        <Model value="Assets\Effects\Protoss\Artanis_BasicAirAttack_Missile\Artanis_BasicAirAttack_Missile.m3"/>
         <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="NovaWeaponPsiStrikeImpact" parent="ImpactFX">
-        <Model value="Assets\Effects\Terran\Nova_DashAttack_Impact\Nova_DashAttack_Impact.m3"/>
+        <Model value="Assets\Effects\Protoss\Artanis_BasicAirAttack_Impact\Artanis_BasicAirAttack_Impact.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
     <CSound id="NovaPsiBlade_Q_DashStrike" parent="Combat">
@@ -181,12 +167,5 @@
         <Period value="0.0625"/>
         <PeriodicEffect value="NovaPsiStrikeTargetSearch"/>
         <FinalEffect value="NovaPsiStrikeWalkStopSet"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="NovaPsiStrikeWalkStopStun">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Duration value="0.125"/>
-        <Modification>
-            <StateFlags index="Stun" value="1"/>
-        </Modification>
     </CBehaviorBuff>
 </Catalog>

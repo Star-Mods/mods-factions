@@ -1117,7 +1117,7 @@ Button/Tooltip/XayidlingCost=<img path="@@UI/ResourceIconNoBackground0" width="2
 Button/Tooltip/Xayithoan=Aerial detector and spell caster. Can use Adaptive Injection, Protective Cloud and Spawn Watcher.<n/><n/><c val="FFFF00">Detector</c>
 Button/Tooltip/Zenith=<c val="FFFF80">Enables:</c><n/>- Paragons from Citadels<n/>- Aegis from a Citadel
 DOCSTR_0000=Insert Text
-DocInfo/DescLong=Adds three additional playable custom made races: Genetron, Keiron, and Xayid.<n/>Basic AI is supported.
+DocInfo/DescLong=Adds three additional playable custom made races: Genetron, Keiron, and Xayid.
 DocInfo/Name=[AR2] Scion
 DocInfo/Website=https://discord.gg/4GSXkYU
 Effect/Name/330mmStrikeCannon=330mm Strike Cannon
@@ -2322,11 +2322,11 @@ ErrorText/TargetIsNotFused=Can't target unit which is already fused
 Kinetic/Name/FollowAnnexDummy=Follow Annex Dummy
 Kinetic/Name/FollowTargetPosition=Follow Target Position
 MustBuildNearFeedingPool=Must place near a Feeding Pool or Scavenger Nest
-Param/Value/lib_Scio_447BBA71=</n>
-Param/Value/lib_Scio_6FBF8CEC=<img path="Assets/Textures/btn-building-genetron-node.dds" alignment="absolutemiddle" width="32" height="32"/> 
-Param/Value/lib_Scio_8C0C3AB1=<img path="Assets/Textures/btn-building-genetron-generator.dds" alignment="absolutemiddle" width="32" height="32"/> 
-Param/Value/lib_Scio_D5D7C344=</n>
-Param/Value/lib_Scio_E5935B94=<img path="Assets/Textures/btn-building-genetron-processingcore.dds" alignment="absolutemiddle" width="32" height="32"/> 
+Param/Value/lib_Scio_02DF5542=</n>
+Param/Value/lib_Scio_11EABC23=<img path="Assets/Textures/btn-building-genetron-processingcore.dds" alignment="absolutemiddle" width="32" height="32"/> 
+Param/Value/lib_Scio_57FA1292=<img path="Assets/Textures/btn-building-genetron-node.dds" alignment="absolutemiddle" width="32" height="32"/> 
+Param/Value/lib_Scio_5E4EFC14=<img path="Assets/Textures/btn-building-genetron-generator.dds" alignment="absolutemiddle" width="32" height="32"/> 
+Param/Value/lib_Scio_A91F0740=</n>
 Race/Name/Gen=Genetron
 Race/Name/Keir=Keiron
 Race/Name/Xayi=Xayid

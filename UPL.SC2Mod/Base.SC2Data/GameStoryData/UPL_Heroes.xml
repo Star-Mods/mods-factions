@@ -339,7 +339,8 @@
         <EditorCategories value="Race:UPL"/>
     </CEffectEnumArea>
     <CEffectDamage id="UPLScout" parent="DU_WEAP_RANGED">
-        <Amount value="20"/>
+        <Amount value="9"/>
+        <AttributeBonus index="Armored" value="5"/>
     </CEffectDamage>
     <CAbilEffectTarget id="MyraDavisHeadshot">
         <Alignment value="Negative"/>
@@ -600,7 +601,7 @@
         <Icon value="Assets\Textures\btn-unit-upl-uplscout.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-upl-uplscout.dds"/>
         <EditorCategories value="Race:UPL"/>
-        <HotkeyAlias value="Z2"/>
+        <Universal value="1"/>
     </CButton>
     <CRequirementCountBehavior id="CountBehaviorMyraDavisRifleCompleteOnlyAtUnit3834488665">
         <Flags index="TechTreeCheat" value="0"/>
@@ -1572,9 +1573,9 @@
         <EditorCategories value="Race:UPL"/>
         <Icon value="Assets\Textures\btn-upgrades-upl-infantryweapons-lvl0.dds"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <MinScanRange value="11"/>
-        <Range value="11"/>
-        <Period value="1.5"/>
+        <MinScanRange value="13"/>
+        <Range value="13"/>
+        <Period value="3.4"/>
         <DamagePoint value="0.1"/>
         <Backswing value="1.167"/>
         <RandomDelayMin value="1.5"/>
@@ -2470,21 +2471,6 @@
     <CDataCollectionUnit id="UPLScout" parent="LotC_Unit">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
     </CDataCollectionUnit>
-    <CUnit id="MyraDavisFlameGrenadeMissile" parent="MISSILE_INVULNERABLE">
-        <Race value="UPL"/>
-        <Mover value="MyraDavisFlameGrenadeMissileMover"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
-    <CUnit id="MyraDavisFlashBangGrenadeMissile" parent="MISSILE_INVULNERABLE">
-        <Race value="UPL"/>
-        <Mover value="MyraDavisFlashBangGrenadeMissileMover"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
-    <CUnit id="TrevorRandGrenadeMissile" parent="MISSILE_INVULNERABLE">
-        <Race value="UPL"/>
-        <Mover value="TrevorRandGrenadeMissileMover"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
     <CUnit id="UPLScoutFlameGrenadeMissile" parent="MISSILE_INVULNERABLE">
         <Race value="UPL"/>
         <Mover value="UPLScoutFlameGrenadeMissileMover"/>
@@ -2494,69 +2480,6 @@
         <Race value="UPL"/>
         <Mover value="UPLScoutGrenadeMissileMover"/>
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
-    <CUnit id="MyraDavisOfficer" parent="UPLHeroBase">
-        <UserTag value="Unit/ShortName/MyraDavis"/>
-        <Gender value="Female"/>
-        <LifeStart value="130"/>
-        <LifeMax value="130"/>
-        <CostResource index="Minerals" value="50"/>
-        <AbilArray Link="MyraDavisFlashBangGrenade"/>
-        <AbilArray Link="MyraDavisHealingPatch"/>
-        <BehaviorArray Link="MyraDavisShotgun"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="MyraDavisHealingPatch" Type="AbilCmd" AbilCmd="MyraDavisHealingPatch,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="MyraDavisFlashBangGrenade" Type="AbilCmd" AbilCmd="MyraDavisFlashBangGrenade,Execute" Row="2" Column="1"/>
-        </CardLayouts>
-        <SubgroupPriority value="99"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="9"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-    </CUnit>
-    <CUnit id="MyraDavisRiotOfficer" parent="UPLHeroBase">
-        <UserTag value="Unit/ShortName/MyraDavis"/>
-        <Gender value="Female"/>
-        <Attributes index="Armored" value="1"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
-        <LifeArmor value="1"/>
-        <CostResource index="Minerals" value="50"/>
-        <AbilArray Link="MyraDavisHealingPatch"/>
-        <AbilArray Link="MyraDavisFlameGrenade"/>
-        <AbilArray Link="MyraDavisFlashBangGrenade"/>
-        <AbilArray Link="MyraDavisSwapToRifle"/>
-        <AbilArray Link="MyraDavisSwapToShotgun"/>
-        <AbilArray Link="MyraDavisHeadshot"/>
-        <BehaviorArray Link="MyraDavisRifle"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="MyraDavisFlashBangGrenade" Type="AbilCmd" AbilCmd="MyraDavisFlashBangGrenade,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="MyraDavisHealingPatch" Type="AbilCmd" AbilCmd="MyraDavisHealingPatch,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="MyraDavisFlameGrenade" Type="AbilCmd" AbilCmd="MyraDavisFlameGrenade,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="MyraDavisHeadshot" Type="AbilCmd" AbilCmd="MyraDavisHeadshot,Execute" Row="2" Column="3"/>
-            <LayoutButtons>
-                <Face value="CARRGrenadeLauncherAlt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="CARRGrenadeLauncher,Execute"/>
-                <ShowInGlossary value="0"/>
-                <Row value="1"/>
-                <Column value="0"/>
-            </LayoutButtons>
-            <LayoutButtons>
-                <Face value="CARRIlluminationAlt"/>
-                <Type value="AbilCmd"/>
-                <AbilCmd value="CARRIllumination,Execute"/>
-                <ShowInGlossary value="0"/>
-                <Row value="1"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="MyraDavisSwapToRifle" Type="AbilCmd" AbilCmd="MyraDavisSwapToRifle,Execute" Row="2" Column="4"/>
-            <LayoutButtons Face="MyraDavisSwapToShotgun" Type="AbilCmd" AbilCmd="MyraDavisSwapToShotgun,Execute" Row="2" Column="4"/>
-        </CardLayouts>
-        <SubgroupPriority value="99"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <HotkeyAlias value="MyraDavisOfficer"/>
-        <GlossaryPriority value="9"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
     </CUnit>
     <CUnit id="DeniseAllisterRiotOfficer" parent="UPLHeroBase">
         <UserTag value="Unit/ShortName/DeniseAlistair"/>
@@ -2578,61 +2501,22 @@
         <GlossaryPriority value="10"/>
         <HotkeyCategory value=""/>
     </CUnit>
-    <CUnit id="RichardGideon" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/RichardGideon"/>
-        <LifeArmor value="2"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
-        <Food value="0"/>
-        <AbilArray Link="ClaymoreMineDummy"/>
-        <AbilArray Link="ClaymoreMineExecute"/>
-        <AbilArray Link="ClaymoreMinePlace"/>
-        <WeaponArray Link="RichardGideon"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="ClaymoreMinePlace" Type="AbilCmd" AbilCmd="ClaymoreMineDummy,Execute" Row="2" Column="0"/>
-        </CardLayouts>
-        <SubgroupPriority value="94"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="17"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <BehaviorArray Link="ClaymoreMineHaveCharges"/>
-        <Attributes index="Armored" value="1"/>
-        <UserTag value="Unit/ShortName/RichardGideon"/>
-    </CUnit>
-    <CUnit id="TrevorRand" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/TrevorRand"/>
-        <Attributes index="Armored" value="1"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
-        <LifeArmor value="2"/>
-        <Food value="0"/>
-        <AbilArray Link="TrevorRandGrenade"/>
-        <WeaponArray Link="TrevorRand"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="TrevorRandGrenade" Type="AbilCmd" AbilCmd="TrevorRandGrenade,Execute" Row="2" Column="0"/>
-        </CardLayouts>
-        <SubgroupPriority value="93"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="7"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <UserTag value="Unit/ShortName/TrevorRand"/>
-    </CUnit>
     <CUnit id="UPLScout" parent="UPLHeroBase">
         <Collide index="Locust" value="1"/>
         <Collide index="Small" value="1"/>
-        <Attributes index="Armored" value="1"/>
+        <Attributes index="Heroic" value="0"/>
         <ShieldArmorName value="Unit/ShieldArmorName/UPLScoutShields"/>
         <LateralAcceleration value="46.0625"/>
         <RepairTime value="41.667"/>
         <AbilArray Link="Sprint"/>
+        <AbilArray Link="CalldownMULE2"/>
+        <AbilArray Link="UPLScoutGrenade"/>
         <BehaviorArray Link="ClaymoreMineHaveCharges"/>
         <BehaviorArray Link="InfantryMedkit"/>
         <BehaviorArray Link="InfantryMedkit@Handler"/>
         <WeaponArray Link="UPLScout"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="UPLScoutGrenade" Type="AbilCmd" AbilCmd="UPLScoutGrenade,Execute" Row="1" Column="0"/>
             <LayoutButtons Face="Sprint" Type="AbilCmd" AbilCmd="Sprint,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="UPLScoutFlameGrenade" Type="AbilCmd" AbilCmd="UPLScoutFlameGrenade,Execute" Row="1" Column="1"/>
             <LayoutButtons Face="InfantryMedkit" Type="Passive" Requirements="InfantryMedkit@ChargeAvailable" Row="2" Column="2"/>
             <LayoutButtons>
                 <Face value="InfantryMedkit"/>
@@ -2643,13 +2527,13 @@
                 <Row value="2"/>
                 <Column value="2"/>
             </LayoutButtons>
+            <LayoutButtons Face="CalldownMULE2" Type="AbilCmd" AbilCmd="CalldownMULE2,Execute" Row="2" Column="1"/>
         </CardLayouts>
-        <SubgroupPriority value="93"/>
+        <SubgroupPriority value="44"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <LeaderAlias value="Spectre"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="26"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
+        <GlossaryPriority value="80"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
         <Food value="-1"/>
@@ -2657,6 +2541,13 @@
         <CostResource index="Vespene" value="25"/>
         <Radius value="0.375"/>
         <InnerRadius value="0.3125"/>
+        <LifeStart value="60"/>
+        <LifeMax value="60"/>
+        <EnergyStart value="25"/>
+        <EnergyMax value="150"/>
+        <EnergyRegenRate value="0.3984"/>
+        <ScoreMake value="75"/>
+        <ScoreKill value="75"/>
     </CUnit>
     <CBehaviorBuff id="MyraDavisArmorBonus">
         <BehaviorFlags index="Permanent" value="1"/>

@@ -45,28 +45,13 @@
         <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
         <DisplayEffect value="PeenemundeMRLS_Damage"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <MinScanRange value="12.5"/>
-        <Range value="12"/>
+        <MinScanRange value="13.5"/>
+        <Range value="13"/>
         <Arc value="0.9997"/>
         <Period value="3.5"/>
         <Effect value="UEDEffektPenemundeAttackRangeSmall"/>
         <LegacyOptions index="KeepChanneling" value="1"/>
         <AllowedMovement value="Slowing"/>
-    </CWeaponLegacy>
-    <CWeaponLegacy id="DrakkarMachineGunMove">
-        <EditorCategories value="Race:UED"/>
-        <Options index="Disabled" value="1"/>
-        <Options index="Hidden" value="1"/>
-        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
-        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
-        <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
-        <DisplayEffect value="TwinGatlingCannons2"/>
-        <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <MinScanRange value="5.5"/>
-        <Arc value="1.4941"/>
-        <Period value="1"/>
-        <Effect value="TwinGatlingCannons2"/>
-        <AllowedMovement value="Moving"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="NapoleonCannon">
         <EditorCategories value="Race:UED"/>
@@ -103,7 +88,7 @@
         <MinScanRange value="7.5"/>
         <Range value="7"/>
         <Arc value="1.4941"/>
-        <Period value="1.4"/>
+        <Period value="1.33"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="NapoleonMachineGun">
         <EditorCategories value="Race:UED"/>
@@ -198,7 +183,7 @@
         <Cost>
             <Cooldown Location="Unit" TimeUse="0.225"/>
         </Cost>
-        <Period value="0.63"/>
+        <Period value="0.7"/>
         <Effect value="ATSLaserBatteryLM3"/>
         <RandomDelayMin value="0"/>
         <RandomDelayMax value="0"/>
@@ -207,14 +192,14 @@
         <EditorCategories value="Race:UED"/>
         <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
         <DisplayEffect value="BacklashRocketsU2"/>
-        <DisplayAttackCount value="4"/>
+        <DisplayAttackCount value="3"/>
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <MinScanRange value="6.5"/>
         <Range value="6"/>
         <Marker>
             <MatchFlags index="Id" value="1"/>
         </Marker>
-        <Period value="1.45"/>
+        <Period value="1.12"/>
         <AllowedMovement value="Slowing"/>
         <Arc value="4.9987"/>
         <Options index="Disabled" value="1"/>
@@ -251,6 +236,8 @@
     </CWeaponLegacy>
     <CWeaponLegacy id="BoomerangMissileLaunchers">
         <EditorCategories value="Race:UED"/>
+        <Options index="Disabled" value="1"/>
+        <Options index="Hidden" value="1"/>
         <Options index="LinkedCooldown" value="0"/>
         <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
         <DisplayEffect value="LiberatorMissileDamage3"/>
@@ -291,7 +278,7 @@
         <DisplayEffect value="LanzerTorpedoesDamage2"/>
         <DisplayAttackCount value="2"/>
         <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="7"/>
+        <Range value="12"/>
         <Period value="1.7"/>
         <AllowedMovement value="Slowing"/>
         <MinScanRange value="7.5"/>
@@ -457,7 +444,7 @@
         <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
         <DisplayEffect value="UEDDamageSpartanAir"/>
         <DisplayAttackCount value="2"/>
-        <TargetFilters value="Air,Visible;Ground,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <MinScanRange value="9"/>
         <Range value="7"/>
         <Arc value="0.9997"/>
@@ -467,7 +454,6 @@
     </CWeaponLegacy>
     <CWeaponLegacy id="UEDPenemundeGunRangeHidden">
         <EditorCategories value="Race:UED"/>
-        <Options index="Disabled" value="1"/>
         <Options index="Hidden" value="1"/>
         <Options index="DisplayCooldown" value="1"/>
         <Icon value="Assets\weapon-tank-icon-upgrade-0.dds"/>
@@ -475,7 +461,7 @@
         <TargetFilters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <MinScanRange value="25.5"/>
         <Range value="25"/>
-        <MinimumRange value="12"/>
+        <MinimumRange value="13"/>
         <Arc value="0.9997"/>
         <Period value="3.5"/>
         <Effect value="UEDEffektPenemundeAttackRangeBig"/>

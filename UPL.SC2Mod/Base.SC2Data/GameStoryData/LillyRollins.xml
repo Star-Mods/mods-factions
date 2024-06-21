@@ -166,7 +166,6 @@
     <CModel id="LillyRollinsLaunchLightSmaller" parent="GenericLaunchLight">
         <ScaleMax value="0.450000,0.450000,0.450000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
-        <Lighting value="##id##"/>
     </CModel>
     <CModel id="LillyRollinsAttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\MarineWeaponImpact\MarineWeaponImpact.m3"/>
@@ -309,24 +308,6 @@
         <DataRecord Entry="Character,LillyRollins"/>
         <Pattern value="LotC_Unit"/>
     </CDataCollectionUnit>
-    <CUnit id="LillyRollins" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/LillyRollins"/>
-        <Gender value="Female"/>
-        <LifeStart value="150"/>
-        <LifeMax value="150"/>
-        <LifeArmor value="2"/>
-        <Food value="0"/>
-        <AbilArray Link="LillyRollinsHeal"/>
-        <WeaponArray Link="LillyRollins"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="LillyRollinsHeal" Type="AbilCmd" AbilCmd="LillyRollinsHeal,Execute" Row="2" Column="1"/>
-        </CardLayouts>
-        <SubgroupPriority value="93"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="6"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <UserTag value="Unit/ShortName/LillyRollins"/>
-    </CUnit>
     <CBehaviorBuff id="LillyRollinsHealBig">
         <InfoIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>

@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CAbilEffectInstant id="AbilityFireModeDrakkar">
+    <CAbilEffectInstant id="AbilityHonograundSplashDamage">
         <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
-        <PostEffectBehavior Behavior="DrakkarAlgoritmFireMode" Count="1"/>
-        <Flags index="Transient" value="1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="ButtonDrakkarFireMode" Requirements="TrebovanieDrakkarSlowMove"/>
-    </CAbilEffectInstant>
-    <CAbilEffectInstant id="AbilityFastMoveModeDrakkar">
-        <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
-        <Effect index="0" value="MinusFireModeDrakkar"/>
-        <PostEffectBehavior Behavior="DrakkarAlgoritmBoost" Count="1"/>
+        <Effect index="0" value="SearchAreaHonograund"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="13"/>
+            <Cooldown TimeUse="4.25"/>
         </Cost>
-        <AINotifyEffect value="AbilityFireModeDrakkar"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="ButtonDrakkarFastMove" Requirements="TrebovanieDrakkarFastMove"/>
+        <AutoCastFilters value="Visible;Self,Player,Ally,Neutral,RawResource,HarvestableResource,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="6.5"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UEDButtonHonograundAbility"/>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="AbilityStrikeFighterGroundMod">
         <AbilSetId value="UEDGoAttackGround"/>
@@ -70,15 +66,15 @@
     </CAbilResearch>
     <CAbilResearch id="ArmoryResearch22">
         <EditorCategories value="Race:UED,AbilityorEffectType:Structures"/>
-        <InfoArray index="Research1" Time="100" Upgrade="UpgradeSpeedStrikeFighter">
-            <Resource index="Minerals" value="125"/>
-            <Resource index="Vespene" value="125"/>
-            <Button DefaultButtonFace="ButtonUpgadeStrikeFighterSpeed" Requirements="LearnSpeedStrikeFigter"/>
+        <InfoArray index="Research1" Time="100" Upgrade="UEDUpgradeStrikeFighter">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ButtonUEDUpgadeStrikeFighter" Requirements="LearnUpgradeStrikeFigter"/>
         </InfoArray>
-        <InfoArray index="Research2" Time="100" Upgrade="UpgradeSpeedCrimsonEye">
+        <InfoArray index="Research2" Time="100" Upgrade="UpgradeBeataniumGenerator">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="EngineSurchargeProtocols" Requirements="CrimsonEyeStarWind"/>
+            <Button DefaultButtonFace="UpgradeCrimsonEyeEnergy" Requirements="CrimsonEyeStarWind"/>
         </InfoArray>
         <InfoArray index="Research3" Time="90" Upgrade="ExtendedMissilePayloads">
             <Resource index="Minerals" value="150"/>
@@ -89,6 +85,11 @@
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="AtmosphericOperationsLoadout" Requirements="LearnAtmosphericOperationsLoadout"/>
+        </InfoArray>
+        <InfoArray index="Research5" Time="100" Upgrade="UEDUpgradeStrikeFighterSpeed">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ButtonStrikeFighterSpeedUpgrade" Requirements="LearnSpeedStrikeFigter"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilEffectTarget id="AbilitiIrradiationBMField">
@@ -177,12 +178,12 @@
         <Flags index="BestUnit" value="1"/>
         <Flags index="Toggle" value="1"/>
         <Cost>
-            <Resource index="Minerals" value="50"/>
-            <Resource index="Vespene" value="50"/>
+            <Resource index="Minerals" value="25"/>
+            <Resource index="Vespene" value="25"/>
         </Cost>
         <OffCost>
-            <Resource index="Minerals" value="-38"/>
-            <Resource index="Vespene" value="-38"/>
+            <Resource index="Minerals" value="-19"/>
+            <Resource index="Vespene" value="-19"/>
         </OffCost>
         <BehaviorArray value="UEDAlgoritmMorphAcelerationTrain"/>
     </CAbilBehavior>
@@ -404,6 +405,7 @@
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="healCasterMinEnergy"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="ValidateForCrimsonEyeAvtoRepear"/>
         <UseMarkerArray index="Approach" value="0"/>
         <UseMarkerArray index="Prep" value="0"/>
         <DefaultError value="RequiresHealTarget"/>
@@ -558,7 +560,7 @@
         <LoadCargoEffect value="ApplyAlgoritmCancelAttackHiddenDrakkar"/>
         <SearchRadius value="8"/>
         <TargetSorts>
-            <SortArray index="0" value="UEDSortingValidatator"/>
+            <SortArray index="0" value="UEDSortingValidatatorDrakkar"/>
             <SortArray index="1" value="TSInterruptible"/>
             <SortArray value="TSDistance"/>
         </TargetSorts>
@@ -570,14 +572,14 @@
             <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="AuthorizeFieldReloadingProtocols" Requirements="LearnFieldReloadingProtocols"/>
         </InfoArray>
-        <InfoArray index="Research2" Time="84" Upgrade="UpgradeSpeedCrimsonEye">
+        <InfoArray index="Research2" Time="100" Upgrade="UpgradeBeataniumGenerator">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="EngineSurchargeProtocols" Requirements="CrimsonEyeStarWind"/>
+            <Button DefaultButtonFace="UpgradeCrimsonEyeEnergy" Requirements="CrimsonEyeStarWind"/>
         </InfoArray>
-        <InfoArray index="Research3" Time="95" Upgrade="DroneRepairModule">
-            <Resource index="Minerals" value="125"/>
-            <Resource index="Vespene" value="125"/>
+        <InfoArray index="Research3" Time="110" Upgrade="DroneRepairModule">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
             <Button DefaultButtonFace="DroneRepairModule" Requirements="LearnRepairCrimsonEye"/>
         </InfoArray>
         <InfoArray index="Research4" Time="160" Upgrade="UEDVehicalsLevel1">
@@ -614,6 +616,11 @@
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="ButtonUpgradePhosphoricFire" Requirements="LearnPhoshoricFire"/>
+        </InfoArray>
+        <InfoArray index="Research11" Time="110" Upgrade="UEDHightDurability">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ButtonUEDUpgadeStatDefense" Requirements="UEDLearnHightDurability"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilAttack id="BattlecruiserAttack2">
@@ -659,8 +666,8 @@
         <Effect index="0" value="CreatUnitTowerMining"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
             <Cooldown Location="Player" TimeUse="100"/>
         </Cost>
         <Placeholder value="EnrichmentTower"/>
@@ -668,9 +675,9 @@
         <Range value="500"/>
         <Arc value="360"/>
         <ProducedUnitArray value="EnrichmentTower"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownEnrichmentTower" Requirements="UseTowerMining"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownEnrichmentTower" Requirements="HaveTacticsAcademy"/>
         <PlaceUnit value="EnrichmentTower"/>
-        <CursorEffect value="SearchAreaMineralDruse"/>
+        <CursorEffect value="SearchAreaMineralDruseBefor"/>
     </CAbilEffectTarget>
     <CAbilEffectInstant id="CalldownBeacon">
         <AbilSetId value="CalldownBeacon"/>
@@ -728,15 +735,10 @@
     </CAbilEffectTarget>
     <CAbilResearch id="TacticsAcademyResearch">
         <EditorCategories value="Race:UED,AbilityorEffectType:Structures"/>
-        <InfoArray index="Research1" Time="105" Upgrade="UpgradeLazarusRegenHealf">
+        <InfoArray index="Research2" Time="48" Upgrade="UpgradeBeataniumGenerator">
             <Resource index="Minerals" value="150"/>
             <Resource index="Vespene" value="150"/>
-            <Button DefaultButtonFace="AuthorizeLazarusRegenHealf" Requirements="LearnLazarusReganHealf"/>
-        </InfoArray>
-        <InfoArray index="Research2" Time="48" Upgrade="UpgradeSpeedCrimsonEye">
-            <Resource index="Minerals" value="150"/>
-            <Resource index="Vespene" value="150"/>
-            <Button DefaultButtonFace="EngineSurchargeProtocols" Requirements="EnginSurchargeProtocols">
+            <Button DefaultButtonFace="UpgradeCrimsonEyeEnergy" Requirements="EnginSurchargeProtocols">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
@@ -792,8 +794,8 @@
             <Resource index="Vespene" value="75"/>
             <Button DefaultButtonFace="AuthorizeStrikeGrenades" Requirements="LearnStrikeGrenade"/>
         </InfoArray>
-        <InfoArray index="Research13" Time="45" Upgrade="UpgradeTowerMining">
-            <Resource index="Minerals" value="150"/>
+        <InfoArray index="Research13" Time="80" Upgrade="UpgradeTowerMining">
+            <Resource index="Minerals" value="325"/>
             <Button DefaultButtonFace="AuthorizeTowerMining" Requirements="LearnTowerMining"/>
         </InfoArray>
         <InfoArray index="Research14" Time="140" Upgrade="UpgraideDrakkar">
@@ -953,7 +955,7 @@
             <Button DefaultButtonFace="BuildStrikeTrooper"/>
             <Unit value="StrikeTrooper"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="50">
+        <InfoArray index="Train2" Time="40">
             <Button DefaultButtonFace="BuildStrikefighter" Requirements="HaveStarshipMaintenancePlant"/>
             <Unit value="Strikefighter"/>
         </InfoArray>

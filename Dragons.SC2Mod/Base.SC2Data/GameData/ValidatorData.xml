@@ -28,32 +28,82 @@
         <Compare value="LE"/>
         <Value value="1.4"/>
     </CValidatorUnitCompareDamageTakenTime>
-    <CValidatorCombine id="BrimstoneDemolisherScorchingBlazePeriodic">
+    <CValidatorUnitOrder id="UnseenBeastProwlAutocast">
+        <AbilLink value="UnseenBeastProwl"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorLocationCompareRange id="BrimstoneDemolisherInfernalBreathRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="8"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitFilters id="GrimGliderEmaciate">
+        <OtherUnit Value="Caster"/>
+        <Filters value="-;Missile,Cloaked,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="BrimstoneDemolisherInfernalBreathPeriodic">
         <Type value="And"/>
         <CombineArray value="CasterHasEnergy"/>
-        <CombineArray value="BrimstoneDemolisherScorchingBlazeUnitFilter"/>
+        <CombineArray value="BrimstoneDemolisherInfernalBreathUnitFilter"/>
+        <CombineArray value="BrimstoneDemolisherInfernalBreathRange"/>
     </CValidatorCombine>
-    <CValidatorCombine id="BrimstoneDemolisherScorchingBlaze">
+    <CValidatorCombine id="BrimstoneDemolisherInfernalBreath1">
         <CombineArray value="healCasterMinEnergy"/>
-        <CombineArray value="BrimstoneDemolisherScorchingBlaze22"/>
+        <CombineArray value="BrimstoneDemolisherInfernalBreath22"/>
     </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="BrimstoneDemolisherScorchingBlaze22">
+    <CValidatorUnitCompareBehaviorCount id="BrimstoneDemolisherInfernalBreath22">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
-        <Behavior value="BrimstoneDemolisherScorchingBlaze2"/>
+        <Behavior value="BrimstoneDemolisherInfernalBreath2"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitFilters id="BrimstoneDemolisherScorchingBlazeUnitFilter">
+    <CValidatorUnitFilters id="BrimstoneDemolisherInfernalBreathUnitFilter">
         <Filters value="Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorUnitFilters>
+    <CValidatorPlayerRequirement id="AuroraConduitConduction">
+        <Find value="1"/>
+        <Value value="AuroraConduitConduction"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitOrder id="GrimGliderNullify">
+        <AbilLink value="GrimGliderNullify"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="BrimstoneDemolisherInfernalBreathAutocast">
+        <AbilLink value="BrimstoneDemolisherInfernalBreath"/>
+        <CmdFlags index="SetAutoCast" value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitFilters id="NotBiological" parent="IsBiological">
+        <Filters value="-;Biological"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationEnumArea id="RazorbackBenign">
+        <WhichLocation Value="SourceUnit"/>
+        <AreaArray Radius="1"/>
+        <Compare value="Eq"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Ground,Structure;Neutral,Enemy,Missile,Buried,Stasis,Dead,Hidden"/>
+        <ExcludeArray Value="Source"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorPlayerRequirement id="VolcanicHarbingerPlasmaCatalyst">
+        <Value value="VolcanicHarbingerPlasmaCatalyst"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorUnitOrderQueue id="HornedMagusFrenzy2">
+        <WhichUnit Value="Source"/>
+        <AbilLink value="attack"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorCombine id="DragonFission">
         <ResultFailed value="NotEnoughFood"/>
-        <CombineArray value="DragonFissionSupply1"/>
+        <CombineArray value="DragonFissionSupplyNoCost"/>
         <CombineArray value="DragonFissionSupply1"/>
         <CombineArray value="DragonFissionSupply2"/>
         <CombineArray value="DragonFissionSupply3"/>
         <CombineArray value="DragonFissionSupply4"/>
         <CombineArray value="DragonFissionSupply6"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareField id="DragonFissionSupplyNoCost">
+        <Compare value="GE"/>
+        <Field value="Food"/>
+        <Value value="0"/>
+    </CValidatorUnitCompareField>
     <CValidatorCombine id="DragonFissionSupply1" parent="DragonFissionSupply"/>
     <CValidatorUnitCompareField id="DragonFissionSupply1Cost" parent="DragonFissionSupplyCost">
         <Value value="-1"/>
@@ -87,12 +137,17 @@
         <CombineArray value="IsFleshrender"/>
         <CombineArray value="NotAscended"/>
     </CValidatorCombine>
-    <CValidatorUnitWeaponAnimating id="HornedMagusShroudWeaponAnimating">
+    <CValidatorUnitWeaponAnimating id="HandofPowerShroudWeaponAnimating">
         <Find value="0"/>
     </CValidatorUnitWeaponAnimating>
-    <CValidatorUnitWeaponFiring id="HornedMagusShroudWeaponFiring">
+    <CValidatorUnitWeaponFiring id="HandofPowerShroudWeaponFiring">
         <Find value="0"/>
     </CValidatorUnitWeaponFiring>
+    <CValidatorUnitOrderQueue id="HornedMagusFrenzy3">
+        <WhichUnit Value="Source"/>
+        <AbilLink value="move"/>
+        <Find value="0"/>
+    </CValidatorUnitOrderQueue>
     <CValidatorUnitType id="IsFleshrender">
         <Value value="Fleshrender"/>
         <Type value="SelectAlias"/>
@@ -109,10 +164,11 @@
     <CValidatorUnitCompareBehaviorCount id="CasterAscended" parent="CasterNotAscended">
         <Compare value="GT"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitOrderTargetType id="UnseenBeastTeleportAssault">
-        <ResultFailed value="MustTargetUnit"/>
-        <AbilLink value="attack"/>
-    </CValidatorUnitOrderTargetType>
+    <CValidatorUnitAbil id="HornedMagusFrenzy1">
+        <WhichUnit Value="Source"/>
+        <Find value="1"/>
+        <AbilClass value="CAbilAttack"/>
+    </CValidatorUnitAbil>
     <CValidatorUnitOrderQueue id="CasterAttackingTarget">
         <AbilLink value="attack"/>
         <Target Value="TargetUnit"/>
@@ -127,7 +183,7 @@
     <CValidatorUnitCompareOrderTargetRange id="UnseenBeastTeleportAssaultMinimumDistance">
         <ResultFailed value="TargetIsTooClose"/>
         <WhichUnit Value="Caster"/>
-        <OtherUnit Effect="UnseenBeastTeleportAssaultCreatePersistent" Value="Target"/>
+        <OtherUnit Effect="UnseenBeastTeleportAssaultIssueOrder" Value="Target"/>
         <Compare value="GT"/>
         <AbilLink value="attack"/>
         <Value value="1.5"/>
@@ -144,36 +200,6 @@
     <CValidatorLocationCompareCliffLevel id="CliffLevelLT3" parent="CliffLevelGT2">
         <Compare value="LT"/>
     </CValidatorLocationCompareCliffLevel>
-    <CValidatorCombine id="DenizenoftheDeepCrystalize">
-        <Type value="And"/>
-        <CombineArray value="DenizenoftheDeepNotBuilding"/>
-        <CombineArray value="PlayerHasVespene"/>
-    </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="DenizenoftheDeepCrystalize1">
-        <Compare value="GE"/>
-        <Value value="5"/>
-        <Behavior value="DenizenoftheDeepCrystalize1"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="DenizenoftheDeepCrystalize2">
-        <Compare value="GE"/>
-        <Value value="12"/>
-        <Behavior value="DenizenoftheDeepCrystalize2"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorCombine id="DenizenoftheDeepLiquify">
-        <Type value="And"/>
-        <CombineArray value="DenizenoftheDeepNotBuilding"/>
-        <CombineArray value="PlayerHasMinerals"/>
-    </CValidatorCombine>
-    <CValidatorUnitCompareBehaviorCount id="DenizenoftheDeepLiquify1">
-        <Compare value="GE"/>
-        <Value value="5"/>
-        <Behavior value="DenizenoftheDeepLiquify1"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="DenizenoftheDeepLiquify2">
-        <Compare value="GE"/>
-        <Value value="12"/>
-        <Behavior value="DenizenoftheDeepLiquify2"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareOrderCount id="DenizenoftheDeepNotBuilding">
         <AbilLink value="DenizenoftheDeepTrain"/>
     </CValidatorUnitCompareOrderCount>
@@ -216,13 +242,6 @@
         <Value value="GreaterDeepOneNoFootprint"/>
     </CValidatorUnitType>
     <CValidatorUnitFilters id="SourceNotDead"/>
-    <CValidatorPlayerCompareResource id="PlayerHasMinerals">
-        <Compare value="GT"/>
-    </CValidatorPlayerCompareResource>
-    <CValidatorPlayerCompareResource id="PlayerHasVespene">
-        <Compare value="GT"/>
-        <Resource value="Vespene"/>
-    </CValidatorPlayerCompareResource>
     <CValidatorUnitCompareBehaviorCount id="DragonTrain">
         <Compare value="GT"/>
         <Behavior value="DragonTrain1"/>
@@ -246,12 +265,12 @@
     </CValidatorLocationEnumArea>
     <CValidatorPlayerRequirement id="GrimGliderWraithNight">
         <Find value="1"/>
-        <Value value="GrimGliderWraithNight"/>
+        <Value value="GrimGliderMortalitysEclipse"/>
         <WhichUnit Value="Target"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="NoFrenzy">
         <WhichUnit Value="Caster"/>
-        <Behavior value="HandofPowerFrenzy"/>
+        <Behavior value="HornedMagusFrenzy"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="HasFrenzy" parent="NoFrenzy">
         <Compare value="GT"/>
@@ -259,14 +278,10 @@
     <CValidatorUnitCompareBehaviorCount id="NoFireShield">
         <Behavior value="HornedMagusFireShield"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareDamageTakenTime id="HornedMagusShroudDamageTakenTime">
+    <CValidatorUnitCompareDamageTakenTime id="HandofPowerShroudDamageTakenTime">
         <Compare value="GT"/>
         <Value value="0.0625"/>
     </CValidatorUnitCompareDamageTakenTime>
-    <CValidatorPlayerRequirement id="HunterFeast">
-        <Find value="1"/>
-        <Value value="HunterFeast"/>
-    </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="NoCloakingField">
         <Behavior value="CloakFieldEffect"/>
     </CValidatorUnitCompareBehaviorCount>
@@ -278,7 +293,7 @@
         <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Hallucination,Summoned"/>
     </CValidatorLocationEnumArea>
     <CValidatorUnitCompareBehaviorCount id="NoShroud">
-        <Behavior value="HornedMagusShroud"/>
+        <Behavior value="HandofPowerShroud"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitType id="NotBaneling">
         <Value value="Baneling"/>
@@ -305,7 +320,7 @@
     <CValidatorCombine id="IsGrimGliderWraithNight">
         <Type value="And"/>
         <CombineArray value="IsGrimGlider"/>
-        <CombineArray value="GrimGliderWraithNight"/>
+        <CombineArray value="Ascended"/>
     </CValidatorCombine>
     <CValidatorCombine id="HandofPowerPortalTarget">
         <Type value="And"/>
@@ -341,11 +356,11 @@
         <WhichUnit Effect="HunterTongueLashLaunchMissile"/>
         <Filters value="Biological;-"/>
     </CValidatorUnitFilters>
-    <CValidatorUnitFilters id="DragonModIsAirUnit">
+    <CValidatorUnitFilters id="TargetIsAirUnitFilter">
         <Filters value="Air;-"/>
     </CValidatorUnitFilters>
-    <CValidatorCombine id="IsAirUnitorHasCrushingGravity">
-        <CombineArray value="DragonModIsAirUnit"/>
+    <CValidatorCombine id="SkyrazorSuperiorBlast">
+        <CombineArray value="TargetIsAirUnitFilter"/>
         <CombineArray value="HasCrushingGravity"/>
     </CValidatorCombine>
     <CValidatorUnitType id="IsGrimGlider">
@@ -399,7 +414,7 @@
     <CValidatorCombine id="NotTownHall">
         <CombineArray value="NotDenizenoftheDeep"/>
     </CValidatorCombine>
-    <CValidatorUnitFilters id="OuterIsAirUnit" parent="DragonModIsAirUnit">
+    <CValidatorUnitFilters id="OuterIsAirUnit" parent="TargetIsAirUnitFilter">
         <WhichUnit Value="TargetOuter"/>
     </CValidatorUnitFilters>
     <CValidatorUnitFilters id="OuterisGroundUnit">
@@ -412,9 +427,6 @@
     <CValidatorUnitFilters id="BerserkerMadness">
         <Filters value="Ground;Missile,Cloaked,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorUnitFilters>
-    <CValidatorUnitMover id="TargetIsNotAir" parent="TargetIsAir">
-        <Find value="0"/>
-    </CValidatorUnitMover>
     <CValidatorUnitCompareVital id="DragonInvigorateLife">
         <Compare value="GE"/>
         <Type value="Delta"/>
@@ -423,27 +435,28 @@
     <CValidatorUnitCompareField id="TargetRadius0625">
         <Field value="Radius"/>
         <Value value="0.625"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
     <CValidatorUnitCompareField id="TargetRadius05">
         <Field value="Radius"/>
         <Value value="0.5"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
     <CValidatorUnitCompareField id="TargetRadius0375">
         <Field value="Radius"/>
         <Value value="0.375"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
     <CValidatorUnitCompareField id="TargetRadius0875">
         <Field value="Radius"/>
         <Value value="0.875"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
     <CValidatorUnitCompareField id="TargetRadius1">
         <Field value="Radius"/>
         <Value value="1"/>
+        <Compare value="GE"/>
     </CValidatorUnitCompareField>
-    <CValidatorPlayerRequirement id="BrimstoneDemolisherInfernalBreath">
-        <Find value="1"/>
-        <Value value="BrimstoneDemolisherInfernalBreath"/>
-    </CValidatorPlayerRequirement>
     <CValidatorUnitOrderTargetType id="FleshrenderTarget">
         <AbilLink value="attack"/>
     </CValidatorUnitOrderTargetType>
@@ -467,11 +480,15 @@
     <CValidatorUnitCompareOrderTargetRange id="UnseenBeastTeleportAssaultMaximumDistance">
         <ResultFailed value="TargetIsOutOfRange"/>
         <WhichUnit Value="Caster"/>
-        <OtherUnit Effect="UnseenBeastTeleportAssaultCreatePersistent" Value="Target"/>
+        <OtherUnit Effect="UnseenBeastTeleportAssaultIssueOrder" Value="Target"/>
         <Compare value="LE"/>
         <AbilLink value="attack"/>
         <Value value="4"/>
     </CValidatorUnitCompareOrderTargetRange>
+    <CValidatorUnitWeaponAnimating id="UnseenBeastTeleportAssaultWeapon">
+        <WhichUnit Value="Caster"/>
+        <Find value="0"/>
+    </CValidatorUnitWeaponAnimating>
     <CValidatorLocationEnumArea id="UnseenBeastVisible">
         <WhichLocation Value="CasterUnit"/>
         <AreaArray Radius="13"/>

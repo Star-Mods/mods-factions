@@ -74,7 +74,19 @@
         <value>Zerg</value>
         <value>Protoss</value>
         <value>NHbr</value>
-        <value>Neutral</value>
+        <value>Neutral</value><!--
+        <value>Human</value>
+        <value>Undead</value>
+        <value>Orc</value>
+        <value>NightElf</value>
+        <value>Naga</value>
+        <value>Commoner</value>
+        <value>Critter</value>
+        <value>Creeps</value>
+        <value>Demon</value>
+        <value>Other</value>
+        <value>InfestedTerran</value>
+        <value>PrimalZerg</value>-->
     </category>
     <category name="UpgradeType">
         <value>AttackBonus</value>
@@ -231,7 +243,6 @@
         <value>FactionOutlaw</value>
         <value>FactionXelNaga</value>
         <value>FactionMecha</value>
-        <value>NetworkHybrids</value>
         <value>Coop</value>
     </category>
     <group name="CutScene"/>

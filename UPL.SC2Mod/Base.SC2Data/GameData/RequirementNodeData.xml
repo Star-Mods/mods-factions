@@ -27,6 +27,18 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="WilliamGravesMedkit" State="InProgressOrBetterAtUnit"/>
     </CRequirementCountBehavior>
+    <CRequirementCountUnit id="CountUnitUPLAirstripCompleteOnly881126796TechTreeCheat">
+        <Count Link="UPLAirstrip" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitUPLForwardOperatingBaseCompleteOnly569643178TechTreeCheat">
+        <Count Link="UPLForwardOperatingBase" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUnit id="CountUnitUPLManufacturingFacilityCompleteOnly569643178TechTreeCheat">
+        <Count Link="UPLManufacturingFacility" State="CompleteOnly"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeHornetRacingQueuedOrBetterTechTreeCheat">
+        <Count Link="HornetRacing" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeInfantryMedkitCompleteOnly1912654149">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="InfantryMedkit" State="CompleteOnly"/>
@@ -196,6 +208,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="LotC_InfantryCamoSkin" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeRiotOfficerShieldQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="RiotOfficerShield" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeRoutheTankArmorPlatingCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="RoutheTankArmorPlating" State="CompleteOnly"/>
@@ -211,6 +227,24 @@
     <CRequirementCountUpgrade id="CountUpgradeRoutheTankExplosiveShellsQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="RoutheTankExplosiveShells" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSeekerShellQueuedOrBetterTechTreeCheat">
+        <Count Link="SeekerShell" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSpaceSandbagCompleteOnly2111242140TechTreeCheat">
+        <Count Link="SpaceSandbag" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSpaceSandbagQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="SpaceSandbag" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeStarArmorQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StarArmor" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeStarMechaQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="StarMecha" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUPLInfantryArmorLevel1CompleteOnly2109062568">
         <Flags index="TechTreeCheat" value="0"/>
@@ -332,6 +366,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UPLVehicleWeaponsLevel3" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUnknownUpgradeQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UnknownUpgrade" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeWilliamGravesMedkitQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="WilliamGravesMedkit" State="QueuedOrBetter"/>
@@ -444,11 +482,29 @@
     <CRequirementNot id="NotCountUpgradeFrancineFuelInjectionQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeFrancineFuelInjectionQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeHornetRacingQueuedOrBetterTechTreeCheat">
+        <OperandArray index="0" value="CountUpgradeHornetRacingQueuedOrBetterTechTreeCheat"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeInfantryMedkitQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeInfantryMedkitQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeInfantryOfficerAuraUpgradeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeInfantryOfficerAuraUpgradeQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeRiotOfficerShieldQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeRiotOfficerShieldQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSeekerShellQueuedOrBetterTechTreeCheat">
+        <OperandArray index="0" value="CountUpgradeSeekerShellQueuedOrBetterTechTreeCheat"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSpaceSandbagQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeSpaceSandbagQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeStarArmorQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeStarArmorQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeStarMechaQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeStarMechaQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUPLInfantryArmorLevel1QueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUPLInfantryArmorLevel1QueuedOrBetter"/>
@@ -486,10 +542,12 @@
     <CRequirementNot id="NotCountUpgradeUPLVehicleWeaponsLevel3QueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUPLVehicleWeaponsLevel3QueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeUnknownUpgradeQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeUnknownUpgradeQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeWilliamGravesMedkitQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeWilliamGravesMedkitQueuedOrBetter"/>
     </CRequirementNot>
-
     <CRequirementConst id="200">
         <Value value="200"/>
     </CRequirementConst>
@@ -519,7 +577,6 @@
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeInfantryRocketAOEQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="InfantryRocketAOE" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUPLMiningDronesGrenadeLauncherCompleteOnly3830392007TechTreeCheat">
@@ -551,7 +608,6 @@
         <OperandArray index="0" value="CountUpgradeInfantryFlamethrower3xBurningQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeInfantryRocketAOEQueuedOrBetter">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray index="0" value="CountUpgradeInfantryRocketAOEQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUPLMiningDronesGrenadeLauncherQueuedOrBetter">
@@ -563,4 +619,9 @@
     <CRequirementNot id="NotCountUpgradeZ1EnergyUpgradeQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeZ1EnergyUpgradeQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementOr id="Or2501910096TechTreeCheatCountUnitUPLManufacturingFacilityCompleteOnly569643178TechTreeCheatCountUnitUPLForwardOperatingBaseCompleteOnly569643178TechTreeCheat">
+        <Flags index="TechTreeCheat" value="1"/>
+        <OperandArray value="CountUnitUPLManufacturingFacilityCompleteOnly569643178TechTreeCheat"/>
+        <OperandArray value="CountUnitUPLForwardOperatingBaseCompleteOnly569643178TechTreeCheat"/>
+    </CRequirementOr>
 </Catalog>

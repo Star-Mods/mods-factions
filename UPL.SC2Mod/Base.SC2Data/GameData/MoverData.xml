@@ -55,7 +55,7 @@
         <MotionPhases index="0">
             <Driver value="Ballistic"/>
             <Acceleration value="0"/>
-            <Speed value="40"/>
+            <Speed value="5"/>
             <MaxSpeed value="10"/>
             <Gravity value="5"/>
             <ClearanceAcceleration value="-1024"/>

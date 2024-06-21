@@ -1,7 +1,7 @@
 include "TriggerLibs/natives"
 
 //--------------------------------------------------------------------------------------------------
-// Library: Factions - Hybrids
+// Library: Network Hybrid Race
 //--------------------------------------------------------------------------------------------------
 // Preset Declarations
 const int libNHbr_ge__UnitDataType_Actor = 0;

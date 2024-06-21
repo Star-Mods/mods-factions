@@ -45,7 +45,7 @@
         <FuzzyGeometryPadding value="0.050000"/>
     </CModel>
     <CModel default="1" id="LOTC_CaevRigDeathBase" parent="UnitDeath">
-        <?token id="low" value="TerranBloodDeathLow"?>
+        <?token id="low" type="CModelLink" value="TerranBloodDeathLow"?>
         <RequiredAnims value="Assets\Units\Neutral\LOTC_CaevRig\LOTC_CaevRigDeath.m3a"/>
         <LowQualityModel value="TerranBloodDeathLow"/>
         <Flags index="ParticipatesInRagdollOnRagdollCollisions" value="1"/>
@@ -53,7 +53,7 @@
         <EditorCategories value="Race:UPL"/>
     </CModel>
     <CModel default="1" id="LOTC_CaevRigDeathFireBase" parent="UnitDeath">
-        <?token id="low" value="TerranBloodDeathLow"?>
+        <?token id="low" type="CModelLink" value="TerranBloodDeathLow"?>
         <RequiredAnims value="Assets\Units\Neutral\LOTC_CaevRig\LOTC_CaevRig_DeathFire.m3a"/>
         <LowQualityModel value="TerranBloodDeathLow"/>
         <Flags index="ParticipatesInRagdollOnRagdollCollisions" value="1"/>
@@ -61,7 +61,7 @@
         <EditorCategories value="Race:UPL"/>
     </CModel>
     <CModel default="1" id="LOTC_CaevRigDeathAcidBase" parent="UnitDeath">
-        <?token id="low" value="TerranBloodDeathLow"?>
+        <?token id="low" type="CModelLink" value="TerranBloodDeathLow"?>
         <RequiredAnims value="Assets\Units\Neutral\LOTC_CaevRig\LOTC_CaevRig_DeathAcid.m3a"/>
         <LowQualityModel value="TerranBloodDeathLow"/>
         <Flags index="ParticipatesInRagdollOnRagdollCollisions" value="1"/>
@@ -130,10 +130,43 @@
         <ShadowRadius value="1.000000"/>
         <EditorCategories value="Race:UPL"/>
     </CModel>
+    <CModel id="ActorForceField2" parent="Doodad">
+        <Model value="Assets\Doodads\ActorForceField\ActorForceField.m3"/>
+    </CModel>
+    <CModel id="Barracks2" parent="BarracksBase" Race="UPL">
+        <Model value="Assets\Doodads\PortCity_Bridge\PortCity_Bridge_00.m3"/>
+        <ScaleMax value="0.450000,0.450000,0.550000"/>
+        <ScaleMin value="0.450000,0.450000,0.550000"/>
+        <SelectionOffset value="1.300000,-1.800000,0.000000"/>
+        <SelectionRadius value="5.500000"/>
+        <EditorCategories value=""/>
+    </CModel>
     <CModel id="CarryHarvestableRichVespeneGeyserGas"/>
     <CModel id="CarryHarvestableVespeneGeyserGasUPL" parent="FX">
         <Model value="Assets\Buildings\Resources\GasCanister_HighYield\GasCanister_HighYieldNoGlow.m3"/>
         <EditorCategories value="Race:UPL"/>
+    </CModel>
+    <CModel id="DropPodFalling2" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\DropPodFalling\DropPodFalling.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="OrbitalCommandDropPodDeathA"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="OrbitalCommand_DropPodDeathA"/>
+        </Events>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="OrbitalCommandDropPodDeathB"/>
+            <Type value="Sound"/>
+            <Time value="1.600000"/>
+            <Payload value="OrbitalCommand_DropPodDeathB"/>
+        </Events>
+        <Radius value="0.250000"/>
+        <RadiusLoose value="0.250000"/>
+        <ScaleMax value="1.700000,1.700000,0.800000"/>
+        <ScaleMin value="1.700000,1.700000,0.800000"/>
     </CModel>
     <CModel id="LotC_EP01M03_SnipeShotBeam" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Terran\GhostSnipeBeam\GhostSnipeBeam.m3"/>

@@ -3,7 +3,7 @@ include "TriggerLibs/NativeLib"
 include "LibDRAG_h"
 
 //--------------------------------------------------------------------------------------------------
-// Library: Factions - Dragons
+// Library: FACTIONS - Dragons
 //--------------------------------------------------------------------------------------------------
 // External Library Initialization
 void libDRAG_InitLibraries () {
@@ -11,6 +11,25 @@ void libDRAG_InitLibraries () {
 }
 
 // Custom Script
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Ascend
+//--------------------------------------------------------------------------------------------------
+trigger DragonAscend;
+bool DragonAscendFunc(bool testConds, bool runActions){
+    unit u = EventUnit();
+    string uType = UnitGetType(u);
+    fixed life = UnitGetPropertyFixed(u, c_unitPropLife, c_unitPropCurrent);
+    fixed lifeMax = UnitGetPropertyInt(u, c_unitPropLifeMax, c_unitPropCurrent);
+    fixed lifeOld = CatalogFieldValueGetAsInt(c_gameCatalogUnit, StringSub(uType,9,StringLength(uType)), "LifeMax", EventPlayer());
+    UnitSetPropertyFixed(u, c_unitPropLife, FixedToInt(2*(life+(lifeMax-lifeOld)*(1-life/lifeMax))+0.5)/2.);
+    
+    return true;
+}
+void DragonAscendInit(){
+    DragonAscend = TriggerCreate("DragonAscendFunc");
+    TriggerAddEventUnitAbility(DragonAscend, null, AbilityCommand("AscendedFlamespitter", 0), c_abilMorphStageStatsEnd, true);
+}
+
 //--------------------------------------------------------------------------------------------------
 // Custom Script: Fission
 //--------------------------------------------------------------------------------------------------
@@ -64,20 +83,171 @@ void FissionI(){
 }
 
 //--------------------------------------------------------------------------------------------------
-// Custom Script: BrimstoneDemolisher
+// Custom Script: DragonRage
 //--------------------------------------------------------------------------------------------------
-trigger BrimstoneDemolisher;
-trigger AscendedBrimstoneDemolisher;
-bool BrimstoneDemolisherF(bool testConds,bool runActions){
+trigger DragonRageUnitDeath;
+trigger DragonRageChangeOwner;
+void DragonRageHide(int p){
+    unitgroup g = UnitGroup(null, p, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32))), 0);
+    int i;
+    unit u;
+    bool b=false;
+    for (i=UnitGroupCount(g,c_unitCountAll); i>=0 && !b; i -= 1) {
+        u = UnitGroupUnitFromEnd(g,i);
+        if (u != null && CatalogFieldValueGet(c_gameCatalogUnit,UnitGetType(u),"Race",p)=="Dragon"){
+            b=true;
+        }
+    }
+    UISetResourceVisible(PlayerGroupSingle(p),c_resourceTypeCustom,b);
+}
+bool DragonRageUnitDeathF(bool testConds, bool runActions){
+    int p=EventPlayer();
+    bool pIsDragon;
+    int q=EventUnitDamageSourcePlayer();
     unit u=EventUnit();
-    if(UnitCheckAbilCmdState(u,AbilityCommand("BrimstoneDemolisherScorchingBlaze",0),c_cmdStateIsAutoCast)){
-        UnitBehaviorAdd(u,"BrimstoneDemolisherScorchingBlaze1",u,1);
+    string uType;
+    bool uIsDragon;
+    unit v;
+    int rage;
+    // Conditions
+    if(testConds){
+        if(p <= 0){
+            return false;
+        }
+        if(p >= 16){
+            return false;
+        }
+        if(q <= 0){
+            return false;
+        }
+        if(q >= 16){
+            return false;
+        }
+        if(p == q){
+            return false;
+        }
+        if(PlayerGetAlliance(q,c_allianceIdPassive,p)){
+            return false;
+        }
+        if(u == null){
+            return false;
+        }
+        if(!UnitFilterMatch(u,q,UnitFilter(0,0,(1<<c_targetFilterMissile),(1<<(c_targetFilterHallucination-32))|(1<<(c_targetFilterSummoned-32))))){
+            return false;
+        }
+    }
+    // Actions
+    if(!runActions){
+        return true;
+    }
+    // Calculate Rage
+    uType=UnitGetType(u);
+    uIsDragon=CatalogFieldValueGet(c_gameCatalogUnit,uType,"Race",p)=="Dragon";
+    if(uIsDragon){
+        rage = RoundI(UnitTypeGetCost(uType,c_unitCostSumMineralsVespene)/25+UnitTypeGetCost(uType,c_unitCostCustomResource)/5);
     }
     else{
-        UnitBehaviorRemove(u,"BrimstoneDemolisherScorchingBlaze1",1);
+        rage = RoundI(UnitTypeGetCost(uType,c_unitCostSumMineralsVespene)/25);
+    }
+    // No Rage to Award
+    if(rage == 0){
+        return true;
+    }
+    // Give Loser Rage
+    pIsDragon=PlayerRace(p)=="Dragon";
+    if(pIsDragon || uIsDragon){
+        PlayerModifyPropertyInt(p,c_playerPropCustom,c_playerPropOperAdd,rage);
+        //Hide Rage if no more dragons
+        if(!pIsDragon){
+            DragonRageHide(p);
+        }
+    }
+    // Give Killer Rage
+    v=EventUnitDamageSourceUnit();
+    if(PlayerRace(q)=="Dragon" || (v!=null && CatalogFieldValueGet(c_gameCatalogUnit,UnitGetType(v),"Race",q)=="Dragon")){
+        PlayerModifyPropertyInt(q,c_playerPropCustom,c_playerPropOperAdd,rage);
+        UISetResourceVisible(PlayerGroupSingle(q),c_resourceTypeCustom,true);
     }
     return true;
 }
+bool DragonRageChangeOwnerF(bool testConds, bool runActions){
+    int p=EventUnitOwnerOld();
+    int q=EventUnitOwnerNew();
+    // Conditions
+    if (testConds) {
+        if(CatalogFieldValueGet(c_gameCatalogUnit,UnitGetType(EventUnit()),"Race",p)!="Dragon"){
+            return false;
+        }
+    }
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+    if(PlayerRace(p)!="Dragon"){
+        DragonRageHide(p);
+    }
+    if(PlayerRace(q)!="Dragon"){
+        DragonRageHide(q);
+    }
+    return true;
+}
+void DragonRageI(){
+    DragonRageUnitDeath=TriggerCreate("DragonRageUnitDeathF");
+    TriggerAddEventUnitDied(DragonRageUnitDeath,null);
+    DragonRageChangeOwner=TriggerCreate("DragonRageChangeOwnerF");
+    TriggerAddEventUnitChangeOwner(DragonRageChangeOwner,null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: Arkwyrm
+//--------------------------------------------------------------------------------------------------
+trigger DragonArkwyrmTerritorialDivePrep;
+trigger DragonArkwyrmTerritorialDiveChannel;
+
+bool DragonArkwyrmTerritorialDivePrepFunc (bool testConds, bool runActions) {
+    VisRevealArea(EventPlayer(), RegionCircle(EventUnitTargetPoint(), 5), 0.5, false);
+    return true;
+}
+
+bool DragonArkwyrmTerritorialDiveChannelFunc(bool testConds, bool runActions){
+    unit u = EventUnit();
+    actorscope scope=ActorScopeFromUnit(u);
+    point p = UnitGetPosition(u);
+    point q = EventUnitTargetPoint();
+    fixed dMax = DistanceBetweenPoints(p, q);
+    fixed dHalf = dMax / 2;
+    fixed angle = AngleBetweenPoints(p, q);
+    fixed a = 40; // Arbitrary
+    fixed t = 0;
+    fixed tStep = 0.0625;
+    fixed tHalf = SquareRoot(dMax/a);
+    UnitBehaviorSetDuration(u, "ArkwyrmTerritorialDive", 2*tHalf);
+    libNtve_gf_SendActorMessageToUnit(u, "SetScale 1,2,1 "+FixedToString(tHalf,5)+" Spell");
+    for (t=0; t < tHalf; t += tStep) {
+        UnitSetPosition(u, PointWithOffsetPolar(p, (a / 2) * (t * t), angle), true);
+        Wait(tStep, c_timeGame);
+    }
+    libNtve_gf_SendActorMessageToUnit(u, "ClearScale "+FixedToString(tHalf,5)+" Spell");
+    for (t=0; t < tHalf; t += tStep) {
+        UnitSetPosition(u, PointWithOffsetPolar(p, dHalf + a*tHalf*t - (a / 2) * (t * t), angle), true);
+        Wait(tStep, c_timeGame);
+    }
+    UnitSetPosition(u, q, true);
+    
+    return true;
+}
+
+void DragonArkwyrmTerritorialDiveInit(){
+    DragonArkwyrmTerritorialDivePrep = TriggerCreate("DragonArkwyrmTerritorialDivePrepFunc");
+    TriggerAddEventUnitAbility(DragonArkwyrmTerritorialDivePrep, null, AbilityCommand("ArkwyrmTerritorialDive", 0), c_abilEffectStagePrep, false);
+    DragonArkwyrmTerritorialDiveChannel = TriggerCreate("DragonArkwyrmTerritorialDiveChannelFunc");
+    TriggerAddEventUnitAbility(DragonArkwyrmTerritorialDiveChannel, null, AbilityCommand("ArkwyrmTerritorialDive", 0), c_abilEffectStageChannel, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Custom Script: BrimstoneDemolisher
+//--------------------------------------------------------------------------------------------------
+trigger AscendedBrimstoneDemolisher;
 fixed ABD_Factor=0.014770507813;
 bool AscendedBrimstoneDemolisherF(bool testConds,bool runActions){
     unit u=EventUnit();
@@ -90,9 +260,7 @@ bool AscendedBrimstoneDemolisherF(bool testConds,bool runActions){
     
 }
 void BrimstoneDemolisherI(){
-    BrimstoneDemolisher=TriggerCreate("BrimstoneDemolisherF");
     AscendedBrimstoneDemolisher=TriggerCreate("AscendedBrimstoneDemolisherF");
-    TriggerAddEventUnitAbilityAutoCastChange(BrimstoneDemolisher,null,AbilityCommand("BrimstoneDemolisherScorchingBlaze",0),c_unitAbilAutoCastChangeAll,false);
     TriggerAddEventUnitDamaged(AscendedBrimstoneDemolisher,null,c_unitDamageTypeAny,c_unitDamageNonFatal,null);
 }
 
@@ -185,21 +353,29 @@ void SunkenGuardianI(){
     TriggerAddEventUnitRegion(SunkenGuardianMissile,null,RegionEntireMap(),true);
 }
 
+//--------------------------------------------------------------------------------------------------
+// Custom Script: UnseenBeast
+//--------------------------------------------------------------------------------------------------
+trigger UnseenBeast;
+bool UnseenBeastF(bool testConds,bool runActions){
+    unit u = EventUnit();
+    unit v = EventUnitTargetUnit();
+    point p = UnitGetPosition(v);
+    fixed angle = AngleBetweenPoints(UnitGetPosition(u),p);
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+    UnitSetPosition(u,PointWithOffsetPolar(p,StringToFixed(CatalogFieldValueGet(c_gameCatalogUnit,UnitGetType(u),"Radius",c_playerAny))+StringToFixed(CatalogFieldValueGet(c_gameCatalogUnit,UnitGetType(v),"Radius",c_playerAny)), angle),false);
+    UnitSetFacing(EventUnit(),angle+180,0);
+    return true;
+}
+void UnseenBeastI(){
+    UnseenBeast=TriggerCreate("UnseenBeastF");
+    TriggerAddEventUnitAbility(UnseenBeast,null,AbilityCommand("UnseenBeastTeleportAssaultTrigger",0),c_unitAbilStageComplete,false);
+}
+
 void libDRAG_InitCustomScript () {
-}
-
-// Functions
-void libDRAG_gf_NoRage (int lp_player) {
-    // Automatic Variable Declarations
-    // Implementation
-    UISetResourceVisible(PlayerGroupSingle(lp_player), c_resourceTypeCustom, false);
-    PlayerModifyPropertyInt(lp_player, c_playerPropCustom, c_playerPropOperSetTo, 0);
-}
-
-string libDRAG_gf_GetUnitTypeRace (string lp_unit) {
-    // Automatic Variable Declarations
-    // Implementation
-    return (CatalogFieldValueGet(c_gameCatalogUnit, lp_unit, "Race", c_playerAny));
 }
 
 // Triggers
@@ -216,15 +392,14 @@ bool libDRAG_gt_InitializeDragonsRace_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    TriggerEnable(libDRAG_gt_RageCreate, true);
-    TriggerEnable(libDRAG_gt_RageResearch, true);
-    TriggerEnable(libDRAG_gt_RageKill, true);
-    TriggerEnable(libDRAG_gt_RageKill2, true);
-    TriggerEnable(libDRAG_gt_RageKill3, true);
+    DragonRageI();
+    DragonAscendInit();
+    FissionI();
+    DragonArkwyrmTerritorialDiveInit();
     BrimstoneDemolisherI();
     HornedMagusI();
     SunkenGuardianI();
-    FissionI();
+    UnseenBeastI();
     auto4BACA602_g = PlayerGroupAll();
     auto4BACA602_var = -1;
     while (true) {
@@ -244,266 +419,8 @@ void libDRAG_gt_InitializeDragonsRace_Init () {
     TriggerAddEventGeneric(libDRAG_gt_InitializeDragonsRace, "GAME START");
 }
 
-//--------------------------------------------------------------------------------------------------
-// Trigger: RageCreate
-//--------------------------------------------------------------------------------------------------
-bool libDRAG_gt_RageCreate_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_unit;
-    int lv_owner;
-    fixed lv_rage;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unit = libNtve_gf_TriggeringProgressUnitType();
-    lv_owner = EventPlayer();
-
-    // Conditions
-    if (testConds) {
-        if (!((libDRAG_gf_GetUnitTypeRace(lv_unit) == "Dragon"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_rage = (UnitTypeGetCost(lv_unit, c_unitCostMinerals) + (UnitTypeGetCost(lv_unit, c_unitCostVespene) * 2.4));
-    if ((lv_rage > 0.0)) {
-        UISetResourceVisible(PlayerGroupSingle(lv_owner), c_resourceTypeCustom, true);
-        PlayerModifyPropertyInt(lv_owner, c_playerPropCustom, c_playerPropOperAdd, FixedToInt((lv_rage / 5.0)));
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDRAG_gt_RageCreate_Init () {
-    libDRAG_gt_RageCreate = TriggerCreate("libDRAG_gt_RageCreate_Func");
-    TriggerEnable(libDRAG_gt_RageCreate, false);
-    TriggerAddEventUnitTrainProgress(libDRAG_gt_RageCreate, null, c_unitProgressStageComplete);
-    TriggerAddEventUnitConstructProgress(libDRAG_gt_RageCreate, null, c_unitProgressStageComplete);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: RageResearch
-//--------------------------------------------------------------------------------------------------
-bool libDRAG_gt_RageResearch_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    int lv_owner;
-    fixed lv_rage;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_owner = EventPlayer();
-
-    // Conditions
-    if (testConds) {
-        if (!((libDRAG_gf_GetUnitTypeRace(UnitGetType(EventUnit())) == "Dragon"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_rage = (CatalogFieldValueGetAsInt(c_gameCatalogUpgrade, libNtve_gf_TriggeringProgressUpgrade(), "ScoreAmount", c_playerAny) / 5.0);
-    if ((lv_rage > 0.0)) {
-        UISetResourceVisible(PlayerGroupSingle(lv_owner), c_resourceTypeCustom, true);
-        PlayerModifyPropertyInt(lv_owner, c_playerPropCustom, c_playerPropOperAdd, FixedToInt(lv_rage));
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDRAG_gt_RageResearch_Init () {
-    libDRAG_gt_RageResearch = TriggerCreate("libDRAG_gt_RageResearch_Func");
-    TriggerEnable(libDRAG_gt_RageResearch, false);
-    TriggerAddEventUnitResearchProgress(libDRAG_gt_RageResearch, null, c_unitProgressStageComplete);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: RageKill
-//--------------------------------------------------------------------------------------------------
-bool libDRAG_gt_RageKill_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    string lv_unit;
-    int lv_ownerPlayer;
-    int lv_killer;
-    fixed lv_rage;
-
-    // Automatic Variable Declarations
-    // Variable Initialization
-    lv_unit = UnitGetType(EventUnit());
-    lv_ownerPlayer = EventPlayer();
-    lv_killer = EventUnitDamageSourcePlayer();
-
-    // Conditions
-    if (testConds) {
-        if (!((libNtve_gf_KillingUnit() != null))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_KillingPlayer() != 16))) {
-            return false;
-        }
-
-        if (!((libNtve_gf_KillingPlayer() != 0))) {
-            return false;
-        }
-
-        if (!((PlayerGroupHasPlayer(PlayerGroupAlliance(c_playerGroupEnemy, EventPlayer()), libNtve_gf_KillingPlayer()) == true))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_rage = ((UnitTypeGetCost(lv_unit, c_unitCostMinerals) * 0.2) + (UnitTypeGetCost(lv_unit, c_unitCostVespene) * 0.48));
-    if ((lv_rage > 0.0)) {
-        if ((libDRAG_gf_GetUnitTypeRace(UnitGetType(libNtve_gf_KillingUnit())) == "Dragon")) {
-            UISetResourceVisible(PlayerGroupSingle(lv_killer), c_resourceTypeCustom, true);
-            PlayerModifyPropertyInt(lv_killer, c_playerPropCustom, c_playerPropOperAdd, FixedToInt((lv_rage * 3.0)));
-        }
-
-        if ((libDRAG_gf_GetUnitTypeRace(lv_unit) == "Dragon") && (UnitHasBehavior2(EventUnit(), "DragonAscended") == true)) {
-            UISetResourceVisible(PlayerGroupSingle(lv_ownerPlayer), c_resourceTypeCustom, true);
-            PlayerModifyPropertyInt(lv_ownerPlayer, c_playerPropCustom, c_playerPropOperAdd, FixedToInt(lv_rage));
-        }
-
-    }
-
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDRAG_gt_RageKill_Init () {
-    libDRAG_gt_RageKill = TriggerCreate("libDRAG_gt_RageKill_Func");
-    TriggerEnable(libDRAG_gt_RageKill, false);
-    TriggerAddEventUnitDied(libDRAG_gt_RageKill, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DragonDies
-//--------------------------------------------------------------------------------------------------
-bool libDRAG_gt_RageKill2_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unitgroup lv_units;
-
-    // Automatic Variable Declarations
-    unitgroup autoF686952C_g;
-    int autoF686952C_u;
-    unit autoF686952C_var;
-
-    // Variable Initialization
-    lv_units = UnitGroupEmpty();
-
-    // Conditions
-    if (testConds) {
-        if (!((PlayerRace(EventPlayer()) != "Dragon"))) {
-            return false;
-        }
-
-        if (!((libDRAG_gf_GetUnitTypeRace(UnitGetType(EventUnit())) == "Dragon"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_units = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    autoF686952C_g = lv_units;
-    autoF686952C_u = UnitGroupCount(autoF686952C_g, c_unitCountAll);
-    for (;; autoF686952C_u -= 1) {
-        autoF686952C_var = UnitGroupUnitFromEnd(autoF686952C_g, autoF686952C_u);
-        if (autoF686952C_var == null) { break; }
-        if ((libDRAG_gf_GetUnitTypeRace(UnitGetType(autoF686952C_var)) == "Dragon")) {
-            return true;
-        }
-
-    }
-    libDRAG_gf_NoRage(EventPlayer());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDRAG_gt_RageKill2_Init () {
-    libDRAG_gt_RageKill2 = TriggerCreate("libDRAG_gt_RageKill2_Func");
-    TriggerEnable(libDRAG_gt_RageKill2, false);
-    TriggerAddEventUnitDied(libDRAG_gt_RageKill2, null);
-}
-
-//--------------------------------------------------------------------------------------------------
-// Trigger: DragonOwnerChange
-//--------------------------------------------------------------------------------------------------
-bool libDRAG_gt_RageKill3_Func (bool testConds, bool runActions) {
-    // Variable Declarations
-    unitgroup lv_units;
-
-    // Automatic Variable Declarations
-    unitgroup autoA7BBFDB1_g;
-    int autoA7BBFDB1_u;
-    unit autoA7BBFDB1_var;
-
-    // Variable Initialization
-    lv_units = UnitGroupEmpty();
-
-    // Conditions
-    if (testConds) {
-        if (!((PlayerRace(EventUnitOwnerOld()) != "Dragon"))) {
-            return false;
-        }
-
-        if (!((libDRAG_gf_GetUnitTypeRace(UnitGetType(EventUnit())) == "Dragon"))) {
-            return false;
-        }
-    }
-
-    // Actions
-    if (!runActions) {
-        return true;
-    }
-
-    lv_units = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
-    autoA7BBFDB1_g = lv_units;
-    autoA7BBFDB1_u = UnitGroupCount(autoA7BBFDB1_g, c_unitCountAll);
-    for (;; autoA7BBFDB1_u -= 1) {
-        autoA7BBFDB1_var = UnitGroupUnitFromEnd(autoA7BBFDB1_g, autoA7BBFDB1_u);
-        if (autoA7BBFDB1_var == null) { break; }
-        if ((libDRAG_gf_GetUnitTypeRace(UnitGetType(autoA7BBFDB1_var)) == "Dragon")) {
-            return true;
-        }
-
-    }
-    libDRAG_gf_NoRage(EventPlayer());
-    return true;
-}
-
-//--------------------------------------------------------------------------------------------------
-void libDRAG_gt_RageKill3_Init () {
-    libDRAG_gt_RageKill3 = TriggerCreate("libDRAG_gt_RageKill3_Func");
-    TriggerEnable(libDRAG_gt_RageKill3, false);
-    TriggerAddEventUnitChangeOwner(libDRAG_gt_RageKill3, null);
-}
-
 void libDRAG_InitTriggers () {
     libDRAG_gt_InitializeDragonsRace_Init();
-    libDRAG_gt_RageCreate_Init();
-    libDRAG_gt_RageResearch_Init();
-    libDRAG_gt_RageKill_Init();
-    libDRAG_gt_RageKill2_Init();
-    libDRAG_gt_RageKill3_Init();
 }
 
 //--------------------------------------------------------------------------------------------------

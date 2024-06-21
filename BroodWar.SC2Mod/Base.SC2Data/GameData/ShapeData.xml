@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CShapeArc id="LurkerSCBWWeapon@Visibility">
+        <Arc value="360"/>
+        <Radius value="6"/>
+    </CShapeArc>
+    <CShapeArc id="DefilerSCBWDarkSwarm@Visibility">
+        <Arc value="360"/>
+        <Radius value="3.75"/>
+    </CShapeArc>
+</Catalog>

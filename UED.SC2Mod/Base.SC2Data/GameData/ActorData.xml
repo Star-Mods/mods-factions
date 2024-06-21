@@ -235,9 +235,9 @@
         </TerrainSquibs>
         <BarOffset value="50"/>
         <GroupIcon>
-            <Image value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
+            <Image value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
         <LifeArmorIcon value="Assets\btn-upgrade-ued-armor-level0.dds"/>
         <SoundArray index="Birth" value=""/>
         <SoundArray index="Ready" value="UEDSoundSpartanReady"/>
@@ -253,9 +253,9 @@
         <SoundArray index="ClickError" value=""/>
         <SoundArray index="Highlight" value=""/>
         <UnitFlags index="StandAnimBirthVariation" value="0"/>
-        <UnitIcon value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
+            <Image value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorModel id="UEDAgentDefMatrixNapoleon" parent="ModelAnimationStyleContinuousUNIT">

@@ -782,63 +782,6 @@
         <DataRecord Entry="Character,AltonPeters"/>
         <Pattern value="LotC_Unit"/>
     </CDataCollectionUnit>
-    <CUnit id="AltonPeters" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/AltonPeters"/>
-        <Attributes index="Armored" value="1"/>
-        <LifeStart value="200"/>
-        <LifeMax value="200"/>
-        <LifeArmor value="1"/>
-        <Food value="0"/>
-        <AbilArray Link="AltonPetersArmorDecayLaunch"/>
-        <AbilArray Link="AltonPetersDestroyArmor"/>
-        <!--<WeaponArray Link="Petersweapon"/>-->
-        <WeaponArray Link="AltonPeters"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="InfantryHeavyNanoweaveBodyArmor" Type="Passive" Row="1" Column="0"/>
-            <LayoutButtons Face="AltonPetersArmorDecayLaunch" Type="AbilCmd" AbilCmd="AltonPetersArmorDecayLaunch,Execute" Row="2" Column="2"/>
-        </CardLayouts>
-        <SubgroupPriority value="93"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="7"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <UserTag value="Unit/ShortName/AltonPeters"/>
-    </CUnit>
-    <CUnit id="AltonPetersZ1" parent="UPLHeroBase">
-        <Subtitle value="Unit/Subtitle/AltonPetersZ1"/>
-        <Attributes index="Mechanical" value="1"/>
-        <LifeStart value="400"/>
-        <LifeMax value="400"/>
-        <LifeArmor value="2"/>
-        <LifeRegenRate value="3"/>
-        <EnergyStart value="100"/>
-        <EnergyMax value="100"/>
-        <EnergyRegenRate value="3"/>
-        <Speed value="3.5"/>
-        <AbilArray Link="AltonPetersZ1ImprovedHeal"/>
-        <AbilArray Link="Z2Adrenaline"/>
-        <AbilArray Link="Z1Freeze"/>
-        <WeaponArray Link="AltonPetersZ1"/>
-        <CardLayouts index="0">
-            <LayoutButtons Face="Z1LiquidNitrogen" Type="AbilCmd" AbilCmd="Z1Freeze,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="Z2Adrenaline" Type="AbilCmd" AbilCmd="Z2Adrenaline,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="AltonPetersZ1ImprovedHeal" Type="AbilCmd" AbilCmd="AltonPetersZ1ImprovedHeal,Execute" Row="2" Column="2"/>
-        </CardLayouts>
-        <Radius value="0.625"/>
-        <CargoSize value="2"/>
-        <SubgroupPriority value="94"/>
-        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-        <GlossaryPriority value="8"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
-        <HotkeyAlias value="AltonPeters"/>
-        <InnerRadius value="0.5"/>
-        <LifeArmorName value="Unit/LifeArmorName/UPLVehiclePlating"/>
-        <UserTag value="Unit/ShortName/AltonPeters"/>
-    </CUnit>
-    <CUnit id="AltonPetersArmorDecayMissile" parent="MISSILE_INVULNERABLE">
-        <Race value="UPL"/>
-        <Mover value="AltonPetersArmorDecayMover"/>
-        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
-    </CUnit>
     <CBehaviorBuff id="AltonPetersArmorDecay">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Duration value="7"/>

@@ -14,6 +14,15 @@
         <Compare value="GT"/>
         <Behavior value="UPLCommStationActiveBuffMech"/>
     </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="IsBehemoth">
+        <Value value="UPLBehemoth"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsSeekerDrone">
+        <Value value="UPLSeekerDrone"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="IsUPLStinger">
+        <Value value="UPLStinger"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="RaptorJetCloakAutoCast">
         <Type value="And"/>
         <CombineArray value="RaptorJetCloakDamageTaken"/>
@@ -79,6 +88,7 @@
         <CombineArray value="IsUPLManufacturingFacility"/>
         <CombineArray value="IsUPLRnDFacility"/>
         <CombineArray value="IsUPLForwardOperatingBase"/>
+        <CombineArray value="UnknownValidator"/>
     </CValidatorCombine>
     <CValidatorCombine id="UPLTurrets">
         <CombineArray value="IsUPLElectrostaticDefenseTower"/>
@@ -97,6 +107,9 @@
         <CombineArray value="IsAltonPetersZ1"/>
         <CombineArray value="IsZ2"/>
         <CombineArray value="IsCARR"/>
+        <CombineArray value="IsUPLStinger"/>
+        <CombineArray value="IsSeekerDrone"/>
+        <CombineArray value="IsBehemoth"/>
     </CValidatorCombine>
     <CValidatorCombine id="CasterNotMovingNotStunned">
         <Type value="And"/>
@@ -294,12 +307,6 @@
     <CValidatorUnitType id="IsMyraDavisOfficer">
         <Value value="MyraDavisOfficer"/>
     </CValidatorUnitType>
-    <CValidatorUnitType id="IsMyraDavisRiotOfficer">
-        <Value value="MyraDavisRiotOfficer"/>
-    </CValidatorUnitType>
-    <CValidatorUnitType id="IsDeniseAllisterRiotOfficer">
-        <Value value="DeniseAllisterRiotOfficer"/>
-    </CValidatorUnitType>
     <CValidatorCombine id="IsAltonPetersCombine">
         <CombineArray value="IsAltonPeters"/>
         <CombineArray value="IsAltonPetersZ1"/>
@@ -496,9 +503,6 @@
         <Compare value="GT"/>
         <Behavior value="UPLPoliceCruiserTransportEmpty"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitType id="UPLPoliceCruiserTransportCargoIsMyraDavisRiot">
-        <Value value="MyraDavisRiotOfficer"/>
-    </CValidatorUnitType>
     <CValidatorUnitCompareBehaviorCount id="UPLPoliceCruiserTransportHasDavisCargo">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -558,6 +562,23 @@
         <Find value="1"/>
         <Value value="InfantryRocketAOEResearched"/>
     </CValidatorPlayerRequirement>
+    <CValidatorUnitType id="UnknownValidator">
+        <Value value="UPLAirstrip2"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="UnknownValidator2">
+        <Value value="DarrenRodgers"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="UnknownValidator3">
+        <Value value="1"/>
+        <Behavior value="DarrenRodgersShield"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="UnknownValidator32">
+        <Behavior value="DarrenRodgersShield"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="UnknownValidator4">
+        <Compare value="GT"/>
+        <Behavior value="InfantryOfficerInspired"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareSpeed id="Z1BadgerBombMoving">
         <Compare value="GT"/>
         <Value value="0.1015"/>
@@ -623,11 +644,6 @@
         <AreaArray Compare="GT" Count="0" Radius="8"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
-    <CValidatorUnitCompareBehaviorCount id="HasNewsHelicopterSpotlight">
-        <Compare value="GE"/>
-        <Value value="1"/>
-        <Behavior value="NewsHelicopterSpotlight"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="HaveRaptorCloakAbilUpgrade">
         <Value value="HaveRaptorCloakAbilUpgrade"/>
     </CValidatorPlayerRequirement>

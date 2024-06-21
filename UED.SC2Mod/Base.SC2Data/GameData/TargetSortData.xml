@@ -3,8 +3,11 @@
     <CTargetSortPriority id="TSPriority2">
         <WhichUnit Value="Target"/>
     </CTargetSortPriority>
-    <CTargetSortValidator id="UEDSortingValidatator">
+    <CTargetSortValidator id="UEDSortingValidatatorDrakkar">
         <Validator value="ValidateDrakkarSortingPriorityUED"/>
+    </CTargetSortValidator>
+    <CTargetSortValidator id="UEDSortingValidatatorHonograund">
+        <Validator value="ValidateHonograndMarker"/>
     </CTargetSortValidator>
     <CTargetSortValidator id="UEDSortingValidatatorNoMarker">
         <Validator value="noMarkers"/>

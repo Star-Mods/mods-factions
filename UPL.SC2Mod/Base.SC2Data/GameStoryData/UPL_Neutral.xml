@@ -1732,7 +1732,7 @@
         <DisplayEffect value="UPLRiotOfficerShotgunDamage"/>
         <TargetFilters value="Visible;Air,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="4"/>
-        <Period value="1.75"/>
+        <Period value="1.96"/>
         <DamagePoint value="0.05"/>
         <Backswing value="0.9"/>
         <Effect value="UPLRiotOfficerShotgunSet"/>
@@ -2655,41 +2655,6 @@
         <HotkeyCategory value=""/>
         <AlliedPushPriority value="20"/>
         <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
-    </CUnit>
-    <CUnit id="NewsHelicopter">
-        <FlagArray index="PreventDestroy" value="1"/>
-        <FlagArray index="UseLineOfSight" value="1"/>
-        <PlaneArray index="Air" value="1"/>
-        <Collide index="Flying" value="1"/>
-        <Attributes index="Light" value="1"/>
-        <Attributes index="Mechanical" value="1"/>
-        <LifeStart value="100"/>
-        <LifeMax value="100"/>
-        <Mover value="Fly"/>
-        <Speed value="2"/>
-        <Acceleration value="1.5"/>
-        <StationaryTurningRate value="149.9414"/>
-        <TurningRate value="149.9414"/>
-        <Sight value="9"/>
-        <Height value="3.75"/>
-        <VisionHeight value="4"/>
-        <RepairTime value="30"/>
-        <AbilArray Link="stop"/>
-        <AbilArray Link="attack"/>
-        <AbilArray Link="move"/>
-        <BehaviorArray Link="NewsHelicopterSpotlight"/>
-        <CardLayouts>
-            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
-            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
-            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
-            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
-            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
-        </CardLayouts>
-        <Radius value="0.75"/>
-        <SeparationRadius value="0.75"/>
-        <MinimapRadius value="0.75"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
-        <Race value="UPL"/>
     </CUnit>
     <CUnit id="UPLPoliceCruiser">
         <DeathRevealRadius value="3"/>

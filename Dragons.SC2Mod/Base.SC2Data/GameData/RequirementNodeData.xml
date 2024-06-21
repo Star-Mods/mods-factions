@@ -9,21 +9,6 @@
         <OperandArray value="CountBehaviorAugmentationPitCompleteOnlyAtUnit4009903090"/>
         <OperandArray value="CountUpgradeRazorbackAbundanceCompleteOnly2219638757"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeBrimstoneDemolisherCompleteOnly220872439">
-        <Tooltip value=""/>
-        <OperandArray value="CountBehaviorAugmentationPitCompleteOnlyAtUnit763288653"/>
-        <OperandArray value="CountUpgradeBrimstoneDemolisherCompleteOnly220872439"/>
-    </CRequirementAnd>
-    <CRequirementAnd id="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeGrimGliderCompleteOnly1362390753">
-        <Tooltip value=""/>
-        <OperandArray value="CountBehaviorAugmentationPitCompleteOnlyAtUnit763288653"/>
-        <OperandArray value="CountUpgradeGrimGliderCompleteOnly1362390753"/>
-    </CRequirementAnd>
-    <CRequirementAnd id="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeUnseenBeastCompleteOnly1127497187">
-        <Tooltip value=""/>
-        <OperandArray value="CountBehaviorAugmentationPitCompleteOnlyAtUnit763288653"/>
-        <OperandArray value="CountUpgradeUnseenBeastCompleteOnly1127497187"/>
-    </CRequirementAnd>
     <CRequirementAnd id="AndCountBehaviorDragonAscendedCompleteOnlyAtUnitNotCountBehaviorDragonFissionCompleteOnlyAtUnit">
         <Tooltip value=""/>
         <OperandArray value="CountBehaviorDragonAscendedCompleteOnlyAtUnit"/>
@@ -118,10 +103,13 @@
         <Tooltip value=""/>
         <Count Link="VolcanicHarbingerOverload" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountUnit>
-    <CRequirementCountUpgrade id="CountUpgradeAuroraConduitCelerityQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeAuroraConduitConductionCompleteOnly596238187">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="AuroraConduitCelerity" State="QueuedOrBetter"/>
+        <Count Link="AuroraConduitConduction" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeAuroraConduitConductionQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="AuroraConduitConduction" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBerserkerMadnessCompleteOnly3248460708">
         <Flags index="TechTreeCheat" value="0"/>
@@ -130,10 +118,6 @@
     <CRequirementCountUpgrade id="CountUpgradeBerserkerMadnessQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="BerserkerMadness" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeBrimstoneDemolisherCompleteOnly220872439">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="BrimstoneDemolisher" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeBrimstoneDemolisherInfernalBreathCompleteOnly375886769">
         <Flags index="TechTreeCheat" value="0"/>
@@ -144,14 +128,8 @@
         <Tooltip value=""/>
         <Count Link="BrimstoneDemolisherInfernalBreath" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeBrimstoneDemolisherQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="BrimstoneDemolisher" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDragonCommanderCompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="DragonCommander" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeDragonFireAttacksLevel1CompleteOnly">
@@ -279,58 +257,36 @@
         <Tooltip value=""/>
         <Count Link="FleshrenderProliferation" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeGrimGliderCompleteOnly1362390753">
+    <CRequirementCountUpgrade id="CountUpgradeGrimGliderMortalitysEclipseCompleteOnly6048925TechTreeCheat">
+        <Count Link="GrimGliderMortalitysEclipse" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeGrimGliderMortalitysEclipseQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="GrimGlider" State="CompleteOnly"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="GrimGliderMortalitysEclipse" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeGrimGliderQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeHandofPowerPortalCompleteOnly4045012870">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="GrimGlider" State="QueuedOrBetter"/>
+        <Count Link="HandofPowerPortal" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeGrimGliderWraithNightCompleteOnly3079867151TechTreeCheat">
-        <Count Link="GrimGliderWraithNight" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeGrimGliderWraithNightQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeHandofPowerPortalQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="GrimGliderWraithNight" State="QueuedOrBetter"/>
+        <Count Link="HandofPowerPortal" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHandofPowerFrenzyCompleteOnly3605573692TechTreeCheat">
-        <Count Link="HandofPowerFrenzy" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="CountUpgradeHornedMagusFrenzyCompleteOnly1072627216TechTreeCheat">
+        <Count Link="HornedMagusFrenzy" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHandofPowerFrenzyQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeHornedMagusFrenzyQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="HandofPowerFrenzy" State="QueuedOrBetter"/>
+        <Count Link="HornedMagusFrenzy" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHandofPowerMightyFistQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeHunterWickedBarbsCompleteOnly909739678">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="HandofPowerMightyFist" State="QueuedOrBetter"/>
+        <Count Link="HunterWickedBarbs" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHornedMagusArcaneEssenceQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeHunterWickedBarbsQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="HornedMagusArcaneEssence" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHornedMagusShroudCompleteOnly2931001875">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="HornedMagusShroud" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHornedMagusShroudQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="HornedMagusShroud" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHunterFeastCompleteOnly909739678">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="HunterFeast" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeHunterFeastQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="HunterFeast" State="QueuedOrBetter"/>
+        <Count Link="HunterWickedBarbs" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeRazorbackAbundanceCompleteOnly2219638757">
         <Flags index="TechTreeCheat" value="0"/>
@@ -350,14 +306,15 @@
         <Tooltip value=""/>
         <Count Link="SkyrazerEmberCore" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUnseenBeastCompleteOnly1127497187">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="UnseenBeast" State="CompleteOnly"/>
+    <CRequirementCountUpgrade id="CountUpgradeUnseenBeastProwlCompleteOnly32849316TechTreeCheat">
+        <Count Link="UnseenBeastProwl" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUnseenBeastQueuedOrBetter">
+    <CRequirementCountUpgrade id="CountUpgradeUnseenBeastProwlQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value=""/>
-        <Count Link="UnseenBeast" State="QueuedOrBetter"/>
+        <Count Link="UnseenBeastProwl" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeVolcanicHarbingerPlasmaCatalystCompleteOnly1697154577TechTreeCheat">
+        <Count Link="VolcanicHarbingerPlasmaCatalyst" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeVolcanicHarbingerPlasmaCatalystQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -392,24 +349,19 @@
         <Tooltip value=""/>
         <OperandArray index="0" value="CountBehaviorDragonFissionCompleteOnlyAtUnit"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeAuroraConduitCelerityQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeAuroraConduitCelerityQueuedOrBetter"/>
-    </CRequirementNot>
     <CRequirementLT id="LT3765000727CountUnitVolcanicHarbingerOverloadQueuedOrBetterAtUnit3">
         <OperandArray index="0" value="CountUnitVolcanicHarbingerOverloadQueuedOrBetterAtUnit"/>
         <OperandArray index="1" value="3"/>
     </CRequirementLT>
+    <CRequirementNot id="NotCountUpgradeAuroraConduitConductionQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeAuroraConduitConductionQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeBerserkerMadnessQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeBerserkerMadnessQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeBrimstoneDemolisherInfernalBreathQueuedOrBetter">
         <Tooltip value=""/>
         <OperandArray index="0" value="CountUpgradeBrimstoneDemolisherInfernalBreathQueuedOrBetter"/>
-    </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeBrimstoneDemolisherQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeBrimstoneDemolisherQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeDragonFireAttacksLevel1QueuedOrBetter">
         <Tooltip value=""/>
@@ -475,45 +427,29 @@
         <Tooltip value=""/>
         <OperandArray index="0" value="CountUpgradeFlamespitterFervidReconstitutionQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeGrimGliderQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeGrimGliderQueuedOrBetter"/>
+    <CRequirementNot id="NotCountUpgradeGrimGliderMortalitysEclipseQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeGrimGliderMortalitysEclipseQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeGrimGliderWraithNightQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeGrimGliderWraithNightQueuedOrBetter"/>
+    <CRequirementNot id="NotCountUpgradeHandofPowerPortalQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHandofPowerPortalQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeHandofPowerFrenzyQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeHandofPowerFrenzyQueuedOrBetter"/>
+    <CRequirementNot id="NotCountUpgradeHornedMagusFrenzyQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHornedMagusFrenzyQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeHandofPowerMightyFistQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeHandofPowerMightyFistQueuedOrBetter"/>
-    </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeHunterFeastQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeHunterFeastQueuedOrBetter"/>
-    </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeHornedMagusArcaneEssenceQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeHornedMagusArcaneEssenceQueuedOrBetter"/>
+    <CRequirementNot id="NotCountUpgradeHunterWickedBarbsQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeHunterWickedBarbsQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeRazorbackAbundanceQueuedOrBetter">
         <Tooltip value=""/>
         <OperandArray index="0" value="CountUpgradeRazorbackAbundanceQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeHornedMagusShroudQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeHornedMagusShroudQueuedOrBetter"/>
-    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeSkyrazerEmberCoreQueuedOrBetter">
         <Tooltip value=""/>
         <OperandArray index="0" value="CountUpgradeSkyrazerEmberCoreQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeUnseenBeastQueuedOrBetter">
-        <Tooltip value=""/>
-        <OperandArray index="0" value="CountUpgradeUnseenBeastQueuedOrBetter"/>
+    <CRequirementNot id="NotCountUpgradeUnseenBeastProwlQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeUnseenBeastProwlQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeVolcanicHarbingerPlasmaCatalystQueuedOrBetter">
         <Tooltip value=""/>

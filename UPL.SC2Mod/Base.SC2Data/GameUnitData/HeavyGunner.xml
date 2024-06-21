@@ -45,9 +45,9 @@
         </InfoArray>
     </CAbilMorph>
     <CAbilMorph id="MorphToInfantryHeavySieged">
-        <AbilSetId value="TankMode"/>
+        <AbilSetId value="SiegeMode"/>
         <EditorCategories value="Race:UPL,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UPLHeavyGunnerSiege">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UPLHeavyGunnerSiege" Requirements="HeavyGunnerSiegeMode2">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <Flags index="IgnoreFacing" value="1"/>
@@ -69,7 +69,7 @@
         </InfoArray>
     </CAbilMorph>
     <CAbilMorph id="MorphToInfantryHeavy">
-        <AbilSetId value="TankMode"/>
+        <AbilSetId value="Unsieged"/>
         <EditorCategories value="Race:UPL,AbilityorEffectType:MorphsandBurrows"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UPLHeavyGunnerUnsiege">
             <Flags index="ToSelection" value="1"/>
@@ -142,6 +142,16 @@
             <BodySquibs Name="None"/>
         </DeathCustoms>
         <UnitKillRank Text="UnitKillRank/UPLSpecOps"/>
+        <SoundArray index="Birth" value=""/>
+        <SoundArray index="Ready" value="InfantryRocket_Ready"/>
+        <SoundArray index="Help" value="InfantryRocket_Help"/>
+        <SoundArray index="What" value="InfantryRocket_What"/>
+        <SoundArray index="Yes" value="InfantryRocket_Yes"/>
+        <SoundArray index="Attack" value="InfantryRocket_Attack"/>
+        <SoundArray index="Pissed" value="InfantryRocket_Pissed"/>
+        <SoundArray index="Movement" value="UPLSpecOps_Board"/>
+        <SoundArray index="Turning" value="InfantryRocket_Yes"/>
+        <SoundArray index="Click" value="InfantryRocket_What"/>
     </CActorUnit>
     <CActorUnit id="UPLSpecOpsSieged" parent="InfantryBase" unitName="UPLSpecOpsSieged">
         <!--On Terms="Behavior.HellionTankReady.On" Send="AnimBracketStart CoverA Cover,A,Start Cover,A Cover,A,End"/>
@@ -335,7 +345,6 @@
         <BehaviorArray Link="InfantryMedkit"/>
         <BehaviorArray Link="InfantryMedkit@Handler"/>
         <WeaponArray Link="InfantryRocket"/>
-        <AbilArray Link="MorphToUPLSpecOpsSieged"/>
         <CardLayouts index="0">
             <LayoutButtons Face="InfantryMedkit" Type="Passive" Requirements="InfantryMedkit@ChargeAvailable" Row="2" Column="2"/>
             <LayoutButtons>
@@ -347,32 +356,16 @@
                 <Row value="2"/>
                 <Column value="2"/>
             </LayoutButtons>
-            <LayoutButtons Face="UPLHeavyGunnerSiege" Type="AbilCmd" AbilCmd="MorphToUPLSpecOpsSieged,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <SubgroupPriority value="93"/>
+        <SubgroupPriority value="12"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
         <GlossaryPriority value="25"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
         <AlliedPushPriority value="5"/>
         <Food value="-1"/>
         <Radius value="0.375"/>
         <InnerRadius value="0.3125"/>
-    </CUnit>
-    <CUnit id="UPLSpecOpsSieged" parent="UPLSpecOps">
-        <Height value="-0.05"/>
-        <AbilArray index="2" Link="MorphToUPLSpecOps"/>
-        <AbilArray index="3" Link=""/>
-        <BehaviorArray Link="InfantrySieged"/>
-        <WeaponArray Link="InfantryHeavy"/>
-        <CardLayouts index="0">
-            <LayoutButtons index="7" Face="UPLHeavyGunnerUnsiege" Type="AbilCmd" AbilCmd="MorphToUPLSpecOps,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="UPLHeavyGunnerSieged" Type="Passive" Row="1" Column="0"/>
-        </CardLayouts>
-        <Radius value="0.55"/>
-        <SeparationRadius value="0.55"/>
-        <InnerRadius value="0.55"/>
-        <Attributes index="Massive" value="1"/>
+        <GlossaryAlias value="UPLSpecOps"/>
     </CUnit>
     <CUnit id="InfantryHeavy" parent="UPLInfantryBase">
         <Food value="-1"/>
@@ -393,14 +386,17 @@
             </LayoutButtons>
             <LayoutButtons Face="UPLHeavyGunnerSiege" Type="AbilCmd" AbilCmd="MorphToInfantryHeavySieged,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <SubgroupPriority value="12"/>
+        <SubgroupPriority value="15"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryPriority value="22"/>
+        <GlossaryPriority value="26"/>
         <AlliedPushPriority value="5"/>
-        <LifeStart value="75"/>
-        <LifeMax value="75"/>
+        <LifeStart value="65"/>
+        <LifeMax value="65"/>
         <ScoreMake value="75"/>
         <ScoreKill value="75"/>
+        <LifeArmor value="1"/>
+        <Attributes index="Light" value="0"/>
+        <Attributes index="Armored" value="1"/>
     </CUnit>
     <CUnit id="InfantryHeavySieged" parent="InfantryHeavy">
         <Height value="-0.05"/>
@@ -408,24 +404,68 @@
         <AbilArray index="3" Link=""/>
         <BehaviorArray Link="InfantrySieged"/>
         <CardLayouts index="0">
-            <LayoutButtons index="7" Face="UPLHeavyGunnerUnsiege" Type="AbilCmd" AbilCmd="MorphToInfantryHeavy,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="UPLHeavyGunnerSieged" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons index="0" Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons index="1" Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons index="2" Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons index="3" Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons index="4">
+                <Face value="InfantryMedkit"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Requirements value="InfantryMedkit@ChargeAvailable"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="5">
+                <Face value="InfantryMedkit"/>
+                <Type value="Passive"/>
+                <Behavior value="InfantryMedkit@Supressed"/>
+                <Requirements value="InfantryMedkit@Have"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="6">
+                <Face value="UPLHeavyGunnerUnsiege"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="MorphToInfantryHeavy,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons index="7" removed="1"/>
         </CardLayouts>
         <SeparationRadius value="0.4"/>
         <InnerRadius value="0.4375"/>
-        <LifeDamageGain index="Spell" value="0.5"/>
-        <LifeDamageGain index="Melee" value="0.5"/>
-        <LifeDamageGain index="Ranged" value="0.5"/>
-        <LifeDamageGain index="Splash" value="0.5"/>
-        <LifeDamageGain index="NoProc" value="0.5"/>
         <Speed value="0"/>
         <RepairTime value="36"/>
+        <LifeArmor value="0"/>
+        <Attributes index="Armored" value="0"/>
+        <LifeStart value="95"/>
+        <LifeMax value="95"/>
+    </CUnit>
+    <CUnit id="UPLSpecOpsSieged" parent="UPLSpecOps">
+        <Attributes index="Massive" value="1"/>
+        <Height value="-0.05"/>
+        <AbilArray index="2" Link="MorphToUPLSpecOps"/>
+        <AbilArray/>
+        <BehaviorArray Link="InfantrySieged"/>
+        <WeaponArray Link="InfantryHeavy"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="UPLHeavyGunnerUnsiege" Type="AbilCmd" AbilCmd="MorphToUPLSpecOps,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="UPLHeavyGunnerSieged" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.55"/>
+        <SeparationRadius value="0.55"/>
+        <InnerRadius value="0.55"/>
+        <GlossaryAlias value=""/>
+        <HotkeyCategory value=""/>
     </CUnit>
     <CBehaviorBuff id="InfantrySieged">
         <Alignment value="Positive"/>
         <InfoIcon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Modification AttackSpeedMultiplier="2.5">
+        <Modification AttackSpeedMultiplier="2" WeaponRange="1">
             <StateFlags index="SuppressPassenger" value="1"/>
         </Modification>
         <InfoFlags index="Hidden" value="1"/>

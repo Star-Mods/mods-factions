@@ -7,6 +7,7 @@
     <CEffectApplyBehavior id="UPLCommStationActiveBuffAB">
         <Behavior value="UPLCommStationActiveBuff"/>
         <EditorCategories value="Race:UPL"/>
+        <ValidatorArray index="0" value="UPLCommStationActiveBuffTargetFilters"/>
     </CEffectApplyBehavior>
     <CEffectSwitch id="UPLCommStationActiveBuffSwitch">
         <ValidatorArray value="UPLCommStationActiveBuffTargetFilters"/>
@@ -45,7 +46,7 @@
         <ValidatorArray value="NotStasis"/>
     </CEffectDamage>
     <CEffectDamage id="UPLSolitaireDamage" parent="DU_WEAP">
-        <Amount value="7"/>
+        <Amount value="5"/>
         <Death value="Fire"/>
         <EditorCategories value="Race:UPL"/>
     </CEffectDamage>
@@ -216,7 +217,6 @@
         <CmdButtonArray index="LoadAll">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
-        <Flags index="CargoDeath" value="1"/>
         <Range value="0"/>
         <MaxCargoCount value="1"/>
         <MaxCargoSize value="1"/>
@@ -306,6 +306,21 @@
             <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="ResearchRaptorIncendiary" Requirements="LearnRaptorIncendiary"/>
         </InfoArray>
+        <InfoArray index="Research5" Time="168" Upgrade="SeekerShell">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+            <Button DefaultButtonFace="SeekerShell" Requirements="LearnSeekerShell"/>
+        </InfoArray>
+        <InfoArray index="Research6" Time="150" Upgrade="StarArmor">
+            <Resource index="Minerals" value="300"/>
+            <Resource index="Vespene" value="300"/>
+            <Button DefaultButtonFace="StarArmor" Requirements="UnknownRequirement322"/>
+        </InfoArray>
+        <InfoArray index="Research7" Time="70" Upgrade="StarMecha">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="StarMecha" Requirements="UnknownRequirement32"/>
+        </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UPLManufacturingFacilityResearch">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
@@ -320,8 +335,8 @@
             <Button DefaultButtonFace="ResearchRoutheTankExplosiveShells" Requirements="LearnRoutheTankExplosiveShells"/>
         </InfoArray>
         <InfoArray index="Research3" Time="150" Upgrade="RoutheTankArmorPlating">
-            <Resource index="Minerals" value="175"/>
-            <Resource index="Vespene" value="75"/>
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
             <Button DefaultButtonFace="ResearchRoutheTankArmorPlating" Requirements="LearnRoutheTankArmorPlating">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
@@ -337,6 +352,11 @@
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="ResearchZ1EnergyUpgrade" Requirements="LearnZ1EnergyUpgrade222"/>
+        </InfoArray>
+        <InfoArray index="Research6" Time="50" Upgrade="HornetRacing">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="100"/>
+            <Button DefaultButtonFace="ResearchHornetRacing" Requirements="HornetRacing"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UPLBilletResearch">
@@ -362,15 +382,25 @@
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
-        <InfoArray index="Research4" Time="154" Upgrade="InfantryFlamethrower3xBurning">
-            <Resource index="Minerals" value="100"/>
-            <Resource index="Vespene" value="100"/>
+        <InfoArray index="Research4" Time="56" Upgrade="InfantryFlamethrower3xBurning">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
             <Button DefaultButtonFace="InfantryFlamethrowerBurningUpgraded" Requirements="LearnInfantryFlamethrower3xBurning"/>
         </InfoArray>
         <InfoArray index="Research5" Time="45" Upgrade="InfantryRocketAOE">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="ResearchInfantryRocketAOE" Requirements="LearnInfantryRocketAOE"/>
+        </InfoArray>
+        <InfoArray index="Research6" Time="78.4" Upgrade="RiotOfficerShield">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="ResearchRiotOfficerShield" Requirements="UseSwaptoShield"/>
+        </InfoArray>
+        <InfoArray index="Research7" Time="92.4" Upgrade="SpaceSandbag">
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="50"/>
+            <Button DefaultButtonFace="UnknownButton" Requirements="HeavyGunnerSiegeMode"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UPLForwardOperatingBaseResearch">
@@ -403,6 +433,11 @@
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
             <Button DefaultButtonFace="ResearchMiningDroneGrenadeLauncher" Requirements="LearnMinigDronesGrenadeLauncher2"/>
+        </InfoArray>
+        <InfoArray index="Research6" Time="72.8" Upgrade="UnknownUpgrade">
+            <Resource index="Minerals" value="200"/>
+            <Resource index="Vespene" value="200"/>
+            <Button DefaultButtonFace="AdvancePoliceSecurity" Requirements="UnknownRequirement3222"/>
         </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UPLRnDFacilityResearch">
@@ -483,45 +518,37 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Activity value="UI/Building"/>
         <InfoArray index="Train1" Time="55">
-            <Button DefaultButtonFace="UPLTrainRaptorJet" Requirements="HaveUPLForwardOperatingBase"/>
+            <Button DefaultButtonFace="UPLTrainRaptorJet"/>
             <Unit value="RaptorJet"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="60">
+        <InfoArray index="Train2" Time="74">
             <Button DefaultButtonFace="UPLTrainOsprey"/>
             <Unit value="Osprey"/>
         </InfoArray>
         <InfoArray index="Train3" Time="75">
-            <Button DefaultButtonFace="UPLTrainCondor" Requirements="HaveUPLForwardOperatingBase"/>
+            <Button DefaultButtonFace="UPLTrainCondor"/>
             <Unit value="Condor"/>
         </InfoArray>
-        <InfoArray index="Train4" Time="5">
-            <Resource index="Minerals" value="300"/>
-            <Resource index="Vespene" value="300"/>
+        <InfoArray index="Train4" Time="90">
             <Button DefaultButtonFace="UPLTrainBehemoth"/>
             <Unit value="UPLBehemoth"/>
         </InfoArray>
         <InfoArray index="Train5" Time="5">
-            <Resource index="Minerals" value="25"/>
-            <Resource index="Vespene" value="25"/>
             <Button DefaultButtonFace="UPLSeekerDrone"/>
             <Unit value="UPLSeekerDrone"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilTrain id="UPLBilletTrain">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
-        <InfoArray index="Train1" Time="19">
-            <Button DefaultButtonFace="UPLTrainInfantryRifle"/>
-            <Unit value="InfantryRifle"/>
-        </InfoArray>
-        <InfoArray index="Train2" Time="26">
+        <InfoArray index="Train2" Time="36.4">
             <Button DefaultButtonFace="InfantryHeavy"/>
             <Unit value="InfantryHeavy"/>
         </InfoArray>
         <InfoArray index="Train3" Time="30">
             <Button DefaultButtonFace="InfantryRocket"/>
-            <Unit value="InfantryRocket"/>
+            <Unit value="UPLSpecOps"/>
         </InfoArray>
-        <InfoArray index="Train4" Time="28">
+        <InfoArray index="Train4" Time="30.8">
             <Button DefaultButtonFace="UPLTrainInfantryFlamethrower"/>
             <Unit value="InfantryFlamethrower"/>
         </InfoArray>
@@ -529,17 +556,13 @@
             <Button DefaultButtonFace="InfantryMortar"/>
             <Unit value="InfantryMortar"/>
         </InfoArray>
-        <InfoArray index="Train6" Time="26">
+        <InfoArray index="Train6" Time="30.8">
             <Button DefaultButtonFace="UPLTrainGuardian"/>
             <Unit value="UPLGuardian"/>
         </InfoArray>
         <InfoArray index="Train7" Time="60">
             <Button DefaultButtonFace="InfantryOfficer" Requirements="InfantryOfficerRequirement"/>
             <Unit value="InfantryOfficer"/>
-        </InfoArray>
-        <InfoArray index="Train8" Time="26">
-            <Button DefaultButtonFace="UPLTrainSpecialInfantryRocket"/>
-            <Unit value="UPLSpecOps"/>
         </InfoArray>
         <InfoArray index="Train9" Time="26">
             <Button DefaultButtonFace="UPLScout"/>
@@ -549,7 +572,7 @@
             <Button DefaultButtonFace="UPLTrainInfantrySniper"/>
             <Unit value="InfantrySniper"/>
         </InfoArray>
-        <InfoArray index="Train11" Time="26">
+        <InfoArray index="Train11" Time="30.8">
             <Button DefaultButtonFace="UPLTrainGuardian"/>
             <Unit value="DarrenRodgers"/>
         </InfoArray>
@@ -568,7 +591,7 @@
             <Unit value="Z1"/>
         </InfoArray>
         <InfoArray index="Train3" Time="75">
-            <Button DefaultButtonFace="UPLTrainCARR" Requirements="CARRRequirements"/>
+            <Button DefaultButtonFace="UPLTrainCARR" Requirements="HaveUPLManufacturingFacility"/>
             <Unit value="CARR"/>
         </InfoArray>
         <Alert value="TrainWorkerComplete"/>
@@ -576,19 +599,19 @@
     <CAbilTrain id="UPLManufacturingFacilityTrain">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Activity value="UI/Building"/>
-        <InfoArray index="Train2" Time="45">
+        <InfoArray index="Train2" Time="50">
             <Button DefaultButtonFace="UPLTrainRoutheTank"/>
             <Unit value="RoutheTank"/>
         </InfoArray>
-        <InfoArray index="Train3" Time="35">
+        <InfoArray index="Train3" Time="42">
             <Button DefaultButtonFace="UPLTrainA6"/>
             <Unit value="A6"/>
         </InfoArray>
-        <InfoArray index="Train4" Time="42">
+        <InfoArray index="Train4" Time="45">
             <Button DefaultButtonFace="UPLTrainTR17"/>
             <Unit value="TR17"/>
         </InfoArray>
-        <InfoArray index="Train5" Time="55">
+        <InfoArray index="Train5" Time="75">
             <Button DefaultButtonFace="UPLTrainCSV"/>
             <Unit value="CSV"/>
         </InfoArray>
@@ -596,7 +619,7 @@
             <Button DefaultButtonFace="UPLOrion"/>
             <Unit value="UPLOrion"/>
         </InfoArray>
-        <InfoArray index="Train7" Time="10">
+        <InfoArray index="Train7" Time="31">
             <Button DefaultButtonFace="UPLTrainStinger"/>
             <Unit value="UPLStinger"/>
         </InfoArray>
@@ -616,16 +639,16 @@
             <Button DefaultButtonFace="BuildGatlingTank"/>
             <Unit value="GatlingTank"/>
         </InfoArray>
-        <InfoArray index="Train21" Time="32">
+        <InfoArray index="Train21" Time="45">
             <Button DefaultButtonFace="UPLTrainZ1"/>
             <Unit value="Z1"/>
         </InfoArray>
-        <InfoArray index="Train22" Time="30">
+        <InfoArray index="Train22" Time="70">
             <Button DefaultButtonFace="UPLTrainZ2"/>
             <Unit value="UPLZ2"/>
         </InfoArray>
         <InfoArray index="Train23" Time="75">
-            <Button DefaultButtonFace="UPLTrainCARR" Requirements="CARRRequirements"/>
+            <Button DefaultButtonFace="UPLTrainCARR" Requirements="HaveUPLManufacturingFacility"/>
             <Unit value="CARR"/>
         </InfoArray>
     </CAbilTrain>
@@ -1632,8 +1655,8 @@
         <On Terms="UnitConstruction.UPLHeadquarters.Finish" Send="SetVisibility 1"/>
         -->
         <DeathArray index="UnderConstruction" ModelLink="TerranLargeBuildingDeath" SoundLink="UPLHeadquarters_Explosion_C"/>
-        <BarOffset value="165"/>
-        <BarWidth value="200"/>
+        <BarOffset value="175"/>
+        <BarWidth value="220"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-upl-uplheadquarters.dds"/>
         </GroupIcon>
@@ -2356,7 +2379,7 @@
         <TargetFilters value="Ground,Visible;Missile,Dead,Hidden,Invulnerable"/>
         <AcquirePrioritization value="ByAngle"/>
         <MinScanRange value="8"/>
-        <Range value="7.6"/>
+        <Range value="8"/>
         <RangeSlop value="0"/>
         <MinimumRange value="2"/>
         <ArcSlop value="4.9987"/>
@@ -2372,12 +2395,13 @@
         <Icon value="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl0.dds"/>
         <DisplayEffect value="UPLNightjarDamage"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="7"/>
+        <Range value="9"/>
         <Period value="1.2"/>
         <Effect value="UPLNightjarDamage"/>
         <PreEffectBehavior Behavior="UPLNightjarFiring" Count="1" Duration="0.8">
             <Flags index="UseDuration" value="1"/>
         </PreEffectBehavior>
+        <MinimumRange value="3"/>
     </CWeaponLegacy>
     <CWeaponLegacy id="UPLElectrostaticDefenseTower">
         <EditorCategories value="Race:UPL"/>
@@ -2390,7 +2414,7 @@
         </Cost>
         <Period value="0.45"/>
     </CWeaponLegacy>
-<!--    <CSkin id="UPLElectrostaticDefenseTower" parent="CollectionSkinTerranBuildingDefault" unit="MissileTurret"/>-->
+    <CSkin id="UPLElectrostaticDefenseTower" parent="CollectionSkinTerranBuildingDefault" unit="MissileTurret"/>
     <CSound default="1" id="UPLBuilding_Explosion_Base" parent="Combat">
         <EditorCategories value="Race:Terran"/>
         <DupeDestroyCount value="5"/>
@@ -2944,11 +2968,53 @@
         <GlossaryPriority value="250"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
     </CUnit>
+    <CUnit id="UPLAirstrip2" parent="UPLBuildingBase">
+        <DeathTime value="0.5"/>
+        <Facing value="225"/>
+        <LifeStart value="1800"/>
+        <LifeMax value="1800"/>
+        <LifeArmor value="1"/>
+        <CostCategory value="Technology"/>
+        <CostResource index="Minerals" value="150"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="50"/>
+        <AbilArray Link="que5"/>
+        <AbilArray Link="Rally"/>
+        <AbilArray Link="UPLAirstripTrain"/>
+        <AbilArray Link="UPLAirstripResearch"/>
+        <AbilArray Link="UPLManufacturingFacilityTrain"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
+            <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
+            <LayoutButtons Face="UPLTrainCondor" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train3" Row="0" Column="0"/>
+            <LayoutButtons Face="UPLTrainBehemoth" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train4" Row="0" Column="1"/>
+            <LayoutButtons Face="UPLTrainZ2" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train22" Row="0" Column="2"/>
+            <LayoutButtons Face="StarMecha" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research7" Row="2" Column="0"/>
+            <LayoutButtons Face="StarArmor" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research6" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="1.625"/>
+        <SeparationRadius value="1.625"/>
+        <Footprint value="Footprint5x5Contour2"/>
+        <DeadFootprint value="Footprint5x5Contour2"/>
+        <PlacementFootprint value="Footprint5x5DropOff2"/>
+        <ScoreMake value="300"/>
+        <ScoreKill value="300"/>
+        <MinimapRadius value="1.625"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <TacticalAI value="Factory"/>
+        <TechAliasArray value="Alias_UPLManufacturingFacility"/>
+        <GlossaryPriority value="32"/>
+        <TechTreeProducedUnitArray value="RaptorJet"/>
+        <TechTreeProducedUnitArray value="Osprey"/>
+        <TechTreeProducedUnitArray value="Condor"/>
+        <DataCollection value="UPLManufacturingFacility"/>
+        <SubgroupPriority value="4"/>
+    </CUnit>
     <CUnit id="UPLSolitaire" parent="UPLBuildingBase">
         <FlagArray index="HiddenCargoUI" value="1"/>
         <FlagArray index="AIDefense" value="1"/>
-        <LifeStart value="400"/>
-        <LifeMax value="400"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
         <LifeArmor value="2"/>
         <Sight value="6"/>
         <CostCategory value="Technology"/>
@@ -2982,6 +3048,8 @@
         <Footprint value="Footprint2x2Contour"/>
         <DeadFootprint value="Footprint2x2Contour"/>
         <PlacementFootprint value="Footprint2x2"/>
+        <StationaryTurningRate value="998.9648"/>
+        <TurningRate value="998.9648"/>
     </CUnit>
     <CUnit id="UPLRnDFacility" parent="UPLBuildingBase">
         <Facing value="45"/>
@@ -3041,20 +3109,18 @@
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
             <LayoutButtons Face="UPLTrainRaptorJet" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train1" Row="0" Column="0"/>
             <LayoutButtons Face="UPLTrainOsprey" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train2" Row="0" Column="1"/>
-            <LayoutButtons Face="UPLTrainCondor" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="UPLSeekerDrone" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train5" Row="0" Column="2"/>
             <LayoutButtons Face="RaptorCloakAbilUpgrade" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research1" Row="2" Column="0"/>
             <LayoutButtons Face="FrancineFuelInjection" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research2" Row="2" Column="1"/>
-            <LayoutButtons Face="ResearchCondorEnhancedCargo" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research3" Row="2" Column="2"/>
-            <LayoutButtons Face="ResearchRaptorIncendiary" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research4" Row="2" Column="3"/>
-            <LayoutButtons Face="UPLTrainBehemoth" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train4" Row="0" Column="3"/>
-            <LayoutButtons Face="UPLSeekerDrone" Type="AbilCmd" AbilCmd="UPLAirstripTrain,Train5" Row="0" Column="4"/>
+            <LayoutButtons Face="ResearchRaptorIncendiary" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research4" Row="2" Column="2"/>
+            <LayoutButtons Face="SeekerShell" Type="AbilCmd" AbilCmd="UPLAirstripResearch,Research5" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
         <Footprint value="Footprint3x3Contour"/>
         <PlacementFootprint value="Footprint3x3"/>
-        <ScoreMake value="250"/>
-        <ScoreKill value="250"/>
+        <ScoreMake value="300"/>
+        <ScoreKill value="300"/>
         <MinimapRadius value="1.625"/>
         <TacticalAI value="Factory"/>
         <TechAliasArray value="Alias_UPLManufacturingFacility"/>
@@ -3066,11 +3132,12 @@
         <DeathTime value="0.5"/>
         <DeadFootprint value="Footprint3x3Contour"/>
         <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <SubgroupPriority value="4"/>
     </CUnit>
     <CUnit id="UPLElectrostaticDefenseTower" parent="UPLBuildingBase">
         <FlagArray index="AIDefense" value="1"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
         <Sight value="11"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="100"/>
@@ -3095,12 +3162,11 @@
     </CUnit>
     <CUnit id="UPLCommStation" parent="UPLBuildingBase">
         <Facing value="315"/>
-        <LifeStart value="300"/>
-        <LifeMax value="300"/>
+        <LifeStart value="450"/>
+        <LifeMax value="450"/>
         <Sight value="12"/>
         <CostCategory value="Technology"/>
-        <CostResource index="Minerals" value="125"/>
-        <CostResource index="Vespene" value="100"/>
+        <CostResource index="Minerals" value="100"/>
         <RepairTime value="18"/>
         <BehaviorArray Link="UPLCommStationPassive"/>
         <BehaviorArray Link="Detector12"/>
@@ -3111,8 +3177,8 @@
         </CardLayouts>
         <Footprint value="Footprint2x2Contour"/>
         <PlacementFootprint value="Footprint2x2"/>
-        <ScoreMake value="225"/>
-        <ScoreKill value="225"/>
+        <ScoreMake value="100"/>
+        <ScoreKill value="100"/>
         <TechAliasArray value="Alias_UPLCommStation"/>
         <GlossaryPriority value="12"/>
         <DataCollection value="UPLCommStation"/>
@@ -3247,7 +3313,7 @@
             <LayoutButtons Face="RallyMiningDrone" Type="AbilCmd" AbilCmd="RallyHeadquarters,Rally2" Row="1" Column="3"/>
             <LayoutButtons Face="RallyCARR" Type="AbilCmd" AbilCmd="RallyHeadquarters,Rally1" Row="1" Column="4"/>
             <LayoutButtons Face="MiningDrone" Type="AbilCmd" AbilCmd="UPLHeadquartersTrain,Train1" Row="0" Column="0"/>
-            <LayoutButtons Face="UPLTrainCARR" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train23" Row="0" Column="1"/>
+            <LayoutButtons Face="CARR" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train23" Row="0" Column="1"/>
             <LayoutButtons Face="ResearchMiningDroneGrenadeLauncher" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research5" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="2.5"/>
@@ -3270,8 +3336,8 @@
     </CUnit>
     <CUnit id="UPLForwardOperatingBase" parent="UPLBuildingBase">
         <Facing value="315"/>
-        <LifeStart value="1250"/>
-        <LifeMax value="1250"/>
+        <LifeStart value="1500"/>
+        <LifeMax value="1500"/>
         <LifeArmor value="1"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="150"/>
@@ -3289,20 +3355,18 @@
             <LayoutButtons Face="UPLTrainCSV" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train5" Row="0" Column="0"/>
             <LayoutButtons Face="InfantryOfficer" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train7" Row="0" Column="1"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
-            <LayoutButtons Face="ResearchCSVSupplyLineManagement" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research2" Row="2" Column="0"/>
-            <LayoutButtons Face="OfficerAuraUpgrade" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research1" Row="1" Column="0"/>
-            <LayoutButtons Face="ResearchCSVPersonnelCarrier" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research3" Row="2" Column="1"/>
-            <LayoutButtons Face="ResearchZ1EnergyUpgrade" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research5" Row="2" Column="2"/>
-            <LayoutButtons Face="UPLTrainZ2" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train22" Row="0" Column="3"/>
-            <LayoutButtons Face="InfantryMedkit@Research" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research3" Row="1" Column="1"/>
-            <LayoutButtons Face="UPLTrainZ1" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train21" Row="0" Column="2"/>
+            <LayoutButtons Face="InfantryMedkit@Research" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research3" Row="2" Column="0"/>
+            <LayoutButtons Face="ResearchCSVPersonnelCarrier" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research3" Row="2" Column="2"/>
+            <LayoutButtons Face="UPLScout" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train9" Row="0" Column="2"/>
+            <LayoutButtons Face="ResearchCSVSupplyLineManagement" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research2" Row="2" Column="3"/>
+            <LayoutButtons Face="AdvancePoliceSecurity" Type="AbilCmd" AbilCmd="UPLForwardOperatingBaseResearch,Research6" Row="2" Column="1"/>
         </CardLayouts>
         <Radius value="1.5"/>
         <SeparationRadius value="1.5"/>
         <Footprint value="Footprint4x4Contour"/>
         <PlacementFootprint value="Footprint4x4"/>
-        <ScoreMake value="200"/>
-        <ScoreKill value="200"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
         <MinimapRadius value="1.5"/>
         <TechAliasArray value="Alias_UPLForwardOperatingBase"/>
         <GlossaryPriority value="21"/>
@@ -3315,8 +3379,8 @@
     <CUnit id="UPLNightjar" parent="UPLBuildingBase">
         <FlagArray index="HiddenCargoUI" value="1"/>
         <FlagArray index="AIDefense" value="1"/>
-        <LifeStart value="400"/>
-        <LifeMax value="400"/>
+        <LifeStart value="700"/>
+        <LifeMax value="700"/>
         <Sight value="6"/>
         <CostCategory value="Technology"/>
         <CostResource index="Minerals" value="225"/>
@@ -3349,6 +3413,8 @@
         <Footprint value="Footprint2x2Contour"/>
         <DeadFootprint value="Footprint2x2Contour"/>
         <PlacementFootprint value="Footprint2x2"/>
+        <StationaryTurningRate value="998.9648"/>
+        <TurningRate value="998.9648"/>
     </CUnit>
     <CUnit id="UPLBillet" parent="UPLBuildingBase">
         <Facing value="315"/>
@@ -3363,17 +3429,18 @@
         <AbilArray Link="UPLBilletTrain"/>
         <AbilArray Link="UPLBilletResearch"/>
         <CardLayouts index="0">
-            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="UPLScout" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train9" Row="1" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
             <LayoutButtons Face="UPLTrainGuardian" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train11" Row="0" Column="0"/>
             <LayoutButtons Face="InfantryHeavy" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train2" Row="0" Column="1"/>
-            <LayoutButtons Face="UPLTrainInfantryFlamethrower" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train4" Row="0" Column="2"/>
-            <LayoutButtons Face="UPLTrainSpecialInfantryRocket" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train8" Row="1" Column="1"/>
-            <LayoutButtons Face="InfantryMortar" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train5" Row="1" Column="2"/>
+            <LayoutButtons Face="UPLTrainSpecialInfantryRocket" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train3" Row="0" Column="2"/>
             <LayoutButtons Face="InfantryFlamethrowerBurningUpgraded" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research4" Row="2" Column="3"/>
             <LayoutButtons Face="ResearchInfantryMortarRangeUpgrade" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research2" Row="2" Column="1"/>
             <LayoutButtons Face="ResearchInfantryRifleRangeUpgrade" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research1" Row="2" Column="0"/>
             <LayoutButtons Face="ResearchInfantryRocketAOE" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research5" Row="2" Column="2"/>
+            <LayoutButtons Face="UPLTrainInfantryFlamethrower" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="InfantryMortar" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train5" Row="0" Column="4"/>
+            <LayoutButtons Face="ResearchRiotOfficerShield" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research6" Row="1" Column="0"/>
+            <LayoutButtons Face="UnknownButton" Type="AbilCmd" AbilCmd="UPLBilletResearch,Research7" Row="1" Column="1"/>
         </CardLayouts>
         <!--LayoutButtons Face="UPLTrainInfantryRifle" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train1" Row="1" Column="4"/-->
         <!--LayoutButtons Face="UPLTrainGuardian" Type="AbilCmd" AbilCmd="UPLBilletTrain,Train6" Row="1" Column="0"/-->
@@ -3418,15 +3485,15 @@
             <LayoutButtons index="1" Face="UPLSelectBuilder" Type="SelectBuilder" Row="2" Column="4"/>
             <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="que5,CancelLast" Row="2" Column="4"/>
             <LayoutButtons Face="Rally" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="2" Column="4"/>
-            <LayoutButtons Face="ResearchRoutheTankArmorPlating" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research3" Row="2" Column="0"/>
+            <LayoutButtons Face="ResearchHornetRacing" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research6" Row="2" Column="0"/>
             <LayoutButtons Face="UPLTrainStinger" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train7" Row="0" Column="0"/>
             <LayoutButtons Face="UPLTrainRoutheTank" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train2" Row="0" Column="1"/>
             <LayoutButtons Face="UPLTrainA6" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train3" Row="0" Column="2"/>
-            <LayoutButtons Face="ResearchCSVSupplyLineManagement" AbilCmd="UPLForwardOperatingBaseResearch,Research2" Row="2" Column="2"/>
             <LayoutButtons Face="UPLTrainTR17" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train4" Row="0" Column="3"/>
-            <LayoutButtons Face="ResearchA6ExplosiveRounds" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research4" Row="2" Column="1"/>
-            <LayoutButtons Face="ResearchCSVPersonnelCarrier" AbilCmd="UPLForwardOperatingBaseResearch,Research3" Row="2" Column="3"/>
-            <LayoutButtons Face="UPLTrainCSV" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train5" Row="0" Column="4"/>
+            <LayoutButtons Face="ResearchRoutheTankArmorPlating" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research3" Row="2" Column="1"/>
+            <LayoutButtons Face="UPLTrainZ1" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityTrain,Train21" Row="0" Column="4"/>
+            <LayoutButtons Face="ResearchA6ExplosiveRounds" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research4" Row="2" Column="2"/>
+            <LayoutButtons Face="Z1EnergyUpgrade" Type="AbilCmd" AbilCmd="UPLManufacturingFacilityResearch,Research5" Row="2" Column="3"/>
         </CardLayouts>
         <Radius value="1.625"/>
         <SeparationRadius value="1.625"/>
@@ -3480,7 +3547,7 @@
         <TimeScaleSource Value="Unknown"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="UPLSolitaireBurning">
-        <InfoIcon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <InfoIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Duration value="2.5"/>
         <Period value="0.25"/>

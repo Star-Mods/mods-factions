@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CAbilEffectInstant id="UmojanMistDecoy">
+    <CAbilBehavior id="UmojanDeepDive">
+        <AbilSetId value="Clok"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanMistDecoySet"/>
+        <CmdButtonArray index="On" DefaultButtonFace="UmojanDeepDive">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off" DefaultButtonFace="UmojanStopDeepDiveFull">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="Toggle" value="1"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown TimeUse="60"/>
+            <Vital index="Energy" value="25"/>
         </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMistDecoy"/>
-    </CAbilEffectInstant>
-    <CAbilEffectTarget id="UmojanCrowRecall">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanCrowRecallSearch"/>
-        <Cost>
-            <Vital index="Energy" value="100"/>
-            <Charge Link=""/>
-            <Cooldown Link=""/>
-        </Cost>
-        <Range value="500"/>
-        <Arc value="360"/>
-        <CursorEffect value="UmojanCrowRecallSearch"/>
-        <AINotifyEffect value=""/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanRecall"/>
-    </CAbilEffectTarget>
+        <BehaviorArray value="UmojanDeepCloakEnergy"/>
+    </CAbilBehavior>
     <CAbilEffectTarget id="UmojanMissileBarrageAI">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -36,7 +29,7 @@
             <Cooldown TimeUse="1"/>
         </Cost>
         <TargetFilters value="Ground,Visible;Self,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="25"/>
+        <Range value="22"/>
         <CancelableArray index="Prep" value="1"/>
         <CancelableArray index="Cast" value="1"/>
         <CancelableArray index="Channel" value="1"/>
@@ -48,6 +41,69 @@
         <AcquirePriority value="2"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileBarrage"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="UmojanWarpBattletank">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="UmojanBattleTankWarpTeleport"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Cost>
+            <Cooldown Link="Blink" TimeUse="60"/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AINotifyEffect value="Blink"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanWarptoLocationBattletank" Requirements="UmojanResearchWarpBattletank">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <PlaceUnit value="UmojanBattleTank"/>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="UmojanCloakingField">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="On" DefaultButtonFace="UmojanCloakingField" Requirements="UmojanResearchCloakingField">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <CmdButtonArray index="Off" DefaultButtonFace="UmojanStopCloakingField">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <BehaviorArray value="UmojanCloakField"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="UmojanCommandoFlashGrenade">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="UmojanCommandoFlashGrenadeLM"/>
+        <Cost>
+            <Cooldown Link="UmojanCommandoFlashGrenade" TimeUse="10"/>
+        </Cost>
+        <TargetFilters value="Ground,Visible;Self,Player,Ally,Structure,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="5"/>
+        <AutoCastFilters value="-;Player,Ally,Neutral,Summoned"/>
+        <AutoCastRange value="7"/>
+        <AutoCastValidatorArray value="UmojanIsNotBlind"/>
+        <AutoCastValidatorArray value="noMarkers"/>
+        <AutoCastValidatorArray value="UmojanCasterNotCloaked"/>
+        <CastOutroTime value="0.35"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanCommandoFlashGrenade"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="UmojanCrowRecall">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="UmojanCrowRecallSearch"/>
+        <Cost>
+            <Vital index="Energy" value="150"/>
+            <Charge Link=""/>
+            <Cooldown Link=""/>
+        </Cost>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CursorEffect value="UmojanCrowRecallSearch"/>
+        <AINotifyEffect value=""/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanRecall"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanMissileStrikeAI">
         <Alignment value="Negative"/>
@@ -74,6 +130,11 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileStrike"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
     </CAbilEffectTarget>
+    <CAbilRedirectTarget id="UmojanCommandoFlashGrenadeRedirect">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Abil value="UmojanCommandoFlashGrenade"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanCommandoFlashGrenadeRedirect"/>
+    </CAbilRedirectTarget>
     <CAbilEffectTarget id="UmojanReturnCraftToHangarBomber">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanSuicideRemoveSource"/>
@@ -82,58 +143,58 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanReturnCraftToHangarRecon">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanAloeSendReconReturnCraftToHangarSet"/>
+        <Effect index="0" value="UmojanWhirlwindSendReconReturnCraftToHangarSet"/>
         <Range value="0.1"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanReturnCraftToHangar"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmojanSendRecon">
+    <CAbilEffectTarget id="UmojanSendSpotter">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanAloeSendReconDummyCP"/>
+        <Effect index="0" value="UmojanWhirlwindSendReconDummyCP"/>
         <Flags index="AllowMovement" value="1"/>
+        <Flags index="BestUnit" value="0"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Cooldown TimeUse="30"/>
+            <Cooldown TimeUse="1"/>
         </Cost>
-        <Range value="15"/>
+        <Range value="26"/>
         <Arc value="360"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSendRecon" Requirements="UmojanHaveNoActiveReconandSecondaryHangar"/>
-        <CursorEffect value="UmojanAloeSendReconFakeSearch"/>
+        <CursorEffect value="UmojanWhirlwindSendReconFakeSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSendSpotter" Requirements="UmojanHaveNoActiveRecon"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="UmojanRecallRecon">
+    <CAbilEffectInstant id="UmojanRecallSpotter">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanAloeSendReconActiveReconRB"/>
+        <Effect index="0" value="UmojanWhirlwindSendReconActiveReconEndSet"/>
         <Flags index="AllowMovement" value="1"/>
-        <Flags index="BestUnit" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Flags index="Transient" value="1"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanRecallRecon" Requirements="UmojanHaveActiveRecon"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanRecallSpotter" Requirements="UmojanHaveActiveRecon"/>
     </CAbilEffectInstant>
     <CAbilRedirectTarget id="UmojanLockdownRedirect">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Abil value="UmojanLockdown"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanLockdown"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanLockdownRedirect"/>
     </CAbilRedirectTarget>
     <CAbilEffectTarget id="UmojanTimeBomb">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanAloeTemporalFieldCreatePersistent"/>
+        <Effect index="0" value="UmojanCrowTemporalFieldCreatePersistent"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="NoDeceleration" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost/>
         <Range value="0.1"/>
         <Arc value="360"/>
-        <CursorEffect value="UmojanAloeTemporalFieldSearchArea"/>
-        <AINotifyEffect value="UmojanAloeTemporalFieldCreatePersistent"/>
+        <CursorEffect value="UmojanCrowTemporalFieldSearchArea"/>
+        <AINotifyEffect value="UmojanCrowTemporalFieldCreatePersistent"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTimeBomb"/>
     </CAbilEffectTarget>
-    <CAbilArmMagazine id="UmojanAloeHangar">
+    <CAbilArmMagazine id="UmojanHexaremeHangar">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Flags index="Retarget" value="1"/>
         <Leash value="12"/>
         <InfoArray index="Ammo1" Time="12" CountStart="3" Manage="Recall" Unit="UmojanRaptor">
             <Charge Link="CarrierInterceptor" Location="Unit"/>
             <Cooldown Link="CarrierTrainInterceptor" TimeUse="0.01"/>
-            <Button DefaultButtonFace="UmojanRaptor" Requirements="UmojanArmRaptor">
+            <Button DefaultButtonFace="UmojanRaptor" Requirements="UmojanArmRaptor6">
                 <Flags index="ToSelection" value="1"/>
             </Button>
             <Flags index="AutoBuild" value="1"/>
@@ -170,42 +231,16 @@
         <CastOutroTime value="1.4"/>
         <FinishTime value="6"/>
     </CAbilEffectTarget>
-    <CAbilEffectTarget id="UmojanAloeHealArea">
-        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Flags index="NoDeceleration" value="1"/>
-        <Flags index="Smart" value="1"/>
-        <TargetFilters value="Biological,Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
-        <Range value="6"/>
-        <Arc value="360"/>
-        <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Stasis,Dead,Invulnerable"/>
-        <AutoCastRange value="6"/>
-        <AutoCastValidatorArray value="healCasterMinEnergy"/>
-        <AutoCastValidatorArray value="NotWarpingIn"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAloeHeal"/>
-        <Effect index="0" value="UmojanAloeHealAreaTrackUnit"/>
-        <AINotifyEffect value="UmojanAloeHealAreaTrackUnit"/>
-        <Alignment value="Positive"/>
-        <AutoCastAcquireLevel value="Defensive"/>
-        <Marker Link="Abil/MedivacHeal"/>
-        <UseMarkerArray index="Approach" value="0"/>
-        <UseMarkerArray index="Prep" value="0"/>
-        <DefaultError value="RequiresHealTarget"/>
-        <AcquireAttackers value="1"/>
-    </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanAloeHealUnit">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Effect index="0" value="UmojanAloeHealSoloSet"/>
-        <Flags index="AllowMovement" value="1"/>
         <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOffOwnerLeave" value="1"/>
         <Flags index="AutoCastOn" value="1"/>
-        <Flags index="NoDeceleration" value="1"/>
-        <Flags index="Smart" value="1"/>
-        <Flags index="Transient" value="1"/>
-        <Flags index="TransientPreferred" value="1"/>
-        <TargetFilters value="Biological,Visible;Self,Enemy,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <Flags index="CancelResetAutoCast" value="0"/>
+        <Flags index="PassengerAcquireExternal" value="1"/>
+        <Flags index="PassengerAcquirePassengers" value="1"/>
+        <TargetFilters value="Biological;Self,Neutral,Enemy,Missile,Stasis,UnderConstruction,Hidden,Invulnerable,Summoned"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSAlliancePassive"/>
             <SortArray value="TSLifeFraction"/>
@@ -214,12 +249,11 @@
         <Range value="6"/>
         <Arc value="360"/>
         <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Stasis,Dead,Invulnerable"/>
-        <AutoCastRange value="8"/>
+        <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="healCasterMinEnergy"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <AutoCastValidatorArray value="UmojanAloeHealSoloIsNotHealing"/>
-        <AINotifyEffect value="UmojanAloeHealAreaTrackUnit"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAloeHealSingle"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAloeHeal"/>
         <Alignment value="Positive"/>
         <SmartValidatorArray value="healSmartTargetFilters"/>
         <SmartValidatorArray value="NotWarpingIn"/>
@@ -228,16 +262,18 @@
         <UseMarkerArray index="Approach" value="0"/>
         <UseMarkerArray index="Prep" value="0"/>
         <DefaultError value="RequiresHealTarget"/>
-        <AcquireAttackers value="1"/>
+        <Cost>
+            <Cooldown TimeUse="1"/>
+        </Cost>
     </CAbilEffectTarget>
-    <CAbilMorph id="UmojanAloeMorphtoAA">
+    <CAbilMorph id="UmojanHexaremeMorphtoAA">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAloeAAMode">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
         <Flags index="IgnoreFacing" value="1"/>
-        <CancelUnit value="UmojanAloe"/>
-        <InfoArray Unit="UmojanAloe">
+        <CancelUnit value="UmojanHexareme"/>
+        <InfoArray Unit="UmojanHexareme">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0.5"/>
             </SectionArray>
@@ -255,12 +291,12 @@
         </InfoArray>
         <AbilClassDisableArray index="CAbilAttack" value="1"/>
     </CAbilMorph>
-    <CAbilMorph id="UmojanAloeMorphtoAG">
+    <CAbilMorph id="UmojanHexaremeMorphtoAG">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAloeAGMode"/>
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="WaitUntilStopped" value="0"/>
-        <InfoArray Unit="UmojanAloeAG">
+        <InfoArray Unit="UmojanHexaremeAG">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0.5"/>
             </SectionArray>
@@ -281,13 +317,13 @@
         </InfoArray>
         <AbilClassDisableArray index="CAbilAttack" value="1"/>
     </CAbilMorph>
-    <CAbilTransport id="UmojanLoadUnloadAloe">
+    <CAbilTransport id="UmojanSpecOpsDropshipLoadUnload">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Load" DefaultButtonFace="UmojanAloeLoad"/>
-        <CmdButtonArray index="UnloadAll" DefaultButtonFace="UmojanAloeUnloadAll">
+        <CmdButtonArray index="Load" DefaultButtonFace="UmojanSpecOpsDropshipLoad"/>
+        <CmdButtonArray index="UnloadAll">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="UnloadAt" DefaultButtonFace="UmojanAloeUnloadAt"/>
+        <CmdButtonArray index="UnloadAt" DefaultButtonFace="UmojanSpecOpsDropshipUnloadAt"/>
         <CmdButtonArray index="UnloadUnit">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
@@ -295,10 +331,10 @@
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
         <Flags index="CargoDeath" value="1"/>
-        <MaxCargoCount value="20"/>
+        <MaxCargoCount value="8"/>
         <MaxCargoSize value="8"/>
-        <TotalCargoSpace value="20"/>
-        <UnloadPeriod value="1"/>
+        <TotalCargoSpace value="8"/>
+        <UnloadPeriod value="0.8"/>
         <TargetFilters value="Visible;Ally,Neutral,Enemy,Buried,UnderConstruction,Dead,Hidden"/>
         <LoadValidatorArray value="NotWidowMineTarget"/>
     </CAbilTransport>
@@ -360,8 +396,9 @@
         <Flags index="Smart" value="1"/>
         <TargetFilters value="Visible;Self,Ally,Neutral,Enemy,Missile,Uncommandable,Stasis,UnderConstruction,Dead,Hidden,Hallucination,Invulnerable,Stunned,Decaying"/>
         <Range value="5"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanBattlecat" Requirements="UmojanResearchBattlelinkSystemResearched"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanBattlecat" Requirements="UmojanResearchBattlelinkSystem"/>
         <SmartValidatorArray value="noMarkers"/>
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanAskForMountPlasmabat" parent="UmojanAskForMountPretorian">
         <Name value="Abil/Name/UmojanAskForMountPlasmabat"/>
@@ -373,17 +410,17 @@
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanSendTimeBomber">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Effect index="0" value="UmojanAloeSendBomberDummyCP"/>
+        <Effect index="0" value="UmojanCrowSendBomberDummyCP"/>
         <Flags index="AllowMovement" value="1"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Vital index="Energy" value="40"/>
+            <Vital index="Energy" value="75"/>
             <Cooldown TimeUse="10"/>
         </Cost>
         <Range value="15"/>
         <Arc value="360"/>
-        <CursorEffect value="UmojanAloeTemporalFieldSearchAreaImpactDummy"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSendTimeBombers" Requirements="UmojanResearchSecondaryHangarResearched"/>
+        <CursorEffect value="UmojanCrowTemporalFieldSearchAreaImpactDummy"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSendTimeBombers" Requirements="UmojanResearchSecondaryHangar"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanTacNukeStrike" parent="TacNukeStrike">
         <Name value="Abil/Name/UmojanTacNukeStrike"/>
@@ -418,7 +455,7 @@
         <TargetFilters value="-;Self,Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <CastIntroTime value="0.5"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanLockdown" Requirements="UmojanResearchLockdownResearched"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanLockdown" Requirements="UmojanResearchLockdown"/>
     </CAbilEffectTarget>
     <CAbilArmMagazine id="UmojanArmSiloWithNuke" parent="ArmSiloWithNuke">
         <Name value="Abil/Name/UmojanArmSiloWithNuke"/>
@@ -433,6 +470,9 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanBattlecatSpahiDismountPretorian"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanDismountPretorian"/>
+        <Cost>
+            <Cooldown TimeStart="10"/>
+        </Cost>
     </CAbilEffectInstant>
     <CAbilEffectInstant id="UmojanDismountShadowguard" parent="UmojanDismountPretorian">
         <Name value="Abil/Name/UmojanDismountShadowguard"/>
@@ -461,22 +501,6 @@
             </Button>
         </InfoArray>
     </CAbilResearch>
-    <CAbilBehavior id="UmojanCloak">
-        <AbilSetId value="Clok"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="On" DefaultButtonFace="UmojanCloakOn" Requirements="LearnUmojanCloakingField">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <CmdButtonArray index="Off" DefaultButtonFace="CloakOff">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-        <Flags index="Toggle" value="1"/>
-        <Flags index="Transient" value="1"/>
-        <Cost>
-            <Vital index="Energy" value="25"/>
-        </Cost>
-        <BehaviorArray value="BansheeCloak"/>
-    </CAbilBehavior>
     <CAbilEffectTarget id="UmojanDefensiveMatrixTarget">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Effect index="0" value="UmojanDefensiveMatrix"/>
@@ -571,6 +595,7 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Flags index="AutoCast" value="1"/>
         <Flags index="AutoCastOffOwnerLeave" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
         <Flags index="BestUnit" value="0"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
@@ -598,7 +623,7 @@
         <Flags index="Transient" value="1"/>
         <Flags index="UpdateChargesOnLevelChange" value="0"/>
         <Cost>
-            <Cooldown TimeUse="30"/>
+            <Cooldown TimeUse="20"/>
         </Cost>
         <Arc value="360"/>
         <AutoCastAcquireLevel value="Defensive"/>
@@ -668,6 +693,13 @@
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
+        <InfoArray index="Research2" Time="80" Upgrade="UmojanStrikeMineReserve">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="UmojanResearchStrikeMineReserve" Requirements="LearnUmojanStrikeMineReserve">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
         <InfoArray index="Research3" Time="60" Upgrade="UmojanBattlelinkSystem">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="50"/>
@@ -682,13 +714,20 @@
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
+        <InfoArray index="Research5" Time="60" Upgrade="UmojanMobileTargeting">
+            <Resource index="Minerals" value="100"/>
+            <Resource index="Vespene" value="50"/>
+            <Button DefaultButtonFace="UmojanResearchMobileTargeting" Requirements="LearnUmojanMobileTargeting">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
+        </InfoArray>
     </CAbilResearch>
     <CAbilResearch id="UmojanResearchScienceRed">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
-        <InfoArray index="Research1" Time="60" Upgrade="UmojanPowertotheWeapons">
+        <InfoArray index="Research1" Time="60" Upgrade="UmojanWeaponPowerAccumulator">
             <Resource index="Minerals" value="100"/>
             <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="UmojanResearchPowertotheWeapon" Requirements="LearnUmojanPowertotheWeapons">
+            <Button DefaultButtonFace="UmojanResearchWeaponPowerAccumulator" Requirements="LearnUmojanWeaponPowerAccumulator">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
@@ -706,10 +745,10 @@
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
-        <InfoArray index="Research4" Time="45" Upgrade="UmojanDisruptionWeb">
+        <InfoArray index="Research4" Time="45" Upgrade="UmojanTransferShieldPower">
             <Resource index="Minerals" value="125"/>
             <Resource index="Vespene" value="125"/>
-            <Button DefaultButtonFace="UmojanResearchDisruptionWeb" Requirements="LearnUmojanDisruptionWeb">
+            <Button DefaultButtonFace="UmojanResearchTransferShieldPower" Requirements="LearnUmojanDisruptionWeb">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
@@ -790,9 +829,12 @@
         <Range value="0.5"/>
         <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
         <AutoCastRange value="8"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanGetPretorian" Requirements="UmojanResearchBattlelinkSystemResearched"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanGetPretorian" Requirements="UmojanResearchBattlelinkSystem"/>
         <SmartValidatorArray value="noMarkers"/>
         <AutoCastValidatorArray value="noMarkers"/>
+        <Cost>
+            <Cooldown TimeStart="10"/>
+        </Cost>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanSearchPlasmabat" parent="UmojanSearchPretorian">
         <Name value="Abil/Name/UmojanSearchPlasmabat"/>
@@ -807,7 +849,7 @@
     <CAbilRedirectTarget id="UmojanTransferShieldPowerRedirect">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Abil value="UmojanTransferShieldPower"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTransferShieldPower"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTransferShieldPowerRedirect" Requirements="UmojanResearchTransferShieldPower"/>
     </CAbilRedirectTarget>
     <CAbilMorph id="UmojanSentryGunBurrow">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -886,12 +928,12 @@
     <CAbilRedirectTarget id="UmojanPlasmabatCorrosiveBlastRedirect">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Abil value="UmojanPlasmabatCorrosiveBlast"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanCorrosiveBlast"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanCorrosiveBlastRedirect"/>
     </CAbilRedirectTarget>
     <CAbilRedirectTarget id="UmojanSniperRedirect">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Abil value="UmojanSnipe"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSniperRound"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSniperRoundRedirect"/>
     </CAbilRedirectTarget>
     <CAbilEffectTarget id="UmojanSnipe">
         <Alignment value="Negative"/>
@@ -900,7 +942,7 @@
         <Cost>
             <Vital index="Energy" value="50"/>
         </Cost>
-        <TargetFilters value="Psionic,Visible;Self,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetFilters value="Psionic,Visible;Self,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="10"/>
         <CastIntroTime value="0.5"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSniperRound"/>
@@ -950,26 +992,6 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
-    <CAbilEffectTarget id="UmojanDisruptionWeb">
-        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
-        <Effect index="0" value="UmojanDisruptionWebCreatePersistent"/>
-        <Flags index="AllowMovement" value="1"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <Flags index="NoDeceleration" value="1"/>
-        <Cost>
-            <Vital index="Energy" value="75"/>
-            <Cooldown TimeUse="5"/>
-        </Cost>
-        <Range value="7"/>
-        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Hidden"/>
-        <AutoCastRange value="7"/>
-        <AutoCastValidatorArray value="TargetCanAttack"/>
-        <AutoCastValidatorArray value="UmojanDisruptionWebNotOnTarget"/>
-        <AutoCastValidatorArray value="UmojanDisruptionWebNoAllyNearby"/>
-        <CursorEffect value="UmojanDisruptionWebSearch"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanDisruptionWeb" Requirements="UmojanUseDisruptionWeb"/>
-    </CAbilEffectTarget>
     <CAbilResearch id="UmojanResearchEngineeringBay">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <InfoArray index="Research1" Time="80" Upgrade="UmojanHiSecAutoTracking">
@@ -1032,25 +1054,25 @@
     </CAbilResearch>
     <CAbilTrain id="UmojanBarracksTrain">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
-        <InfoArray index="Train1" Time="25">
+        <InfoArray index="Train1" Time="38">
             <Button DefaultButtonFace="UmojanMarine"/>
             <Unit value="UmojanMarine"/>
         </InfoArray>
         <InfoArray index="Train2" Time="45">
-            <Button DefaultButtonFace="UmojanReaper"/>
+            <Button DefaultButtonFace="UmojanReaper" Requirements="UmojanScienceRedBuild"/>
             <Unit value="UmojanCommando"/>
         </InfoArray>
-        <InfoArray index="Train3" Time="40">
+        <InfoArray index="Train3" Time="45">
             <Button DefaultButtonFace="UmojanGhost" Requirements="UmojanScienceRedBuildShadowOps"/>
             <Unit value="UmojanShadowguard"/>
         </InfoArray>
-        <InfoArray index="Train4" Time="30">
+        <InfoArray index="Train4" Time="35">
             <Button DefaultButtonFace="UmojanPlasmabat" Requirements="UmojanScienceRedBuild"/>
             <Unit value="UmojanPlasmabat"/>
         </InfoArray>
-        <InfoArray index="Train5" Time="30">
-            <Button DefaultButtonFace="UmojanDisruptor" Requirements="UmojanScienceRedBuild"/>
-            <Unit value="UmojanDisruptor"/>
+        <InfoArray index="Train5" Time="35">
+            <Button DefaultButtonFace="UmojanMedic" Requirements="UmojanScienceRedBuild"/>
+            <Unit value="UmojanMedic"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilTrain id="UmojanCommandCenterTrain">
@@ -1061,9 +1083,9 @@
             </Button>
             <Unit value="UmojanMCS"/>
         </InfoArray>
-        <InfoArray index="Train2" Time="120">
-            <Button DefaultButtonFace="UmojanFrenrir" Requirements="UmojanHaveFleetCoreandNoFrenrir"/>
-            <Unit value="UmojanFrenrir"/>
+        <InfoArray index="Train3" Time="120">
+            <Button DefaultButtonFace="UmojanBattleship" Requirements="UmojanHaveFleetCoreandNoBattleship"/>
+            <Unit value="UmojanBattleship"/>
         </InfoArray>
         <Alert value="TrainWorkerComplete"/>
     </CAbilTrain>
@@ -1075,8 +1097,8 @@
             <Unit value="UmojanPathfinder"/>
         </InfoArray>
         <InfoArray index="Train2" Time="60">
-            <Button DefaultButtonFace="UmojanNorns"/>
-            <Unit value="UmojanNorns"/>
+            <Button DefaultButtonFace="UmojanMoira"/>
+            <Unit value="UmojanMoira"/>
         </InfoArray>
         <InfoArray index="Train3" Time="45">
             <Button DefaultButtonFace="UmojanBattlecat"/>
@@ -1111,14 +1133,16 @@
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
         </InfoArray>
-        <InfoArray index="Research3" Time="80" Upgrade="UmojanMedivacIncreaseSpeedBoost">
-            <Resource index="Minerals" value="100"/>
-            <Resource index="Vespene" value="100"/>
-            <Button DefaultButtonFace="UmojanResearchRapidReignitionSystem" Requirements="LearnUmojanMedivacSpeedBoostUpgrade"/>
+        <InfoArray index="Research3" Time="70" Upgrade="UmojanWarpBattletank">
+            <Resource index="Minerals" value="50"/>
+            <Resource index="Vespene" value="150"/>
+            <Button DefaultButtonFace="UmojanResearchBattletankWarp" Requirements="LearnUmojanBattleTankWarp">
+                <Flags index="ShowInGlossary" value="1"/>
+            </Button>
         </InfoArray>
-        <InfoArray index="Research4" Time="70" Upgrade="UmojanSecondaryHangar">
-            <Resource index="Minerals" value="100"/>
-            <Resource index="Vespene" value="50"/>
+        <InfoArray index="Research4" Time="90" Upgrade="UmojanSecondaryHangar">
+            <Resource index="Minerals" value="150"/>
+            <Resource index="Vespene" value="75"/>
             <Button DefaultButtonFace="UmojanResearchSecondaryHangar" Requirements="LearnUmojanSecondaryHangar">
                 <Flags index="ShowInGlossary" value="1"/>
             </Button>
@@ -1128,28 +1152,24 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
         <Activity value="UI/Building"/>
         <InfoArray index="Train1" Time="42">
-            <Button DefaultButtonFace="UmojanMedivac"/>
-            <Unit value="UmojanMedivac"/>
+            <Button DefaultButtonFace="UmojanSpecOpsDropship"/>
+            <Unit value="UmojanSpecOpsDropship"/>
         </InfoArray>
         <InfoArray index="Train2" Time="55">
-            <Button DefaultButtonFace="UmojanHowler"/>
-            <Unit value="UmojanHowler"/>
+            <Button DefaultButtonFace="UmojanDira" Requirements="UmojanScienceGreenBuild"/>
+            <Unit value="UmojanDira"/>
         </InfoArray>
-        <InfoArray index="Train3" Time="60">
+        <InfoArray index="Train3" Time="70">
             <Button DefaultButtonFace="UmojanCrow" Requirements="UmojanScienceGreenBuildFleetCore"/>
             <Unit value="UmojanCrow"/>
-        </InfoArray>
-        <InfoArray index="Train4" Time="90">
-            <Button DefaultButtonFace="UmojanBattleship" Requirements="UmojanScienceGreenBuildFleetCore"/>
-            <Unit value="UmojanBattleship"/>
         </InfoArray>
         <InfoArray index="Train5" Time="42">
             <Button DefaultButtonFace="UmojanMist"/>
             <Unit value="UmojanMist"/>
         </InfoArray>
         <InfoArray index="Train6" Time="80">
-            <Button DefaultButtonFace="UmojanAloe" Requirements="UmojanScienceGreenBuild"/>
-            <Unit value="UmojanAloe"/>
+            <Button DefaultButtonFace="UmojanHexareme" Requirements="UmojanScienceGreenBuildFleetCore"/>
+            <Unit value="UmojanHexareme"/>
         </InfoArray>
     </CAbilTrain>
     <CAbilBuild id="UmojanBuild">
@@ -1229,7 +1249,7 @@
         <EffectArray index="Start" value="UmojanDroneConstruction"/>
         <EffectArray index="Cancel" value="UmojanDroneConstructionSet"/>
     </CAbilBuild>
-    <CAbilEffectTarget id="UmojanHowlerAirburst">
+    <CAbilEffectTarget id="UmojanDiraAirburst">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanHowlerAirburstSet"/>
@@ -1248,7 +1268,7 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <CursorEffect value="UmojanHowlerAirburstSearch"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAirMissileBarrage" Requirements="UmojanUseOverloadWeapons"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanAirMissileBarrage" Requirements="UmojanResearchOverloadWeapons"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UmojanSupplyCacheLower">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
@@ -1295,8 +1315,12 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanSpawnGroundSensor"/>
         <Cost>
-            <Vital index="Energy" value="40"/>
-            <Charge Location="Unit"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="1"/>
+                <Location value="Unit"/>
+            </Charge>
         </Cost>
         <Placeholder value="UmojanStrikeMine"/>
         <Range value="3"/>
@@ -1376,20 +1400,21 @@
         </TargetSorts>
         <Range value="6"/>
         <AutoCastAcquireLevel value="Defensive"/>
-        <AutoCastFilters value="Visible;Neutral,Enemy"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Stasis,Dead,Invulnerable"/>
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="UmojanShieldL3Quarter"/>
         <AutoCastValidatorArray value="TargetInCombat"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTransferShieldPower"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTransferShieldPower" Requirements="UmojanResearchTransferShieldPower"/>
+        <Alignment value="Positive"/>
+        <Arc value="360"/>
+        <SmartValidatorArray value="NotWarpingIn"/>
+        <UseMarkerArray index="Approach" value="0"/>
+        <UseMarkerArray index="Prep" value="0"/>
+        <DefaultError value="RequiresHealTarget"/>
     </CAbilEffectTarget>
-    <CAbilRedirectTarget id="UmojanDisruptionWebRedirect">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Abil value="UmojanDisruptionWeb"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanDisruptionWeb" Requirements="UmojanUseDisruptionWeb"/>
-    </CAbilRedirectTarget>
     <CAbilMorph id="UmojanUpgradetoEnergyGenerator">
         <EditorCategories value="Race:Terran,AbilityorEffectType:MorphsandBurrows"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanUpgradetoEnergyGenerator" Requirements="UmojanHaveScienceFacility"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanUpgradetoEnergyGenerator" Requirements="UmojanHaveAcademy"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="CancelUpgradeMorph"/>
         <Flags index="BestUnit" value="1"/>
         <Flags index="Birth" value="1"/>
@@ -1408,7 +1433,7 @@
         </InfoArray>
         <Activity value="UI/Upgrading"/>
     </CAbilMorph>
-    <CAbilEffectTarget id="UmojanHowlerAirstrike">
+    <CAbilEffectTarget id="UmojanDiraAirstrike">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanHowlerAirstrikeSet"/>
@@ -1427,7 +1452,7 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <CursorEffect value="UmojanHowlerAirstrikeSearch"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanGroundMissileBarrage" Requirements="UmojanUseOverloadWeapons"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanGroundMissileBarrage" Requirements="UmojanResearchOverloadWeapons"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanBlink">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -1440,43 +1465,24 @@
         <Range value="500"/>
         <Arc value="360"/>
         <AINotifyEffect value="Blink"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanBlink" Requirements="UmojanResearchBlinkResearched">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanBlink" Requirements="UmojanResearchBlink">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanSabotage">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <PrepEffect value="UmojanShadowguardSabotageTarget"/>
-        <Effect index="0" value="UmojanShadowguardSabotageDamage"/>
-        <Flags index="RequireTargetVision" value="0"/>
+        <Effect index="0" value="UmojanShadowguardSabotageTarget"/>
         <Cost>
-            <Vital index="Energy" value="75"/>
+            <Vital index="Energy" value="50"/>
         </Cost>
-        <InterruptCost>
-            <Vital index="Energy" value="35"/>
-        </InterruptCost>
         <TargetFilters value="Structure,Visible;Player,Ally,Neutral,Dead,Hidden,Invulnerable"/>
         <Range value="0"/>
-        <PrepTime value="10"/>
-        <ShowProgressArray index="Prep" value="1"/>
-        <CancelableArray index="Prep" value="1"/>
-        <CancelableArray index="Channel" value="1"/>
-        <ValidatedArray index="Prep" value="0"/>
-        <ValidatedArray index="Cast" value="0"/>
-        <ValidatedArray index="Channel" value="0"/>
-        <ProgressButtonArray index="Prep" value="UmojanSabotage"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanSabotage"/>
-        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
-        <CancelEffect index="Prep" value="UmojanShadowguardSabotageTargetRemove"/>
-        <CancelEffect index="Cast" value="UmojanShadowguardSabotageTargetRemove"/>
-        <CancelEffect index="Channel" value="UmojanShadowguardSabotageTargetRemove"/>
-        <CancelEffect index="Finish" value="UmojanShadowguardSabotageTargetRemove"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <UninterruptibleArray index="Cast" value="1"/>
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <Alignment value="Negative"/>
-        <CastIntroTime value="0.5"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UmojanDeployFlak">
         <OrderArray index="0">
@@ -1513,18 +1519,6 @@
         </InfoArray>
         <AbilClassDisableArray index="CAbilAttack" value="1"/>
     </CAbilMorph>
-    <CAbilAugment id="UmojanTornadoMissile">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanTornadoMissile"/>
-        <Flags index="AutoCast" value="1"/>
-        <Flags index="AutoCastOn" value="1"/>
-        <AbilCmd value="attack,Execute"/>
-        <Cost>
-            <Cooldown TimeUse="3"/>
-        </Cost>
-        <Effect value="UmojanTornadoMissileCP"/>
-        <AutoCastFilters value="Ground,Light,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-    </CAbilAugment>
     <CAbilEffectTarget id="UmojanPlasmabatCorrosiveBlast">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanPlasmabatCorrosiveBlastLaunchMissile"/>
@@ -1566,10 +1560,10 @@
         <Flags index="AllowTurningSuppressed" value="1"/>
         <Flags index="CancelResetAutoCast" value="0"/>
         <Cost>
-            <Cooldown TimeUse="1"/>
+            <Cooldown TimeUse="6"/>
         </Cost>
         <TargetFilters value="Ground,Visible;Self,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="25"/>
+        <Range value="22"/>
         <CancelableArray index="Prep" value="1"/>
         <CancelableArray index="Cast" value="1"/>
         <CancelableArray index="Channel" value="1"/>
@@ -1579,7 +1573,7 @@
         <UninterruptibleArray index="Finish" value="1"/>
         <CursorEffect value="UmojanWhirlwindAttackWeaponDummyArea"/>
         <AcquirePriority value="2"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileBarrage"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileBarrage" Requirements="UmojanHaveActiveReconLight"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanMissileStrike">
@@ -1592,7 +1586,7 @@
         <Flags index="AllowTurningSuppressed" value="1"/>
         <Flags index="CancelResetAutoCast" value="0"/>
         <Cost>
-            <Cooldown TimeUse="1"/>
+            <Cooldown TimeUse="2"/>
         </Cost>
         <TargetFilters value="Ground,Visible;Self,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="30"/>
@@ -1604,34 +1598,12 @@
         <UninterruptibleArray index="Channel" value="1"/>
         <UninterruptibleArray index="Finish" value="1"/>
         <CursorEffect value="UmojanWhirlwindAttackWeaponDamage"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileStrike"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanMissileStrike" Requirements="UmojanHaveActiveReconLight"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
     </CAbilEffectTarget>
-    <CAbilEffectInstant id="UmojanPowertotheWeapon">
-        <Alignment value="Positive"/>
-        <AbilSetId value="Stimpack"/>
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <InfoTooltipPriority value="1"/>
-        <DataCollection value="Stimpack"/>
-        <Flags index="Transient" value="1"/>
-        <Cost>
-            <Vital index="Shields" value="15"/>
-        </Cost>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanPowertotheWeapon" Requirements="UmojanUsePowertotheWeapons">
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-    </CAbilEffectInstant>
-    <CAbilRedirectInstant id="UmojanPowertotheWeaponRedirect">
-        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
-        <Abil value="UmojanPowertotheWeapon"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanPowertotheWeapon" Requirements="UmojanUsePowertotheWeapons">
-            <Flags index="AllowMinimap" value="0"/>
-            <Flags index="ToSelection" value="1"/>
-        </CmdButtonArray>
-    </CAbilRedirectInstant>
     <CAbilMorph id="UmojanRetractFlak">
         <AbilSetId value="Unsieged"/>
-        <EditorCategories value="RaceoUmojanPlasmabat:Terran,AbilityorEffectType:Units"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="UmojanUnsiege">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
@@ -1682,17 +1654,16 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Effect index="0" value="UmojanSpawnStrikeMine"/>
         <Cost>
-            <Vital index="Energy" value="50"/>
             <Charge>
-                <CountMax value="3"/>
-                <CountStart value="3"/>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
                 <CountUse value="1"/>
                 <Location value="Unit"/>
             </Charge>
         </Cost>
         <Placeholder value="UmojanStrikeMine"/>
         <Range value="3"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanDeployStrikeMine" Requirements="UmojanResearchStrikeMineReserveResearched"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanDeployStrikeMine" Requirements="UmojanResearchStrikeMineReserve"/>
     </CAbilEffectTarget>
     <CAbilMorph id="UmojanStrikeMineUnburrow">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -1731,7 +1702,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <PrepTime value="26"/>
+        <PrepTime value="8"/>
         <ShowProgressArray index="Prep" value="1"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <ProgressButtonArray index="Prep" value="UmojanWarptoLocation"/>
@@ -1749,7 +1720,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <PrepTime value="26"/>
+        <PrepTime value="8"/>
         <ShowProgressArray index="Prep" value="1"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <ProgressButtonArray index="Prep" value="UmojanWarptoLocation"/>
@@ -1767,7 +1738,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <PrepTime value="26"/>
+        <PrepTime value="8"/>
         <ShowProgressArray index="Prep" value="1"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <ProgressButtonArray index="Prep" value="UmojanWarptoLocation"/>
@@ -1785,7 +1756,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <PrepTime value="26"/>
+        <PrepTime value="8"/>
         <ShowProgressArray index="Prep" value="1"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <ProgressButtonArray index="Prep" value="UmojanWarptoLocation"/>
@@ -1813,7 +1784,7 @@
         <CursorEffect value="UmojanStasisFieldSearch"/>
         <AINotifyEffect value="UmojanStasisFieldMissile"/>
         <ProgressButtonArray index="Prep" value="UmojanStasisField"/>
-        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanStasisField" Requirements="UmojanUseStasisGun"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="UmojanStasisField"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="UmojanWarpBunker">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -1825,7 +1796,7 @@
         </Cost>
         <Range value="500"/>
         <Arc value="360"/>
-        <PrepTime value="26"/>
+        <PrepTime value="8"/>
         <ShowProgressArray index="Prep" value="1"/>
         <UninterruptibleArray index="Prep" value="1"/>
         <ProgressButtonArray index="Prep" value="UmojanWarptoLocation"/>

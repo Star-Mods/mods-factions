@@ -235,6 +235,81 @@
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-upl-buildingarmor.dds"/>
         <UnitIcon value="Assets\Textures\btn-building-upl-##unitName##.dds"/>
     </CActorUnit>
+    <CActorUnit id="Barracks2" parent="TerranBuildingFlyerEx" unitName="UPLAirstrip2">
+        <On Terms="Behavior.ColonyInfestation.On" Send="Create InfestationBarracks"/>
+        <On Terms="UnitDeathCustomize.BarracksFlying" Send="DeathCustomize Flying"/>
+        <HostSiteOps Ops="BattleStationOffset" HoldPosition="1" HoldRotation="1"/>
+        <Model value="Barracks2"/>
+        <BuildModel value="CommandCenterBuild"/>
+        <DeathArray index="Normal" ModelLink="BarracksDeath2"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranLargeBuildingDeath2" SoundLink="Barracks_Explode2"/>
+        <DeathCustoms index="0" ModelLink="ZergSmallUnitDeathLow9"/>
+        <DeathCustoms index="1" ModelLink="ProtossSmallUnitDeathLow9"/>
+        <DeathCustoms index="2" ModelLink="TerranSmallUnitDeathLow9"/>
+        <DeathCustoms index="3" ModelLink="ZergSmallUnitDeathLow9"/>
+        <DeathCustoms index="4" ModelLink="Invisible9"/>
+        <DeathCustoms index="5" ModelLink="BarracksFlyDeath2" SoundLink="Barracks_Explode2" Name="Flying"/>
+        <DeathActorModel value="UPLBuildingDeathModel"/>
+        <DeathActorModelLow value="UPLBuildingDeathModel"/>
+        <PlacementModel value="UPLAirstripPlacement"/>
+        <PortraitModel value="UPLGeneratorPortrait"/>
+        <BarOffset value="50"/>
+        <BarWidth value="240"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Barracks.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BattleStation 2.dds"/>
+        <HighlightTooltip value="Unit/Name/Barracks2"/>
+        <SoundArray index="Ready" value="Doodad_SuperCraneSpellA"/>
+        <SoundArray index="What" value="Barracks_What2"/>
+        <SoundArray index="Movement" value="Barracks_Movement2"/>
+        <SoundArray index="Construction" value="Terran_ConstructionWhat2"/>
+        <SoundArray index="Click" value="Doodad_SuperCraneSpellD"/>
+        <UnitIcon value="Assets\Textures\BattleStation 2.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Barracks.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorSiteOpLocalOffset id="BattleStationOffset" effectAttack="BattleStation" effectImpact="BattleStation" effectLaunch="BattleStation">
+        <Aliases value="_ActorAction"/>
+        <On Terms="Effect.Bogus.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On Terms="Effect.Bogus.Start; FromEffectTreeDescendant" Send="ActionImpact"/>
+        <On Terms="Effect.Bogus.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On Terms="Effect.SplashDamage.Start; FromEffectTreeDescendant" Send="ActionDamage"/>
+        <On Terms="Effect.SplashDamage.Stop; FromEffectTreeDescendant" Send="ActionDamagePhysics"/>
+        <On Terms="Effect.Bogus.Start; At Caster" Send="Create"/>
+        <On Terms="Effect.Bogus.Start; At Caster" Send="Create"/>
+        <LocalOffset value="-0.200000,-2.000000,0.000000"/>
+        <Terms value="ValidateCreationEffect NotUnderConstruction"/>
+    </CActorSiteOpLocalOffset>
+    <CActorUnit id="DestructibleDebris4x42" parent="DestructibleUnitStandard" unitName="DestructibleDebris4x42">
+        <Model value="DestructibleDebris4x4"/>
+        <BuildModel value="DestructibleDebris4x4"/>
+        <DeathArray index="Normal" ModelLink="DestructibleDebris4x4" SoundLink="DestructibleDebrisRampDiagonalHuge_Explosion"/>
+        <PlacementModel value="DestructibleDebris4x4"/>
+        <BarOffset value="22"/>
+        <BarWidth value="200"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-General-DestructibleDebris-4x4.dds"/>
+        </GroupIcon>
+        <HighlightTooltip value="Unit/Name/DestructibleDebris4x42HighlightTooltip"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_destructibledebris.dds"/>
+        <StatusColors index="Life" BackgroundColor="255,88,88,88" EmptyColor="255,88,88,88">
+            <ColorArray index="0" value="255,192,192,192"/>
+            <ColorArray index="1" value="255,192,192,192"/>
+            <ColorArray index="2" value="255,192,192,192"/>
+            <ColorArray index="3" value="255,192,192,192"/>
+            <ColorArray index="4" value="255,192,192,192"/>
+            <ColorArray index="5" value="255,192,192,192"/>
+            <ColorArray index="6" value="255,192,192,192"/>
+            <ColorArray index="7" value="255,192,192,192"/>
+        </StatusColors>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-General-DestructibleDebris-4x4.dds"/>
+        </Wireframe>
+    </CActorUnit>
     <CActorForceSphere id="GrenadeGroundUpForce">
         <Host Subject="::Creator"/>
         <Field value="Directional"/>
@@ -272,6 +347,33 @@
         <Magnitude value="12.000000,8.000000"/>
         <Radius value="0.800000,0.150000"/>
     </CActorForceSphere>
+    <CActorBeamSimple id="MedivacHealBeamRev12" parent="BeamSimpleAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <On Terms="Effect.CSVRepairHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.CSVRepairHealer.TargetStop" Send="Destroy"/>
+        <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <Host Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <Model value="RavenRepairDroneHealBeam"/>
+        <Scale value="2.000000"/>
+        <HostLaunch Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpact Subject="_Unit" Scope="Target" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorModel id="MercDropModel2" parent="ModelAnimationStyleOneShotNoOrphan">
+        <On Terms="Effect.CalldownMULECreateSet2" Send="Create"/>
+        <On Terms="Effect.CalldownMULETimedLife2" Send="AnimBracketStop BSD"/>
+        <On Terms="AnimBracketState.*.AfterOpening; AnimName BSD" Send="Create DropPodUnload"/>
+        <HostSiteOps Ops="MercDropSOpShadow"/>
+        <Model value="DropPodFalling2"/>
+    </CActorModel>
+    <CActorSound id="OrbitalCommand_CalldownMuleDrop2" parent="SoundOneShot">
+        <On Terms="Effect.CalldownMULECreatePersistent2.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 2.100000 DelayDropPod"/>
+        <On Terms="TimerExpired; TimerName DelayDropPod" Send="Create MercDropModel2"/>
+        <On Terms="TimerExpired; TimerName DelayDropPod" Send="Destroy"/>
+    </CActorSound>
     <CActorAction id="ShotgunBlastPhysicsAttack" parent="GenericAttack" effectAttack="UPLPoliceOfficerShotgunAoEDamage">
         <On Terms="Effect.UPLRiotOfficerShotgunAoEDamage.Start; At Caster" Send="Create"/>
         <On Terms="Effect.UPLRiotOfficerShotgunAoEDamage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
@@ -793,7 +895,7 @@
         <Wireframe>
             <Image value="assets\textures\wireframe-uplnewshelicopter.dds"/>
         </Wireframe>
-        <HeroIcon value="assets\textures\btn-unit-UPL-newshelicopter.dds"/>
+        <HeroIcon value="Assets\Textures\btn-ability-zerg-stukov-buff-infested marine&apos;s plague munitions.dds"/>
         <UnitIcon value="assets\textures\btn-unit-UPL-newshelicopter.dds"/>
     </CActorUnit>
     <CActorModel id="LotCHeroGlow" parent="ModelAddition">
@@ -848,7 +950,7 @@
         <DeathCustomPriorityList value="DeathBlowA6"/>
         <DeathCustomPriorityList value="CondorDeathGround"/>
         <DeathCustomPriorityList value="UnitDeathRagdollWithTeamColor"/>
-<!--        <DeathCustomPriorityList value="SpineCrawlerHurlDeathRagdollWithTeamColorBloodPrevent"/>-->
+        <!--        <DeathCustomPriorityList value="SpineCrawlerHurlDeathRagdollWithTeamColorBloodPrevent"/>-->
         <!--        <DeathCustomPriorityList value="RagdollNuke"/>-->
         <!--        <DeathCustomPriorityList value="RagdollFire"/>-->
         <!--        <DeathCustomPriorityList value="RagdollSpineCrawlerHurl"/>-->

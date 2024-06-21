@@ -5,12 +5,12 @@
         <ScoreCount value="WeaponTechnologyCount"/>
         <ScoreValue value="WeaponTechnologyValue"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Reference="Effect,AuroraConduitNetherShockDamage,Amount" Value="1"/>
-        <EffectArray Reference="Effect,BrimstoneDemolisherScorchingBlazeDamage1,Amount" Value="1"/>
-        <EffectArray Reference="Effect,BrimstoneDemolisherScorchingBlazeDamage2,Amount" Value="1.5"/>
+        <EffectArray Reference="Effect,AuroraConduitNetherShockDamage,Amount" Value="3"/>
+        <EffectArray Reference="Effect,BrimstoneDemolisherInfernalBreathDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FlamespitterSeekerFlameDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FlamespitterAscendedSeekerFlameDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FleshrenderCinderSpikeDamage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,HandofPowerPsionicImpulseDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,HornedMagusMysticBoltDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,PhlogistonGuardianFulminationDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,SkyrazerAttackDamage,Amount" Value="1"/>
@@ -18,12 +18,15 @@
         <EffectArray Reference="Effect,VolcanicHarbingerPlasmaFlareDamage1,Amount" Value="3"/>
         <EffectArray Reference="Effect,VolcanicHarbingerPlasmaFlareDamage2,Amount" Value="5"/>
         <EffectArray Reference="Effect,VolcanicHarbingerPlasmaFlareDamage3,Amount" Value="8"/>
-        <EffectArray Reference="Weapon,AuroraConduitNetherShock,Level" Value="1"/>
-        <EffectArray Reference="Weapon,AuroraConduitAscendedNetherShock,Level" Value="1"/>
-        <EffectArray Reference="Weapon,BrimstoneDemolisherScorchingBlazeDummy,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AscendedAuroraConduitNetherShockAir,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AscendedAuroraConduitNetherShockGround,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AuroraConduitNetherShockAir,Level" Value="1"/>
+        <EffectArray Reference="Weapon,AuroraConduitNetherShockGround,Level" Value="1"/>
+        <EffectArray Reference="Weapon,BrimstoneDemolisherInfernalBreathDummy,Level" Value="1"/>
         <EffectArray Reference="Weapon,FlamespitterSeekerFlame,Level" Value="1"/>
         <EffectArray Reference="Weapon,FlamespitterAscendedSeekerFlame,Level" Value="1"/>
         <EffectArray Reference="Weapon,FleshrenderCinderSpike,Level" Value="1"/>
+        <EffectArray Reference="Weapon,HandofPowerPsionicImpulse,Level" Value="1"/>
         <EffectArray Reference="Weapon,HornedMagusMysticBolt,Level" Value="1"/>
         <EffectArray Reference="Weapon,PhlogistonGuardianFulmination,Level" Value="1"/>
         <EffectArray Reference="Weapon,SkyrazerInferiorBlast,Level" Value="1"/>
@@ -49,10 +52,13 @@
         <AffectedUnitArray value="BrimstoneDemolisher"/>
         <AffectedUnitArray value="Flamespitter"/>
         <AffectedUnitArray value="Fleshrender"/>
+        <AffectedUnitArray value="HandofPower"/>
         <AffectedUnitArray value="HornedMagus"/>
         <AffectedUnitArray value="PhlogistonGuardian"/>
         <AffectedUnitArray value="Skyrazer"/>
         <AffectedUnitArray value="VolcanicHarbinger"/>
+        <LeaderAlias value="DragonFireAttacks"/>
+        <WebPriority value="0"/>
     </CUpgrade>
     <CUpgrade default="1" id="DragonMeleeAttacks">
         <Race value="Dragon"/>
@@ -73,14 +79,13 @@
         <AffectedUnitArray value="UnseenBeast"/>
         <EffectArray Reference="Effect,BerserkerCrushingBlowDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,BerserkerAscendedCrushingBlowDamage,Amount" Value="3"/>
-        <EffectArray Reference="Effect,BrimstoneDemolisherBrutalThrashDamage,Amount" Value="2"/>
+        <EffectArray Reference="Effect,BrimstoneDemolisherBrutalThrashDamage,Amount" Value="3"/>
         <EffectArray Reference="Effect,FlamespitterClawsDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FlamespitterAscendedClawsDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FleshrenderShredDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,HornedMagusHeadbuttDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,DragonHunterMeleeDamage,Amount" Value="1"/>
-        <EffectArray Reference="Effect,HunterTongueLashDamage,Amount" Value="1"/>
-        <EffectArray Reference="Effect,HunterTongueLashDamage,AttributeBonus[Light]" Value="1"/>
+        <EffectArray Reference="Effect,HunterTongueLashDamage,Amount" Value="2"/>
         <EffectArray Reference="Effect,PlodderPincerDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,RazorbackSpikedCarapaceDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,RazorbackUrticatingQuillsDamage,Amount" Value="1"/>
@@ -105,13 +110,15 @@
         <EffectArray Reference="Weapon,SkyrazerSavageClaws2,Level" Value="1"/>
         <EffectArray Reference="Weapon,SkyrazerSavageClaws3,Level" Value="1"/>
         <EffectArray Reference="Weapon,SunkenGuardianImpale,Level" Value="1"/>
-        <EffectArray Reference="Weapon,UnseenBeastSpiritSmashDisplay,Level" Value="1"/>
+        <EffectArray Reference="Weapon,UnseenBeastSpiritSmash,Level" Value="1"/>
+        <LeaderAlias value="DragonMeleeAttacks"/>
+        <WebPriority value="0"/>
     </CUpgrade>
     <CUpgrade default="1" id="DragonScaleArmors">
         <Race value="Dragon"/>
         <EditorCategories value="Race:Dragon,UpgradeType:ArmorBonus"/>
-        <ScoreCount value="WeaponTechnologyCount"/>
-        <ScoreValue value="WeaponTechnologyValue"/>
+        <ScoreCount value="ArmorTechnologyCount"/>
+        <ScoreValue value="ArmorTechnologyCount"/>
         <ScoreResult value="BuildOrder"/>
         <AffectedUnitArray value="Flamespitter"/>
         <AffectedUnitArray value="Fleshrender"/>
@@ -153,12 +160,14 @@
         <EffectArray Reference="Unit,VolcanicHarbinger,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AscendedVolcanicHarbinger,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,AscendedVolcanicHarbinger,LifeArmorLevel" Value="1"/>
+        <WebPriority value="0"/>
+        <LeaderAlias value="DragonScaleArmors"/>
     </CUpgrade>
     <CUpgrade default="1" id="DragonPlateArmors">
         <Race value="Dragon"/>
         <EditorCategories value="Race:Dragon,UpgradeType:ArmorBonus"/>
-        <ScoreCount value="WeaponTechnologyCount"/>
-        <ScoreValue value="WeaponTechnologyValue"/>
+        <ScoreCount value="ArmorTechnologyCount"/>
+        <ScoreValue value="ArmorTechnologyCount"/>
         <ScoreResult value="BuildOrder"/>
         <AffectedUnitArray value="Arkwyrm"/>
         <AffectedUnitArray value="AugmentationPitFrontier"/>
@@ -167,7 +176,7 @@
         <AffectedUnitArray value="AugmentationPitTowering"/>
         <AffectedUnitArray value="AuroraConduit"/>
         <AffectedUnitArray value="BrimstoneDemolisher"/>
-        <AffectedUnitArray value="Coagulater"/>
+        <AffectedUnitArray value="Coagulator"/>
         <AffectedUnitArray value="DenizenoftheDeep"/>
         <AffectedUnitArray value="DenizenoftheDeepNoFootprint"/>
         <AffectedUnitArray value="FrontierDeepOne"/>
@@ -207,8 +216,8 @@
         <EffectArray Reference="Unit,BrimstoneDemolisher,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AscendedBrimstoneDemolisher,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,AscendedBrimstoneDemolisher,LifeArmorLevel" Value="1"/>
-        <EffectArray Reference="Unit,Coagulater,LifeArmor" Value="1"/>
-        <EffectArray Reference="Unit,Coagulater,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Coagulator,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,Coagulator,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,DenizenoftheDeep,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,DenizenoftheDeep,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,DenizenoftheDeepNoFootprint,LifeArmor" Value="1"/>
@@ -243,6 +252,8 @@
         <EffectArray Reference="Unit,Razorback,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,RazorbackNoFootprint,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,RazorbackNoFootprint,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,AscendedRazorback,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,AscendedRazorback,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,Skyrazer,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,Skyrazer,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AscendedSkyrazer,LifeArmor" Value="1"/>
@@ -253,33 +264,31 @@
         <EffectArray Reference="Unit,ToweringDeepOne,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,ToweringDeepOneNoFootprint,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,ToweringDeepOneNoFootprint,LifeArmorLevel" Value="1"/>
+        <WebPriority value="0"/>
+        <LeaderAlias value="DragonPlateArmors"/>
     </CUpgrade>
-    <CUpgrade id="AuroraConduitCelerity">
+    <CUpgrade id="AuroraConduitConduction">
+        <Icon value="Assets\Textures\btn-ability-swarm-kerrigan-chainreaction.dds"/>
         <Race value="Dragon"/>
-        <Icon value="Assets\Textures\btn-ability-zerg-consume.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShock,Period" Value="2.100000"/>
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitAscendedNetherShock,Period" Value="2.100000"/>
+        <ScoreAmount value="510"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
         <AffectedUnitArray value="AuroraConduit"/>
-        <ScoreAmount value="510"/>
-    </CUpgrade>
-    <CUpgrade id="BrimstoneDemolisher">
-        <Race value="Dragon"/>
-        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\btn-unit-zerg-brakk.dds"/>
-        <ScoreAmount value="340"/>
     </CUpgrade>
     <CUpgrade id="DragonCommander">
         <Race value="Dragon"/>
         <EditorCategories value="Race:Dragon"/>
+        <LeaderAlias value=""/>
     </CUpgrade>
     <CUpgrade id="DragonFireAttacksLevel1" parent="DragonFireAttacks">
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShock,Icon" Value="Assets\Textures\fireball_6.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitAscendedNetherShock,Icon" Value="Assets\Textures\fireball_6.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherScorchingBlazeDummy,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherInfernalBreathDummy,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterSeekerFlame,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterAscendedSeekerFlame,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FleshrenderCinderSpike,Icon" Value="Assets\Textures\fireball_6.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HandofPowerPsionicImpulse,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HornedMagusMysticBolt,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,PhlogistonGuardianFulmination,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerInferiorBlast,Icon" Value="Assets\Textures\fireball_6.dds"/>
@@ -301,15 +310,19 @@
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerPlasmaFlare,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerAscendedPlasmaFlare,Icon" Value="Assets\Textures\fireball_6.dds"/>
         <Icon value="Assets\Textures\fireball_6.dds"/>
-        <ScoreAmount value="680"/>
+        <ScoreAmount value="200"/>
+        <LeaderLevel value="1"/>
     </CUpgrade>
     <CUpgrade id="DragonFireAttacksLevel2" parent="DragonFireAttacks">
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShock,Icon" Value="Assets\Textures\fireball_3.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitAscendedNetherShock,Icon" Value="Assets\Textures\fireball_3.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherScorchingBlazeDummy,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherInfernalBreathDummy,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterSeekerFlame,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterAscendedSeekerFlame,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FleshrenderCinderSpike,Icon" Value="Assets\Textures\fireball_3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HandofPowerPsionicImpulse,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HornedMagusMysticBolt,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,PhlogistonGuardianFulmination,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerInferiorBlast,Icon" Value="Assets\Textures\fireball_3.dds"/>
@@ -331,15 +344,19 @@
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerPlasmaFlare,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerAscendedPlasmaFlare,Icon" Value="Assets\Textures\fireball_3.dds"/>
         <Icon value="Assets\Textures\fireball_3.dds"/>
-        <ScoreAmount value="1020"/>
+        <ScoreAmount value="350"/>
+        <LeaderLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="DragonFireAttacksLevel3" parent="DragonFireAttacks">
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShock,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitAscendedNetherShock,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherScorchingBlazeDummy,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AscendedAuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockAir,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,AuroraConduitNetherShockGround,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherInfernalBreathDummy,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterSeekerFlame,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FlamespitterAscendedSeekerFlame,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,FleshrenderCinderSpike,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,HandofPowerPsionicImpulse,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,HornedMagusMysticBolt,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,PhlogistonGuardianFulmination,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerInferiorBlast,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
@@ -361,7 +378,8 @@
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerPlasmaFlare,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,VolcanicHarbingerAscendedPlasmaFlare,Icon" Value="Assets\Textures\fireball_1hot.dds"/>
         <Icon value="Assets\Textures\fireball_1hot.dds"/>
-        <ScoreAmount value="1360"/>
+        <ScoreAmount value="500"/>
+        <LeaderLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="DragonLineage">
         <Race value="Dragon"/>
@@ -373,8 +391,8 @@
         <EffectArray Reference="Unit,AugmentationPitLesser,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,AugmentationPitTowering,LifeArmor" Value="1"/>
         <EffectArray Reference="Unit,AugmentationPitTowering,LifeArmorLevel" Value="1"/>
-        <EffectArray Reference="Unit,Coagulater,LifeArmor" Value="1"/>
-        <EffectArray Reference="Unit,Coagulater,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,Coagulator,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,Coagulator,LifeArmorLevel" Value="1"/>
         <EffectArray Reference="Unit,DenizenoftheDeep,LifeArmor" Value="2"/>
         <EffectArray Reference="Unit,DenizenoftheDeep,LifeArmorLevel" Value="2"/>
         <EffectArray Reference="Unit,DenizenoftheDeepNoFootprint,LifeArmor" Value="2"/>
@@ -427,9 +445,10 @@
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws2,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws3,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SunkenGuardianImpale,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmashDisplay,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmash,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level1.dds"/>
-        <ScoreAmount value="340"/>
+        <ScoreAmount value="200"/>
+        <LeaderLevel value="1"/>
     </CUpgrade>
     <CUpgrade id="DragonMeleeAttacksLevel2" parent="DragonMeleeAttacks">
         <EffectArray Operation="Set" Reference="Weapon,BerserkerCrushingBlow,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
@@ -447,9 +466,10 @@
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws2,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws3,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SunkenGuardianImpale,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmashDisplay,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmash,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level2.dds"/>
-        <ScoreAmount value="510"/>
+        <ScoreAmount value="300"/>
+        <LeaderLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="DragonMeleeAttacksLevel3" parent="DragonMeleeAttacks">
         <EffectArray Operation="Set" Reference="Weapon,BerserkerCrushingBlow,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
@@ -467,9 +487,10 @@
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws2,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws3,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
         <EffectArray Operation="Set" Reference="Weapon,SunkenGuardianImpale,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
-        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmashDisplay,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
+        <EffectArray Operation="Set" Reference="Weapon,UnseenBeastSpiritSmash,Icon" Value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-meleeattacks-level3.dds"/>
-        <ScoreAmount value="680"/>
+        <ScoreAmount value="400"/>
+        <LeaderLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="DragonPlateArmorLevel1" parent="DragonPlateArmors">
         <EffectArray Operation="Set" Reference="Actor,Arkwyrm,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
@@ -482,7 +503,7 @@
         <EffectArray Operation="Set" Reference="Actor,AscendedAuroraConduit,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,BrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedBrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
-        <EffectArray Operation="Set" Reference="Actor,Coagulater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Coagulator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,DenizenoftheDeep,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,FrontierDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,GenesisPitGreater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
@@ -496,12 +517,14 @@
         <EffectArray Operation="Set" Reference="Actor,LesserDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,PhlogistonGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Razorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AscendedRazorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Skyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedSkyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,SunkenGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,ToweringDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level1.dds"/>
-        <ScoreAmount value="510"/>
+        <ScoreAmount value="200"/>
+        <LeaderLevel value="1"/>
     </CUpgrade>
     <CUpgrade id="DragonPlateArmorLevel2" parent="DragonPlateArmors">
         <EffectArray Operation="Set" Reference="Actor,Arkwyrm,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
@@ -514,7 +537,7 @@
         <EffectArray Operation="Set" Reference="Actor,AscendedAuroraConduit,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,BrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedBrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
-        <EffectArray Operation="Set" Reference="Actor,Coagulater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Coagulator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,DenizenoftheDeep,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,FrontierDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,GenesisPitGreater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
@@ -528,12 +551,14 @@
         <EffectArray Operation="Set" Reference="Actor,LesserDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,PhlogistonGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Razorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AscendedRazorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Skyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedSkyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,SunkenGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,ToweringDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level2.dds"/>
-        <ScoreAmount value="680"/>
+        <ScoreAmount value="350"/>
+        <LeaderLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="DragonPlateArmorLevel3" parent="DragonPlateArmors">
         <EffectArray Operation="Set" Reference="Actor,Arkwyrm,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
@@ -546,7 +571,7 @@
         <EffectArray Operation="Set" Reference="Actor,AscendedAuroraConduit,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,BrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedBrimstoneDemolisher,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
-        <EffectArray Operation="Set" Reference="Actor,Coagulater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,Coagulator,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,DenizenoftheDeep,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,FrontierDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,GenesisPitGreater,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
@@ -560,12 +585,14 @@
         <EffectArray Operation="Set" Reference="Actor,LesserDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,PhlogistonGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Razorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,AscendedRazorback,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,Skyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedSkyrazer,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,SunkenGuardian,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,ToweringDeepOne,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-groundcarapace-level3.dds"/>
-        <ScoreAmount value="1020"/>
+        <ScoreAmount value="500"/>
+        <LeaderLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="DragonScaleArmorLevel1" parent="DragonScaleArmors">
         <EffectArray Operation="Set" Reference="Actor,Flamespitter,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
@@ -585,7 +612,8 @@
         <EffectArray Operation="Set" Reference="Actor,VolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedVolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level1.dds"/>
-        <ScoreAmount value="510"/>
+        <ScoreAmount value="200"/>
+        <LeaderLevel value="1"/>
     </CUpgrade>
     <CUpgrade id="DragonScaleArmorLevel2" parent="DragonScaleArmors">
         <EffectArray Operation="Set" Reference="Actor,Flamespitter,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
@@ -605,7 +633,8 @@
         <EffectArray Operation="Set" Reference="Actor,VolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedVolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level2.dds"/>
-        <ScoreAmount value="680"/>
+        <ScoreAmount value="350"/>
+        <LeaderLevel value="2"/>
     </CUpgrade>
     <CUpgrade id="DragonScaleArmorLevel3" parent="DragonScaleArmors">
         <EffectArray Operation="Set" Reference="Actor,Flamespitter,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
@@ -625,82 +654,67 @@
         <EffectArray Operation="Set" Reference="Actor,VolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
         <EffectArray Operation="Set" Reference="Actor,AscendedVolcanicHarbinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
         <Icon value="Assets\Textures\btn-upgrade-zerg-flyercarapace-level3.dds"/>
-        <ScoreAmount value="1020"/>
-    </CUpgrade>
-    <CUpgrade id="GrimGlider">
-        <Race value="Dragon"/>
-        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\btn-critter-sporeray.dds"/>
-        <ScoreAmount value="340"/>
-    </CUpgrade>
-    <CUpgrade id="HornedMagusArcaneEssence">
-        <EffectArray Reference="Unit,HornedMagus,EnergyStart" Value="25"/>
-        <EffectArray Reference="Unit,AscendedHornedMagus,EnergyStart" Value="25"/>
-        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <AffectedUnitArray value="HornedMagus"/>
-        <Icon value="Assets\Textures\btn-tips-biosample.dds"/>
-        <ScoreAmount value="340"/>
-        <Race value="Dragon"/>
+        <ScoreAmount value="500"/>
+        <LeaderLevel value="3"/>
     </CUpgrade>
     <CUpgrade id="FleshrenderProliferation">
-        <Race value="Dragon"/>
         <Icon value="Assets\Textures\btn-ability-kerrigan-broodlingnest.dds"/>
-        <EffectArray Operation="Set" Reference="Abil,ToweringDeepOneTrain,InfoArray[Train1].Time" Value="20.000000"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="170"/>
+        <EffectArray Operation="Subtract" Reference="Abil,ToweringDeepOneTrain,InfoArray[Train1].Time" Value="7.000000"/>
+        <EffectArray Operation="Subtract" Reference="Abil,FleshrenderFission,Cost[0].Resource[Custom]" Value="5"/>
+        <EffectArray Operation="Subtract" Reference="Abil,AscendedFleshrenderFission,Cost[0].Resource[Custom]" Value="5"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
         <AffectedUnitArray value="Fleshrender"/>
-        <ScoreAmount value="170"/>
     </CUpgrade>
-    <CUpgrade id="HandofPowerMightyFist">
+    <CUpgrade id="HandofPowerPortal">
+        <Icon value="Assets\Textures\btn-ability-protoss-blackhole-color.dds"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="340"/>
         <EffectArray Reference="Unit,HandofPower,EnergyStart" Value="25"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\ui_tipicon_campaign_hyb02-nullzone.dds"/>
         <AffectedUnitArray value="HandofPower"/>
-        <ScoreAmount value="340"/>
-        <Race value="Dragon"/>
     </CUpgrade>
-    <CUpgrade id="HandofPowerFrenzy">
+    <CUpgrade id="HornedMagusFrenzy">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-superroar.dds"/>
         <Race value="Dragon"/>
-        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\btn-ability-zerg-genemutation-attackspeed.dds"/>
-        <AffectedUnitArray value="HandofPower"/>
         <ScoreAmount value="510"/>
-    </CUpgrade>
-    <CUpgrade id="HornedMagusShroud">
-        <Race value="Dragon"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\btn-ability-protoss-energize.dds"/>
         <AffectedUnitArray value="HornedMagus"/>
-        <ScoreAmount value="340"/>
     </CUpgrade>
-    <CUpgrade id="HunterFeast">
-        <EffectArray Reference="Unit,DragonHunter,LifeMax" Value="30"/>
-        <EffectArray Reference="Unit,DragonHunter,LifeStart" Value="30"/>
-        <EffectArray Reference="Unit,AscendedDragonHunter,LifeMax" Value="30"/>
-        <EffectArray Reference="Unit,AscendedDragonHunter,LifeStart" Value="30"/>
+    <CUpgrade id="HunterWickedBarbs">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-frenzy.dds"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="200"/>
+        <EffectArray Reference="Effect,DragonHunterMeleeDamage,AttributeBonus[Light]" Value="6"/>
+        <EffectArray Reference="Effect,HunterTongueLashDamage,AttributeBonus[Light]" Value="13"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
         <AffectedUnitArray value="DragonHunter"/>
-        <Icon value="Assets\Textures\btn-upgrade-zerg-adrenaloverload.dds"/>
-        <ScoreAmount value="170"/>
-        <Race value="Dragon"/>
     </CUpgrade>
     <CUpgrade id="BerserkerMadness">
-        <Race value="Dragon"/>
         <Icon value="Assets\Textures\btn-ability-zerg-dehaka-intimidatingroar.dds"/>
+        <Race value="Dragon"/>
         <ScoreAmount value="170"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
         <AffectedUnitArray value="Berserker"/>
     </CUpgrade>
     <CUpgrade id="RazorbackAbundance">
         <Icon value="Assets\Textures\btn-ability-zerg-regenaura.dds"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="680"/>
         <EffectArray Reference="Unit,RazorbackNoFootprint,Food" Value="4"/>
         <EffectArray Reference="Unit,RazorbackNoFootprint,LifeRegenRate" Value="0.5"/>
         <EffectArray Reference="Unit,RazorbackNoFootprint,Speed" Value="0.5"/>
+        <EffectArray Reference="Unit,AscendedRazorback,LifeRegenRate" Value="0.500000"/>
+        <EffectArray Reference="Unit,AscendedRazorback,Speed" Value="0.500000"/>
+        <EffectArray Reference="Unit,AscendedRazorback,Food" Value="8"/>
         <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
         <AffectedUnitArray value="RazorbackNoFootprint"/>
-        <ScoreAmount value="680"/>
-        <Race value="Dragon"/>
     </CUpgrade>
     <CUpgrade id="SkyrazerEmberCore">
+        <Icon value="Assets\Textures\ui_tipicon_evolution_baneling-lava.dds"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="340"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerInferiorBlast,Options[Hidden]" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSuperiorBlast,Options[Hidden]" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,SkyrazerSavageClaws,Options[Hidden]" Value="1"/>
@@ -720,12 +734,11 @@
         <EffectArray Reference="Weapon,SkyrazerAscendedSuperiorBlast3,Range" Value="3"/>
         <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
         <AffectedUnitArray value="Skyrazer"/>
-        <Icon value="Assets\Textures\ui_tipicon_evolution_baneling-lava.dds"/>
-        <ScoreAmount value="340"/>
-        <Race value="Dragon"/>
     </CUpgrade>
     <CUpgrade id="FlamespitterFervidReconstitution">
+        <Icon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
         <Race value="Dragon"/>
+        <ScoreAmount value="510"/>
         <EffectArray Operation="Set" Reference="Effect,FlamespitterAttackApplyBehavior,Behavior" Value="FlamespitterFervor"/>
         <EffectArray Reference="Effect,FlamespitterClawsDamage,Amount" Value="1"/>
         <EffectArray Reference="Effect,FlamespitterAscendedClawsDamage,Amount" Value="1"/>
@@ -733,42 +746,34 @@
         <EffectArray Reference="Effect,FlamespitterAscendedSeekerFlameDamage,Amount" Value="1"/>
         <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
         <AffectedUnitArray value="Flamespitter"/>
-        <Icon value="Assets\Textures\btn-ability-kerrigan-wildmutation.dds"/>
-        <ScoreAmount value="510"/>
     </CUpgrade>
     <CUpgrade id="BrimstoneDemolisherInfernalBreath" parent="Research">
+        <Icon value="Assets\Textures\btn-ability-zerg-dehaka-godzillabreath.dds"/>
         <Race value="Dragon"/>
-        <EffectArray Reference="Weapon,BrimstoneDemolisherScorchingBlaze,Range" Value="3"/>
-        <EffectArray Reference="Weapon,BrimstoneDemolisherScorchingBlazeDummy,Range" Value="3"/>
-        <EffectArray Reference="Effect,BrimstoneDemolisherScorchingBlazeCreatePersistent1,PeriodCount" Value="6"/>
-        <EffectArray Reference="Effect,BrimstoneDemolisherScorchingBlazeCreatePersistent2,PeriodCount" Value="6"/>
-        <EffectArray Reference="Unit,BrimstoneDemolisher,EnergyStart" Value="25"/>
+        <ScoreAmount value="680"/>
+        <EffectArray Operation="Set" Reference="Weapon,BrimstoneDemolisherInfernalBreathDummy,Options[Disabled]" Value="0"/>
         <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
         <AffectedUnitArray value="BrimstoneDemolisher"/>
-        <Icon value="Assets\Textures\btn-tips-walloffire.dds"/>
-        <ScoreAmount value="680"/>
     </CUpgrade>
-    <CUpgrade id="UnseenBeast">
-        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
-        <Icon value="Assets\Textures\wireframe-critter-matriarchsnowbeast.dds"/>
-        <ScoreAmount value="680"/>
+    <CUpgrade id="UnseenBeastProwl">
+        <Icon value="Assets\Textures\wireframe-critter-snowbeast.dds"/>
         <Race value="Dragon"/>
+        <ScoreAmount value="680"/>
+        <EditorCategories value="UpgradeType:Talents,Race:Dragon"/>
     </CUpgrade>
     <CUpgrade id="VolcanicHarbingerPlasmaCatalyst">
-        <EffectArray Operation="Subtract" Reference="Abil,VolcanicHarbingerOverload,InfoArray[Ammo1].Time" Value="2.000000"/>
+        <Icon value="Assets\Textures\btn-ability-spearofadun-shieldovercharge.dds"/>
+        <Race value="Dragon"/>
+        <ScoreAmount value="680"/>
+        <EffectArray Operation="Set" Reference="Abil,VolcanicHarbingerOverload,InfoArray[Ammo1].Time" Value="4.200000"/>
         <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
         <AffectedUnitArray value="VolcanicHarbinger"/>
-        <Icon value="Assets\Textures\btn-ability-kerrigan-chainreaction.dds"/>
-        <ScoreAmount value="680"/>
-        <Race value="Dragon"/>
     </CUpgrade>
-    <CUpgrade id="GrimGliderWraithNight">
-        <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
-        <Icon value="Assets\Textures\btn-upgrade-zerg-enduringcorruption.dds"/>
-        <AffectedUnitArray value="GrimGlider"/>
-        <ScoreAmount value="510"/>
+    <CUpgrade id="GrimGliderMortalitysEclipse">
+        <Icon value="Assets\Textures\btn-ability-protoss-amoncloud.dds"/>
         <Race value="Dragon"/>
-        <EffectArray Reference="Unit,GrimGlider,Speed" Value="1.000000"/>
-        <EffectArray Reference="Unit,AscendedGrimGlider,Speed" Value="1.000000"/>
+        <ScoreAmount value="510"/>
+        <EditorCategories value="Race:Dragon,UpgradeType:Talents"/>
+        <AffectedUnitArray value="GrimGlider"/>
     </CUpgrade>
 </Catalog>

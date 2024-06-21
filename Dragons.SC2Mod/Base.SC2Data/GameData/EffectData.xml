@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectApplyBehavior id="ArkwyrmTerritorialDiveApplyBehavior">
+        <EditorCategories value="Race:Dragon"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ArkwyrmTerritorialDive"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ArkwyrmTerritorialDiveApplyBehaviorFinish">
+        <EditorCategories value="Race:Dragon"/>
+        <Behavior value="ArkwyrmTerritorialDiveFinish"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="ArkwyrmTerritorialDiveApplyForce">
+        <EditorCategories value="Race:Dragon"/>
+        <Amount value="0.0625"/>
+        <TimeScaleSource Value="Global"/>
+        <MassFraction value="0"/>
+    </CEffectApplyForce>
+    <CEffectEnumArea id="ArkwyrmTerritorialDiveSearchArea">
+        <EditorCategories value="Race:Dragon"/>
+        <ExcludeArray Value="Source"/>
+        <SearchFilters value="Air;Ground,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="0.5" Effect="ArkwyrmTerritorialDiveApplyForce"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ArkwyrmTerritorialDiveSet">
+        <EditorCategories value="Race:Dragon"/>
+        <EffectArray value="ArkwyrmTerritorialDiveApplyBehavior"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GrimGliderEmaciateApplyBehavior">
+        <EditorCategories value="Race:Dragon"/>
+        <Behavior value="GrimGliderEmaciate"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="GrimGliderEmaciateModifyCaster">
+        <ValidatorArray value="hasEnergy"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="1.5625"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="GrimGliderEmaciateModifyTarget">
+        <ValidatorArray value="hasEnergy"/>
+        <EditorCategories value="Race:Dragon"/>
+        <VitalArray index="Energy">
+            <Change value="-3.125"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="GrimGliderEmaciateSet">
+        <EditorCategories value="Race:Dragon"/>
+        <EffectArray value="GrimGliderEmaciateApplyBehavior"/>
+        <EffectArray value="GrimGliderEmaciateDamageShields"/>
+        <EffectArray value="GrimGliderEmaciateModifyCaster"/>
+        <EffectArray value="GrimGliderEmaciateModifyTarget"/>
+        <EffectArray value="GrimGliderEmaciateDamageLifeBiological"/>
+        <EffectArray value="GrimGliderEmaciateDamageLifeMechanical"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="ArkwyrmTransportCreatePersistent">
         <WhichLocation Value="TargetUnit"/>
         <InitialDelay value="0.0625"/>
@@ -93,21 +147,26 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectDamage>
     <CEffectEnumArea id="AuroraConduitNetherShockSearchArea1">
+        <EditorCategories value="Race:Dragon"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Visible;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts RequestCount="1" RequestPercentage="1">
+            <SortArray value="TSNetherShockCount"/>
+            <SortArray value="TSNetherShockDuration"/>
             <SortArray value="TSDistanceToTarget"/>
         </TargetSorts>
         <AreaArray Radius="3" Effect="AuroraConduitNetherShockSet2"/>
         <MaxCount value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
-        <EditorCategories value="Race:Dragon"/>
+        <ValidatorArray value="AuroraConduitConduction"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AuroraConduitNetherShockSearchArea2" parent="AuroraConduitNetherShockSearchArea1">
-        <AreaArray index="0" Radius="2" Effect="AuroraConduitNetherShockSet3"/>
+        <AreaArray index="0" Radius="3" Effect="AuroraConduitNetherShockSet3"/>
+        <Name value="Effect/Name/AuroraConduitNetherShockSearchArea2"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="AuroraConduitNetherShockSearchArea3" parent="AuroraConduitNetherShockSearchArea1">
-        <AreaArray index="0" Radius="1" Effect="AuroraConduitNetherShockSet4"/>
+        <Name value="Effect/Name/AuroraConduitNetherShockSearchArea3"/>
+        <AreaArray index="0" Radius="3" Effect="AuroraConduitNetherShockSet4"/>
     </CEffectEnumArea>
     <CEffectSet id="AuroraConduitNetherShockSet">
         <ValidatorArray value="TargetNotChangeling"/>
@@ -119,15 +178,20 @@
     </CEffectSet>
     <CEffectSet id="AuroraConduitNetherShockSet2" parent="AuroraConduitNetherShockSet">
         <EffectArray value="AuroraConduitNetherShockSearchArea2"/>
+        <Name value="Effect/Name/AuroraConduitNetherShockSet2"/>
     </CEffectSet>
     <CEffectSet id="AuroraConduitNetherShockSet1" parent="AuroraConduitNetherShockSet">
         <EffectArray value="AuroraConduitNetherShockSearchArea1"/>
         <EffectArray value="AuroraConduitNetherShockLaunchMissile1"/>
+        <Name value="Effect/Name/AuroraConduitNetherShockSet1"/>
     </CEffectSet>
     <CEffectSet id="AuroraConduitNetherShockSet3" parent="AuroraConduitNetherShockSet">
         <EffectArray value="AuroraConduitNetherShockSearchArea3"/>
+        <Name value="Effect/Name/AuroraConduitNetherShockSet3"/>
     </CEffectSet>
-    <CEffectSet id="AuroraConduitNetherShockSet4" parent="AuroraConduitNetherShockSet"/>
+    <CEffectSet id="AuroraConduitNetherShockSet4" parent="AuroraConduitNetherShockSet">
+        <Name value="Effect/Name/AuroraConduitNetherShockSet4"/>
+    </CEffectSet>
     <CEffectIssueOrder id="BerserkerMadnessIssueOrder2">
         <EditorCategories value="Race:Dragon"/>
         <Abil value="Unsiege"/>
@@ -137,9 +201,9 @@
         <EffectArray value="BerserkerMadnessIssueOrder2"/>
         <EffectArray value="BerserkerMadnessSearchArea2"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="BrimstoneDemolisherScorchingBlazeApplyBehavior1">
-        <Behavior value="BrimstoneDemolisherScorchingBlaze3"/>
+    <CEffectApplyBehavior id="BrimstoneDemolisherInfernalBreathApplyBehavior1">
         <EditorCategories value="Race:Dragon"/>
+        <Behavior value="BrimstoneDemolisherInfernalBreath3"/>
     </CEffectApplyBehavior>
     <CEffectCreatePersistent id="BrimstoneDemolisherBrutalThrashCreatePersistent1">
         <WhichLocation Value="SourceUnit"/>
@@ -213,32 +277,33 @@
         <AreaArray Radius="0.25" Effect="BrimstoneDemolisherBrutalThrashDamage"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="BrimstoneDemolisherScorchingBlazeApplyBehavior2">
-        <WhichUnit Value="Caster"/>
-        <Behavior value="BrimstoneDemolisherScorchingBlaze2"/>
+    <CEffectApplyBehavior id="BrimstoneDemolisherInfernalBreathApplyBehavior2">
         <EditorCategories value="Race:Dragon"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="BrimstoneDemolisherInfernalBreath2"/>
     </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="BrimstoneDemolisherScorchingBlazeCreatePersistent">
+    <CEffectCreatePersistent id="BrimstoneDemolisherInfernalBreathCreatePersistent1">
+        <ValidatorArray value="BrimstoneDemolisherInfernalBreath1"/>
+        <EditorCategories value="Race:Dragon"/>
         <WhichLocation Value="TargetUnit"/>
         <OffsetVectorEndLocation Value="TargetUnit"/>
         <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicEffectArray value="BrimstoneDemolisherScorchingBlazeSet1"/>
+        <PeriodicValidator value="BrimstoneDemolisherInfernalBreathPeriodic"/>
+        <PeriodicEffectArray value="BrimstoneDemolisherInfernalBreathCreatePersistent2"/>
         <PeriodicPeriodArray value="0.25"/>
-        <ValidatorArray value="BrimstoneDemolisherScorchingBlaze"/>
-        <PeriodicValidator value="BrimstoneDemolisherScorchingBlazePeriodic"/>
-        <EditorCategories value="Race:Dragon"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="BrimstoneDemolisherScorchingBlazeCreatePersistent1">
-        <ValidatorArray value="NoFrenzy"/>
+    <CEffectCreatePersistent id="BrimstoneDemolisherInfernalBreathCreatePersistent2">
+        <EditorCategories value="Race:Dragon"/>
         <Marker>
             <MatchFlags index="Id" value="1"/>
         </Marker>
         <WhichLocation Value="CasterPoint"/>
         <OffsetVectorStartLocation Value="CasterPoint"/>
-        <OffsetVectorEndLocation Effect="BrimstoneDemolisherScorchingBlazeCreatePersistent"/>
-        <PeriodCount value="12"/>
-        <PeriodicEffectArray value="BrimstoneDemolisherScorchingBlazeDamage1"/>
+        <OffsetVectorEndLocation Effect="BrimstoneDemolisherInfernalBreathCreatePersistent1"/>
+        <InitialEffect value="BrimstoneDemolisherInfernalBreathModifyUnit"/>
+        <PeriodCount value="18"/>
+        <PeriodicEffectArray value="BrimstoneDemolisherInfernalBreathDamage"/>
         <PeriodicOffsetArray value="0,-1,0"/>
         <PeriodicOffsetArray value="0,-1.5,0"/>
         <PeriodicOffsetArray value="0,-2,0"/>
@@ -260,63 +325,47 @@
         <PeriodicPeriodArray value="0.0625"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0"/>
-        <InitialEffect value="BrimstoneDemolisherScorchingBlazeModifyUnit1"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="BrimstoneDemolisherInfernalBreathDamage" parent="DU_WEAP_SPLASH">
         <EditorCategories value="Race:Dragon"/>
-    </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="BrimstoneDemolisherScorchingBlazeCreatePersistent2" parent="BrimstoneDemolisherScorchingBlazeCreatePersistent1">
-        <ValidatorArray index="0" value="HasFrenzy"/>
-        <PeriodicEffectArray index="0" value="BrimstoneDemolisherScorchingBlazeDamage2"/>
-        <InitialEffect value="BrimstoneDemolisherScorchingBlazeModifyUnit2"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="BrimstoneDemolisherScorchingBlazeDamage1" parent="DU_WEAP_SPLASH">
         <KindSplash value="Splash"/>
         <Amount value="5"/>
         <Death value="Fire"/>
         <AreaArray Radius="0.5" Fraction="1" Validator="noMarkers"/>
-        <IncludeArray Effect="BrimstoneDemolisherScorchingBlazeCreatePersistent" Value="Target"/>
+        <IncludeArray Effect="BrimstoneDemolisherInfernalBreathCreatePersistent1" Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <EditorCategories value="Race:Dragon"/>
+        <AttributeFactor index="Structure" value="1"/>
     </CEffectDamage>
-    <CEffectCreatePersistent id="BrimstoneDemolisherScorchingBlazeSet2">
+    <CEffectCreatePersistent id="BrimstoneDemolisherInfernalBreathSet2">
+        <EditorCategories value="Race:Dragon"/>
         <WhichLocation Value="TargetUnit"/>
-        <InitialEffect value="BrimstoneDemolisherScorchingBlazeIssueOrder"/>
-        <ExpireEffect value="BrimstoneDemolisherScorchingBlazeApplyBehavior1"/>
-        <EditorCategories value="Race:Dragon"/>
+        <InitialEffect value="BrimstoneDemolisherInfernalBreathIssueOrder"/>
+        <ExpireEffect value="BrimstoneDemolisherInfernalBreathApplyBehavior1"/>
     </CEffectCreatePersistent>
-    <CEffectRemoveBehavior id="BrimstoneDemolisherScorchingBlazeRemoveBehavior">
+    <CEffectRemoveBehavior id="BrimstoneDemolisherInfernalBreathRemoveBehavior">
+        <EditorCategories value="Race:Dragon"/>
         <WhichUnit Value="Caster"/>
-        <BehaviorLink value="BrimstoneDemolisherScorchingBlaze2"/>
-        <EditorCategories value="Race:Dragon"/>
+        <BehaviorLink value="BrimstoneDemolisherInfernalBreath2"/>
     </CEffectRemoveBehavior>
-    <CEffectSet id="BrimstoneDemolisherScorchingBlazeSet1">
-        <EffectArray value="BrimstoneDemolisherScorchingBlazeCreatePersistent1"/>
-        <EffectArray value="BrimstoneDemolisherScorchingBlazeCreatePersistent2"/>
+    <CEffectSet id="BrimstoneDemolisherInfernalBreathSet1">
         <EditorCategories value="Race:Dragon"/>
+        <EffectArray value="BrimstoneDemolisherInfernalBreathCreatePersistent2"/>
+        <EffectArray value="BrimstoneDemolisherInfernalBreathCreatePersistent2"/>
     </CEffectSet>
-    <CEffectDamage id="BrimstoneDemolisherScorchingBlazeDamage2" parent="BrimstoneDemolisherScorchingBlazeDamage1">
-        <Amount value="7.5"/>
-        <Marker Link="Effect/BrimstoneDemolisherScorchingBlazeDamage"/>
-        <ArmorReduction value="1.5"/>
-    </CEffectDamage>
-    <CEffectModifyUnit id="BrimstoneDemolisherScorchingBlazeModifyUnit1">
+    <CEffectModifyUnit id="BrimstoneDemolisherInfernalBreathModifyUnit">
+        <EditorCategories value="Race:Dragon"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Energy">
             <Change value="-4"/>
         </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectIssueOrder id="BrimstoneDemolisherInfernalBreathIssueOrder">
         <EditorCategories value="Race:Dragon"/>
-    </CEffectModifyUnit>
-    <CEffectModifyUnit id="BrimstoneDemolisherScorchingBlazeModifyUnit2" parent="BrimstoneDemolisherScorchingBlazeModifyUnit1">
-        <VitalArray index="Energy">
-            <Change value="-6"/>
-        </VitalArray>
-    </CEffectModifyUnit>
-    <CEffectIssueOrder id="BrimstoneDemolisherScorchingBlazeIssueOrder">
         <WhichUnit Value="Caster"/>
         <Abil value="attack"/>
         <CmdFlags index="Preempt" value="1"/>
         <Player Value="Caster"/>
         <Target Value="TargetUnit"/>
-        <EditorCategories value="Race:Dragon"/>
     </CEffectIssueOrder>
     <CEffectCreateUnit id="DeepOne4x4CreateUnit">
         <WhichLocation Value="CasterPoint"/>
@@ -370,114 +419,10 @@
         <EffectArray value="DeepOne5x5RemoveBehavior"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
-    <CEffectCreatePersistent id="DenizenoftheDeepCrystalize">
-        <ValidatorArray value="DenizenoftheDeepCrystalize"/>
-        <WhichLocation Value="CasterUnit"/>
-        <Flags index="Channeled" value="1"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <InitialEffect value="DenizenoftheDeepCrystalizeIssueOrder"/>
-        <PeriodicValidator value="DenizenoftheDeepCrystalize"/>
-        <PeriodicEffectArray value="DenizenoftheDeepCrystalizeSet"/>
-        <PeriodicPeriodArray value="0.0625"/>
+    <CEffectModifyPlayer id="DenizenoftheDeepRageModifyPlayer">
         <EditorCategories value="Race:Dragon"/>
-    </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="DenizenoftheDeepCrystalize1">
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectApplyBehavior>
-    <CEffectIssueOrder id="DenizenoftheDeepCrystalizeIssueOrder">
-        <Abil value="DenizenoftheDeepLiquify"/>
-        <CmdFlags index="Preempt" value="1"/>
-        <CmdFlags index="SetAutoCast" value="1"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectIssueOrder>
-    <CEffectApplyBehavior id="DenizenoftheDeepLiquify1">
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="DenizenoftheDeepLiquify">
-        <ValidatorArray value="DenizenoftheDeepLiquify"/>
-        <WhichLocation Value="CasterUnit"/>
-        <Flags index="Channeled" value="1"/>
-        <Flags index="PersistUntilDestroyed" value="1"/>
-        <InitialEffect value="DenizenoftheDeepLiquifyIssueOrder"/>
-        <PeriodicValidator value="DenizenoftheDeepLiquify"/>
-        <PeriodicEffectArray value="DenizenoftheDeepLiquifySet"/>
-        <PeriodicPeriodArray value="0.0625"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectCreatePersistent>
-    <CEffectApplyBehavior id="DenizenoftheDeepCrystalize2">
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="DenizenoftheDeepLiquify2">
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectApplyBehavior>
-    <CEffectModifyPlayer id="DenizenoftheDeepCrystalizeModifyPlayer1">
-        <ValidatorArray value="DenizenoftheDeepCrystalize1"/>
-        <Resources index="Minerals" value="1"/>
-        <EditorCategories value="Race:Dragon"/>
+        <Resources index="Custom" value="1"/>
     </CEffectModifyPlayer>
-    <CEffectIssueOrder id="DenizenoftheDeepLiquifyIssueOrder">
-        <Abil value="DenizenoftheDeepCrystalize"/>
-        <CmdFlags index="Preempt" value="1"/>
-        <CmdFlags index="SetAutoCast" value="1"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectIssueOrder>
-    <CEffectModifyPlayer id="DenizenoftheDeepLiquifyModifyPlayer1">
-        <ValidatorArray value="DenizenoftheDeepLiquify1"/>
-        <Resources index="Minerals" value="-1"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectModifyPlayer>
-    <CEffectModifyPlayer id="DenizenoftheDeepCrystalizeModifyPlayer2">
-        <ValidatorArray value="DenizenoftheDeepCrystalize2"/>
-        <Resources index="Vespene" value="-1"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectModifyPlayer>
-    <CEffectModifyPlayer id="DenizenoftheDeepLiquifyModifyPlayer2">
-        <ValidatorArray value="DenizenoftheDeepLiquify2"/>
-        <Resources index="Vespene" value="1"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectModifyPlayer>
-    <CEffectRemoveBehavior id="DenizenoftheDeepCrystalizeRemoveBehavior1">
-        <ValidatorArray index="0" value="DenizenoftheDeepCrystalize1"/>
-        <BehaviorLink value="DenizenoftheDeepCrystalize1"/>
-        <Count value="5"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectRemoveBehavior>
-    <CEffectRemoveBehavior id="DenizenoftheDeepLiquifyRemoveBehavior1">
-        <ValidatorArray index="0" value="DenizenoftheDeepLiquify1"/>
-        <BehaviorLink value="DenizenoftheDeepLiquify1"/>
-        <Count value="5"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectRemoveBehavior>
-    <CEffectRemoveBehavior id="DenizenoftheDeepCrystalizeRemoveBehavior2">
-        <ValidatorArray index="0" value="DenizenoftheDeepCrystalize2"/>
-        <BehaviorLink value="DenizenoftheDeepCrystalize2"/>
-        <Count value="12"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectRemoveBehavior>
-    <CEffectRemoveBehavior id="DenizenoftheDeepLiquifyRemoveBehavior2">
-        <ValidatorArray index="0" value="DenizenoftheDeepLiquify2"/>
-        <BehaviorLink value="DenizenoftheDeepLiquify2"/>
-        <Count value="12"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectRemoveBehavior>
-    <CEffectSet id="DenizenoftheDeepCrystalizeSet">
-        <EffectArray value="DenizenoftheDeepCrystalize1"/>
-        <EffectArray value="DenizenoftheDeepCrystalize2"/>
-        <EffectArray value="DenizenoftheDeepCrystalizeModifyPlayer1"/>
-        <EffectArray value="DenizenoftheDeepCrystalizeModifyPlayer2"/>
-        <EffectArray value="DenizenoftheDeepCrystalizeRemoveBehavior1"/>
-        <EffectArray value="DenizenoftheDeepCrystalizeRemoveBehavior2"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectSet>
-    <CEffectSet id="DenizenoftheDeepLiquifySet">
-        <EffectArray value="DenizenoftheDeepLiquify1"/>
-        <EffectArray value="DenizenoftheDeepLiquify2"/>
-        <EffectArray value="DenizenoftheDeepLiquifyModifyPlayer1"/>
-        <EffectArray value="DenizenoftheDeepLiquifyModifyPlayer2"/>
-        <EffectArray value="DenizenoftheDeepLiquifyRemoveBehavior1"/>
-        <EffectArray value="DenizenoftheDeepLiquifyRemoveBehavior2"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectSet>
     <CEffectApplyBehavior id="DragonBuildApplyBehavior">
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
@@ -678,9 +623,63 @@
         <Target Value="CasterUnit"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectIssueOrder>
+    <CEffectCreatePersistent id="GrimGliderEmaciateCreatePersistent">
+        <EditorCategories value="Race:Dragon"/>
+        <WhichLocation Value="TargetUnit"/>
+        <TimeScaleSource Value="Caster"/>
+        <Flags index="Channeled" value="1"/>
+        <Flags index="PersistUntilDestroyed" value="1"/>
+        <PeriodicValidator value="GrimGliderEmaciate"/>
+        <PeriodicEffectArray value="GrimGliderEmaciateSet"/>
+        <PeriodicPeriodArray value="0.0625"/>
+        <InitialEffect value="GrimGliderEmaciateSet"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="GrimGliderEmaciateDamageLifeBiological">
+        <EditorCategories value="Race:Dragon"/>
+        <AttributeBonus index="Biological" value="0.625"/>
+        <Visibility value="Hidden"/>
+        <Flags index="NoDealtMinimum" value="1"/>
+        <Flags index="NoVitalAbsorbShields" value="1"/>
+        <Flags index="NoVitalAbsorbEnergy" value="1"/>
+        <LeechFraction index="Life" value="0.5"/>
+        <Death value="Silentkill"/>
+        <ImpactUnitValidator value="IsBiological"/>
+    </CEffectDamage>
+    <CEffectDamage id="GrimGliderEmaciateDamageLifeMechanical" parent="GrimGliderEmaciateDamageLifeBiological">
+        <Name value="Effect/Name/GrimGliderEmaciateDamageLifeMechanical"/>
+        <ImpactUnitValidator value="NotBiological"/>
+        <AttributeBonus index="Biological" value="0"/>
+        <AttributeBonus index="Mechanical" value="0.625"/>
+        <LeechFraction index="Life" value="0"/>
+        <LeechFraction index="Energy" value="0.5"/>
+    </CEffectDamage>
+    <CEffectDamage id="GrimGliderEmaciateDamageShields" parent="GrimGliderEmaciateDamageLifeBiological">
+        <Name value="Effect/Name/GrimGliderEmaciateDamageShields"/>
+        <Flags index="NoVitalAbsorbLife" value="1"/>
+        <Flags index="NoVitalAbsorbShields" value="0"/>
+        <LeechFraction index="Life" value="0"/>
+        <LeechFraction index="Energy" value="0.5"/>
+        <AttributeBonus index="Biological" value="0"/>
+        <Amount value="1.25"/>
+        <Marker Link="Effect/GrimGliderEmaciateDamageLife"/>
+        <ImpactUnitValidator value=""/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="GrimGliderNullifyApplyBehavior">
+        <EditorCategories value="Race:Dragon"/>
+        <Behavior value="GrimGliderNullifyTarget"/>
+    </CEffectApplyBehavior>
+    <CEffectIssueOrder id="GrimGliderNullifyIssueOrder">
+        <EditorCategories value="Race:Dragon"/>
+        <Abil value="GrimGliderNullify"/>
+        <CmdFlags index="Preempt" value="1"/>
+    </CEffectIssueOrder>
+    <CEffectModifyUnit id="GrimGliderNullifyModifiyUnit">
+        <EditorCategories value="Race:Dragon"/>
+        <ModifyFlags index="NullifyMissile" value="1"/>
+    </CEffectModifyUnit>
     <CEffectSet id="GrimGliderShadeSet">
         <EffectArray value="GrimGliderShadeModifyUnit"/>
-        <EffectArray value="HandofPowerFrenzyCreatePersistent"/>
+        <EffectArray value="HornedMagusFrenzyCreatePersistent"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectModifyUnit id="GrimGliderShadeModifyUnit">
@@ -693,12 +692,40 @@
         </VitalArray>
         <EditorCategories value="Race:Dragon"/>
     </CEffectModifyUnit>
-    <CEffectCreatePersistent id="HandofPowerFrenzyCreatePersistent">
-        <ValidatorArray value="NotAttacking2"/>
+    <CEffectDamage id="HandofPowerPsionicImpulseDamage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Dragon"/>
+        <AttributeBonus index="Psionic" value="3"/>
+        <Amount value="2"/>
+        <Death value="Blast"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="HandofPowerPortalApplySickness">
+        <EditorCategories value="Race:Dragon"/>
+        <Behavior value="HandofPowerPortalSickness"/>
+        <ValidatorArray index="0" value="TargetIsEnemy"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="HandofPowerPortalApplyStrength">
+        <EditorCategories value="Race:Dragon"/>
+        <Behavior value="HandofPowerPortalStrength"/>
+        <ValidatorArray index="0" value="TargetIsAllyorPlayer"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyForce id="HandofPowerPsionicImpulseForce">
+        <ValidatorArray value="NotMassive"/>
+        <ValidatorArray value="NotFrenzied"/>
+        <EditorCategories value="Race:Dragon"/>
+        <Amount value="1"/>
+    </CEffectApplyForce>
+    <CEffectSet id="HandofPowerPsionicImpulseSet">
+        <EditorCategories value="Race:Dragon"/>
+        <EffectArray value="HandofPowerPsionicImpulseForce"/>
+        <EffectArray value="HandofPowerPsionicImpulseDamage"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="HornedMagusFrenzyCreatePersistent">
+        <ValidatorArray value="HornedMagusFrenzy2"/>
+        <EditorCategories value="Race:Dragon"/>
         <WhichLocation Value="SourceUnit"/>
         <Flags index="RandomOffset" value="1"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="HandofPowerFrenzyIssueOrder"/>
+        <PeriodicEffectArray value="HornedMagusFrenzySwitch"/>
         <PeriodicOffsetArray value="-1.41,-1.41,0"/>
         <PeriodicOffsetArray value="-2,0,0"/>
         <PeriodicOffsetArray value="-1.41,1.41,0"/>
@@ -719,14 +746,14 @@
         <PeriodicOffsetArray value="3.46,-2,0"/>
         <PeriodicOffsetArray value="3.46,2,0"/>
         <PeriodicOffsetArray value="4,0,0"/>
-        <EditorCategories value="Race:Dragon"/>
     </CEffectCreatePersistent>
-    <CEffectIssueOrder id="HandofPowerFrenzyIssueOrder">
-        <Abil value="attack"/>
-        <Target Value="TargetPoint"/>
-        <WhichUnit Value="Source"/>
-        <Player Value="Source"/>
+    <CEffectIssueOrder id="HornedMagusFrenzyIssueOrder22">
+        <ValidatorArray value="HornedMagusFrenzy2"/>
         <EditorCategories value="Race:Dragon"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="attack"/>
+        <Player Value="Source"/>
+        <Target Value="TargetPoint"/>
     </CEffectIssueOrder>
     <CEffectApplyBehavior id="HornedMagusFireShieldApplyBehavior2">
         <ValidatorArray index="0" value="NoFireShield"/>
@@ -743,6 +770,26 @@
         <EffectArray value="HornedMagusFireShieldSearchArea2"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
+    <CEffectIssueOrder id="HornedMagusFrenzyIssueOrder1">
+        <ValidatorArray value="HornedMagusFrenzy2"/>
+        <EditorCategories value="Race:Dragon"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="stop"/>
+        <Player Value="Source"/>
+    </CEffectIssueOrder>
+    <CEffectIssueOrder id="HornedMagusFrenzyIssueOrder3">
+        <ValidatorArray value="HornedMagusFrenzy3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <WhichUnit Value="Source"/>
+        <Abil value="move"/>
+        <Player Value="Source"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
+    <CEffectSwitch id="HornedMagusFrenzySwitch">
+        <EditorCategories value="Race:Dragon"/>
+        <CaseArray Validator="HornedMagusFrenzy1" Effect="HornedMagusFrenzyIssueOrder22"/>
+        <CaseDefault value="HornedMagusFrenzyIssueOrder3"/>
+    </CEffectSwitch>
     <CEffectApplyBehavior id="HornedMagusInvigorateApplyBehavior">
         <ValidatorArray index="0" value="CasterHasEnergy"/>
         <Behavior value="HornedMagusInvigorateCaster"/>
@@ -754,7 +801,7 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectLaunchMissile>
     <CEffectDamage id="AuroraConduitNetherShockDamage" parent="DU_WEAP_MISSILE">
-        <Amount value="14"/>
+        <Amount value="25"/>
         <Death value="Fire"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectDamage>
@@ -837,7 +884,7 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectSwitch>
     <CEffectCreatePersistent id="RazorbackUrticatingQuillsCreatePersistant">
-        <WhichLocation Value="TargetUnit"/>
+        <WhichLocation Value="TargetOuterUnit"/>
         <TimeScaleSource Value="Caster"/>
         <InitialDelay value="0.125"/>
         <InitialEffect value="RazorbackUrticatingQuillsLaunchMissile"/>
@@ -855,15 +902,15 @@
         <EditorCategories value="Race:Dragon"/>
         <AttributeBonus index="Light" value="2"/>
     </CEffectDamage>
-    <CEffectApplyBehavior id="HornedMagusShroudApplyBehavior">
-        <Behavior value="HornedMagusShroud"/>
+    <CEffectApplyBehavior id="HandofPowerShroudApplyBehavior">
         <EditorCategories value="Race:Dragon"/>
+        <Behavior value="HandofPowerShroud"/>
     </CEffectApplyBehavior>
-    <CEffectEnumArea id="HornedMagusShroudSearchArea">
-        <SearchFilters value="-;Enemy,Missile,Stasis,Dead,Hidden"/>
-        <AreaArray Radius="5" Effect="HornedMagusShroudApplyBehavior"/>
-        <ImpactLocation Value="TargetPoint"/>
+    <CEffectEnumArea id="HandofPowerShroudSearchArea">
         <EditorCategories value="Race:Dragon"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Enemy,Missile,Stasis,Dead,Hidden"/>
+        <AreaArray Radius="5" Effect="HandofPowerShroudApplyBehavior"/>
     </CEffectEnumArea>
     <CEffectLaunchMissile id="PhlogistonGuardianFulminationLaunchMissile1">
         <ImpactEffect value="PhlogistonGuardianFulminationSwitch"/>
@@ -893,48 +940,35 @@
         <ExcludeArray Value="Target"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="UnseenBeastTeleportAssaultApplyBehavior">
-        <WhichUnit Value="Caster"/>
-        <Behavior value="UnseenBeastTeleportAssault"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="UnseenBeastTeleportAssaultCreatePersistent">
-        <WhichLocation Value="TargetUnit"/>
-        <ValidatorArray value="UnseenBeastTeleportAssault"/>
+    <CEffectIssueOrder id="UnseenBeastTeleportAssaultIssueOrder">
         <ValidatorArray value="UnseenBeastTeleportAssaultMaximumDistance"/>
         <ValidatorArray value="UnseenBeastTeleportAssaultMinimumDistance"/>
-        <ValidatorArray value="NotStructureTarget"/>
-        <InitialEffect value="UnseenBeastTeleportAssaultApplyBehavior"/>
-        <ExpireDelay value="0.25"/>
-        <ExpireEffect value="UnseenBeastTeleportAssaultTeleport"/>
-        <ExpireOffset value="0,-1,0"/>
+        <ValidatorArray value="UnseenBeastTeleportAssaultWeapon"/>
         <EditorCategories value="Race:Dragon"/>
-    </CEffectCreatePersistent>
+        <WhichUnit Value="Caster"/>
+        <Abil value="UnseenBeastTeleportAssaultTrigger"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Player Value="Caster"/>
+        <Target Value="TargetUnit"/>
+    </CEffectIssueOrder>
     <CEffectSet id="UnseenBeastTeleportAssaultSet">
         <EditorCategories value="Race:Dragon"/>
+        <ValidatorArray value="CasterNotFiringOrAnimatingWeapon"/>
     </CEffectSet>
-    <CEffectTeleport id="UnseenBeastTeleportAssaultTeleport">
-        <WhichUnit Value="Caster"/>
-        <ClearQueuedOrders value="0"/>
-        <MinDistance value="0"/>
-        <PlacementRange value="8"/>
-        <TargetLocation Value="TargetPoint"/>
-        <TeleportFlags index="TestCliff" value="1"/>
-        <TeleportFlags index="TestFog" value="0"/>
-        <EditorCategories value="Race:Dragon"/>
-    </CEffectTeleport>
     <CEffectIssueOrder id="VolcanicHarbingerDischargeIssueOrder1">
         <WhichUnit Value="Caster"/>
         <Abil value="VolcanicHarbingerQueue"/>
         <CmdFlags index="Preempt" value="1"/>
         <Player Value="Caster"/>
         <EditorCategories value="Race:Dragon"/>
+        <ValidatorArray value="VolcanicHarbingerPlasmaCatalyst"/>
     </CEffectIssueOrder>
     <CEffectDamage id="UnseenBeastSpiritSmashDamage" parent="DU_WEAP">
         <AttributeBonus index="Light" value="18"/>
         <AttributeBonus index="Structure" value="18"/>
         <Amount value="18"/>
         <EditorCategories value="Race:Dragon"/>
+        <Death value="Blast"/>
     </CEffectDamage>
     <CEffectSwitch id="SkyrazerAttackSwitch">
         <CaseArray Validator="DragonRetarget" Effect="SkyrazerAttackDamage"/>
@@ -946,9 +980,9 @@
     </CEffectIssueOrder>
     <CEffectSet id="VolcanicHarbingerDischargeQueue1">
         <ValidatorArray value="VolcanicHarbingerQueue1"/>
+        <EditorCategories value="Race:Dragon"/>
         <EffectArray value="VolcanicHarbingerDischargeIssueOrder1"/>
         <EffectArray value="VolcanicHarbingerDischargeIssueOrder2"/>
-        <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectSet id="VolcanicHarbingerDischargeSet">
         <EffectArray value="VolcanicHarbingerDischargeUseMagazine"/>
@@ -1222,8 +1256,7 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
     <CEffectEnumArea id="FrontierDeepOneInvigorateSearchArea">
-        <ExcludeArray/>
-        <SearchFilters value="Biological,Visible;Self,Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden,Invulnerable,Summoned"/>
+        <SearchFilters value="Biological,Visible;Neutral,Enemy,Missile,UnderConstruction,Dead,Hidden,Invulnerable,Summoned"/>
         <AreaArray Radius="7" Effect="DragonInvigorateCreatePersistent"/>
         <MaxCount value="1"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
@@ -1233,7 +1266,7 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
     <CEffectSet id="SkyrazerAttackSet">
-        <ValidatorArray value="IsAirUnitorHasCrushingGravity"/>
+        <ValidatorArray value="SkyrazorSuperiorBlast"/>
         <EffectArray value="SkyrazerAttackLaunchMissile1"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
@@ -1243,7 +1276,7 @@
     </CEffectDamage>
     <CEffectDamage id="BrimstoneDemolisherBrutalThrashDamage" parent="DU_WEAP">
         <ValidatorArray value="noMarkers"/>
-        <Amount value="18"/>
+        <Amount value="30"/>
         <SearchFilters value="Ground,Visible;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectDamage>
@@ -1292,9 +1325,6 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="GravitonBeamHeightBehavior">
-        <ValidatorArray index="0" value="TargetIsNotAir"/>
-    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="GrimGliderMortalitysEclipseApplyBehavior1">
         <ValidatorArray index="0" value="TargetCanAttack"/>
         <ValidatorArray value="NotBaneling"/>
@@ -1337,13 +1367,11 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="HandofPowerCrushingGravityApplyBehavior3">
         <ValidatorArray index="0" value="HasCrushingGravity"/>
-        <ValidatorArray value="TargetIsNotAir"/>
         <Behavior value="HandofPowerCrushingGravityGround"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="HandofPowerCrushingGravityApplyBehavior4">
-        <ValidatorArray index="0" value="HasCrushingGravity"/>
-        <ValidatorArray value="TargetIsNotAir"/>
+        <ValidatorArray index="0" removed="1"/>
         <Behavior value="HandofPowerCrushingGravityPush"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
@@ -1364,7 +1392,7 @@
     </CEffectApplyForce>
     <CEffectCreatePersistent id="HandofPowerCrushingGravityCreatePersistent">
         <InitialEffect value="HandofPowerCrushingGravitySearchArea1"/>
-        <PeriodCount value="78"/>
+        <PeriodCount value="112"/>
         <PeriodicEffectArray value="HandofPowerCrushingGravitySearchArea1"/>
         <PeriodicPeriodArray value="0.0625"/>
         <EditorCategories value="Race:Dragon"/>
@@ -1375,15 +1403,16 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectModifyUnit>
     <CEffectEnumArea id="HandofPowerCrushingGravitySearchArea2">
-        <ExcludeArray Value="Target"/>
+        <ExcludeArray Value="Source"/>
         <SearchFilters value="Ground;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Effect="HandofPowerCrushingGravitySet3"/>
-        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <AreaArray Radius="0.25" Effect="HandofPowerCrushingGravitySet3"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
     <CEffectSet id="HandofPowerCrushingGravitySet1">
         <EffectArray value="HandofPowerCrushingGravityApplyBehavior2"/>
         <EffectArray value="HandofPowerCrushingGravityApplyBehavior3"/>
+        <EffectArray value="InstantUnburrow"/>
+        <EffectArray value="GravitonBeamHaltTerranBuild"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectModifyUnit id="HandofPowerCrushingGravityModifyUnit2">
@@ -1402,9 +1431,9 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectSet id="HandofPowerCrushingGravitySet3">
+        <EffectArray value="HandofPowerCrushingGravityApplyBehavior4"/>
         <EffectArray value="HandofPowerCrushingGravityApplyForce1"/>
         <EffectArray value="HandofPowerCrushingGravityApplyForce2"/>
-        <EffectArray value="HandofPowerCrushingGravityApplyBehavior4"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectApplyForce id="HandofPowerPortalApplyForce1">
@@ -1507,8 +1536,9 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
     <CEffectSet id="HandofPowerPortalSet">
-        <EffectArray value="HandofPowerPortalTeleport"/>
         <EffectArray value="HandofPowerPortalApplyBehavior2"/>
+        <EffectArray value="HandofPowerPortalApplySickness"/>
+        <EffectArray value="HandofPowerPortalApplyStrength"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
     <CEffectTeleport id="HandofPowerPortalTeleport">
@@ -1557,10 +1587,10 @@
         <ExcludeArray Value="Target"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectEnumArea>
-    <CEffectApplyBehavior id="HandofPowerFrenzyApplyBehavior">
-        <ValidatorArray index="0" value="TargetCanAttack"/>
-        <Behavior value="HandofPowerFrenzy"/>
+    <CEffectApplyBehavior id="HornedMagusFrenzyApplyBehavior">
+        <ValidatorArray index="0" value="NotFrenzied"/>
         <EditorCategories value="Race:Dragon"/>
+        <Behavior value="HornedMagusFrenzy"/>
     </CEffectApplyBehavior>
     <CEffectEnumArea id="HornedMagusMysticBoltSearchArea">
         <SearchFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
@@ -1584,11 +1614,11 @@
         <Behavior value="DragonInvigorateTarget"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
-    <CEffectEnumArea id="HandofPowerFrenzySearchArea">
-        <SearchFilters value="Biological;Self,Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="3" Effect="HandofPowerFrenzyApplyBehavior"/>
-        <ImpactLocation Value="TargetPoint"/>
+    <CEffectEnumArea id="HornedMagusFrenzySearchArea">
         <EditorCategories value="Race:Dragon"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="Biological;Structure,Missile,Uncommandable,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="3" Effect="HornedMagusFrenzyApplyBehavior"/>
     </CEffectEnumArea>
     <CEffectModifyUnit id="DragonInvigorateModifyUnit1">
         <ImpactUnit Value="Caster"/>
@@ -1645,19 +1675,16 @@
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="HunterTongueLashDamage" parent="DU_WEAP">
-        <Amount value="14"/>
-        <AttributeBonus index="Light" value="9"/>
         <EditorCategories value="Race:Dragon"/>
+        <Amount value="15"/>
     </CEffectDamage>
     <CEffectDamage id="DragonHunterMeleeDamage" parent="HunterTongueLashDamage">
-        <AttributeBonus index="Light" value="0"/>
         <Amount value="8"/>
         <Name value="Effect/Name/HunterMeleeDamage"/>
     </CEffectDamage>
     <CEffectApplyForce id="HunterTongueLashForce">
         <WhichLocation Value="CasterUnit"/>
-        <Amount value="-1"/>
-        <MassFraction value="0"/>
+        <Amount value="-0.5"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectApplyForce>
     <CEffectLaunchMissile id="HunterTongueLashLaunchMissile">
@@ -1666,30 +1693,29 @@
         <AmmoUnit value="DragonHunterAttackMissile"/>
         <ReturnMovers Link="HunterReturnMissile" IfRangeLTE="500"/>
         <FinishEffect value="HunterTongueLashModifyUnit"/>
-        <ReturnDelay value="0.25"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectLaunchMissile>
     <CEffectModifyUnit id="HunterTongueLashModifyUnit">
-        <ValidatorArray value="HunterFeast"/>
+        <ValidatorArray value="CasterAscended"/>
         <ValidatorArray value="HunterTongueLashModifyUnit"/>
+        <EditorCategories value="Race:Dragon"/>
         <ImpactUnit Value="Caster"/>
         <VitalArray index="Life">
-            <Change value="6"/>
+            <Change value="8"/>
         </VitalArray>
-        <EditorCategories value="Race:Dragon"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="DragonHunterMeleeModifyUnit" parent="HunterTongueLashModifyUnit">
-        <ValidatorArray index="1" value="IsBiological"/>
         <Name value="Effect/Name/DragonHunterMeleeModifyUnit"/>
+        <ValidatorArray index="1" value="IsBiological"/>
+        <VitalArray index="Life">
+            <Change value="4"/>
+        </VitalArray>
     </CEffectModifyUnit>
     <CEffectSet id="HunterTongueLashSet">
         <EffectArray value="HunterTongueLashDamage"/>
         <EffectArray value="HunterTongueLashApplyBehavior"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectSet>
-    <CEffectCreateHealer id="MedivacHeal">
-        <ValidatorArray value="NotShade"/>
-    </CEffectCreateHealer>
     <CEffectDamage id="PlodderPincerDamage" parent="DU_WEAP">
         <Amount value="5"/>
         <EditorCategories value="Race:Dragon"/>
@@ -1765,9 +1791,6 @@
         <BehaviorLink value="VolcanicHarbingerOverload1"/>
         <EditorCategories value="Race:Dragon"/>
     </CEffectRemoveBehavior>
-    <CEffectCreateHealer id="Repair">
-        <ValidatorArray value="NotShade"/>
-    </CEffectCreateHealer>
     <CEffectRemoveBehavior id="VolcanicHarbingerDischargeRemoveBehavior2">
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="VolcanicHarbingerOverload2"/>

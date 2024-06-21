@@ -2,7 +2,7 @@
 <Catalog>
     <CRace id="Dragon">
         <AttributeId value="Drag"/>
-        <GameMusic value="Music_ZergLow"/>
+        <GameMusic value="ZZerus01MusicMain"/>
         <Flags index="Selectable" value="1"/>
         <Flags index="TrialAllowed" value="1"/>
         <StartingUnitArray Unit="DenizenoftheDeep">
@@ -69,6 +69,6 @@
         <DefeatSound value="UI_MissionFailed"/>
         <ShowResource index="Custom" value="1"/>
         <DefaultConsoleSkin value="ConsoleZerg_Abathur"/>
-        <Icon value="Assets\Textures\icon-1v1-dragon.dds"/>
+        <Icon value="Images\lobbyrace-dragon.dds"/>
     </CRace>
 </Catalog>

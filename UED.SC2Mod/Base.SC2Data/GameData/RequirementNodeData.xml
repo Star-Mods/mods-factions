@@ -78,7 +78,6 @@
         <OperandArray value="NotCountUpgradeSalvoFiringPatternQueuedOrBetter"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndCountUnitTacticsAcademyCompleteOnlyNot3932054009CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit">
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <OperandArray value="CountUnitTacticsAcademyCompleteOnly"/>
         <OperandArray value="Not3932054009CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit"/>
     </CRequirementAnd>
@@ -114,8 +113,8 @@
         <OperandArray value="CountUpgradeUEDWeaponsLevel2CompleteOnly"/>
         <OperandArray value="CountUnitFieldBureauCompleteOnly"/>
     </CRequirementAnd>
-    <CRequirementAnd id="AndCountUpgradeUpgraideDrakkarCompleteOnly658754647TechTreeCheat">
-        <OperandArray value="CountUpgradeUpgraideDrakkarCompleteOnly658754647TechTreeCheat"/>
+    <CRequirementAnd id="AndNotCountUpgradeUEDHightDurabilityQueuedOrBetter">
+        <OperandArray value="NotCountUpgradeUEDHightDurabilityQueuedOrBetter"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeUEDLazarusbatteryQueuedOrBetter">
         <OperandArray value="NotCountUpgradeUEDLazarusbatteryQueuedOrBetter"/>
@@ -125,6 +124,13 @@
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeUEDUpgradeGoliathQueuedOrBetter">
         <OperandArray value="NotCountUpgradeUEDUpgradeGoliathQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter">
+        <OperandArray value="NotCountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray value="NotCountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeUpgradeAbilityCitadelUEDQueuedOrBetter">
         <OperandArray value="NotCountUpgradeUpgradeAbilityCitadelUEDQueuedOrBetter"/>
@@ -143,9 +149,6 @@
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeUpgradeSpeedHurakanQueuedOrBetter">
         <OperandArray value="NotCountUpgradeUpgradeSpeedHurakanQueuedOrBetter"/>
-    </CRequirementAnd>
-    <CRequirementAnd id="AndNotCountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter">
-        <OperandArray value="NotCountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter"/>
     </CRequirementAnd>
     <CRequirementAnd id="AndNotCountUpgradeUpgradeTowerMiningQueuedOrBetter">
         <OperandArray value="NotCountUpgradeUpgradeTowerMiningQueuedOrBetter"/>
@@ -173,13 +176,9 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="AlgoritmStrikeFighterGroundAttack" State="InProgressOrBetterAtUnit"/>
     </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit">
+    <CRequirementCountBehavior id="CountBehaviorAlgoritmStrikeFighterStartUnitInProgressOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="DrakkarAlgoritmFireMode" State="CompleteOnlyAtUnit"/>
-    </CRequirementCountBehavior>
-    <CRequirementCountBehavior id="CountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit2223558209">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="DrakkarAlgoritmFireMode" State="CompleteOnlyAtUnit"/>
+        <Count Link="AlgoritmStrikeFighterStartUnit" State="InProgressOrBetterAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorUEDAlgoritmConstAccelerationTrainInProgressOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
@@ -187,7 +186,6 @@
     </CRequirementCountBehavior>
     <CRequirementCountBehavior id="CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit">
         <Flags index="TechTreeCheat" value="0"/>
-        <Tooltip value="RequirementNode/Tooltip/##id##"/>
         <Count Link="UEDAlgoritmHaveTrain" State="QueuedOrBetterAtUnit"/>
     </CRequirementCountBehavior>
     <CRequirementCountUnit id="CountUnitArmoryCompleteOnly2">
@@ -413,6 +411,10 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UEDCommander" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUEDHightDurabilityQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UEDHightDurability" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUEDLazarusbatteryCompleteOnly1851522583TechTreeCheat">
         <Count Link="UEDLazarusbattery" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
@@ -437,6 +439,22 @@
     <CRequirementCountUpgrade id="CountUpgradeUEDUpgradeGoliathQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UEDUpgradeGoliath" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUEDUpgradeStrikeFighterCompleteOnly2376924074">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UEDUpgradeStrikeFighter" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UEDUpgradeStrikeFighter" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUEDUpgradeStrikeFighterSpeedCompleteOnly1813016030TechTreeCheat">
+        <Count Link="UEDUpgradeStrikeFighterSpeed" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <Count Link="UEDUpgradeStrikeFighterSpeed" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUEDVehicalsLevel1CompleteOnly">
         <Flags index="TechTreeCheat" value="0"/>
@@ -492,15 +510,19 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UpgradeAbilityNapoleon" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUpgradeBeataniumGeneratorCompleteOnly622349498TechTreeCheat">
+        <Count Link="UpgradeBeataniumGenerator" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeUpgradeBeataniumGeneratorQueuedOrBetter">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="UpgradeBeataniumGenerator" State="QueuedOrBetter"/>
+    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeEnergeSupportShutlCompleteOnly772568896TechTreeCheat">
         <Count Link="UpgradeEnergeSupportShutl" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeEnergeSupportShutlQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UpgradeEnergeSupportShutl" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgradeLazarusRegenHealfCompleteOnly75911983TechTreeCheat">
-        <Count Link="UpgradeLazarusRegenHealf" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeLazarusRegenHealfQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
@@ -527,26 +549,12 @@
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UpgradePhosphoricFire" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedCrimsonEyeCompleteOnly2850863126TechTreeCheat">
-        <Count Link="UpgradeSpeedCrimsonEye" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedCrimsonEyeQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="UpgradeSpeedCrimsonEye" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedHurakanCompleteOnly2128754568TechTreeCheat">
         <Count Link="UpgradeSpeedHurakan" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedHurakanQueuedOrBetter">
         <Flags index="TechTreeCheat" value="0"/>
         <Count Link="UpgradeSpeedHurakan" State="QueuedOrBetter"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedStrikeFighterCompleteOnly1813016030TechTreeCheat">
-        <Count Link="UpgradeSpeedStrikeFighter" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter">
-        <Flags index="TechTreeCheat" value="0"/>
-        <Count Link="UpgradeSpeedStrikeFighter" State="QueuedOrBetter"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgradeTowerMiningCompleteOnly749832984TechTreeCheat">
         <Count Link="UpgradeTowerMining" State="CompleteOnly"/>
@@ -558,10 +566,7 @@
     <CRequirementCountUpgrade id="CountUpgradeUpgraideDrakkarCompleteOnly3974058837TechTreeCheat">
         <Count Link="UpgraideDrakkar" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgraideDrakkarCompleteOnly658754647TechTreeCheat">
-        <Count Link="UpgraideDrakkar" State="CompleteOnly"/>
-    </CRequirementCountUpgrade>
-    <CRequirementCountUpgrade id="CountUpgradeUpgraideDrakkarCompleteOnlyTechTreeCheat">
+    <CRequirementCountUpgrade id="CountUpgradeUpgraideDrakkarCompleteOnly753916929TechTreeCheat">
         <Count Link="UpgraideDrakkar" State="CompleteOnly"/>
     </CRequirementCountUpgrade>
     <CRequirementCountUpgrade id="CountUpgradeUpgraideDrakkarQueuedOrBetter">
@@ -623,9 +628,6 @@
     <CRequirementNot id="Not3932054009CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit">
         <OperandArray index="0" value="CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit">
-        <OperandArray index="0" value="CountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit"/>
-    </CRequirementNot>
     <CRequirementNot id="NotCountBehaviorUEDAlgoritmConstAccelerationTrainInProgressOrBetterAtUnit">
         <OperandArray index="0" value="CountBehaviorUEDAlgoritmConstAccelerationTrainInProgressOrBetterAtUnit"/>
     </CRequirementNot>
@@ -668,6 +670,9 @@
     <CRequirementNot id="NotCountUpgradeTandemReactiveArmorQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeTandemReactiveArmorQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeUEDHightDurabilityQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeUEDHightDurabilityQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUEDLazarusbatteryQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUEDLazarusbatteryQueuedOrBetter"/>
     </CRequirementNot>
@@ -677,11 +682,21 @@
     <CRequirementNot id="NotCountUpgradeUEDUpgradeGoliathQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUEDUpgradeGoliathQueuedOrBetter"/>
     </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter">
+        <Tooltip value="RequirementNode/Tooltip/##id##"/>
+        <OperandArray index="0" value="CountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter"/>
+    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUpgradeAbilityCitadelUEDQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradeAbilityCitadelUEDQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUpgradeAbilityNapoleonQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradeAbilityNapoleonQueuedOrBetter"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeUpgradeBeataniumGeneratorQueuedOrBetter">
+        <OperandArray index="0" value="CountUpgradeUpgradeBeataniumGeneratorQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUpgradeEnergeSupportShutlQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradeEnergeSupportShutlQueuedOrBetter"/>
@@ -698,14 +713,8 @@
     <CRequirementNot id="NotCountUpgradeUpgradePhosphoricFireQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradePhosphoricFireQueuedOrBetter"/>
     </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeUpgradeSpeedCrimsonEyeQueuedOrBetter">
-        <OperandArray index="0" value="CountUpgradeUpgradeSpeedCrimsonEyeQueuedOrBetter"/>
-    </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUpgradeSpeedHurakanQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradeSpeedHurakanQueuedOrBetter"/>
-    </CRequirementNot>
-    <CRequirementNot id="NotCountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter">
-        <OperandArray index="0" value="CountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter"/>
     </CRequirementNot>
     <CRequirementNot id="NotCountUpgradeUpgradeTowerMiningQueuedOrBetter">
         <OperandArray index="0" value="CountUpgradeUpgradeTowerMiningQueuedOrBetter"/>
@@ -716,6 +725,10 @@
     <CRequirementOr id="Or3028896835CountUnitMunitionsFactoryCompleteOnly242926954TechTreeCheatCountUnitStarshipMaintenancePlantCompleteOnly971994468TechTreeCheat">
         <OperandArray value="CountUnitMunitionsFactoryCompleteOnly242926954TechTreeCheat"/>
         <OperandArray value="CountUnitStarshipMaintenancePlantCompleteOnly971994468TechTreeCheat"/>
+    </CRequirementOr>
+    <CRequirementOr id="OrCountBehaviorAlgoritmStrikeFighterGroundAttackInProgressOrBetterAtUnitCountBehaviorAlgoritmStrikeFighterStartUnitInProgressOrBetterAtUnit">
+        <OperandArray value="CountBehaviorAlgoritmStrikeFighterGroundAttackInProgressOrBetterAtUnit"/>
+        <OperandArray value="CountBehaviorAlgoritmStrikeFighterStartUnitInProgressOrBetterAtUnit"/>
     </CRequirementOr>
     <CRequirementOr id="OrCountUnitArsenalCompleteOnly774868845TechTreeCheatCountUnitMissileTowerCompleteOnlyTechTreeCheatCountUnitHeavyTowerCompleteOnlyTechTreeCheatCountUnitSuppressionTowerCompleteOnlyTechTreeCheatCountUnitInfusionTowerCompleteOnlyTechTreeCheat">
         <OperandArray value="CountUnitArsenalCompleteOnly774868845TechTreeCheat"/>

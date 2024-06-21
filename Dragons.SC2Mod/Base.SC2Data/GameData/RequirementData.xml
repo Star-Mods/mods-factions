@@ -8,14 +8,6 @@
         <NodeArray index="Use" Link="CountBehaviorDragonAscendedCompleteOnlyAtUnit"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="AugmentArcaneEssense">
-        <NodeArray index="Show" Link="NotCountUpgradeHornedMagusArcaneEssenceQueuedOrBetter"/>
-        <EditorCategories value="Race:Dragon,TechType:Ability"/>
-    </CRequirement>
-    <CRequirement id="AugmentBrimstoneDemolisher">
-        <NodeArray index="Show" Link="NotCountUpgradeBrimstoneDemolisherQueuedOrBetter"/>
-        <EditorCategories value="Race:Dragon,TechType:Ability"/>
-    </CRequirement>
     <CRequirement id="AugmentProliferation">
         <NodeArray index="Show" Link="NotCountUpgradeFleshrenderProliferationQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
@@ -80,13 +72,11 @@
         <NodeArray index="Show" Link="NotCountUpgradeSkyrazerEmberCoreQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="AugmentFeast">
-        <NodeArray index="Use" Link="OrCountUnitGreaterDeepOneNoFootprintCompleteOnlyCountUnitToweringDeepOneNoFootprintCompleteOnly"/>
-        <NodeArray index="Show" Link="NotCountUpgradeHunterFeastQueuedOrBetter"/>
+    <CRequirement id="AugmentWickedBarbs">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHunterWickedBarbsQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="AugmentFervidReconstitution">
-        <NodeArray index="Use" Link="CountUnitGreaterDeepOneNoFootprintCompleteOnly"/>
         <NodeArray index="Show" Link="NotCountUpgradeFlamespitterFervidReconstitutionQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
@@ -96,11 +86,7 @@
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
     <CRequirement id="AugmentFrenzy">
-        <NodeArray index="Show" Link="NotCountUpgradeHandofPowerFrenzyQueuedOrBetter"/>
-        <EditorCategories value="Race:Dragon,TechType:Ability"/>
-    </CRequirement>
-    <CRequirement id="AugmentGrimGlider">
-        <NodeArray index="Show" Link="NotCountUpgradeGrimGliderQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHornedMagusFrenzyQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
     <CRequirement id="AugmentInfernalBreath">
@@ -111,20 +97,16 @@
         <NodeArray index="Show" Link="NotCountUpgradeBerserkerMadnessQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="AugmentMightyFist">
-        <NodeArray index="Show" Link="NotCountUpgradeHandofPowerMightyFistQueuedOrBetter"/>
+    <CRequirement id="AugmentPortal">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHandofPowerPortalQueuedOrBetter"/>
     </CRequirement>
-    <CRequirement id="AugmentCelerity">
-        <NodeArray index="Show" Link="NotCountUpgradeAuroraConduitCelerityQueuedOrBetter"/>
+    <CRequirement id="AugmentConduction">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAuroraConduitConductionQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="AugmentPlasmaCatalyst">
         <NodeArray index="Show" Link="NotCountUpgradeVolcanicHarbingerPlasmaCatalystQueuedOrBetter"/>
-        <EditorCategories value="Race:Dragon,TechType:Ability"/>
-    </CRequirement>
-    <CRequirement id="AugmentShroud">
-        <NodeArray index="Show" Link="NotCountUpgradeHornedMagusShroudQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
     <CRequirement id="AugmentAbundance">
@@ -132,21 +114,21 @@
         <NodeArray index="Show" Link="NotCountUpgradeRazorbackAbundanceQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="AugmentUnseenBeast">
-        <NodeArray index="Show" Link="NotCountUpgradeUnseenBeastQueuedOrBetter"/>
+    <CRequirement id="AugmentProwl">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUnseenBeastProwlQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="AugmentWraithNight">
-        <NodeArray index="Show" Link="NotCountUpgradeGrimGliderWraithNightQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGrimGliderMortalitysEclipseQueuedOrBetter"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
     <CRequirement id="AugmentationPit">
         <NodeArray index="Use" Link="CountBehaviorAugmentationPitCompleteOnlyAtUnit763288653"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="BrimstoneDemolisher">
-        <NodeArray index="Use" Link="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeBrimstoneDemolisherCompleteOnly220872439"/>
+    <CRequirement id="AuroraConduitConduction">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAuroraConduitConductionCompleteOnly596238187"/>
     </CRequirement>
     <CRequirement id="BrimstoneDemolisherInfernalBreath">
         <NodeArray index="Use" Link="CountUpgradeBrimstoneDemolisherInfernalBreathCompleteOnly375886769"/>
@@ -155,6 +137,10 @@
     <CRequirement id="Coagulator">
         <NodeArray index="Use" Link="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit4009903090CountUpgradeRazorbackAbundanceCompleteOnly2219638757"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+    </CRequirement>
+    <CRequirement id="VolcanicHarbingerPlasmaCatalyst">
+        <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeVolcanicHarbingerPlasmaCatalystCompleteOnly1697154577TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="HasDragonCommander">
         <EditorCategories value="Race:Dragon,TechType:Upgrade"/>
@@ -181,25 +167,21 @@
         <NodeArray index="Use" Link="CountUnitLesserDeepOneNoFootprintCompleteOnly"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="GrimGlider">
-        <NodeArray index="Use" Link="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeGrimGliderCompleteOnly1362390753"/>
+    <CRequirement id="GrimGliderMortalitysEclipse">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
-    </CRequirement>
-    <CRequirement id="GrimGliderWraithNight">
-        <NodeArray index="Use" Link="CountUpgradeGrimGliderWraithNightCompleteOnly3079867151TechTreeCheat"/>
-        <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeGrimGliderMortalitysEclipseCompleteOnly6048925TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="HandofPowerFrenzy">
-        <NodeArray index="Use" Link="CountUpgradeHandofPowerFrenzyCompleteOnly3605573692TechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeHornedMagusFrenzyCompleteOnly1072627216TechTreeCheat"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="HornedMagusShroud">
-        <NodeArray index="Use" Link="CountUpgradeHornedMagusShroudCompleteOnly2931001875"/>
+    <CRequirement id="HandofPowerPortal">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHandofPowerPortalCompleteOnly4045012870"/>
     </CRequirement>
-    <CRequirement id="HunterFeast">
-        <NodeArray index="Use" Link="CountUpgradeHunterFeastCompleteOnly909739678"/>
+    <CRequirement id="HunterWickedBarbs">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHunterWickedBarbsCompleteOnly909739678"/>
     </CRequirement>
     <CRequirement id="HaveFrontierDeepOne">
         <NodeArray index="Use" Link="CountUnitFrontierDeepOneCompleteOnly"/>
@@ -227,9 +209,9 @@
         <NodeArray index="Use" Link="CountUpgradeSkyrazerEmberCoreCompleteOnly4150053550"/>
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
     </CRequirement>
-    <CRequirement id="UnseenBeast">
-        <NodeArray index="Use" Link="AndCountBehaviorAugmentationPitCompleteOnlyAtUnit763288653CountUpgradeUnseenBeastCompleteOnly1127497187"/>
+    <CRequirement id="UnseenBeastProwl">
         <EditorCategories value="Race:Dragon,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeUnseenBeastProwlCompleteOnly32849316TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="VolcanicHarbingerOverload">
         <NodeArray index="Use" Link="LT3765000727CountUnitVolcanicHarbingerOverloadQueuedOrBetterAtUnit3"/>

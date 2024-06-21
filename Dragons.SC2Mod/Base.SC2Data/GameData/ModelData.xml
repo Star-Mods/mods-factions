@@ -11,6 +11,12 @@
         <SquibTypeDefault value="Flesh"/>
         <UnitGlossaryCamera value="Star2CameraHigher24"/>
     </CModel>
+    <CModel id="ArkwyrmTerritorialDiveCastModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\PsionicLashChargeUp\PsionicLashChargeUp.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="3.000000,3.000000,3.000000"/>
+        <ScaleMin value="3.000000,3.000000,3.000000"/>
+    </CModel>
     <CModel id="AuroraConduit" parent="Unit">
         <Model value="Assets\Units\Zerg\MutaliskEx1A\MutaliskEx1A.m3"/>
         <Occlusion value="Show"/>
@@ -32,6 +38,13 @@
         <Model value="Assets\Effects\Zerg\ZurvanPsiArcImpact\ZurvanPsiArcImpact.m3"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <EditorCategories value="Race:Dragon"/>
+    </CModel>
+    <CModel id="ArkwyrmTerritorialDiveChannelModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\PsiStorm\PsiStorm.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="1.000000,2.000000,1.000000"/>
+        <ScaleMin value="1.000000,2.000000,1.000000"/>
     </CModel>
     <CModel id="DragonAscend" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\FeedbackImpact\FeedbackImpact.m3"/>
@@ -55,14 +68,34 @@
         <Model value="Assets\Effects\Protoss\MotherShipCoreMissile\MotherShipCoreMissile.m3"/>
     </CModel>
     <CModel id="GrimGliderMortalitysEclipseModel" parent="PersistentSpellFX">
-        <Model value="Assets\Effects\Protoss\NullField\NullField.m3"/>
-        <ScaleMax value="2.200000,2.200000,2.200000"/>
-        <ScaleMin value="2.200000,2.200000,2.200000"/>
+        <Model value="Assets\Doodads\StarShipAdun_Energy_ForceField\StarShipAdun_Energy_ForceField.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="1.900000,1.900000,1.900000"/>
+        <ScaleMin value="1.900000,1.900000,1.900000"/>
+    </CModel>
+    <CModel id="GrimGliderNullifyBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Alarak_COOP_LightningStrikes_Beam\Alarak_COOP_LightningStrikes_Beam.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="GrimGliderNullifyImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\Xanthos_Missile_Impact\Xanthos_Missile_Impact.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="HandofPowerAttackBeam" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\SuppressionTower_SuppressionBeam\SuppressionTower_SuppressionBeam.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
     </CModel>
     <CModel id="HandofPowerCrushingGravityModel" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\ProtossSummoning\ProtossSummoning.m3"/>
         <ScaleMax value="0.400000,0.400000,0.400000"/>
         <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="HandofPowerCrushingGravityRocks" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\AntiGravAreaImpact\AntiGravAreaImpact.m3"/>
@@ -72,20 +105,28 @@
         <ScaleMax value="1.000000,1.000000,0.400000"/>
         <ScaleMin value="1.000000,1.000000,0.400000"/>
     </CModel>
-    <CModel id="HandofPowerFrenzyImpact" parent="ImpactFX">
+    <CModel id="HandofPowerShroudModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\XelNaga_PsionicStormCloud\XelNaga_PsionicStormCloud.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="0.875000,0.875000,0.875000"/>
+        <ScaleMin value="0.875000,0.875000,0.875000"/>
+    </CModel>
+    <CModel id="HornedMagusFrenzyImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Zerg\FuryCast\FuryCast.m3"/>
         <ScaleMax value="2.000000,2.000000,2.000000"/>
         <ScaleMin value="2.000000,2.000000,2.000000"/>
     </CModel>
-    <CModel id="HandofPowerFrenzyModel" parent="BuffFX">
+    <CModel id="HornedMagusFrenzyModel" parent="BuffFX">
         <Model value="Assets\Effects\Zerg\WildMutationBuff\WildMutationBuff.m3"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
         <ScaleMin value="1.500000,1.500000,1.500000"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="AugmentationPitResearchModel" parent="BuffFX">
         <Model value="Assets\Effects\Zerg\PsionicShadowImpact\PsionicShadowImpact.m3"/>
-        <ScaleMax value="0.750000,0.750000,0.500000"/>
-        <ScaleMin value="0.750000,0.750000,0.500000"/>
+        <ScaleMax value="0.468750,0.468750,0.312500"/>
+        <ScaleMin value="0.468750,0.468750,0.312500"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="DragonAscended" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Zerg\DisablingCloudImpact\DisablingCloudImpact.m3"/>
@@ -128,14 +169,21 @@
     <CModel id="HornedMagusInvigorateDeactivate" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\HallucinateColossusDeath\HallucinateColossusDeath.m3"/>
     </CModel>
+    <CModel id="GrimGliderEmaciateBeam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\ExpeditionGateTractorBeam\ExpeditionGateTractorBeam.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <RadiusLoose value="1.000000"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+    </CModel>
     <CModel id="UnseenBeast" parent="Unit">
         <Model value="Assets\Units\Neutral\YetiStandard\YetiStandard.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <Occlusion value="Show"/>
-        <Radius value="0.625000"/>
-        <ScaleMax value="0.625000,0.625000,0.625000"/>
-        <ScaleMin value="0.625000,0.625000,0.625000"/>
-        <SelectionRadius value="1.000000"/>
-        <ShadowRadius value="0.781200"/>
+        <ScaleMax value="0.437500,0.437500,0.437500"/>
+        <ScaleMin value="0.437500,0.437500,0.437500"/>
+        <SelectionRadius value="1.142800"/>
+        <ShadowRadius value="1.142800"/>
         <SquibTypeDefault value="Flesh"/>
         <Tipability value="0.750000"/>
         <TipabilityLength value="0.800000"/>
@@ -144,11 +192,13 @@
     </CModel>
     <CModel id="UnseenBeastCloakModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\EnergyTransferImpact\EnergyTransferImpact.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <ScaleMax value="1.250000,1.250000,0.800000"/>
         <ScaleMin value="1.250000,1.250000,0.800000"/>
     </CModel>
     <CModel id="UnseenBeastDeath" parent="UnitDeath">
         <Model value="Assets\Units\Neutral\YetiStandard\YetiStandard.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <Occlusion value="Show"/>
         <Radius value="0.625000"/>
         <ShadowRadius value="0.937500"/>
@@ -157,11 +207,12 @@
     <CModel id="UnseenBeastPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Critters\YetiMommaPortrait\YetiMommaPortrait.m3"/>
         <RequiredAnims value="Assets\Portraits\Zerg\PrimalZergPortrait_RequiredAnims\PrimalZergPortrait_RequiredAnims.m3a"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="GenesisPit" parent="Building">
         <Model value="Assets\Buildings\Zerg\PrimalBaseDefense\PrimalBaseDefense.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.200000"/>
         <SelectionLayer value="2"/>
         <SelectionRadius value="1.500000"/>
         <ShadowRadius value="1.500000"/>
@@ -173,7 +224,7 @@
     <CModel id="AugmentationPit" parent="Building">
         <Model value="Assets\Buildings\Zerg\PrimalProductionA\PrimalProductionA.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <ScaleMax value="0.500000,0.500000,0.300000"/>
         <ScaleMin value="0.500000,0.500000,0.300000"/>
         <SelectionLayer value="2"/>
@@ -184,15 +235,17 @@
     <CModel id="AugmentationPitBuild" parent="Building">
         <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <SelectionLayer value="2"/>
-        <SelectionRadius value="1.000000"/>
+        <SelectionRadius value="2.000000"/>
         <ShadowRadius value="1.000000"/>
         <SquibTypeDefault value="Flesh"/>
+        <ScaleMax value="0.500000,0.500000,0.300000"/>
+        <ScaleMin value="0.500000,0.500000,0.300000"/>
     </CModel>
     <CModel id="AugmentationPitDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\PrimalProductionADeath\PrimalProductionADeath.m3"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <SquibTypeDefault value="Flesh"/>
         <ShadowRadius value="1.000000"/>
     </CModel>
@@ -202,15 +255,18 @@
     <CModel id="PhlogistonGuardianBuild" parent="Building">
         <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <SelectionLayer value="2"/>
         <SquibTypeDefault value="Flesh"/>
         <ShadowRadius value="1.000000"/>
+        <ScaleMax value="0.500000,0.500000,0.500000"/>
+        <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <SelectionRadius value="2.000000"/>
     </CModel>
     <CModel id="GenesisPitBuild" parent="Building">
         <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.200000"/>
         <SelectionLayer value="2"/>
         <SquibTypeDefault value="Flesh"/>
         <SelectionRadius value="1.500000"/>
@@ -218,25 +274,32 @@
     </CModel>
     <CModel id="GenesisPitDeath" parent="BuildingDeath">
         <Model value="Assets\Units\Zerg\PrimalSunkenColonyDeath\PrimalSunkenColonyDeath.m3"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.200000"/>
         <SquibTypeDefault value="Flesh"/>
         <ShadowRadius value="1.500000"/>
     </CModel>
     <CModel id="SunkenGuardianBuild" parent="Building">
         <Model value="Assets\Units\Test\InvisibleUnit\InvisibleUnit.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.066667"/>
         <SelectionLayer value="2"/>
         <SquibTypeDefault value="Flesh"/>
         <ShadowRadius value="1.000000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionRadius value="1.333300"/>
     </CModel>
     <CModel id="UnseenBeastSpiritSmashLaunch" parent="LaunchFX">
         <Model value="Assets\Effects\Protoss\PsiStormImpact\PsiStormImpact.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <ScaleMax value="0.375000,0.375000,0.375000"/>
         <ScaleMin value="0.375000,0.375000,0.375000"/>
     </CModel>
-    <CModel id="UnseenBeastSpiritSmashImpact" parent="ImpactFX">
+    <CModel id="UnseenBeastAttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\ImmortalMissileImpact\ImmortalMissileImpact.m3"/>
+        <EditorCategories value="Race:Dragon"/>
+        <ScaleMax value="0.812500,0.812500,0.812500"/>
+        <ScaleMin value="0.687500,0.687500,0.687500"/>
     </CModel>
     <CModel id="VolcanicHarbinger" parent="Unit">
         <Model value="Assets\Units\Zerg\SwarmGuardian\SwarmGuardian.m3"/>
@@ -288,6 +351,7 @@
     </CModel>
     <CModel id="VolcanicHarbingerAttackBeam" parent="MissileFX">
         <Model value="Assets\Effects\Protoss\WarpRayMissile\WarpRayMissile.m3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="VolcanicHarbingerAttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Protoss\ImmortalMissileImpact\ImmortalMissileImpact.m3"/>
@@ -312,6 +376,7 @@
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
         <VariationCount value="3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="HornedMagusAttackLaunch" parent="LaunchFX">
         <Model value="Assets\Effects\Terran\BattleCruiserPlasmaLaunch\BattleCruiserPlasmaLaunch.m3"/>
@@ -329,7 +394,7 @@
     <CModel id="PhlogistonGuardian" parent="Building">
         <Model value="Assets\Buildings\Zerg\SporeCannon\SporeCannon.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <ScaleMax value="0.500000,0.500000,0.500000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
         <SelectionLayer value="2"/>
@@ -342,14 +407,16 @@
         <Model value="Assets\Effects\Zerg\PrimalSunkenColonyAttackImpact\PrimalSunkenColonyAttackImpact.m3"/>
         <ScaleMax value="0.500000,0.500000,0.500000"/>
         <ScaleMin value="0.500000,0.500000,0.500000"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="SunkenGuardianCracksModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Zerg\PrimalLurkerMissile\PrimalLurkerMissile.m3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="SunkenGuardian" parent="Building">
         <Model value="Assets\Units\Zerg\PrimalSunkenColony\PrimalSunkenColony.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.066667"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
         <SelectionLayer value="2"/>
@@ -360,7 +427,7 @@
     </CModel>
     <CModel id="SunkenGuardianDeath" parent="BuildingDeath">
         <Model value="Assets\Units\Zerg\PrimalSunkenColonyDeath\PrimalSunkenColonyDeath.m3"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.066667"/>
         <ShadowRadius value="1.000000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -437,22 +504,16 @@
     <CModel id="BrimstoneDemolisherPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Zerg\PrimalZergKingPortrait\PrimalZergKingPortrait.m3"/>
     </CModel>
-    <CModel id="BrimstoneDemolisherScorchingBlazeModel" parent="PersistentSpellFX">
-        <Model value="Assets\Effects\Zerg\YagdraFireBreath\YagdraFireBreath.m3"/>
-        <EditorCategories value="Race:Neutral"/>
-        <ScaleMax value="0.500000,1.000000,0.500000"/>
-        <ScaleMin value="0.500000,1.000000,0.500000"/>
-    </CModel>
     <CModel id="BrimstoneDemolisherInfernalBreathModel" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Zerg\YagdraFireBreath\YagdraFireBreath.m3"/>
-        <EditorCategories value="Race:Neutral"/>
+        <EditorCategories value="Race:Dragon"/>
         <ScaleMax value="0.500000,1.625000,0.500000"/>
         <ScaleMin value="0.500000,1.625000,0.500000"/>
     </CModel>
-    <CModel id="Coagulater" parent="Building">
+    <CModel id="Coagulator" parent="Building">
         <Model value="Assets\Buildings\Zerg\LurkerDen\LurkerDen.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.371429"/>
         <ScaleMax value="0.875000,0.875000,0.875000"/>
         <ScaleMin value="0.875000,0.875000,0.875000"/>
         <SelectionLayer value="2"/>
@@ -460,9 +521,9 @@
         <ShadowRadius value="1.500000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
-    <CModel id="CoagulaterDeath" parent="BuildingDeath">
+    <CModel id="CoagulatorDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\LurkerDenDeath\LurkerDenDeath.m3"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.371429"/>
         <ShadowRadius value="1.500000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -470,20 +531,23 @@
         <Model value="Assets\Effects\Zerg\BurrowFXLarge\BurrowFXLarge.m3"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
         <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="DragonExplodeModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Zerg\ZergLargeBuildingDeath\ZergLargeBuildingDeath.m3"/>
-        <ScaleMax value="0.250000,0.250000,0.250000"/>
-        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <ScaleMax value="0.312500,0.312500,0.312500"/>
+        <ScaleMin value="0.312500,0.312500,0.312500"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="DragonSpawnModelB" parent="Building">
         <Model value="Assets\Buildings\Zerg\MorphZergSpire\MorphZergSpire.m3"/>
         <Occlusion value="Show"/>
         <Radius value="1.000000"/>
-        <ScaleMax value="0.750000,0.750000,0.750000"/>
-        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <ScaleMax value="0.937500,0.937500,0.937500"/>
+        <ScaleMin value="0.937500,0.937500,0.937500"/>
         <SelectionLayer value="2"/>
         <SquibTypeDefault value="Flesh"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="DragonBuildCracks" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Zerg\PrimalLurkerMissile\PrimalLurkerMissile.m3"/>
@@ -494,10 +558,11 @@
         <Model value="Assets\Buildings\Zerg\MorphZergDen\MorphZergDen.m3"/>
         <Occlusion value="Show"/>
         <Radius value="1.000000"/>
-        <ScaleMax value="0.625000,0.625000,0.625000"/>
-        <ScaleMin value="0.625000,0.625000,0.625000"/>
+        <ScaleMax value="0.781250,0.781250,0.781250"/>
+        <ScaleMin value="0.781250,0.781250,0.781250"/>
         <SelectionLayer value="2"/>
         <SquibTypeDefault value="Flesh"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="AuroraConduitPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Zerg\MutaliskPortrait\MutaliskPortrait.m3"/>
@@ -509,7 +574,7 @@
         </AttachProps>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigher16"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.280000"/>
         <ScaleMax value="0.625000,0.625000,0.625000"/>
         <ScaleMin value="0.625000,0.625000,0.625000"/>
         <SelectionLayer value="2"/>
@@ -520,6 +585,7 @@
     </CModel>
     <CModel id="AuroraConduitAttackBeam" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\TempestGroundBeam\TempestGroundBeam.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <TextureDeclares Prefix="PhotonWisps_">
             <Adaptions Slot="generic01"/>
         </TextureDeclares>
@@ -537,11 +603,13 @@
         </TextureDeclares>
     </CModel>
     <CModel id="AuroraConduitAttackImpact" parent="ImpactFX">
-        <Model value="Assets\Effects\Terran\WraithMissileImpact\WraithMissileImpact.m3"/>
+        <Model value="Assets\Effects\Terran\YamatoMissileImpact\YamatoMissileImpact.m3"/>
+        <ScaleMax value="0.312500,0.312500,0.312500"/>
+        <ScaleMin value="0.312500,0.312500,0.312500"/>
     </CModel>
     <CModel id="FrontierDeepOneDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\NydusWormCreeperDeath\NydusWormCreeperDeath.m3"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.280000"/>
         <ShadowRadius value="1.000000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -602,7 +670,7 @@
         </AttachProps>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigher16"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.371429"/>
         <ScaleMax value="0.875000,0.875000,0.875000"/>
         <ScaleMin value="0.875000,0.875000,0.875000"/>
         <SelectionLayer value="2"/>
@@ -618,7 +686,7 @@
         </AttachProps>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigher16"/>
-        <Radius value="2.000000"/>
+        <Radius value="1.219048"/>
         <ScaleMax value="1.312500,1.312500,1.312500"/>
         <ScaleMin value="1.312500,1.312500,1.312500"/>
         <SelectionLayer value="2"/>
@@ -629,7 +697,7 @@
     </CModel>
     <CModel id="PhlogistonGuardianDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\SporeCannonDeath\SporeCannonDeath.m3"/>
-        <Radius value="1.000000"/>
+        <Radius value="1.600000"/>
         <ShadowRadius value="1.000000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -637,11 +705,11 @@
         <Model value="Assets\Buildings\Zerg\ZergNydusAttacker\ZergNydusAttacker.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraHigher16"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.920000"/>
         <ScaleMax value="0.625000,0.625000,0.625000"/>
         <ScaleMin value="0.625000,0.625000,0.625000"/>
         <SelectionLayer value="2"/>
-        <SelectionRadius value="1.714200"/>
+        <SelectionRadius value="2.400000"/>
         <ShadowRadius value="1.500000"/>
         <SquibTypeDefault value="Flesh"/>
         <UnitGlossaryCamera value="Star2CameraHigher16"/>
@@ -650,10 +718,11 @@
         <Model value="Assets\Effects\Zerg\NydusRumble\NydusRumble.m3"/>
         <ScaleMax value="0.375000,0.375000,0.375000"/>
         <ScaleMin value="0.375000,0.375000,0.375000"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="LesserDeepOneDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\NydusCanalDeathEx1\NydusCanalDeathEx1.m3"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.371429"/>
         <ShadowRadius value="1.500000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -673,7 +742,7 @@
     <CModel id="DenizenoftheDeep" parent="Building">
         <Model value="Assets\Buildings\Zerg\PrimalTownHall\PrimalTownHall.m3"/>
         <Occlusion value="Show"/>
-        <Radius value="2.500000"/>
+        <Radius value="1.600000"/>
         <ScaleMax value="1.250000,1.250000,1.250000"/>
         <ScaleMin value="1.250000,1.250000,1.250000"/>
         <SelectionLayer value="2"/>
@@ -688,7 +757,7 @@
     </CModel>
     <CModel id="DenizenoftheDeepDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\PrimalTownHallDeath\PrimalTownHallDeath.m3"/>
-        <Radius value="2.500000"/>
+        <Radius value="1.600000"/>
         <ShadowRadius value="2.500000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -738,19 +807,21 @@
     </CModel>
     <CModel id="HandofPowerPortalEntranceModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\FeedbackLaunch\FeedbackLaunch.m3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="HandofPowerPortalExitModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Protoss\FeedbackImpact\FeedbackImpact.m3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="GreaterDeepOneDeath" parent="BuildingDeath">
         <Model value="Assets\Units\Zerg\NydusDragonDeath\NydusDragonDeath.m3"/>
-        <Radius value="2.000000"/>
+        <Radius value="1.219048"/>
         <ShadowRadius value="2.000000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
     <CModel id="ToweringDeepOneDeath" parent="BuildingDeath">
         <Model value="Assets\Buildings\Zerg\ZergNydusAttackerDeath\ZergNydusAttackerDeath.m3"/>
-        <Radius value="1.500000"/>
+        <Radius value="1.920000"/>
         <ShadowRadius value="1.500000"/>
         <SquibTypeDefault value="Flesh"/>
     </CModel>
@@ -772,6 +843,7 @@
     </CModel>
     <CModel id="GrimGlider" parent="Unit">
         <Model value="Assets\Units\Critters\ZerusAlienTreeHover\ZerusAlienTreeHover.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <Occlusion value="Show"/>
         <Radius value="1.000000"/>
         <ScaleMax value="1.500000,1.500000,1.500000"/>
@@ -802,6 +874,7 @@
     </CModel>
     <CModel id="GrimGliderDeath" parent="UnitDeath">
         <Model value="Assets\Units\Critters\ZerusAlienTreeHoverDeath\ZerusAlienTreeHoverDeath.m3"/>
+        <EditorCategories value="Race:Dragon"/>
         <Occlusion value="Show"/>
         <Radius value="1.000000"/>
         <ShadowRadius value="1.250000"/>
@@ -816,6 +889,7 @@
     </CModel>
     <CModel id="GrimGliderShade" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Protoss\HybridGravitronPrisonImpactSwarm\HybridGravitronPrisonImpactSwarm.m3"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="BerserkerMadness" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Zerg\KerriganFury\KerriganFury.m3"/>
@@ -897,6 +971,7 @@
     <CModel id="GrimGliderPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Zerg\PrimalGuardianPortrait\PrimalGuardianPortrait.m3"/>
         <RequiredAnims value="Assets\Portraits\Zerg\PrimalZergPortrait_RequiredAnims\PrimalZergPortrait_RequiredAnims.m3a"/>
+        <EditorCategories value="Race:Dragon"/>
     </CModel>
     <CModel id="HandofPowerPortrait" parent="Portrait">
         <Model value="Assets\Portraits\Zerg\LurkerPortrait\LurkerPortrait.m3"/>
@@ -907,7 +982,7 @@
         <Occlusion value="Show"/>
         <Radius value="1.000000"/>
         <SelectionRadius value="1.000000"/>
-        <ShadowRadius value="1.250000"/>
+        <ShadowRadius value="1.000000"/>
         <SquibTypeDefault value="Flesh"/>
         <Tipability value="0.750000"/>
         <TipabilityLength value="0.800000"/>

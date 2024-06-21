@@ -26,10 +26,193 @@
         <On index="12" Terms="StateChange; !StateValid HeavySmoke" Target="UmojanFlameSetHeavySmokeTransition" Send="Destroy"/>
         <On Terms="StateChange; !StateValid Fire" Target="UmojanFlameSetFireTransition" Send="Destroy"/>
     </CActorStateMonitor>
+    <CActorUnit id="UmojanWeaponUnitWhirlwindSpot" parent="GenericUnitStandardNoAutoSoundLinks" unitName="UmojanWeaponUnitWhirlwindSpot">
+        <Model value="Invisible"/>
+        <EditorModel value="Sphere"/>
+        <WalkAnimMoveSpeed value="0"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Progress" value="0"/>
+        <StatusBarFlags index="Duration" value="0"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+    </CActorUnit>
+    <CActorModel id="UmojanPlasmabatCorrosiveBlastModel" parent="ModelAddition">
+        <On Terms="Behavior.UmojanPlasmaBurn.On" Send="Create"/>
+        <On Terms="Behavior.UmojanPlasmaBurn.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="UnitDeath" Send="Destroy"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorUnit id="UmojanSpecOpsDropship" parent="GenericUnitStandard" unitName="UmojanSpecOpsDropship">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="MedivacTransportAnim"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmAir"/>
+        <Macros value="PhysicsDeathsVoidAir"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Medivac_Land"/>
+        <On Terms="Behavior.UmojanDeepCloakEnergy.On" Send="SetOpacity 0.500000 1.000000"/>
+        <On Terms="Behavior.UmojanDeepCloakEnergy.Off" Send="SetOpacity 1.000000 1.000000"/>
+        <HostSiteOps Ops="SOpBankerMedivac"/>
+        <Model value="Medivac_Umojan"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
+        <BuildModel value="Medivac_Umojan"/>
+        <DeathArray index="Normal" ModelLink="Medivac_Umojan_Death" SoundLink="Medivac_Explode"/>
+        <DeathCustoms>
+            <ActorModel value="Medivac_Umojan_DeathRagdoll"/>
+            <ModelLink value="Medivac_Umojan_DeathRagdoll"/>
+            <Name value="RagdollBasic"/>
+            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+            <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
+        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
+        <PlacementModel value="Medivac_Umojan"/>
+        <PortraitModel value="Medivac_Umojan_Portrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.250000,0.500000"/>
+            <RangeDown value="5.000000"/>
+            <RangeDownFade value="1.000000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive15"/>
+        </TerrainSquibs>
+        <AbilSoundArray AbilCmd="UmojanSpecOpsDropshipLoadUnload,Load" Sound="Medivac_LoadVO"/>
+        <AbilSoundArray AbilCmd="UmojanSpecOpsDropshipLoadUnload,UnloadAt" Sound="Medivac_UnloadVO"/>
+        <BarOffset value="50"/>
+        <BarWidth value="80"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Medivac.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-medivac-umojan.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <NameOffset value="50"/>
+        <SoundArray index="Ready" value="Medivac_Ready"/>
+        <SoundArray index="Help" value="Medivac_Help"/>
+        <SoundArray index="What" value="Medivac_What"/>
+        <SoundArray index="Yes" value="Medivac_Yes"/>
+        <SoundArray index="Attack" value="Medivac_Attack"/>
+        <SoundArray index="Pissed" value="Medivac_Pissed"/>
+        <SoundArray index="Movement" value="Medivac_Movement"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-medivac-umojan.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Medivac.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorRange id="UmojanCrowCloakingRange" parent="RangeBehavior" behavior="UmojanCloakField">
+        <EditorCategories value=""/>
+        <Behavior value=""/>
+        <Range value="5.000000"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorAction id="UmojanPathfinderGladiusMissileAttack" parent="GenericAttack" effectImpact="UmojanPathfinderGladiusMissileDamage" effectLaunch="UmojanPathfinderGladiusMissileLM">
+        <LaunchAttachQuery Methods="UmojanAMPatternPathfinder"/>
+        <LaunchAssets Sound="Banshee_AttackLaunch2"/>
+        <ImpactMap index="None" Model="UmojanGladiusAttackImpact" Sound="Banshee_AttackImpact2"/>
+        <ImpactPhysics Name="BacklashRocketsImpact" MatchKeys="Basic" Physics="BansheeAttackForce"/>
+    </CActorAction>
+    <CActorMissile id="UmojanPathfinderGladiusMissileAttackMissile" parent="GenericAttackMissile" unitName="UmojanWeaponUnitGladiusMissile">
+        <Model value="UmojanGladiusLMWeapon"/>
+    </CActorMissile>
+    <CActorUnit id="UmojanMedic" parent="GenericUnitStandard" unitName="UmojanMedic">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="UnloadDropAnim"/>
+        <On index="64" Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Spell"/>
+        <On index="65" Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Spell"/>
+        <DeathArray index="Normal" ModelLink="UmojanMedicDeath" SoundLink="Medic_Explode"/>
+        <DeathArray index="Blast" ModelLink="UmojanMedicDeath"/>
+        <DeathCustoms ModelLink="MedicKillSquadDeath" SoundLink="Medic_Death" Name="Variation2"/>
+        <PortraitModel value="UmojanMedicPortrait"/>
+        <WalkAnimMoveSpeed value="2.25"/>
+        <BarOffset value="40"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-medic-umojan.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Terran-Medic.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-medic-umojan.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-medic-umojan.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorSound id="UmojanMedicDeath" parent="SoundOneShot">
+        <On Terms="UnitDeath.UmojanMedic; PassChance 25.000000" Send="Create"/>
+    </CActorSound>
     <CActorSound id="Changeling_Death">
         <On Terms="UnitDeath.UmojanChangelingMarine; PassChance 100.000000" Send="Create"/>
         <On Terms="UnitDeath.UmojanChangelingMarineShield; PassChance 100.000000" Send="Create"/>
     </CActorSound>
+    <CActorEventMacro id="UmojanCommandCenterPlayerDecalMacro">
+        <On Terms="UnitBirth.UmojanCommandCenter; ValidateUnit NotCloaked" Send="TimerSet 0.125000 DecalDelay"/>
+        <On Terms="UnitBirth.UmojanCommandCenter.EditorPlaced" Send="Create CommandPlayerDecalW"/>
+        <On Terms="Behavior.CloakFieldEffect.On" Target="CommandPlayerDecalW" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.CloakFieldEffect.Off; ValidateUnit IsNotFlying" Send="Create CommandPlayerDecalW"/>
+        <On Terms="TimerExpired; TimerName DecalDelay; ValidateUnit NotCloaked" Send="Create CommandPlayerDecalW"/>
+    </CActorEventMacro>
+    <CActorSplat id="UmojanPathfinderGroundSensor" parent="TerranCursorSplat" abil="UmojanDeployGroundSensor">
+        <Scale value="11.000000,11.000000,1.000000"/>
+    </CActorSplat>
+    <CActorModel id="UmojanCommandoAmbush" parent="ModelAnimationStyleContinuous">
+        <On Terms="Behavior.UmojanCommandoAmbushBuff.On" Send="Create"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Regen Birth"/>
+        <On Terms="Behavior.UmojanCommandoAmbushBuff.Off" Send="AnimBracketStop Regen"/>
+        <On Terms="Behavior.UmojanCommandoAmbushBuff.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachHardPoint"/>
+        <Model value="ReaperHeal"/>
+    </CActorModel>
+    <CActorModel id="UmojanCommandoFlashGrenadeImpactModel" parent="ModelAddition">
+        <On Terms="Behavior.UmojanCommandoFlashGrenadeBlind.On" Send="Create"/>
+        <On Terms="Behavior.UmojanCommandoFlashGrenadeBlind.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,0,255"/>
+        <HostSiteOps Ops="SOpAttachHead"/>
+        <Scale value="0.300000"/>
+    </CActorModel>
+    <CActorAction id="UmojanCommandoFlashGrenadeAction" parent="GenericAttack" effectImpact="RemovePrecursor" effectLaunch="UmojanCommandoFlashGrenadeLM">
+        <LaunchAssets Sound="Reaper_D8ChargeAttackLaunch"/>
+        <Missile value="UmojanCommandoFlashGrenadeMissile"/>
+    </CActorAction>
+    <CActorMissile id="UmojanCommandoFlashGrenadeMissile" parent="GenericAttackMissile" unitName="UmojanWeaponFlashGrenadeWeapon">
+        <Scale value="0.500000"/>
+        <Model value="UmojanCommandoFlashGrenadeWeapon"/>
+    </CActorMissile>
+    <CActorRange id="UmojanCommandoFlashGrenadeRange" parent="RangeAbil" abil="UmojanCommandoFlashGrenade"/>
+    <CActorSound id="UmojanBattleshipMaginotLineShieldingSound" parent="SoundOneShot">
+        <On Terms="Behavior.UmojanBattleshipMaginotLineShielding.DamageHandled" Send="Create"/>
+        <Sound value="Immortal_HardenedShieldImpact"/>
+    </CActorSound>
+    <CActorModel id="UmojanBattleshipMaginotLineShieldingViz" parent="ModelAnimationStyleOneShot">
+        <On Terms="Behavior.UmojanBattleshipMaginotLineShielding.DamageHandled" Send="Create"/>
+        <On Terms="AnimDone" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="ShieldAbsorbImmortalViz"/>
+        <Scale value="3.200000"/>
+    </CActorModel>
+    <CActorModel id="UmojanCommandoFlashGrenadeImpact" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.UmojanCommandoFlashGrenadeSearchArea.Start" Send="Create"/>
+        <HostForProps Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Scale value="3.000000"/>
+    </CActorModel>
+    <CActorModelMaterial id="UmojanGlazePlacement" parent="GlazeParent">
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
     <CActorUnit id="UmojanChangelingMarine2" parent="GenericUnitMorph" unitName="UmojanChangelingMarineShield">
         <Aliases value="_UnitSmall"/>
         <Macros value="TerrainSquibAnimations"/>
@@ -132,30 +315,32 @@
         <Host Subject="_Selectable"/>
         <Sound value="ArbiterMP_RecallStart"/>
     </CActorSound>
-    <CActorBeamSimple id="UmojanAloeSendReconLink" parent="BeamSimpleAnimationStyleContinuous">
+    <CActorBeamSimple id="UmojanHexaremeSendReconLink" parent="BeamSimpleAnimationStyleContinuous">
         <EditorCategories value=""/>
         <Supporter Subject="_Unit" Scope="Target" Actor="Find"/>
-        <On Terms="Effect.UmojanAloeSendReconOrderReconCP.Start" Send="Create"/>
-        <On Terms="Effect.UmojanAloeSendReconOrderReconCP.Stop" Send="Destroy"/>
+        <On Terms="Effect.UmojanWhirlwindSendReconOrderReconCP.Start" Send="Create"/>
+        <On Terms="Effect.UmojanWhirlwindSendReconOrderReconCP.Stop" Send="Destroy"/>
         <HostForProps Subject="_Unit" Scope="Target" Actor="Find"/>
         <Host Subject="_Unit" Scope="Target" Actor="Find"/>
         <Model value="ChannelSnipeTrackingBeam"/>
         <HostLaunch Subject="_Unit" Scope="Target" Actor="Find"/>
         <HostImpact Subject="_Unit" Scope="Caster" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
     </CActorBeamSimple>
-    <CActorRange id="UmojanAloeSendReconRange" parent="RangeAbil" abil="UmojanSendRecon">
+    <CActorRange id="UmojanHexaremeSendReconRange" parent="RangeAbil" abil="UmojanSendSpotter">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
-    <CActorSound id="UmojanAloeTimeBombLaunch2" parent="SoundOneShot">
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Start" Send="Create"/>
+    <CActorSound id="UmojanCrowTimeBombLaunch2" parent="SoundOneShot">
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Start" Send="Create"/>
         <Sound value="Mothership_TimeWarpLaunch2"/>
     </CActorSound>
-    <CActorSound id="UmojanAloeTimeBombLaunch3" parent="SoundOneShot">
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Start" Send="Create"/>
+    <CActorSound id="UmojanCrowTimeBombLaunch3" parent="SoundOneShot">
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Start" Send="Create"/>
         <Sound value="Mothership_TimeWarpLaunch3"/>
     </CActorSound>
-    <CActorBeamSimple id="UmojanAloeTemporalFieldBeam" parent="BeamSimpleAnimationStyleOneShot">
+    <CActorBeamSimple id="UmojanCrowTemporalFieldBeam" parent="BeamSimpleAnimationStyleOneShot">
         <EditorCategories value=""/>
         <Remove Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
         <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death OpeningPlayForever"/>
@@ -167,11 +352,11 @@
         <HostImpact Subject="_Selectable"/>
         <HostImpactSiteOps Ops="SOpLowerBy375"/>
     </CActorBeamSimple>
-    <CActorSplat id="UmojanAloeTemporalFieldCursorSplat" parent="ProtossCursorSplat" abil="UmojanTimeBomb"/>
-    <CActorModel id="UmojanAloeTemporalFieldImpactModel" parent="ModelAnimationStyleOneShot">
+    <CActorSplat id="UmojanCrowTemporalFieldCursorSplat" parent="ProtossCursorSplat" abil="UmojanTimeBomb"/>
+    <CActorModel id="UmojanCrowTemporalFieldImpactModel" parent="ModelAnimationStyleOneShot">
         <Terms value="Cap 1"/>
         <Inherits index="CloakEffect" value="1"/>
-        <On Terms="Behavior.UmojanAloeTimeBomb.On" Send="Create"/>
+        <On Terms="Behavior.UmojanCrowTimeBomb.On" Send="Create"/>
         <On Terms="ActorCreation; ValidateUnit IsCarrier" Send="SetScale 0.400000"/>
         <On Terms="ActorCreation; ValidateUnit IsTempest" Send="SetScale 0.600000"/>
         <On Terms="ActorCreation; ValidateUnit IsStalker" Send="SetScale 0.500000"/>
@@ -214,11 +399,11 @@
         <AutoScaleFactor value="1.000000"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
-    <CActorModel id="UmojanAloeTemporalFieldModel" parent="ModelAnimationStyleContinuous">
+    <CActorModel id="UmojanCrowTemporalFieldModel" parent="ModelAnimationStyleContinuous">
         <Macros value="GlobalLoopMacro"/>
         <Inherits index="TeamColor" value="1"/>
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Start" Send="Create"/>
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
         <On Terms="ModelEvent; ModelEventName SoundStart" Send="Create GuardianShieldSoundBirth"/>
         <On Terms="ModelEvent; ModelEventName SoundLoopStart" Send="Create GuardianShieldSoundLoop"/>
         <On Terms="ModelEvent; ModelEventName SoundLoopEnd" Target="GuardianShieldSoundLoop" Send="Destroy"/>
@@ -227,24 +412,24 @@
         <HostSiteOps Ops="SOpShadow"/>
         <Model value="TemporalFieldModel"/>
     </CActorModel>
-    <CActorRange id="UmojanAloeTemporalFieldRange">
+    <CActorRange id="UmojanCrowTemporalFieldRange">
         <EditorCategories value=""/>
         <On Terms="Abil.UmojanTimeBomb.TargetOn" Send="Create"/>
         <On Terms="Abil.UmojanTimeBomb.TargetOff" Send="Destroy"/>
         <Abil Link="TemporalField"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
-    <CActorSound id="UmojanAloeTemportalFieldEnd" parent="SoundOneShot">
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Stop" Send="Create"/>
+    <CActorSound id="UmojanCrowTemportalFieldEnd" parent="SoundOneShot">
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Stop" Send="Create"/>
         <Sound value="Mothership_TimeWarpEnd"/>
     </CActorSound>
-    <CActorSound id="UmojanAloeTemportalFieldLaunch" parent="SoundOneShot">
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Start" Send="Create"/>
+    <CActorSound id="UmojanCrowTemportalFieldLaunch" parent="SoundOneShot">
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Start" Send="Create"/>
         <Sound value="Mothership_TimeWarpLaunch"/>
     </CActorSound>
-    <CActorSound id="UmojanAloeTemportalFieldLoop" parent="SoundContinuous">
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Start" Send="Create"/>
-        <On Terms="Effect.UmojanAloeTemporalFieldCreatePersistent.Stop" Send="Destroy"/>
+    <CActorSound id="UmojanCrowTemportalFieldLoop" parent="SoundContinuous">
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Start" Send="Create"/>
+        <On Terms="Effect.UmojanCrowTemporalFieldCreatePersistent.Stop" Send="Destroy"/>
         <Sound value="Mothership_TimeWarpLoop"/>
     </CActorSound>
     <CActorUnit id="UmojanChangelingMarine" parent="ChangelingMarine" unitName="UmojanChangelingMarine">
@@ -349,8 +534,8 @@
         <StatusBarFlags index="Custom" value="0"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
     </CActorUnit>
-    <CActorSplat id="UmojanAloeSendBomberSplat" parent="TerranCursorSplat" abil="UmojanSendTimeBomber"/>
-    <CActorRange id="UmojanAloeSendBomberRange" parent="RangeAbil" abil="UmojanSendTimeBomber">
+    <CActorSplat id="UmojanHexaremeSendBomberSplat" parent="TerranCursorSplat" abil="UmojanSendTimeBomber"/>
+    <CActorRange id="UmojanCrowSendBomberRange" parent="RangeAbil" abil="UmojanSendTimeBomber">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
@@ -393,7 +578,7 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-griffon.dds"/>
         </Wireframe>
-        <HostSiteOps Ops="UmojanSOpBankerMist"/>
+        <HostSiteOps Ops="SOpBankerBroodLord"/>
     </CActorUnit>
     <CActorAction id="UmojanRaptorAttack" parent="GenericAttackBase">
         <On Terms="Effect.UmojanRaptorBeamPersistent.Start; At Caster" Send="Create"/>
@@ -546,45 +731,46 @@
         <HostSiteOps Ops="SOpAttachOverhead"/>
         <Sound value="Medivac_HealLoop"/>
     </CActorSound>
-    <CActorModel id="UmojanAloeTransportLoadModel" parent="ModelAnimationStyleOneShot">
-        <On Terms="AbilTransport.UmojanLoadUnloadAloe.CargoLoad" Send="Create"/>
+    <CActorModel id="UmojanHexaremeTransportLoadModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="AbilTransport.UmojanSpecOpsDropshipLoadUnload.CargoLoad" Send="Create"/>
         <On Terms="ActorCreation" Send="Create UnitWarpIntoShuttle_ActorSound"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Model value="ShuttleTransportLoadModel"/>
     </CActorModel>
-    <CActorSound id="UmojanAloeTransportLoadSound" parent="SoundOneShot">
-        <On Terms="AbilTransport.UmojanLoadUnloadAloe.TransportLoad" Send="Create"/>
+    <CActorSound id="UmojanHexaremeTransportLoadSound" parent="SoundOneShot">
+        <On Terms="AbilTransport.UmojanSpecOpsDropshipLoadUnload.TransportLoad" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Sound value="Shuttle_Load"/>
     </CActorSound>
-    <CActorModel id="UmojanAloeTransportUnloadModel" parent="ModelAnimationStyleOneShot">
-        <On Terms="Abil.UmojanLoadUnloadAloe.CargoUnload" Send="Create"/>
+    <CActorModel id="UmojanHexaremeTransportUnloadModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Abil.UmojanSpecOpsDropshipLoadUnload.CargoUnload" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="ShuttleTransportUnloadModel"/>
     </CActorModel>
-    <CActorSound id="UmojanAloeTransportUnloadSound" parent="SoundOneShot">
-        <On Terms="AbilTransport.UmojanLoadUnloadAloe.TransportUnload" Send="Create"/>
+    <CActorSound id="UmojanHexaremeTransportUnloadSound" parent="SoundOneShot">
+        <On Terms="AbilTransport.UmojanSpecOpsDropshipLoadUnload.TransportUnload" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Sound value="Shuttle_Unload"/>
     </CActorSound>
-    <CActorUnit id="UmojanAloeMorphModel" parent="GenericUnitBaseMorphTransition" unitName="UmojanAloeMorphModel">
+    <CActorUnit id="UmojanHexaremeMorphModel" parent="GenericUnitBaseMorphTransition" unitName="UmojanAloeMorphModel">
         <Aliases value="_UnitLarge"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
-        <On Terms="AbilMorph.*.Start; MorphTo UmojanAloe" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphTo UmojanAloe" Send="AnimPlay End Work,End"/>
-        <On Terms="AbilMorph.*.Start; MorphTo UmojanAloe" Send="TimerSet 0.100000 StartDisengage"/>
+        <On Terms="AbilMorph.*.Start; MorphTo UmojanHexareme" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphTo UmojanHexareme" Send="AnimPlay End Work,End"/>
+        <On Terms="AbilMorph.*.Start; MorphTo UmojanHexareme" Send="TimerSet 0.100000 StartDisengage"/>
         <On Terms="TimerExpired; TimerName StartDisengage" Target="LiberatorAGTurret" Send="LookAtDisengage"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanAloe" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanAloeAG" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanAloeAG" Target="UmojanAloeAGTurret" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanHexareme" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanHexaremeAG" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanHexaremeAG" Target="UmojanHexaremeAGTurret" Send="Destroy"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Liberator_Land"/>
         <On Terms="AbilMorph.*.Start; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
         <Model value="Liberator_Umojan"/>
+        <Scale value="1.200000"/>
         <BuildModel value="Liberator_Umojan"/>
         <DeathArray index="Normal" ModelLink="Liberator_Umojan_Death" SoundLink=""/>
         <DeathCustoms>
@@ -614,6 +800,8 @@
         <GroupIcon>
             <Image value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
         </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
+        <HighlightTooltip value="Unit/Name/UmojanHexaremeMorphModel"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
         <SoundArray index="Birth" value="Medivac_Birth"/>
         <SoundArray index="Ready" value="Medivac_Ready"/>
@@ -632,10 +820,8 @@
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-liberator-aamode.dds"/>
         </Wireframe>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
-        <Scale value="1.200000"/>
     </CActorUnit>
-    <CActorUnit id="UmojanAloeAGMorphModel" parent="UmojanAloeMorphModel" unitName="UmojanAloeAGMorphModel">
+    <CActorUnit id="UmojanHexaremeAGMorphModel" parent="UmojanHexaremeMorphModel" unitName="UmojanAloeAGMorphModel">
         <On index="0" Terms="UnitBirth.UmojanAloeAGMorphModel" Send="Create SoundEmitter UmojanAloeAGMorphModel_Ambience"/>
         <On index="1" Terms="UnitBirth.UmojanAloeAGMorphModel"/>
         <On index="2" Terms="UnitRevive.UmojanAloeAGMorphModel"/>
@@ -662,19 +848,19 @@
             <Image index="0" value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorLookAt id="UmojanAloeAGTurret" parent="UnitTurret">
-        <Type value="UmojanAloeAG"/>
+    <CActorLookAt id="UmojanHexaremeAGTurret" parent="UnitTurret">
+        <Type value="UmojanHexaremeAG"/>
     </CActorLookAt>
-    <CActorAction id="UmojanAloeAGAttack" parent="GenericAttack" effectImpact="UmojanAloeAGDamage" effectLaunch="UmojanAloeAGMissileLM">
+    <CActorAction id="UmojanHexaremeAGAttack" parent="GenericAttack" effectImpact="UmojanAloeAGDamage" effectLaunch="UmojanAloeAGMissileLM">
         <LaunchAssets Sound="Liberator_AG_Launch"/>
         <ImpactMap index="None" Model="LiberatorAGAttackImpact" Sound="Liberator_AG_Launch_Impact"/>
         <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic" Physics="RailgunAttackDeathForce"/>
         <ActionFlags index="LaunchForceSite" value="1"/>
     </CActorAction>
-    <CActorMissile id="UmojanAloeAGAttackMissile" parent="GenericAttackMissile" unitName="UmojanAloeAGMissile">
+    <CActorMissile id="UmojanHexaremeAGAttackMissile" parent="GenericAttackMissile" unitName="UmojanAloeAGMissile">
         <Model value="Invisible"/>
     </CActorMissile>
-    <CActorBeamSimple id="UmojanAloeAttackBeam" parent="BeamSimpleAnimationStyleOneShot">
+    <CActorBeamSimple id="UmojanHexaremeAttackBeam" parent="BeamSimpleAnimationStyleOneShot">
         <Inherits index="CloakEffect" value="1"/>
         <Inherits index="Visibility" value="1"/>
         <On Terms="Effect.UmojanAloeAGMissileLM.Start; At Caster" Send="Create"/>
@@ -686,7 +872,7 @@
         <HostLaunchSiteOps Ops="SOpAttachWeapon"/>
         <HostImpact Subject="_Missile" Actor="Find"/>
     </CActorBeamSimple>
-    <CActorUnit id="UmojanAloe" parent="GenericUnitBase" unitName="UmojanAloe">
+    <CActorUnit id="UmojanHexareme" parent="GenericUnitBase" unitName="UmojanHexareme">
         <Aliases value="_UnitLarge"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
         <Macros value="PhysicsDeathsVoidAir"/>
@@ -694,8 +880,8 @@
         <On Terms="WeaponStart.UmojanLutetiaRockets.AttackStart" Send="AnimBracketStart Attack Cover,Start Cover Cover,End"/>
         <On Terms="WeaponStop.UmojanLutetiaRockets.AttackStop" Send="TimerSet 2.000000 LiberatorAttack"/>
         <On Terms="TimerExpired; TimerName LiberatorAttack; ValidateUnitType CasterNotAttacking" Send="AnimBracketStop Attack"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo UmojanAloe" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanAloe" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo UmojanHexareme" Send="Create"/>
+        <On Terms="AbilMorph.*.Start; MorphFrom UmojanHexareme" Send="Destroy"/>
         <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimClear Visor 0.000000"/>
         <On Terms="ActorCreation" Send="AnimBlendTimeApply 0.000000"/>
         <On Terms="ActorCreation" Send="AnimBaselineStop"/>
@@ -705,6 +891,7 @@
         <On Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
         <HostSiteOps Ops="SOpBankerLiberator"/>
         <Model value="Liberator_Umojan"/>
+        <Scale value="1.200000"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="Liberator_Umojan"/>
         <DeathArray index="Normal" ModelLink="Liberator_Umojan_Death" SoundLink="Liberator_Death"/>
@@ -729,13 +916,65 @@
         <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
         <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
         <PlacementModel value="Liberator_Umojan"/>
-        <PortraitModel value="Medivac_Umojan_Portrait"/>
+        <PortraitModel value="Liberator_Umojan_Portrait"/>
         <BarOffset value="50"/>
         <BarWidth value="70"/>
         <GroupIcon>
             <Image value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
         </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Birth" value="Liberator_Birth"/>
+        <SoundArray index="Ready" value="TerranFlyer_Ready"/>
+        <SoundArray index="Help" value="TerranFlyer_Help"/>
+        <SoundArray index="What" value="TerranFlyer_What"/>
+        <SoundArray index="Yes" value="TerranFlyer_Yes"/>
+        <SoundArray index="Attack" value="TerranFlyer_Attack"/>
+        <SoundArray index="Pissed" value="TerranFlyer_Pissed"/>
+        <SoundArray index="Movement" value="Liberator_Move_Start"/>
+        <SoundArray index="Turning" value="Liberator_Turning"/>
+        <SoundArray index="Board" value="Liberator_Board"/>
+        <SoundArray index="Click" value="Liberator_Click"/>
+        <SoundArray index="ClickError" value="Liberator_ClickError"/>
+        <SoundArray index="Highlight" value="Liberator_Highlight"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-liberator-aamode.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="UmojanHexaremeAG" parent="UmojanHexareme" unitName="UmojanHexaremeAG">
+        <On index="0" Terms="UnitBirth.UmojanHexaremeAG" Send="Create SoundEmitter UmojanAloeAG_Ambience"/>
+        <On index="1" Terms="UnitBirth.UmojanHexaremeAG"/>
+        <On index="2" Terms="UnitRevive.UmojanHexaremeAG"/>
+        <On index="3" Terms="UnitRevive.UmojanHexaremeAG"/>
+        <On index="4" Terms="UnitConstruction.UmojanHexaremeAG.Start"/>
+        <On index="5" Terms="UnitConstruction.UmojanHexaremeAG.Finish"/>
+        <On index="64" Terms="ActorCreation" Send="Create LiberatorAGTurret"/>
+        <On index="65" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Target="LiberatorAGTurret" Send="LookAtEngage"/>
+        <On index="66" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Send="TimerKill ResetOnNoTargets"/>
+        <On index="67" Terms="Abil.attack.ReadyStop" Target="LiberatorAGTurret" Send="RefClear ::HostTarget"/>
+        <On index="68" Terms="Abil.attack.ReadyStop" Send="TimerSet 2.000000 ResetOnNoTargets"/>
+        <On index="69" Terms="TimerExpired; TimerName ResetOnNoTargets" Target="LiberatorAGTurret" Send="LookAtStop"/>
+        <On index="70" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Target="::PortraitGameSelf" Send="AnimBracketStart AttackA Attack,A"/>
+        <On index="71" Terms="WeaponStop.UmojanElysianCannon.AttackStop" Send="AnimBracketStop AttackA"/>
+        <On index="72" Terms="ActorCreation" Send="AnimBracketStart Work {} Stand,Work Stand,Work,End Instant"/>
+        <On index="73" Terms="AbilMorph.*.Finish; MorphTo UmojanHexaremeAG" Send="Create"/>
+        <On index="74" Terms="AbilMorph.*.Start; MorphFrom UmojanHexaremeAG" Send="Destroy"/>
+        <On index="75" Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
+        <On index="76" removed="1"/>
+        <EventDataFootprint index="0" Actor="UnitFootprint" Model="UmojanAloeAGFootprint"/>
+        <DeathArray index="Normal" VoiceLink="UmojanAloeDeathVoice"/>
+        <PortraitModel value="Medivac_Umojan_Portrait"/>
+        <GlossaryAnim value="Stand,Work"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-terran-liberatormorph-umojan.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="What" value="UmojanAloe_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="UmojanAloe_GroupYes"/>
+        <GroupSoundArray index="Attack" value="UmojanAloe_GroupAttack"/>
+        <GroupSoundArray index="Board" value="UmojanAloe_GroupBoard"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-liberatormorph-umojan.dds"/>
+        <HighlightTooltip value="Unit/Name/UmojanHexaremeAG"/>
         <SoundArray index="Birth" value="Medivac_Birth"/>
         <SoundArray index="Ready" value="Medivac_Ready"/>
         <SoundArray index="Help" value="Medivac_Help"/>
@@ -749,57 +988,23 @@
         <SoundArray index="Click" value="Medivac_Click"/>
         <SoundArray index="ClickError" value="Medivac_ClickError"/>
         <SoundArray index="Highlight" value="Medivac_Highlight"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
-        <Wireframe>
-            <Image value="Assets\Textures\wireframe-terran-liberator-aamode.dds"/>
-        </Wireframe>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-liberator-umojan.dds"/>
-        <Scale value="1.200000"/>
-    </CActorUnit>
-    <CActorUnit id="UmojanAloeAG" parent="UmojanAloe" unitName="UmojanAloeAG">
-        <On index="0" Terms="UnitBirth.UmojanAloeAG" Send="Create SoundEmitter UmojanAloeAG_Ambience"/>
-        <On index="1" Terms="UnitBirth.UmojanAloeAG"/>
-        <On index="2" Terms="UnitRevive.UmojanAloeAG"/>
-        <On index="3" Terms="UnitRevive.UmojanAloeAG"/>
-        <On index="4" Terms="UnitConstruction.UmojanAloeAG.Start"/>
-        <On index="5" Terms="UnitConstruction.UmojanAloeAG.Finish"/>
-        <On index="64" Terms="ActorCreation" Send="Create LiberatorAGTurret"/>
-        <On index="65" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Target="LiberatorAGTurret" Send="LookAtEngage"/>
-        <On index="66" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Send="TimerKill ResetOnNoTargets"/>
-        <On index="67" Terms="Abil.attack.ReadyStop" Target="LiberatorAGTurret" Send="RefClear ::HostTarget"/>
-        <On index="68" Terms="Abil.attack.ReadyStop" Send="TimerSet 2.000000 ResetOnNoTargets"/>
-        <On index="69" Terms="TimerExpired; TimerName ResetOnNoTargets" Target="LiberatorAGTurret" Send="LookAtStop"/>
-        <On index="70" Terms="WeaponStart.UmojanElysianCannon.AttackStart" Target="::PortraitGameSelf" Send="AnimBracketStart AttackA Attack,A"/>
-        <On index="71" Terms="WeaponStop.UmojanElysianCannon.AttackStop" Send="AnimBracketStop AttackA"/>
-        <On index="72" Terms="ActorCreation" Send="AnimBracketStart Work {} Stand,Work Stand,Work,End Instant"/>
-        <On index="73" Terms="AbilMorph.*.Finish; MorphTo UmojanAloeAG" Send="Create"/>
-        <On index="74" Terms="AbilMorph.*.Start; MorphFrom UmojanAloeAG" Send="Destroy"/>
-        <On index="75" Terms="AbilMorph.*.Finish; FlyerHelper All; !ScopeContains FlyerHelperSplat" Send="Create FlyerHelperSplat"/>
-        <On index="76" removed="1"/>
-        <EventDataFootprint index="0" Actor="UnitFootprint" Model="UmojanAloeAGFootprint"/>
-        <GlossaryAnim value="Stand,Work"/>
-        <GroupIcon>
-            <Image index="0" value="Assets\Textures\btn-unit-terran-liberatormorph-umojan.dds"/>
-        </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-liberatormorph-umojan.dds"/>
-        <HighlightTooltip value="Unit/Name/UmojanAloeAG"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-liberatormorph-umojan.dds"/>
         <Wireframe>
             <Image index="0" value="Assets\Textures\wireframe-terran-liberator-agmode.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorAction id="UmojanAloeDamageAttack" parent="GenericAttack" effectImpact="UmojanAloeMissileDamage" effectLaunch="UmojanAloeDamageMissileLM">
+    <CActorAction id="UmojanHexaremeDamageAttack" parent="GenericAttack" effectImpact="UmojanAloeMissileDamage" effectLaunch="UmojanAloeDamageMissileLM">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0 UmojanAMPatternAloe"/>
         <LaunchAssets Sound="Liberator_AA_Launch"/>
         <ImpactSiteOps Ops="SOpAttachCenter SOpRandomPointInCircle1Dot5"/>
         <ImpactMap index="None" Model="LiberatorAttackImpact" Sound="Liberator_AA_Launch_Impact"/>
         <ShieldFlashType value="Full"/>
     </CActorAction>
-    <CActorMissile id="UmojanAloeDamageAttackMissile" parent="GenericAttackMissile" unitName="UmojanAloeDamageMissile">
+    <CActorMissile id="UmojanHexaremeDamageAttackMissile" parent="GenericAttackMissile" unitName="UmojanAloeDamageMissile">
         <Model value="LiberatorDamageMissile"/>
     </CActorMissile>
-    <CActorAction id="UmojanAloeShieldHitter" parent="AoESplashShieldHitter" effectHit="UmojanAloeMissileDamage"/>
-    <CActorRange id="UmojanAloeAGRange">
+    <CActorAction id="UmojanHexaremeShieldHitter" parent="AoESplashShieldHitter" effectHit="UmojanAloeMissileDamage"/>
+    <CActorRange id="UmojanHexaremeAGRange">
         <On Terms="AbilMorph.*.Start; MorphTo UmojanAloeAG" Send="Create"/>
         <On Terms="AbilMorph.*.Start; MorphTo UmojanAloe" Send="Destroy"/>
         <Weapon value="UmojanElysianCannon"/>
@@ -860,6 +1065,7 @@
             <Image value="Assets\Textures\wireframe-terran-hivemindemulator.dds"/>
         </Wireframe>
         <PlacementActorModel value="UmojanEngineeringTowerPlacementModel"/>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanEngineeringTowerBuild" parent="TerranBuildingBuildSmall">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttachedSmall"/>
@@ -877,7 +1083,7 @@
     <CActorAction id="UmojanLockdownAttack" parent="GenericAttack" effectImpact="UmojanLockdownAB" effectLaunch="UmojanLockdownLM">
         <LaunchAssets Sound="Ghost_EMPAttackLaunch"/>
         <ImpactMap index="None" Model="GhostEMPAttackImpactEffect" Sound="Ghost_EMPAttackImpact"/>
-        <LaunchSite value="UmojanBattlecatRiderShadowguardSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
         <Beam value="UmojanBattlecatFakeBeam"/>
     </CActorAction>
@@ -892,17 +1098,18 @@
         <On Terms="UnitBirth.UmojanBattlecatSpahi" Send="Create"/>
         <On Terms="UnitDeath.UmojanBattlecatSpahi" Send="Destroy"/>
         <On Terms="ActorCreation" Send="AnimPlay Start Stand PlayForever"/>
-        <On Terms="ActorCreation; ValidatePlayer NoMarineShield" Send="AnimPlay Cover Cover PlayForever 0.000000"/>
+        <On Terms="ActorCreation; ValidatePlayer UmojanNoMarineShield" Send="AnimPlay Cover Cover PlayForever 0.000000"/>
         <On Terms="Upgrade.UmojanCombatShield.Add" Send="AnimClear Cover"/>
         <On Terms="Upgrade.UmojanCombatShield.Remove" Send="AnimPlay Cover Cover PlayForever 0.000000"/>
         <On Terms="WeaponStart.UmojanK14RailrifleSpahi.AttackStart; WeaponTargetElevation GE 20.000000" Send="AnimBracketStart Attack Attack,Superior"/>
         <On Terms="WeaponStart.UmojanK14RailrifleSpahi.AttackStart; WeaponTargetElevation LE -20.000000" Send="AnimBracketStart Attack Attack,Inferior"/>
         <On Terms="WeaponStart.UmojanK14RailrifleSpahi.AttackStart" Send="AnimPlay Attack Attack"/>
         <On Terms="WeaponStop.UmojanK14RailrifleSpahi.AttackStop" Send="AnimClear Attack 1.000000"/>
-        <Host Subject="UmojanBattlecatRiderPretorianDummy"/>
+        <On Terms="ActorCreation" Send="SetScale 2.500000"/>
+        <Host Subject="_UmojanSaddle"/>
         <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot15"/>
         <Model value="Marine_Umojan"/>
-        <Scale value="2.500000"/>
+        <Aliases value="_UmojanRider"/>
     </CActorModel>
     <CActorModel id="UmojanBattlecatRiderPlasmabatModel" parent="ModelAddition">
         <On Terms="UnitBirth.UmojanBattlecatCuirassier" Send="Create"/>
@@ -912,21 +1119,22 @@
         <On Terms="WeaponStop.UmojanPlasmabatCuirassier" Send="AnimClear Attack"/>
         <On Terms="Abil.UmojanPlasmabatCorrosiveBlast.SourcePrepStart" Send="AnimPlay Start Attack"/>
         <On Terms="Abil.UmojanPlasmabatCorrosiveBlast.SourceFinishStop" Send="AnimClear Attack"/>
-        <Host Subject="UmojanBattlecatRiderPlasmabatDummy"/>
+        <On Terms="ActorCreation" Send="SetScale 2.500000"/>
+        <Host Subject="_UmojanSaddle"/>
         <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot1"/>
         <Model value="UmojanPlasmabat"/>
-        <Scale value="2.500000"/>
+        <Aliases value="_UmojanRider"/>
     </CActorModel>
     <CActorModel id="UmojanBattlecatRiderShadowguardModel" parent="ModelAddition">
         <On Terms="UnitBirth.UmojanBattlecatLancer" Send="Create"/>
         <On Terms="UnitDeath.UmojanBattlecatLancer" Send="Destroy"/>
         <On Terms="ActorCreation" Send="AnimPlay Start Stand PlayForever"/>
-        <On Terms="Abil.TacNukeStrike.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
-        <On Terms="Abil.TacNukeStrike.SourceCastStop" Send="AnimClear SpellA"/>
-        <On Terms="Abil.TacNukeStrike.SourceChannelStart" Send="AnimPlay SpellB Spell,B PlayForever"/>
-        <On Terms="Abil.TacNukeStrike.SourceChannelStop" Send="AnimClear SpellB"/>
-        <On Terms="Abil.TacNukeStrike.SourceFinishStart" Send="AnimPlay SpellC Spell,C"/>
-        <On Terms="Abil.TacNukeStrike.SourceFinishStop" Send="AnimClear SpellC"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceCastStop" Send="AnimClear SpellA"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceChannelStart" Send="AnimPlay SpellB Spell,B PlayForever"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceChannelStop" Send="AnimClear SpellB"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceFinishStart" Send="AnimPlay SpellC Spell,C"/>
+        <On Terms="Abil.UmojanTacNukeStrike.SourceFinishStop" Send="AnimClear SpellC"/>
         <On Terms="Abil.UmojanSnipe.SourceCastStart" Send="AnimBaselineStop"/>
         <On Terms="Abil.UmojanSnipe.SourceCastStart" Send="AnimPlay SpellA Spell,A"/>
         <On Terms="Abil.UmojanSnipe.SourceCastStop" Send="AnimClear SpellA"/>
@@ -949,10 +1157,11 @@
         <On Terms="WeaponStart.UmojanK1XCanisterRifleLancer.AttackStart" Send="AnimPlay Attack Attack"/>
         <On Terms="WeaponStop.UmojanK1XCanisterRifleLancer.AttackStop" Send="AnimClear Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <Host Subject="UmojanBattlecatRiderShadowguardDummy"/>
+        <On Terms="ActorCreation" Send="SetScale 2.500000"/>
+        <Host Subject="_UmojanSaddle"/>
         <HostSiteOps Ops="SOpAttachTarget SOpMoveDownByDot15"/>
         <Model value="Ghost_Umojan"/>
-        <Scale value="2.500000"/>
+        <Aliases value="_UmojanRider"/>
     </CActorModel>
     <CActorSound id="UmojanRetributionFieldImpactSound" parent="SoundOneShot">
         <On Terms="Effect.UmojanRetributionFieldDamage.Start" Send="Create"/>
@@ -967,6 +1176,7 @@
     </CActorModel>
     <CActorUnit id="UmojanBattlecat" parent="GenericUnitStandard" unitName="UmojanBattlecat">
         <Aliases value="_UnitMedium"/>
+        <Aliases value="_UmojanMount"/>
         <Macros value="UnloadDropAnim"/>
         <Baselines index="Walk" AnimProps="Walk,Fast"/>
         <DeathArray index="Normal" ModelLink="UmojanBattlecatDeath" SoundLink="SiegeTank_Explode"/>
@@ -1035,8 +1245,9 @@
     <CActorModel id="UmojanPlacementModel" parent="PlacementModel">
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <On Terms="ActorCreation" Send="Create UmojanGlazePlacement"/>
     </CActorModel>
-    <CActorUnit id="UmojanNorns" parent="GenericUnitBase" unitName="UmojanNorns">
+    <CActorUnit id="UmojanNorns" parent="GenericUnitBase" unitName="UmojanMoira">
         <Aliases value="_UnitLarge"/>
         <Macros value="UnloadDropAnim"/>
         <On Terms="WeaponStart.UmojanNornsTwinGatlingCannonAG.AttackStart" Send="AnimBracketStart Attack Attack"/>
@@ -1066,6 +1277,10 @@
         <SoundArray index="Yes" value="UmojanNornsYes"/>
         <SoundArray index="Attack" value="UmojanNornsAttack"/>
         <SoundArray index="Pissed" value="UmojanNornsPissed"/>
+        <Model value="UmojanNorns"/>
+        <BuildModel value="UmojanNorns"/>
+        <PlacementModel value="UmojanNorns"/>
+        <HighlightTooltip value="Unit/Name/UmojanNorns"/>
     </CActorUnit>
     <CActorAction id="UmojanNornsAirAttack" parent="GenericAttack" effectImpact="UmojanHellfireMissilePack" effectLaunch="UmojanHellfireMissileALM">
         <LaunchAttachQuery Methods="UmojanAMPatternNornAA"/>
@@ -1256,6 +1471,7 @@
     <CActorModel id="UmojanPlaceholderModel" parent="PlaceholderModel">
         <On Terms="ActorCreation" Send="SetOpacity 0.500000"/>
         <On Terms="ActorCreation" Send="SetTintColor 0,255,0"/>
+        <On Terms="ActorCreation" Send="Create UmojanGlazePlacement"/>
     </CActorModel>
     <CActorModel id="UmojanSentryGunBuild" parent="TerranBuildingBuildSmall">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttachedSmall"/>
@@ -1287,15 +1503,16 @@
         </Wireframe>
         <PlacementActorModel value="UmojanSentryGunPlacementModel"/>
         <PlaceholderActorModel value="UmojanPlaceholderModel"/>
-        <BuildModel value="Invisible"/>
+        <BuildModel value="UmojanInvisible"/>
     </CActorUnit>
     <CActorAction id="UmojanSentryGunAttack" parent="GenericAttack" effectLaunch="UmojanSentryGun">
         <LaunchAttachQuery Methods="Weapon"/>
-        <LaunchAssets Sound="SentryGun_AttackLaunch"/>
-        <ImpactMap index="None" Sound="SentryGun_AttackImpact"/>
+        <LaunchAssets Sound="Nova_SniperRifle_AttackLaunch_Mechy"/>
+        <ImpactMap index="None" Sound="Nova_SniperRifle_AttackImpact" ModelReaction="GhostSnipeAttackImpact"/>
+        <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic"/>
     </CActorAction>
     <CActorModel id="UmojanSentryGunPlacementModel" parent="UmojanPlacementModel">
-        <On Terms="ActorCreation" Send="Create UmojanSentryGunRange"/>
+        <On index="8" Terms="ActorCreation" Send="Create UmojanSentryGunRange"/>
     </CActorModel>
     <CActorTurret id="UmojanSentryGunTurret">
         <On Terms="TurretEnable.UmojanSentryGunTurret" Send="Create"/>
@@ -1380,6 +1597,10 @@
         <On Terms="Abil.UmojanTransferShieldPowerRedirect.TargetOff" Send="Destroy"/>
         <On Terms="Abil.UmojanTransferShieldPowerRedirect.ButtonHoverOn" Send="Create"/>
         <On Terms="Abil.UmojanTransferShieldPowerRedirect.ButtonHoverOff" Send="Destroy"/>
+        <On Terms="Abil.UmojanAloeHealUnit.TargetOn" Send="Create"/>
+        <On Terms="Abil.UmojanAloeHealUnit.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.UmojanAloeHealUnit.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.UmojanAloeHealUnit.ButtonHoverOff" Send="Destroy"/>
     </CActorRange>
     <CActorRange id="UmojanPlasmabatCorrosiveBlastRange" parent="RangeAbil" abil="UmojanPlasmabatCorrosiveBlast">
         <On Terms="Abil.UmojanPlasmabatCorrosiveBlastRedirect.TargetOn" Send="Create"/>
@@ -1413,6 +1634,7 @@
             <Image value="Assets\Textures\wireframe-terran-d8charge.dds"/>
         </Wireframe>
         <BuildModel value="Invisible"/>
+        <PlacementActorModel value="UmojanPlacementModel"/>
     </CActorUnit>
     <CActorTurret id="UmojanVigilantTurret">
         <On Terms="TurretEnable.UmojanVigilantTurret" Send="Create"/>
@@ -1421,6 +1643,8 @@
         <LaunchAttachQuery Methods="UmojanBunkerTurretWeaponSet UmojanPatternBunker" Fallback="Weapon"/>
         <Beam value="UmojanBunkerK14RailrifleBeam"/>
         <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic"/>
+        <LaunchAssets Sound="Nova_SniperRifle_AttackLaunch_Mechy"/>
+        <ImpactMap index="None" Sound="Ghost_SnipeImpact"/>
     </CActorAction>
     <CActorBeamSimple id="UmojanBunkerK14RailrifleBeam" parent="GenericAttackBeam">
         <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
@@ -1433,7 +1657,7 @@
         <LaunchAssets Model="GhostSnipeAttackLaunch" Sound="Ghost_SnipeLaunch"/>
         <ImpactMap index="None" Model="GhostSnipeAttackImpact" Sound="Ghost_SnipeImpact"/>
         <ImpactPhysics Name="GhostSnipeImpact" MatchKeys="Basic" Physics="GhostSnipeAttackDeathForce"/>
-        <LaunchSite value="UmojanBattlecatRiderShadowguardSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
     </CActorAction>
     <CActorBeamSimple id="UmojanShadowguardSnipeAttackBeam" parent="GenericAttackBeam">
@@ -1526,7 +1750,7 @@
         <Host Subject="_Selectable"/>
         <Sound value="ArbiterMP_StasisFieldOff"/>
     </CActorSound>
-    <CActorRange id="UmojanStasisFieldRange" parent="RangeAbil" abil="UmojanStasisField">
+    <CActorRange id="UmojanStasisFieldRange" parent="RangeAbil" abil="UmojanStasisGun">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
@@ -1549,7 +1773,6 @@
         <Inherits index="Visibility" value="1"/>
         <Supporter Subject="_Selectable"/>
         <On Terms="SupporterDestruction" Send="AnimBracketStop BSD"/>
-        <Model value="GenericAttackModel"/>
         <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
     <CActorAction id="UmojanFrenrirSiegedAttack" parent="GenericAttack" effectAttack="UmojanFrenrirCannonBlast">
@@ -1604,29 +1827,6 @@
         <ImpactMap index="None" Model="ThorHandGunAttackImpact" Sound="Thor_HandGunAttackImpact"/>
         <ImpactPhysics Name="GunImpact" MatchKeys="Basic" Physics="ThorAttackForce"/>
     </CActorAction>
-    <CActorSplat id="UmojanDisruptionWebCursorSplat" parent="TerranCursorSplat" abil="UmojanDisruptionWeb">
-        <On Terms="Abil.UmojanDisruptionWebRedirect" Send="Create"/>
-    </CActorSplat>
-    <CActorRange id="UmojanDisruptionWebRange" parent="RangeAbil" abil="UmojanDisruptionWeb">
-        <On Terms="Abil.UmojanDisruptionWebRedirect.TargetOn" Send="Create"/>
-        <On Terms="Abil.UmojanDisruptionWebRedirect.TargetOff" Send="Destroy"/>
-        <On Terms="Abil.UmojanDisruptionWebRedirect.ButtonHoverOn" Send="Create"/>
-        <On Terms="Abil.UmojanDisruptionWebRedirect.ButtonHoverOff" Send="Destroy"/>
-    </CActorRange>
-    <CActorModel id="UmojanDisruptionWebImpact" parent="ModelAnimationStyleContinuous">
-        <On Terms="Effect.UmojanDisruptionWebCreatePersistent.Start" Send="Create"/>
-        <On Terms="Effect.UmojanDisruptionWebCreatePersistent.Stop" Send="AnimBracketStop BSD"/>
-        <ModelFlags index="AutomateGlobalLoops" value="1"/>
-    </CActorModel>
-    <CActorSound id="UmojanDisruptionWebLaunchSound" parent="SoundOneShot">
-        <On Terms="Effect.UmojanDisruptionWebCreatePersistent.Start" Send="Create"/>
-        <Sound value="UmojanDisruptionWebLaunch"/>
-    </CActorSound>
-    <CActorSound id="UmojanDisruptionWebLoopSound" parent="SoundOneShot">
-        <On Terms="Effect.UmojanDisruptionWebCreatePersistent.Start" Send="Create"/>
-        <On Terms="Effect.UmojanDisruptionWebCreatePersistent.Stop" Send="Destroy"/>
-        <Sound value="UmojanDisruptionWebLoop"/>
-    </CActorSound>
     <CActorBeamSimple id="UmojanFrenrirsClawsBeam" parent="GenericAttackBeam">
         <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
@@ -1687,13 +1887,25 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-building-terran-fusioncore.dds"/>
         <NameOffset value="100"/>
+        <SoundArray index="Birth" value="FusionCore_Birth"/>
         <SoundArray index="Ready" value="FusionCore_Ready"/>
+        <SoundArray index="Help" value="FusionCore_Help"/>
         <SoundArray index="What" value="FusionCore_What"/>
+        <SoundArray index="Yes" value="FusionCore_Yes"/>
+        <SoundArray index="Attack" value="FusionCore_Attack"/>
+        <SoundArray index="Pissed" value="FusionCore_Pissed"/>
+        <SoundArray index="Movement" value="FusionCore_Movement"/>
+        <SoundArray index="Turning" value="FusionCore_Turning"/>
+        <SoundArray index="Board" value="FusionCore_Board"/>
+        <SoundArray index="Click" value="FusionCore_Click"/>
+        <SoundArray index="ClickError" value="FusionCore_ClickError"/>
+        <SoundArray index="Highlight" value="FusionCore_Highlight"/>
         <UnitFlags index="ShowBlobShadow" value="0"/>
         <UnitIcon value="Assets\Textures\btn-building-terran-fusioncore.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-FusionCore.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanRefineryRich" parent="TerranBuildingEx" unitName="UmojanRefineryRich">
         <Aliases value="_UnitHuge"/>
@@ -1729,6 +1941,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Refinery.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanRefineryBuild" parent="TerranBuildingBuildRefinery">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttached"/>
@@ -1764,6 +1977,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Refinery.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorPower id="UmojanSciencePowerRed">
         <On Terms="Behavior.UmojanScienceRed.Create" Send="Create"/>
@@ -1809,6 +2023,7 @@
         <DeathActorModelLow value="UmojanUnitDeathModel"/>
         <PlacementActorModel value="UmojanPlacementModel"/>
         <PlaceholderActorModel value="UmojanPlaceholderModel"/>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanScienceFacilityBaseBuild" parent="TerranBuildingBuild">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttached"/>
@@ -1911,6 +2126,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-GhostAcademy.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanStarportBuild" parent="TerranBuildingBuild">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttached"/>
@@ -1940,13 +2156,24 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-building-terran-Starport.dds"/>
         <NameOffset value="110"/>
+        <SoundArray index="Birth" value="Starport_Birth"/>
         <SoundArray index="Ready" value="Starport_Ready"/>
+        <SoundArray index="Help" value="Starport_Help"/>
         <SoundArray index="What" value="Starport_What"/>
+        <SoundArray index="Yes" value="Starport_Yes"/>
+        <SoundArray index="Attack" value="Starport_Attack"/>
+        <SoundArray index="Pissed" value="Starport_Pissed"/>
         <SoundArray index="Movement" value="Starport_Movement"/>
+        <SoundArray index="Turning" value="Starport_Turning"/>
+        <SoundArray index="Board" value="Starport_Board"/>
+        <SoundArray index="Click" value="Starport_Click"/>
+        <SoundArray index="ClickError" value="Starport_ClickError"/>
+        <SoundArray index="Highlight" value="Starport_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-building-terran-Starport.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Starport.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanEngineeringBayBuild" parent="TerranBuildingBuild">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttached"/>
@@ -1977,19 +2204,31 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-building-terran-Factory.dds"/>
         <NameOffset value="110"/>
+        <SoundArray index="Birth" value="Factory_Birth"/>
         <SoundArray index="Ready" value="Factory_Ready"/>
+        <SoundArray index="Help" value="Factory_Help"/>
         <SoundArray index="What" value="Factory_What"/>
+        <SoundArray index="Yes" value="Factory_Yes"/>
+        <SoundArray index="Attack" value="Factory_Attack"/>
+        <SoundArray index="Pissed" value="Factory_Pissed"/>
         <SoundArray index="Movement" value="Factory_Movement"/>
+        <SoundArray index="Turning" value="Factory_Turning"/>
+        <SoundArray index="Board" value="Factory_Board"/>
+        <SoundArray index="Click" value="Factory_Click"/>
+        <SoundArray index="ClickError" value="Factory_ClickError"/>
+        <SoundArray index="Highlight" value="Factory_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-building-terran-Factory.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Factory.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanBlinkStopModel" parent="ModelAnimationStyleOneShot">
         <InheritType value="OneShot"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
         <On Terms="Effect.UmojanShadowguardBlinkTeleport.Stop; At Source" Send="Create"/>
+        <On Terms="Effect.UmojanBattleTankWarpTeleport.Stop; At Source" Send="Create"/>
         <On Terms="Effect.UmojanWarptoLocationTPOut.Stop; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
@@ -2010,6 +2249,8 @@
         <Host Subject="UmojanEnergyGeneratorBuild"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
         <Model value="UmojanSupplyCacheBuild"/>
+        <AddToProximitySystem value="0"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
     </CActorModel>
     <CActorAction id="UmojanAATurretAttack" parent="GenericAttack" effectAttack="UmojanPhaseDisruptors">
         <LaunchAttachQuery Methods="AMFilterWeapon"/>
@@ -2037,11 +2278,12 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-MissileTurret.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorModel id="UmojanAATurretBuild" parent="TerranBuildingBuildSmall">
         <On index="4" Terms="ActorCreation" Send="Create UmojanConstructionAttachedSmall"/>
     </CActorModel>
-    <CActorAction id="UmojanBattleTankAAAttack" parent="GenericAttack" effectAttack="UmojanFocalisedRailCannonDamage">
+    <CActorAction id="UmojanBattleTankAAAttack" parent="GenericAttack" effectAttack="UmojanBattleTankFocalisedRailCannonDamageDisplay">
         <LaunchAttachQuery Methods="AMPatternRollingStripe"/>
         <LaunchAssets Model="UmojanBattleTankAttackLaunch" Sound="SiegeTank_AttackLaunch"/>
         <ImpactMap index="None" Model="UmojanBattleTankAttackImpact" Sound="SiegeTank_AttackImpact"/>
@@ -2140,7 +2382,6 @@
         <Model value="UmojanWarpEffect"/>
         <AutoScaleFactor value="1.000000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
-        <InheritType value="OneShot"/>
     </CActorModel>
     <CActorUnit id="UmojanWarpCommandHub" parent="TerranBuildingEx" unitName="UmojanWarpingSignatureCommandHub">
         <Aliases value="_UnitHuge"/>
@@ -2185,7 +2426,7 @@
         <AutoScaleFactor value="1.000000"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModel>
-    <CActorAction id="UmojanBattleTankAttack" parent="GenericAttack" effectAttack="UmojanRailCannonDamage">
+    <CActorAction id="UmojanBattleTankAttack" parent="GenericAttack" effectAttack="UmojanBattleTankRailCannonDamageDisplay">
         <LaunchAttachQuery Methods="AMPatternRollingStripe"/>
         <LaunchAssets Sound="SiegeTank_AttackLaunch"/>
         <ImpactMap index="None" Sound="SiegeTank_AttackImpact"/>
@@ -2259,7 +2500,7 @@
         <StageArray AnimProps="Build,C,Stand"/>
         <StageArray AnimProps="Build,D"/>
     </CActorProgress>
-    <CActorSplat id="UmojanHowlerAirburstCursorSplat" parent="TerranCursorSplat" abil="UmojanHowlerAirburst"/>
+    <CActorSplat id="UmojanHowlerAirburstCursorSplat" parent="TerranCursorSplat" abil="UmojanDiraAirburst"/>
     <CActorAction id="UmojanHowlerAirburstFakeAttack" parent="GenericAttack" effectImpact="UmojanHowlerAirburstFakeShotImpact" effectLaunch="UmojanHowlerAirburstFakeShotLM">
         <LaunchAttachQuery Methods="UmojanAMPatternHowlerAirburst"/>
         <LaunchAssets Sound="UmojanHowlerAirstrikeLaunch"/>
@@ -2322,6 +2563,7 @@
         </Wireframe>
         <Model value="UmojanSupplyCache"/>
         <BuildModel value="UmojanSupplyCache"/>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanEnergyGeneratorBuild" parent="GenericUnitMorph" unitName="UmojanEnergyGenerator_Morph">
         <CopySource value=""/>
@@ -2446,6 +2688,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-SupplyDepot-Raised.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorRange id="UmojanGroundSensorSensorRadar">
         <FogVisibility value="Visible"/>
@@ -2456,13 +2699,14 @@
         <IconArcLength value="3.250000"/>
         <RangeFlags index="Minimap" value="1"/>
     </CActorRange>
-    <CActorAction id="UmojanK24RailgunAttack" parent="GenericAttack" effectAttack="UmojanK24Railgun">
+    <CActorAction id="UmojanK24RailgunAttack" parent="GenericAttack" effectAttack="UmojanMistK24RailgunDamage">
         <LaunchSiteOps Ops="SOpAttachWeapon"/>
         <LaunchAttachQuery Methods="AMFilterWeapon" Fallback="Weapon"/>
         <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Nova_SniperRifle_AttackLaunch_BoomySweetener"/>
         <Beam value="UmojanK14RailgunBeam"/>
         <ImpactMap index="None" Sound="Nova_SniperRifle_AttackImpact"/>
         <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic"/>
+        <LaunchAssets Sound="Nova_SniperRifle_AttackLaunch_Mechy"/>
     </CActorAction>
     <CActorBeamSimple id="UmojanK14RailgunBeam" parent="GenericAttackBeam">
         <Supporter Subject="_Unit" Scope="Caster" Actor="Find"/>
@@ -2471,41 +2715,21 @@
         <Scale value="0.500000"/>
     </CActorBeamSimple>
     <CActorUnit id="UmojanPathfinder" parent="GenericUnitBase" unitName="UmojanPathfinder">
-        <Aliases value="_UnitMedium"/>
+        <Macros value="UnloadDropAnim"/>
         <Macros value="UnloadDropAnim"/>
         <Macros value="TerrainSquibAnimations"/>
         <Macros value="PhysicsDeathsSwarmGround"/>
         <Macros value="PhysicsDeathsVoidGround"/>
-        <On Terms="UnitPortrait.*.Configure" Target="::PortraitGameSelf" Send="AnimClear Visor 0.000000"/>
+        <AbilSoundArray AbilCmd="VultureSpiderMines,Execute" Sound="Vulture_SpiderMinePlace"/>
+        <Aliases value="_UnitMedium"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Hellion_Land"/>
-        <Model value="Hellion_Umojan"/>
+        <Model value="UmojanVulture"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
-        <BuildModel value="Hellion_Umojan"/>
-        <DeathArray index="Normal" ModelLink="HellionDeath" SoundLink="Hellion_Explode"/>
-        <DeathCustoms ModelLink="HellionDeathRagdoll" Name="RagdollBasic">
-            <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <BuildModel value="UmojanVulture"/>
+        <DeathArray index="Normal" ModelLink="UmojanVultureDeath" SoundLink="Hellion_Explode"/>
         <DeathActorModel value="UnitDeathModelWithDeathMotionGround"/>
-        <PlacementModel value="Hellion_Umojan"/>
-        <PortraitActor value="HellionPortrait"/>
-        <PortraitModel value="Hellion_Umojan_Portrait"/>
+        <PlacementModel value="UmojanVulture"/>
+        <PortraitModel value="UmojanVulturePortrait"/>
         <TerrainSquibs>
             <MovementDistance value="0.150000,0.150000"/>
             <IdlePeriod value="0.100000,0.250000"/>
@@ -2514,11 +2738,13 @@
             <AttachQuery Methods="AMFilterCenter"/>
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeVehicle"/>
         </TerrainSquibs>
-        <BarOffset value="50"/>
+        <BarWidth value="102"/>
+        <BarOffset value="80"/>
+        <NameOffset value="40"/>
         <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-hellionex1.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-vulture-umojan.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-hellion-umojan.dds"/>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-vulture-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <SoundArray index="Ready" value="Hellion_Ready"/>
         <SoundArray index="Help" value="Hellion_Help"/>
@@ -2528,9 +2754,9 @@
         <SoundArray index="Pissed" value="Hellion_Pissed"/>
         <SoundArray index="Movement" value="Hellion_Movement"/>
         <UnitFlags index="StandAnimBirthVariation" value="0"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-hellion-umojan.dds"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-vulture-umojan.dds"/>
         <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-hellionex1.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-vulture-umojan.dds"/>
         </Wireframe>
     </CActorUnit>
     <CActorMissile id="UmojanCommando" parent="GenericUnitBase" unitName="UmojanCommando">
@@ -2554,6 +2780,7 @@
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
         <On Terms="UnitBirth.ReaperPlacement" Send="Create"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Reaper_Land"/>
+        <On Terms="Abil.UmojanCommandoFlashGrenade.SourceCastStart" Send="AnimPlay SpellA Spell"/>
         <Model value="Reaper_Umojan"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <BuildModel value="Reaper_Umojan"/>
@@ -2716,19 +2943,19 @@
         <Sound value="UmojanHowlerBlackOpsAirstrikeTail"/>
     </CActorSound>
     <CActorAction id="UmojanK14RailrifleAttack" parent="GenericAttack" effectAttack="UmojanK14Railrifle">
-        <LaunchSite value="UmojanBattlecatRiderPretorianSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
-        <LaunchAssets Sound="Ghost_AttackImpact"/>
-        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Nova_SniperRifle_AttackLaunch_BoomySweetener"/>
+        <LaunchAssets Sound="Nova_SniperRifle_AttackLaunch_Boomy"/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Nova_SniperRifle_AttackImpact"/>
         <Beam value="UmojanK14RailrifleBeam"/>
         <ImpactMap index="None" Sound="Nova_SniperRifle_AttackImpact"/>
         <ImpactPhysics Name="RailgunImpact" MatchKeys="Basic"/>
     </CActorAction>
     <CActorAction id="UmojanShadowguardAttack" parent="GenericAttack" effectAttack="UmojanK1XCanisterRifle">
-        <LaunchSite value="UmojanBattlecatRiderShadowguardSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
-        <LaunchAssets Model="GhostAttackLaunch" Sound="Ghost_AttackLaunch"/>
-        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Ghost_BunkerAttackLaunch"/>
+        <LaunchAssets Model="GhostAttackLaunch" Sound="Nova_SniperRifle_AttackLaunch_Boomy"/>
+        <ContainerAssets Model="GhostBunkerAttackLaunch" Sound="Nova_SniperRifle_AttackLaunch_Boomy"/>
         <ImpactMap index="None" Model="GhostAttackImpact" Sound="Ghost_AttackImpact"/>
         <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
         <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
@@ -2770,6 +2997,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Bunker.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanCommandCenter" parent="TerranBuildingEx" unitName="UmojanCommandCenter">
         <Aliases value="_UnitHuge"/>
@@ -2778,69 +3006,17 @@
         <Macros value="TerrainSquibAnimations"/>
         <Macros value="SnowVisualUnitMacroMP"/>
         <Macros value="MacroTownhallDeco_Terran"/>
-        <Macros value="TerranCommandCenterPlayerDecalMacro"/>
+        <Macros value="UmojanCommandCenterPlayerDecalMacro"/>
         <Macros value="SprayHelperMacro"/>
-        <On Terms="UnitBirth.UmojanCommandCenterFlying" Send="Create"/>
-        <On Terms="UnitBirth.UmojanCommandCenterFlying" Send="AnimGroupApply Fly Fly,Start Fly,End Instant"/>
-        <On Terms="UnitBirth.UmojanCommandCenterFlying" Send="AliasRemove _CreepEngulfable"/>
-        <On Terms="UnitBirth.UmojanCommandCenterFlying" Send="CreepEngulfmentStopTransition"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenter; MorphTo UmojanCommandCenterFlying" Send="AnimGroupApply Fly Fly,Start Fly,End"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenter; MorphTo UmojanCommandCenterFlying" Send="AliasRemove _CreepEngulfable"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenter; MorphTo UmojanCommandCenterFlying" Send="CreepEngulfmentStopTransition"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenter; MorphTo UmojanCommandCenterFlying" Target="_BuildingTerrainFlatten" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenter; MorphTo UmojanCommandCenterFlying; ScopeContains GroundLocalSelection" Send="StatusIncrement FlyerHelper"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter" Send="AnimGroupRemove Fly"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter" Send="AliasAdd _CreepEngulfable"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter" Send="Create BuildingTerrainFlatten"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter; ScopeContains FlyerHelperSplat; HasStatus FlyerHelper" Send="StatusDecrement FlyerHelper"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter" Send="QueryRadius 1.750000 BuildingCrushQueryResponse"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom UmojanCommandCenterFlying; MorphTo UmojanCommandCenter" Target="FlyerHelperSplat" Send="Destroy"/>
+        <AcceptedHostedPropTransfers index="Decal" value="0"/>
         <On Terms="ActorCreation" Send="AnimGroupRemove A"/>
         <On Terms="ActorCreation" Send="AnimGroupRemove B"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimGroupApply B"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimBaselineStop"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimPlay Morph Morph 0 0.000000"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimClear Morph"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimGroupRemove B"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo OrbitalCommand" Send="AnimBaselineStart"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimGroupApply A"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimBaselineStop"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimPlay Morph Morph 0 1.500000"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimClear Morph"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimGroupRemove A"/>
-        <On Terms="AbilMorph.*.Cancel; MorphFrom CommandCenter; MorphTo PlanetaryFortress" Send="AnimBaselineStart"/>
         <On Terms="Abil.*.TransportOccupy" Send="AnimPlay StandC Stand,Work,C PlayForever"/>
         <On Terms="Abil.*.TransportEmpty" Send="AnimClear StandC"/>
-        <On Terms="Behavior.ColonyInfestation.On" Send="Create InfestationCommandCenter"/>
-        <On Terms="Behavior.Corruption.On" Send="AnimSetPaused Morph"/>
-        <On Terms="Behavior.Corruption.Off" Send="AnimSetPaused Morph 0"/>
         <On Terms="UnitDeathCustomize; AnimPlaying Morph; !ModelIsLowQuality" Send="Create CommandCenterMorphDeath"/>
         <On Terms="UnitDeathCustomize; AnimPlaying Morph" Send="DeathCustomize Variation2"/>
-        <On Terms="Abil.CommandCenterLiftOff.Start" Send="StatusSet FlyDeathAnim 1"/>
-        <On Terms="Abil.CommandCenterLiftOff.Start" Send="TimerSet 1.100000 FlyDeathAnimChange"/>
-        <On Terms="TimerExpired; TimerName FlyDeathAnimChange" Send="StatusSet FlyDeathAnim 2"/>
-        <On Terms="UnitBirth.CommandCenterFlying" Send="StatusSet FlyDeathAnim 2"/>
-        <On Terms="Abil.CommandCenterLand.Start" Send="TimerSet 0.700000 LandDeathAnimChange"/>
-        <On Terms="Abil.CommandCenterLand.Start" Send="TimerSet 1.100000 LandDeathAnimChangeB"/>
-        <On Terms="TimerExpired; TimerName LandDeathAnimChange" Send="StatusSet FlyDeathAnim 1"/>
-        <On Terms="TimerExpired; TimerName LandDeathAnimChangeB" Send="StatusSet FlyDeathAnim 0"/>
-        <On Terms="UnitDeathCustomize; IsStatus FlyDeathAnim 1" Send="DeathCustomize Variation3"/>
-        <On Terms="UnitDeathCustomize; IsStatus FlyDeathAnim 2" Send="DeathCustomize Flying"/>
-        <On Terms="UnitBirth.CommandCenterFlying" Send="HideWorkerCount 1"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenterFlying; MorphTo CommandCenter" Send="HideWorkerCount"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenter; MorphTo CommandCenterFlying" Send="HideWorkerCount 1"/>
         <On Terms="UnitBirth.UmojanCommandCenter" Send="Create PlayerLogoDoodadList"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo CommandCenterFlying" Target="PlayerLogoDoodadList" Send="Destroy"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenterFlying; MorphTo CommandCenter" Send="Create PlayerLogoDoodadList"/>
-        <On Terms="Behavior.250mmStrikeCannons.On" Send="AnimSetPaused Morph"/>
-        <On Terms="Behavior.250mmStrikeCannons.Off" Send="AnimSetPaused Morph 0"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo CommandCenterFlying" Target="TerranClanFlag" Send="Signal DestroyFlag"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenterFlying; MorphTo CommandCenter; PlayerHasClanDecal" Send="Create TerranClanFlag"/>
         <On Terms="UnitBirth.UmojanCommandCenter; PlayerHasClanDecal" Send="Create TerranClanFlag"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom CommandCenter; MorphTo CommandCenterFlying" Target="TerranPlayerTrophy" Send="Signal DestroyFlag"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CommandCenterFlying; MorphTo CommandCenter; PlayerHasTrophy" Send="Create TerranPlayerTrophy"/>
         <On Terms="UnitBirth.UmojanCommandCenter; PlayerHasTrophy" Send="Create TerranPlayerTrophy"/>
         <DeathArray index="UnderConstruction" ModelLink="TerranLargeBuildingDeath" SoundLink="CommandCenter_Explode"/>
         <DeathCustoms ModelLink="UmojanCommandCenterDeath" SoundLink="CommandCenter_Explode" Name="Variation2"/>
@@ -2863,6 +3039,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-CommandCenter.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanEngineeringBay" parent="TerranBuildingEx" unitName="UmojanEngineeringBay">
         <Aliases value="_UnitHuge"/>
@@ -2884,6 +3061,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-EngineeringBay.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanBarracks" parent="TerranBuildingEx" unitName="UmojanBarracks">
         <Aliases value="_UnitHuge"/>
@@ -2918,13 +3096,24 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-building-terran-Barracks.dds"/>
         <NameOffset value="110"/>
+        <SoundArray index="Birth" value="Barracks_Birth"/>
         <SoundArray index="Ready" value="Barracks_Ready"/>
+        <SoundArray index="Help" value="Barracks_Help"/>
         <SoundArray index="What" value="Barracks_What"/>
+        <SoundArray index="Yes" value="Barracks_Yes"/>
+        <SoundArray index="Attack" value="Barracks_Attack"/>
+        <SoundArray index="Pissed" value="Barracks_Pissed"/>
         <SoundArray index="Movement" value="Barracks_Movement"/>
+        <SoundArray index="Turning" value="Barracks_Turning"/>
+        <SoundArray index="Board" value="Barracks_Board"/>
+        <SoundArray index="Click" value="Barracks_Click"/>
+        <SoundArray index="ClickError" value="Barracks_ClickError"/>
+        <SoundArray index="Highlight" value="Barracks_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-building-terran-Barracks.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Barracks.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorUnit id="UmojanArmory" parent="TerranBuildingEx" unitName="UmojanArmory">
         <Aliases value="_UnitHuge"/>
@@ -2947,6 +3136,7 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Armory.dds"/>
         </Wireframe>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
     </CActorUnit>
     <CActorAction id="UmojanHowlerAttack" parent="GenericAttack" effectImpact="UmojanNightScreamRocketsU" effectLaunch="UmojanNightScreamRocketsLM">
         <LaunchAttachQuery Methods="UmojanAMPatternHowler"/>
@@ -2961,7 +3151,7 @@
         <AcquisitionPitchHalfArc value="30.000000"/>
         <ShieldRippleScaleFactor value="1.100000"/>
     </CActorAction>
-    <CActorSplat id="UmojanHowlerAirstrikeCursorSplat" parent="TerranCursorSplat" abil="UmojanHowlerAirstrike"/>
+    <CActorSplat id="UmojanHowlerAirstrikeCursorSplat" parent="TerranCursorSplat" abil="UmojanDiraAirstrike"/>
     <CActorModel id="UmojanWarpEffectPersistantSignature" parent="ModelAddition">
         <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD Stand,Build,Start Stand,Build Stand,Build,End"/>
         <On Terms="Behavior.UmojanWarpSignatureKillOwner.On" Send="Create"/>
@@ -2969,7 +3159,15 @@
         <Host Subject="_Unit"/>
         <Model value="UmojanWarpEffect"/>
         <AutoScaleFactor value="1.000000"/>
-        <InheritType value="OneShot"/>
+        <Inherits index="CastShadows" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="ModelMaterials" value="0"/>
+        <Inherits index="Opacity" value="0"/>
+        <Inherits index="TeamColor" value="0"/>
+        <Inherits index="TimeScale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <Inherits index="WarpGroup" value="0"/>
     </CActorModel>
     <CActorUnit id="UmojanWarpAcademy" parent="TerranBuildingEx" unitName="UmojanWarpingSignatureAcademy">
         <Aliases value="_UnitHuge"/>
@@ -3083,6 +3281,51 @@
             <Image value="Assets\Textures\wireframe-terran-bunker.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorSplat id="UmojanWhirlwindSendSpotterCursorSplat" parent="TerranCursorSplat" abil="UmojanSendSpotter">
+        <Aliases index="0" removed="1"/>
+        <Model value="LiberatorAGSearchIndicator"/>
+        <Scale value="1.400000"/>
+    </CActorSplat>
+    <CActorRange id="UmojanWhirlwindSpotRange">
+        <Inherits index="Visibility" value="0"/>
+        <AcceptedTransfers index="Position" value="0"/>
+        <AcceptedTransfers index="Rotation" value="0"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="UnitBirth.UmojanWeaponUnitWhirlwindSpot.Normal" Send="Create"/>
+        <On Terms="UnitDeath.UmojanWeaponUnitWhirlwindSpot" Send="Destroy"/>
+        <AddToProximitySystem value="0"/>
+        <Host Subject=""/>
+        <HostSiteOps Ops=""/>
+        <Range value="7.000000"/>
+        <IconScale value="0.006000,0.001000"/>
+    </CActorRange>
+    <CActorRange id="UmojanWhirlwindSpotRangeLong">
+        <Inherits index="Visibility" value="0"/>
+        <AcceptedTransfers index="Position" value="0"/>
+        <AcceptedTransfers index="Rotation" value="0"/>
+        <EditorCategories value=""/>
+        <On index="0" Terms="UnitBirth.UmojanWeaponUnitWhirlwindSpot.Normal" Send="Create"/>
+        <On Terms="UnitDeath.UmojanWeaponUnitWhirlwindSpot" Send="Destroy"/>
+        <AddToProximitySystem value="0"/>
+        <Host Subject=""/>
+        <HostSiteOps Ops=""/>
+        <Range value="9.000000"/>
+        <IconScale value="0.006000,0.001000"/>
+        <IconTint value="255,255,0,0"/>
+    </CActorRange>
+    <CActorSplat id="UmojanWhirlwindStrikeIndicator" parent="GenericUnitSplat">
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="Decal" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <AcceptedTransfers index="Rotation" value="0"/>
+        <Supporter Subject=""/>
+        <On index="2" Terms="Effect.UmojanWhirlwindMissileStrikePersistent.Start; At Effect" Send="Create"/>
+        <On Terms="Effect.UmojanWhirlwindMissileStrikePersistent.Stop" Send="Destroy"/>
+        <Host Subject=""/>
+        <Layer value="AOELayer"/>
+        <Model value="LiberatorAGSearchIndicator"/>
+        <Scale value="0.400000"/>
+    </CActorSplat>
     <CActorRange id="UmojanWhirlwindTooCloseRange" parent="RangeAbil" abil="UmojanMissileBarrage">
         <On Terms="Abil.UmojanMissileStrike.TargetOn" Send="Create"/>
         <On Terms="Abil.UmojanMissileStrike.TargetOff" Send="Destroy"/>
@@ -3094,7 +3337,7 @@
         <IconTint value="255,255,0,0"/>
         <IconArcLength value="1.125000"/>
     </CActorRange>
-    <CActorRange id="UmojanHowlerAirstrikeRange" parent="RangeAbil" abil="UmojanHowlerAirstrike"/>
+    <CActorRange id="UmojanHowlerAirstrikeRange" parent="RangeAbil" abil="UmojanDiraAirstrike"/>
     <CActorUnit id="UmojanMCS" parent="GenericUnitStandard" unitName="UmojanMCS">
         <Aliases value="_UnitSmall"/>
         <Macros value="CarryAnim"/>
@@ -3169,12 +3412,19 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-scv-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <SoundArray index="Birth" value="SCV_Birth"/>
         <SoundArray index="Ready" value="SCV_Ready"/>
         <SoundArray index="Help" value="Alert_TerranEconomyUnderAttack"/>
         <SoundArray index="What" value="SCV_What"/>
         <SoundArray index="Yes" value="SCV_Yes"/>
         <SoundArray index="Attack" value="SCV_Attack"/>
         <SoundArray index="Pissed" value="SCV_Pissed"/>
+        <SoundArray index="Movement" value="SCV_Movement"/>
+        <SoundArray index="Turning" value="SCV_Turning"/>
+        <SoundArray index="Board" value="SCV_Board"/>
+        <SoundArray index="Click" value="SCV_Click"/>
+        <SoundArray index="ClickError" value="SCV_ClickError"/>
+        <SoundArray index="Highlight" value="SCV_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-scv-umojan.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-SCV.dds"/>
@@ -3185,7 +3435,7 @@
         <RollInRate value="23.450001"/>
         <RollOutRate value="18.799999"/>
     </CActorSiteOpBanker>
-    <CActorUnit id="UmojanHowler" parent="GenericUnitStandard" unitName="UmojanHowler">
+    <CActorUnit id="UmojanHowler" parent="GenericUnitStandard" unitName="UmojanDira">
         <Aliases value="_UnitLarge"/>
         <Macros value="TerrainSquibAnimations"/>
         <Macros value="PhysicsDeathsSwarmAir"/>
@@ -3279,12 +3529,14 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-Banshee.dds"/>
         </Wireframe>
+        <HighlightTooltip value="Unit/Name/UmojanHowler"/>
     </CActorUnit>
     <CActorModel id="UmojanBlinkOriginModel" parent="ModelAnimationStyleOneShot">
         <InheritType value="OneShot"/>
         <Inherits index="BaseModelScale" value="1"/>
         <Inherits index="Scale" value="1"/>
         <On Terms="Effect.UmojanShadowguardBlinkTeleport.Start; At Source" Send="Create"/>
+        <On Terms="Effect.UmojanBattleTankWarpTeleport.Start; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOriginStationary"/>
         <Model value="Stalker_Deluxe_BlinkIn"/>
@@ -3292,6 +3544,7 @@
     </CActorModel>
     <CActorSound id="UmojanBlinkStopSound" parent="SoundOneShot">
         <On Terms="Effect.UmojanShadowguardBlinkTeleport.Stop; At Source" Send="Create"/>
+        <On Terms="Effect.UmojanBattleTankWarpTeleport.Stop; At Source" Send="Create"/>
         <On Terms="Effect.UmojanWarptoLocationTPOut; At Source" Send="Create"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachOrigin"/>
@@ -3351,6 +3604,7 @@
         <On Terms="AbilMorph.*.Finish; MorphTo UmojanFrenrir" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thor.dds"/>
         <On Terms="AbilMorph.*.Finish; MorphTo UmojanFrenrirFortress" Send="SetGroupIcon 0 Assets\Textures\wireframe-terran-thorhighimpact.dds"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
+        <ModelFlags index="UseSprayForDecal" value="1"/>
         <EventDataFootprint index="0" Actor="UnitFootprint" Model="ThorFootprint"/>
         <DeathArray index="Normal" ModelLink="Thor_Umojan_Death" SoundLink="Thor_Explode" VoiceLink="Thor_Death"/>
         <DeathCustoms ModelLink="ThorDeathLow" Name="AntiGravTerran"/>
@@ -3408,17 +3662,6 @@
             <Image value="Assets\Textures\wireframe-terran-thor.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorAction id="UmojanTornadoMissileAttack" parent="GenericAttack" effectImpact="UmojanTornadoMissileDamage" effectLaunch="UmojanTornadoMissileLM">
-        <LaunchAttachQuery Methods=""/>
-        <LaunchAssets Model="TornadoMissileAttackLaunch" Sound="WarHound_Missile_Launch"/>
-        <Beam value="TornadoMissileAttackBeam"/>
-        <Missile value="TornadoMissileAttackMissile"/>
-        <ImpactMap index="None" Model="TornadoMissileAttackImpact" Sound="WarHound_Missile_Impact"/>
-        <ImpactMap index="Shield" Sound="TornadoMissileAttackImpactShield"/>
-        <ImpactPhysics Name="TornadoMissileImpact" MatchKeys="Basic" Physics="WarhoundMissileAttackForce"/>
-        <DamageMap index="None" Sound="TornadoMissileAttackDamage"/>
-        <DamageMap index="Shield" Sound="TornadoMissileAttackDamageShield"/>
-    </CActorAction>
     <CActorUnit id="UmojanCrow" parent="GenericUnitStandard" unitName="UmojanCrow">
         <Aliases value="_UnitLarge"/>
         <Macros value="BuildAnim"/>
@@ -3489,7 +3732,7 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-raven-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
         <SoundArray index="Birth" value="Raven_Birth"/>
-        <SoundArray index="Ready" value=""/>
+        <SoundArray index="Ready" value="Raven_Ready"/>
         <SoundArray index="Help" value="Raven_Help"/>
         <SoundArray index="What" value="Raven_What"/>
         <SoundArray index="Yes" value="Raven_Yes"/>
@@ -3511,95 +3754,6 @@
             <Image value="Assets\Textures\wireframe-terran-raven-shield03.dds"/>
         </WireframeShield>
         <Scale value="1.300000"/>
-    </CActorUnit>
-    <CActorUnit id="UmojanMedivac" parent="GenericUnitStandard" unitName="UmojanMedivac">
-        <Aliases value="_UnitLarge"/>
-        <Macros value="MedivacTransportAnim"/>
-        <Macros value="TerrainSquibAnimations"/>
-        <Macros value="PhysicsDeathsSwarmAir"/>
-        <Macros value="PhysicsDeathsVoidAir"/>
-        <On Terms="Abil.ShieldsideHeal.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.ShieldsideHeal.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="UnitDeath" Target="::actor.Thor" Send="Signal Dead"/>
-        <On Terms="ActorCreation; ValidateUnit HaveMedivacUpgrade" Send="ModelSwap MedivacUpgrade"/>
-        <On Terms="Abil.ShieldsideDoubleBeamRecharge.SourceChannelStart" Send="$Spell PlayForever"/>
-        <On Terms="Abil.ShieldsideDoubleBeamRecharge.SourceChannelStop" Send="AnimClear Spell"/>
-        <On Terms="UnitHeightUpdate.*.Land" Send="Create Medivac_Land"/>
-        <On Terms="Behavior.MedivacSpeedBoost.On" Send="AnimPlay Turbo Spell,B"/>
-        <On Terms="Behavior.MedivacSpeedBoost.On" Send="StatusSet Turbo 1"/>
-        <On Terms="Behavior.MedivacSpeedBoost.Off" Send="StatusSet Turbo 0"/>
-        <On Terms="UnitMovementUpdate.*.Walk; IsStatus Turbo 1" Send="Create Medivac_MovementAfterburner"/>
-        <HostSiteOps Ops="SOpBankerMedivac"/>
-        <Model value="Medivac_Umojan"/>
-        <ModelFlags index="OutlineEmitter" value="1"/>
-        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
-        <BuildModel value="Medivac_Umojan"/>
-        <DeathArray index="Normal" ModelLink="MedivacDeath" SoundLink="Medivac_Explode" VoiceLink="MedivacDeathVoice"/>
-        <DeathCustoms>
-            <ActorModel value="MedivacDeathRagdoll"/>
-            <ModelLink value="Medivac_Umojan_DeathRagdoll"/>
-            <Name value="RagdollBasic"/>
-            <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
-            <BodySquibs Name="Basic" Model="TerranSquibDeathRagdoll"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Fire"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
-            <BodySquibs Name="Acid"/>
-        </DeathCustoms>
-        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
-        <DeathCustoms>
-            <ModelLink value="DeathVoidShadowMedium"/>
-            <SoundLink value="ShadowUnit_DeathFX"/>
-            <VoiceLink value="ShadowUnit_DeathVox"/>
-            <Name value="Shadow"/>
-        </DeathCustoms>
-        <DeathActorModel value="UnitDeathModelWithDeathMotionFlier"/>
-        <PhysicsMatchKeysOrdered value="BasicAir,Basic"/>
-        <PlacementModel value="Medivac_Umojan"/>
-        <PortraitModel value="Medivac_Umojan_Portrait"/>
-        <TerrainSquibs>
-            <MovementDistance value="0.150000,0.150000"/>
-            <IdlePeriod value="0.250000,0.500000"/>
-            <RangeDown value="5.000000"/>
-            <RangeDownFade value="1.000000"/>
-            <AttachQuery Methods="AMFilterCenter"/>
-            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMassive15"/>
-        </TerrainSquibs>
-        <AbilSoundArray AbilCmd="ShieldsideHeal,Execute" Sound="Medivac_HealVO"/>
-        <AbilSoundArray AbilCmd="MedivacTransport,Load" Sound="Medivac_LoadVO"/>
-        <AbilSoundArray AbilCmd="MedivacTransport,UnloadAt" Sound="Medivac_UnloadVO"/>
-        <BarOffset value="50"/>
-        <BarWidth value="80"/>
-        <GroupIcon>
-            <Image value="Assets\Textures\Wireframe-Terran-Medivac.dds"/>
-        </GroupIcon>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-medivac-umojan.dds"/>
-        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
-        <NameOffset value="50"/>
-        <SoundArray index="Birth" value="Medivac_Birth"/>
-        <SoundArray index="Ready" value="Medivac_Ready"/>
-        <SoundArray index="Help" value="Medivac_Help"/>
-        <SoundArray index="What" value="Medivac_What"/>
-        <SoundArray index="Yes" value="Medivac_Yes"/>
-        <SoundArray index="Attack" value="Medivac_Attack"/>
-        <SoundArray index="Pissed" value="Medivac_Pissed"/>
-        <SoundArray index="Movement" value="Medivac_Movement"/>
-        <SoundArray index="Turning" value="Medivac_Turning"/>
-        <SoundArray index="Board" value="Medivac_Board"/>
-        <SoundArray index="Click" value="Medivac_Click"/>
-        <SoundArray index="ClickError" value="Medivac_ClickError"/>
-        <SoundArray index="Highlight" value="Medivac_Highlight"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-medivac-umojan.dds"/>
-        <Wireframe>
-            <Image value="Assets\Textures\Wireframe-Terran-Medivac.dds"/>
-        </Wireframe>
     </CActorUnit>
     <CActorUnit id="UmojanShadowguard" parent="GenericUnitBase" unitName="UmojanShadowguard">
         <Aliases value="_UnitSmall"/>
@@ -3695,7 +3849,7 @@
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSmall"/>
         </TerrainSquibs>
         <WalkAnimMoveSpeed value="2.25"/>
-        <AbilSoundArray AbilCmd="TacNukeStrike,Execute" Sound="Ghost_NuclearStrikeVO"/>
+        <AbilSoundArray AbilCmd="UmojanTacNukeStrike,Execute" Sound="Ghost_NuclearStrikeVO"/>
         <BarOffset value="50"/>
         <BarWidth value="42"/>
         <GroupIcon>
@@ -3708,7 +3862,7 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-ghost-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
         <SoundArray index="Birth" value="Ghost_Birth"/>
-        <SoundArray index="Ready" value=""/>
+        <SoundArray index="Ready" value="Ghost_Ready"/>
         <SoundArray index="Help" value="Ghost_Help"/>
         <SoundArray index="What" value="Ghost_What"/>
         <SoundArray index="Yes" value="Ghost_Yes"/>
@@ -3809,7 +3963,7 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetank-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <SoundArray index="Birth" value="SiegeTank_Birth"/>
-        <SoundArray index="Ready" value=""/>
+        <SoundArray index="Ready" value="SiegeTank_Ready"/>
         <SoundArray index="Help" value="SiegeTank_Help"/>
         <SoundArray index="What" value="SiegeTank_What"/>
         <SoundArray index="Yes" value="SiegeTank_Yes"/>
@@ -3901,19 +4055,19 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-siegetanksieged-umojan.dds"/>
         <HighlightTooltip value="Unit/Name/UmojanBattleTank"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
-        <SoundArray index="Birth" value="SiegeTankSieged_Birth"/>
+        <SoundArray index="Birth" value="SiegeTank_Birth"/>
         <SoundArray index="Ready" value="SiegeTank_Ready"/>
         <SoundArray index="Help" value="SiegeTank_Help"/>
         <SoundArray index="What" value="SiegeTank_What"/>
         <SoundArray index="Yes" value="SiegeTank_Yes"/>
         <SoundArray index="Attack" value="SiegeTank_Attack"/>
         <SoundArray index="Pissed" value="SiegeTank_Pissed"/>
-        <SoundArray index="Movement" value="SiegeTankSieged_Movement"/>
-        <SoundArray index="Turning" value="SiegeTankSieged_Turning"/>
-        <SoundArray index="Board" value="SiegeTankSieged_Board"/>
-        <SoundArray index="Click" value="SiegeTankSieged_Click"/>
-        <SoundArray index="ClickError" value="SiegeTankSieged_ClickError"/>
-        <SoundArray index="Highlight" value="SiegeTankSieged_Highlight"/>
+        <SoundArray index="Movement" value="SiegeTank_Movement"/>
+        <SoundArray index="Turning" value="SiegeTank_Turning"/>
+        <SoundArray index="Board" value="SiegeTank_Board"/>
+        <SoundArray index="Click" value="SiegeTank_Click"/>
+        <SoundArray index="ClickError" value="SiegeTank_ClickError"/>
+        <SoundArray index="Highlight" value="SiegeTank_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-siegetanksieged-umojan.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-SiegeTank-SiegeMode.dds"/>
@@ -4036,7 +4190,7 @@
         <ImpactMap index="Shield" Sound="MarauderMagrailMunitionsImpactShield"/>
         <DamageMap index="None" Sound="MarauderMagrailMunitionsDamage"/>
         <DamageMap index="Shield" Sound="MarauderMagrailMunitionsDamageShield"/>
-        <LaunchSite value="UmojanBattlecatRiderPlasmabatSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
         <Beam value="UmojanBattlecatFakeBeam"/>
     </CActorAction>
@@ -4103,7 +4257,7 @@
         <ImpactMap index="Shield" Sound="FirebatAttackImpactShield"/>
         <DamageMap index="None" Sound="FirebatAttackDamage"/>
         <DamageMap index="Shield" Sound="FirebatAttackDamageShield"/>
-        <LaunchSite value="UmojanBattlecatRiderPlasmabatSite"/>
+        <LaunchSite value="UmojanBattlecatRiderSite"/>
         <LaunchSiteFallback value="GenericAttackLaunchSite"/>
         <Beam value="UmojanBattlecatFakeBeam"/>
     </CActorAction>
@@ -4116,80 +4270,18 @@
     </CActorModel>
     <CActorModel id="UmojanImpactModelPlasma" parent="ModelAnimationStyleOneShot">
         <Terms value="Cap 1"/>
-        <On Terms="Effect.UmojanPlasmaThrowerDamage.Start; At Target" Send="Create"/>
+        <On Terms="Effect.UmojanPlasmabatPlasmaThrowerDamage.Start; At Target" Send="Create"/>
         <On Terms="ActorOrphan" Send="Destroy"/>
         <Host Subject="_Selectable"/>
         <HostSiteOps Ops="SOpAttachRandomDamage"/>
     </CActorModel>
-    <CActorUnit id="UmojanDisruptor" parent="GenericUnitBase" unitName="UmojanDisruptor">
-        <Macros value="TerrainSquibAnimations"/>
-        <On Terms="UnitHeightUpdate.*.Land" Send="Create Sentry_Land"/>
-        <On Terms="Abil.ForceField.SourceCastStart" Send="$Spell"/>
-        <On Terms="Effect.GuardianShieldPersistent.Start" Send="AnimBracketStart Guardian Stand,Work,Start Stand,Work Stand,Work,End"/>
-        <On Terms="Effect.GuardianShieldPersistent.Stop" Send="AnimBracketStop Guardian"/>
-        <On Terms="Signal.*.CampaignBeamCreated" Send="RefSetFromMsg ::actor.MyAttackBeam ::Sender"/>
-        <On Terms="Signal.*.UnitRemoved" Target="::actor.MyAttackBeam" Send="Destroy Immediate"/>
-        <AnimBlendTime value="0.650000"/>
-        <ModelFlags index="OutlineEmitter" value="1"/>
-        <Baselines index="Walk" BlendIn="1.500000" BlendOut="2.000000"/>
-        <DeathArray index="Normal" ModelLink="SentryDeath" SoundLink="Sentry_Explode" VoiceLink="SentryAiurDeathVoice"/>
-        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
-        <PortraitModel value="UmojanPortraitSentry"/>
-        <TerrainSquibs>
-            <MovementDistance value="0.150000,0.150000"/>
-            <IdlePeriod value="0.100000,0.250000"/>
-            <RangeUp value="0.600000"/>
-            <RangeDown value="0.600000"/>
-            <AttachQuery Methods="AMFilterCenter"/>
-            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleLargeVehicle"/>
-        </TerrainSquibs>
-        <BarOffset value="40"/>
-        <BarWidth value="50"/>
-        <GroupIcon>
-            <Image value="Assets\Textures\wireframe-terran-sentry.dds"/>
-        </GroupIcon>
-        <GroupSoundArray index="What" value="SentryAiur_GroupWhat"/>
-        <GroupSoundArray index="Yes" value="SentryAiur_GroupYes"/>
-        <GroupSoundArray index="Attack" value="SentryAiur_GroupAttack"/>
-        <GroupSoundArray index="Board" value="SentryAiur_GroupBoard"/>
-        <HeroIcon value="Assets\Textures\btn-unit-terran-sentry-blue.dds"/>
-        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
-        <SoundArray index="Birth" value="Sentry_Birth"/>
-        <SoundArray index="Ready" value="Sentry_Ready"/>
-        <SoundArray index="Help" value="Sentry_Help"/>
-        <SoundArray index="What" value="Sentry_What"/>
-        <SoundArray index="Yes" value="Sentry_Yes"/>
-        <SoundArray index="Attack" value="Sentry_Attack"/>
-        <SoundArray index="Pissed" value="Sentry_Pissed"/>
-        <SoundArray index="Movement" value="Sentry_Movement"/>
-        <SoundArray index="Turning" value="Sentry_Turning"/>
-        <SoundArray index="Board" value="Sentry_Board"/>
-        <SoundArray index="Click" value="Sentry_Click"/>
-        <SoundArray index="ClickError" value="Sentry_ClickError"/>
-        <SoundArray index="Highlight" value="Sentry_Highlight"/>
-        <UnitIcon value="Assets\Textures\btn-unit-terran-sentry-blue.dds"/>
-        <Wireframe>
-            <Image value="Assets\Textures\wireframe-terran-sentry.dds"/>
-        </Wireframe>
-        <WireframeShield>
-            <Image value="Assets\Textures\wireframe-terran-sentry-shield1.dds"/>
-            <Image value="Assets\Textures\wireframe-terran-sentry-shield2.dds"/>
-            <Image value="Assets\Textures\wireframe-terran-sentry-shield3.dds"/>
-        </WireframeShield>
-        <Model value="UmojanSentry"/>
-        <BuildModel value="UmojanSentry"/>
-        <PlacementModel value="UmojanSentry"/>
-    </CActorUnit>
-    <CActorAction id="UmojanNornsAssaultAttackAG" parent="GenericAttack" effectAttack="UmojanTwinGatlingCannonsAG">
+    <CActorAction id="UmojanNornsAssaultAttackAG" parent="GenericAttack" effectAttack="UmojanMoiraTwinGatlingCannonAGDamage">
         <LaunchAttachQuery Methods="AMFilterWeaponSetA0"/>
-        <LaunchAssets Model="UmojanGoliathAirAttackLaunch" Sound="NornsAssaultAttackBeamPlusLaunch"/>
-        <ContainerAssets Sound="TwinGatlingCannonsBunkerAttackLaunch"/>
+        <LaunchAssets Model="UmojanGoliathAirAttackLaunch" Sound="Nova_SniperRifle_AttackLaunch_Mechy"/>
         <Beam value="UmojanNornsAssaultAttackBeam"/>
-        <ImpactMap index="None" Model="VikingAssaultAttackImpact" Sound="Viking_AssaultAttackImpact"/>
-        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
-        <ImpactMap index="Shield" Sound="VikingAssaultAttackImpactShield"/>
+        <ImpactMap index="None" Sound="Nova_SniperRifle_AttackImpact"/>
         <ImpactPhysics Name="GatlingCannonImpact" MatchKeys="Basic" Physics="VikingAssaultAttackForce"/>
-        <DamageMap index="None" Sound="VikingAssaultAttackDamage"/>
+        <DamageMap index="None" Sound="Nova_SniperRifle_AttackImpact"/>
         <DamageMap index="Shield" Sound="VikingAssaultAttackDamageShield"/>
     </CActorAction>
     <CActorSplat id="UmojanWhirlwindBarrageIndicator" parent="GenericUnitSplat">
@@ -4226,19 +4318,6 @@
         <Model value="TerranAOECursorSplat"/>
         <Scale value="1.500000"/>
     </CActorSplat>
-    <CActorSplat id="UmojanWhirlwindStrikeIndicator" parent="GenericUnitSplat">
-        <Inherits index="CloakEffect" value="0"/>
-        <Inherits index="Decal" value="0"/>
-        <Inherits index="Visibility" value="0"/>
-        <AcceptedTransfers index="Rotation" value="0"/>
-        <Supporter Subject=""/>
-        <On index="2" Terms="Effect.UmojanWhirlwindMissileStrikePersistent.Start; At Effect" Send="Create"/>
-        <On Terms="Effect.UmojanWhirlwindMissileStrikePersistent.Stop" Send="Destroy"/>
-        <Host Subject=""/>
-        <Layer value="AOELayer"/>
-        <Model value="LiberatorAGSearchIndicator"/>
-        <Scale value="0.400000"/>
-    </CActorSplat>
     <CActorRange id="UmojanWhirlwindBarrageRange" parent="RangeAbil" abil="UmojanMissileBarrage"/>
     <CActorUnit id="UmojanWhirlwind" parent="GenericUnitBase" unitName="UmojanWhirlwind">
         <Aliases value="_UnitLarge"/>
@@ -4248,8 +4327,8 @@
         <Macros value="PhysicsDeathsVoidGround"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Cyclone_Land"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Cyclone_Land2"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileLeft.Start; At Caster" Send="AnimPlay Attack Attack"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileRight.Start; At Caster" Send="AnimPlay Attack Attack"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileLeft.Start; At Caster" Send="AnimPlay Attack Attack"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileRight.Start; At Caster" Send="AnimPlay Attack Attack"/>
         <On Terms="ActorCreation" Send="StatusSet CoverOn 0"/>
         <On Terms="Abil.attack.ReadyStart; IsStatus CoverOn 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
         <On Terms="Abil.attack.ReadyStart; IsStatus CoverOn 0" Send="StatusSet CoverOn 1"/>
@@ -4263,25 +4342,16 @@
         <On Terms="TurretTarget.CycloneWeaponTurret.Clear" Target="CycloneWeaponTurretLookAt" Send="LookAtDisengage"/>
         <On Terms="TurretTarget.Cyclone.Set" Target="CycloneLockOnTurretLookAt" Send="LookAtEngage"/>
         <On Terms="TurretTarget.Cyclone.Clear" Target="CycloneLockOnTurretLookAt" Send="LookAtDisengage"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileLeft.Start; At Caster; IsStatus CoverOn 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileLeft.Start; At Caster; IsStatus CoverOn 0" Send="StatusSet CoverOn 1"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileRight.Start; At Caster; IsStatus CoverOn 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileRight.Start; At Caster; IsStatus CoverOn 0" Send="StatusSet CoverOn 1"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileLeft.Start; At Caster" Send="TimerKill CoverDelay"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileLeft.Start; At Caster" Send="TimerSet 3.000000 CoverDelay"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileRight.Start; At Caster" Send="TimerKill CoverDelay"/>
-        <On Terms="Effect.CycloneWeaponLaunchMissileRight.Start; At Caster" Send="TimerSet 3.000000 CoverDelay"/>
-        <On Terms="Effect.LockOnCP.Start; At Caster" Send="Create CycloneLockOnTrackingBeam"/>
-        <On Terms="Effect.LockOnAirCP.Start; At Caster" Send="Create CycloneLockOnTrackingBeam"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileLeft.Start; At Caster; IsStatus CoverOn 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileLeft.Start; At Caster; IsStatus CoverOn 0" Send="StatusSet CoverOn 1"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileRight.Start; At Caster; IsStatus CoverOn 0" Send="AnimBracketStart Cover Cover,Start Cover Cover,End"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileRight.Start; At Caster; IsStatus CoverOn 0" Send="StatusSet CoverOn 1"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileLeft.Start; At Caster" Send="TimerKill CoverDelay"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileLeft.Start; At Caster" Send="TimerSet 3.000000 CoverDelay"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileRight.Start; At Caster" Send="TimerKill CoverDelay"/>
+        <On Terms="Effect.UmojanWhirlwindAttackWeaponLaunchMissileRight.Start; At Caster" Send="TimerSet 3.000000 CoverDelay"/>
         <On Terms="TimerExpired; TimerName CoverDelay" Send="AnimBracketStop Cover"/>
         <On Terms="TimerExpired; TimerName CoverDelay" Send="StatusSet CoverOn 0"/>
-        <On Terms="Behavior.LockOnDisableAttack.On" Target="::PortraitGameSelf" Send="AnimGroupApply Morph Morph,Start Morph,End"/>
-        <On Terms="Behavior.LockOnDisableAttack.Off" Target="::PortraitGameSelf" Send="AnimGroupRemove Morph"/>
-        <On Terms="UnitPortrait.*.Configure; ValidateUnit LockingOn" Target="::PortraitGameSelf" Send="AnimBracketStart Morph Morph,Start Morph,Stand Morph,End Instant"/>
-        <On Terms="UnitPortrait.*.Configure; ValidateUnit NotLockingOn" Target="::PortraitGameSelf" Send="AnimBracketStop Morph Instant"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo Cyclone" Send="Create"/>
-        <On Terms="AbilMorph.*.Finish; MorphFrom CycloneWreckage" Send="ClearTintColor"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom Cyclone" Send="Destroy"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <LookAtPriorityList value="CycloneWeaponTurretLookAt"/>
         <DeathArray index="Normal" ModelLink="CycloneDeath" SoundLink="WarHound_Explode" VoiceLink="CycloneDeathVoice"/>
@@ -4317,7 +4387,7 @@
             <AttachQuery Methods="AMFilterCenter"/>
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSiegeTank"/>
         </TerrainSquibs>
-        <AbilSoundArray AbilCmd="UmojanMissileBarrage,255" Sound="Cyclone_LockOnVO"/>
+        <AbilSoundArray AbilCmd="UmojanMissileStrike,Execute" Sound="Cyclone_LockOnVO"/>
         <BarOffset value="75"/>
         <BarWidth value="75"/>
         <ErrorArray Error="CantSeeBuildLocation" Sound="UI_GenericError" GroupSound="UI_GenericError"/>
@@ -4328,10 +4398,6 @@
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-terran-cyclone.dds"/>
         </GroupIcon>
-        <GroupSoundArray index="What" value="SiegeTank_GroupWhat"/>
-        <GroupSoundArray index="Yes" value="SiegeTank_GroupYes"/>
-        <GroupSoundArray index="Attack" value="SiegeTank_GroupAttack"/>
-        <GroupSoundArray index="Board" value="SiegeTank_GroupBoard"/>
         <HeroIcon value="Assets\Textures\btn-unit-terran-cyclone-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
         <SoundArray index="Birth" value="SiegeTank_Birth"/>
@@ -4412,14 +4478,10 @@
         <On Terms="WeaponStart.UmojanBattleshipWeaponSet.AttackStart; WeaponTargetElevation LE -20.000000" Target="_BattlecruiserTurretATS" Send="LookAtEngage Continue"/>
         <On Terms="WeaponStop.UmojanBattleshipWeaponSet.AttackStop" Target="_BattlecruiserTurretATA" Send="LookAtDisengage"/>
         <On Terms="WeaponStop.UmojanBattleshipWeaponSet.AttackStop" Target="_BattlecruiserTurretATS" Send="LookAtDisengage"/>
-        <On Terms="ActorCreation; ValidateUnit UmojanResearchStasisGunResearched" Send="AnimBlendTimeApply 0.000000"/>
-        <On Terms="ActorCreation; ValidateUnit UmojanResearchStasisGunResearched" Send="AnimGroupApply A"/>
-        <On Terms="ActorCreation; ValidateUnit UmojanResearchStasisGunResearched" Send="AnimBlendTimeApply"/>
-        <On Terms="Upgrade.UmojanStasisGun.Add; ValidateUnit NotDeadOrConstruction" Send="AnimBlendTimeApply 5.000000"/>
-        <On Terms="Upgrade.UmojanStasisGun.Add; ValidateUnit NotDeadOrConstruction" Send="AnimPlay GLBirth,A"/>
-        <On Terms="Upgrade.UmojanStasisGun.Add; ValidateUnit NotDeadOrConstruction" Send="AnimGroupApply A"/>
-        <On Terms="Upgrade.UmojanStasisGun.Add; ValidateUnit NotDeadOrConstruction" Send="AnimBlendTimeApply"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit UmojanResearchStasisGunResearched" Send="DeathCustomize Upgrade"/>
+        <On Terms="ActorCreation" Send="AnimBlendTimeApply 0.000000"/>
+        <On Terms="ActorCreation" Send="AnimGroupApply A"/>
+        <On Terms="ActorCreation" Send="AnimBlendTimeApply"/>
+        <On Terms="UnitDeathCustomize" Send="DeathCustomize Upgrade"/>
         <On Terms="Abil.UmojanStasisGun.SourcePrepStart" Send="$Spell 0 -1.000000 -1.000000 3.500000 AsDuration"/>
         <On Terms="Abil.UmojanStasisGun.SourcePrepStop" Send="AnimClear Spell"/>
         <HostSiteOps Ops="UmojanSOpBankerBattleship"/>
@@ -4496,20 +4558,6 @@
         </Wireframe>
         <Scale value="1.500000"/>
     </CActorUnit>
-    <CActorModel id="UmojanPowertotheWeaponEndImpact" parent="ModelAnimationStyleOneShot">
-        <Inherits index="CloakEffect" value="1"/>
-        <On Terms="Behavior.UmojanPowertotheWeapon.Off; ValidateUnit NotDead" Send="Create"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachOverhead"/>
-        <Model value="StimpackEndImpact"/>
-    </CActorModel>
-    <CActorModel id="UmojanPowertotheWeaponStartImpact" parent="ModelAnimationStyleOneShot">
-        <Inherits index="CloakEffect" value="1"/>
-        <On Terms="Abil.UmojanPowertotheWeapon.SourceCastStart" Send="Create"/>
-        <Host Subject="_Selectable"/>
-        <HostSiteOps Ops="SOpAttachOverhead"/>
-        <Model value="StimpackStartImpact"/>
-    </CActorModel>
     <CActorUnit id="UmojanMarine" parent="GenericUnitBase" unitName="UmojanMarine">
         <Aliases value="_UnitSmall"/>
         <Macros value="UnloadDropAnim"/>
@@ -4587,7 +4635,6 @@
             <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleSmall"/>
         </TerrainSquibs>
         <WalkAnimMoveSpeed value="2.25"/>
-        <AbilSoundArray AbilCmd="UmojanPowertotheWeapon,255" Sound="Marine_StimPackVO"/>
         <BarOffset value="40"/>
         <BarWidth value="36"/>
         <GlossaryAnim value="Spell"/>
@@ -4601,7 +4648,7 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-marine-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
         <SoundArray index="Birth" value="Marine_Birth"/>
-        <SoundArray index="Ready" value=""/>
+        <SoundArray index="Ready" value="Marine_Ready"/>
         <SoundArray index="Help" value="Marine_Help"/>
         <SoundArray index="What" value="Marine_What"/>
         <SoundArray index="Yes" value="Marine_Yes"/>
@@ -4627,11 +4674,11 @@
         <Aliases value="_UnitLarge"/>
         <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Ready"/>
         <On Terms="WeaponStart.UmojanRomaMissiles.AttackStart" Send="AnimBracketStart Attack Attack,Superior"/>
-        <On Terms="WeaponStart.UmojanBurstLasers.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStart.UmojanK24LightRailgunMist.AttackStart" Send="AnimBracketStart Attack Attack"/>
         <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
         <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Ready"/>
-        <On Terms="Behavior.Hallucination.On" Send="Create HallucinationBirthSoundMedium"/>
-        <On Terms="UnitDeathCustomize; ValidateUnit IsHallucination" Send="DeathCustomize Hallucination"/>
+        <On Terms="Behavior.UmojanDeepCloakEnergy.On" Send="SetOpacity 0.500000 1.000000"/>
+        <On Terms="Behavior.UmojanDeepCloakEnergy.Off" Send="SetOpacity 1.000000 1.000000"/>
         <DeathCustoms ModelLink="HallucinationDeath" SoundLink="Sentry_HallucinationDeathMedium" Name="Hallucination"/>
         <DeathCustoms>
             <ModelLink value="DeathVoidShadowMedium"/>
@@ -4639,7 +4686,7 @@
             <VoiceLink value="ShadowUnit_DeathVox"/>
             <Name value="Shadow"/>
         </DeathCustoms>
-        <HostSiteOps Ops="UmojanSOpBankerMist"/>
+        <HostSiteOps Ops="SOpBankerBroodLord"/>
         <AnimBlendTime value="0.300000"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <DeathArray index="Normal" ModelLink="UmojanMistDeath" SoundLink="Wraith_Explode" VoiceLink="WraithDeathVoice"/>
@@ -4651,25 +4698,25 @@
         </GroupIcon>
         <HeroIcon value="Assets\Textures\btn-unit-terran-wraith-umojan.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
-        <SoundArray index="Birth" value="Liberator_Birth"/>
-        <SoundArray index="Ready" value="TerranFlyer_Ready"/>
-        <SoundArray index="Help" value="TerranFlyer_Help"/>
-        <SoundArray index="What" value="TerranFlyer_What"/>
-        <SoundArray index="Yes" value="TerranFlyer_Yes"/>
-        <SoundArray index="Attack" value="TerranFlyer_Attack"/>
-        <SoundArray index="Pissed" value="TerranFlyer_Pissed"/>
-        <SoundArray index="Movement" value="Liberator_Move_Start"/>
-        <SoundArray index="Turning" value="Liberator_Turning"/>
-        <SoundArray index="Board" value="Liberator_Board"/>
-        <SoundArray index="Click" value="Liberator_Click"/>
-        <SoundArray index="ClickError" value="Liberator_ClickError"/>
-        <SoundArray index="Highlight" value="Liberator_Highlight"/>
+        <SoundArray index="Birth" value="HeroNovaMP1_Birth"/>
+        <SoundArray index="Ready" value="HeroNovaMP1_Ready"/>
+        <SoundArray index="Help" value="HeroNovaMP1_Help"/>
+        <SoundArray index="What" value="HeroNovaMP1_What_Umojan"/>
+        <SoundArray index="Yes" value="HeroNovaMP1_Yes"/>
+        <SoundArray index="Attack" value="HeroNovaMP1_Attack"/>
+        <SoundArray index="Pissed" value="HeroNovaMP1_Pissed_Umojan"/>
+        <SoundArray index="Movement" value="HeroNovaMP1_Move_Start"/>
+        <SoundArray index="Turning" value="HeroNovaMP1_Turning"/>
+        <SoundArray index="Board" value="HeroNovaMP1_Board"/>
+        <SoundArray index="Click" value="HeroNovaMP1_Click"/>
+        <SoundArray index="ClickError" value="HeroNovaMP1_ClickError"/>
+        <SoundArray index="Highlight" value="HeroNovaMP1_Highlight"/>
         <UnitIcon value="Assets\Textures\btn-unit-terran-wraith-umojan.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-terran-wraith-umojan.dds"/>
         </Wireframe>
     </CActorUnit>
-    <CActorAction id="UmojanMistAirAttackLeft" parent="GenericAttack" effectImpact="UmojanRomaMissiles" effectLaunch="UmojanRomaMissilesLaunchMissileLeft">
+    <CActorAction id="UmojanMistAirAttackLeft" parent="GenericAttack" effectImpact="UmojanMistRomaMissiles" effectLaunch="UmojanMistRomaMissilesLaunchMissileLeft">
         <LaunchAttachQuery Methods="AMFilterWeaponLeft"/>
         <LaunchAssets Sound="UmojanMistAirAttackLaunch"/>
         <ContainerAssets Model="" Sound=""/>
@@ -4678,7 +4725,7 @@
     <CActorMissile id="UmojanMistAirAttackLeftMissile" parent="GenericAttackMissile" unitName="UmojanMistAirLeft">
         <Model value="UmojanMistAirWeaponLeft"/>
     </CActorMissile>
-    <CActorAction id="UmojanMistAirAttackRight" parent="GenericAttack" effectImpact="UmojanRomaMissiles" effectLaunch="UmojanRomaMissilesLaunchMissileRight">
+    <CActorAction id="UmojanMistAirAttackRight" parent="GenericAttack" effectImpact="UmojanMistRomaMissiles" effectLaunch="UmojanMistRomaMissilesLaunchMissileRight">
         <LaunchAttachQuery Methods="AMFilterWeaponRight"/>
         <LaunchAssets Sound="UmojanMistAirAttackLaunch"/>
         <ContainerAssets Model="" Sound=""/>
@@ -4697,7 +4744,7 @@
         <On Terms="Abil.attack.ReadyStart" Send="Create UmojanStrikeMineSeekSound"/>
         <DeathArray index="Normal" ModelLink="UmojanStrikeMineExplosion" SoundLink="Terran_ExplosionSmall"/>
         <PlacementModel value="UmojanStrikeMinePlacement"/>
-        <PortraitModel value="AdjutantPortrait"/>
+        <PortraitModel value="UmojanAdjutantPortrait"/>
         <BarOffset value="10"/>
         <BarWidth value="36"/>
         <GroupIcon>
@@ -4754,7 +4801,7 @@
     </CActorRange>
     <CActorRange id="UmojanStrikeMinesRange" parent="RangeAbil" abil="UmojanDeployStrikeMines"/>
     <CActorAction id="UmojanStrikeMineAttack" parent="GenericAttack" effectAttack="UmojanStrikeMinesDamage">
-        <ImpactMap index="None" Model="UmojanVultureSpiderMineAttackImpact"/>
+        <ImpactMap index="None" Model="UmojanSpiderMineAttackImpact"/>
         <ShieldFlashType value="Header"/>
     </CActorAction>
     <CActorUnit id="UmojanGroundSensor" parent="GenericUnitStandard" unitName="UmojanGroundSensor">
@@ -4833,7 +4880,7 @@
         <HeroIcon value="Assets\Textures\btn-unit-terran-widowmine-umojan.dds"/>
         <Scale value="0.700000"/>
     </CActorUnit>
-    <CActorRange id="UmojanHowlerAirburstRange" parent="RangeAbil" abil="UmojanHowlerAirburst"/>
+    <CActorRange id="UmojanHowlerAirburstRange" parent="RangeAbil" abil="UmojanDiraAirburst"/>
     <CActorRange id="UmojanUnpoweredVisualLow">
         <Behavior value="UmojanPowerSource"/>
         <Icon value="Assets\Textures\ui_screens_zeratul_prologue_floorline_emis.dds"/>
@@ -4844,49 +4891,36 @@
         <On Terms="TimerExpired; TimerName Boom" Send="Create UmojanUnitDeathModelBoom"/>
         <On Terms="TimerExpired; TimerName Boom" Send="Destroy"/>
     </CActorModel>
-    <CActorModel id="UmojanBattlecatRiderPretorianDummy" parent="ModelAddition">
+    <CActorModel id="UmojanBattlecatRiderDummy" parent="ModelAddition">
+        <Aliases value="_UmojanSaddle"/>
         <On index="0" Terms="ActorOrphan" Send="Destroy"/>
         <On index="1" Terms="UnitBirth.UmojanBattlecatSpahi" Send="Create"/>
         <On index="2" Terms="UnitDeath.UmojanBattlecatSpahi" Send="Destroy"/>
-        <HostForProps Subject="UmojanBattlecatSpahi"/>
+        <On Terms="UnitBirth.UmojanBattlecatLancer" Send="Create"/>
+        <On Terms="UnitDeath.UmojanBattlecatLancer" Send="Destroy"/>
+        <On Terms="UnitBirth.UmojanBattlecatCuirassier" Send="Create"/>
+        <On Terms="UnitDeath.UmojanBattlecatCuirassier" Send="Destroy"/>
+        <HostForProps Subject="_UmojanMount"/>
         <HostSiteOps Ops="SOpAttachTarget SOpMoveUpByDot5 SOpMoveUpByDot25"/>
         <Model value="RedstoneLavaCritter"/>
         <Scale value="0.500000"/>
     </CActorModel>
-    <CActorModel id="UmojanBattlecatRiderPlasmabatDummy" parent="UmojanBattlecatRiderPretorianDummy">
-        <On index="1" Terms="UnitBirth.UmojanBattlecatCuirassier" Send="Create"/>
-        <On index="2" Terms="UnitDeath.UmojanBattlecatCuirassier" Send="Destroy"/>
-        <HostForProps Subject="UmojanBattlecatCuirassier"/>
-    </CActorModel>
-    <CActorModel id="UmojanBattlecatRiderShadowguardDummy" parent="UmojanBattlecatRiderPretorianDummy">
-        <On index="1" Terms="UnitBirth.UmojanBattlecatLancer" Send="Create"/>
-        <On index="2" Terms="UnitDeath.UmojanBattlecatLancer" Send="Destroy"/>
-        <HostForProps Subject="UmojanBattlecatLancer"/>
-    </CActorModel>
-    <CActorSite id="UmojanBattlecatRiderPretorianSite">
+    <CActorSite id="UmojanBattlecatRiderSite">
         <On Terms="UnitBirth.UmojanBattlecatSpahi" Send="Create"/>
         <On Terms="UnitDeath.UmojanBattlecatSpahi" Send="Destroy"/>
-        <Host Subject="UmojanBattlecatRiderPretorianModel"/>
-        <HostSiteOps Ops="SOpAttachWeapon"/>
-    </CActorSite>
-    <CActorSite id="UmojanBattlecatRiderPlasmabatSite">
         <On Terms="UnitBirth.UmojanBattlecatCuirassier" Send="Create"/>
         <On Terms="UnitDeath.UmojanBattlecatCuirassier" Send="Destroy"/>
-        <Host Subject="UmojanBattlecatRiderPlasmabatModel"/>
-        <HostSiteOps Ops="SOpAttachWeapon"/>
-    </CActorSite>
-    <CActorSite id="UmojanBattlecatRiderShadowguardSite">
         <On Terms="UnitBirth.UmojanBattlecatLancer" Send="Create"/>
         <On Terms="UnitDeath.UmojanBattlecatLancer" Send="Destroy"/>
-        <Host Subject="UmojanBattlecatRiderShadowguardModel"/>
+        <Host Subject="_UmojanRider"/>
         <HostSiteOps Ops="SOpAttachWeapon"/>
     </CActorSite>
     <CActorModel id="UnloadFX">
-        <On Terms="AbilTransport.UmojanLoadUnloadAloe.CargoUnload" Send="Create"/>
+        <On Terms="AbilTransport.UmojanSpecOpsDropshipLoadUnload.CargoUnload" Send="Create"/>
     </CActorModel>
     <!-- Nuke                                                                                    -->
     <CActorSplat id="nukeCursorSplat">
-        <On Terms="Abil.UmojanTacNukeStrike" Send="Create"/>
+        <On Terms="Abil.UmojanTacNukeStrike.Cursor" Send="Create"/>
     </CActorSplat>
     <CActorRange id="nukeRange">
         <On Terms="Abil.UmojanTacNukeStrike.TargetOn" Send="Create"/>

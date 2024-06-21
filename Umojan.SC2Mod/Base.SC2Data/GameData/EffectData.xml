@@ -1,42 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectEnumTrackedUnits id="UmojanWhirlwindSendReconReturnCraftToHangarfromWW">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="UmojanTrackerCarrier"/>
+        <Effect value="UmojanWhirlwindSendReconReturnCraftToHangarBis"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectSet id="UmojanWhirlwindSendReconActiveReconEndSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanWhirlwindSendReconActiveReconRB"/>
+        <EffectArray value="UmojanWhirlwindSpotKillOf"/>
+        <EffectArray value="UmojanWhirlwindSendReconReturnCraftToHangarfromWW"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="UmojanWhirlwindSendReconReturnCraftToHangarBis">
+        <EditorCategories value="Race:Terran"/>
+        <Abil value="UmojanReturnCraftToHangarRecon"/>
+        <Player Value="Source"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectAddTrackedUnit id="UmojanWhirlwindSpotTrackCarrier">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="UmojanTrackerSpot"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectAddTrackedUnit id="UmojanWhirlwindSpotTrackCraft">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="UmojanTrackerSpot"/>
+        <TrackerUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectSet id="UmojanWhirlwindSpotTrackSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanWhirlwindSpotTrackCarrier"/>
+        <EffectArray value="UmojanWhirlwindSpotTrackCraft"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="UmojanWhirlwindSpotCreateSpot">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="UmojanWhirlwindSpotTrackSet"/>
+        <SpawnUnit value="UmojanWeaponUnitWhirlwindSpot"/>
+    </CEffectCreateUnit>
+    <CEffectEnumTrackedUnits id="UmojanWhirlwindSpotKillOf">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="UmojanTrackerSpot"/>
+        <Effect value="UmojanSuicideRemoveTarget"/>
+    </CEffectEnumTrackedUnits>
+    <CEffectSet id="UmojanBattlecatDismountCreateBattlecatSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanBattlecatDismountSetHealth"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="MedivacHeal">
+        <ValidatorArray value="UmojanAloeHealAreaNotIsBeeingHealed"/>
+        <ValidatorArray value="UmojanAloeHealSoloNotInArea"/>
+    </CEffectCreateHealer>
+    <CEffectDamage id="UmojanBattleTankFocalisedRailCannonDamageNoShield" parent="DU_WEAP">
+        <ValidatorArray value="UmojanIsNotShieldCapable"/>
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
+        <Flags index="Notification" value="0"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Spell"/>
+        <Amount value="25">
+            <AccumulatorArray value="UmojanBattleTankFocalisedMaxHealthattack"/>
+        </Amount>
+        <Death value="Blast"/>
+        <Maximum value="200"/>
+    </CEffectDamage>
+    <CEffectDamage id="UmojanBattleTankRailCannonDamageNoShield" parent="DU_WEAP">
+        <ValidatorArray value="UmojanIsNotShieldCapable"/>
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <ResponseFlags index="Flee" value="0"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
+        <Flags index="Notification" value="0"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Spell"/>
+        <Amount value="20">
+            <AccumulatorArray value="UmojanBattleTankMaxHealthattack"/>
+        </Amount>
+        <Death value="Blast"/>
+        <Maximum value="200"/>
+    </CEffectDamage>
+    <CEffectSet id="UmojanBattleTankRailCannonSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanBattleTankRailCannonDamageDisplay"/>
+        <EffectArray value="UmojanBattleTankRailCannonDamage"/>
+        <EffectArray value="UmojanBattleTankRailCannonDamageNoShield"/>
+    </CEffectSet>
+    <CEffectDamage id="UmojanBattleTankFocalisedRailCannonDamage" parent="DU_WEAP">
+        <ValidatorArray value="UmojanIsShieldCapable"/>
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
+        <Flags index="Notification" value="0"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Spell"/>
+        <Amount value="25">
+            <AccumulatorArray value="UmojanBattleTankFocalisedMaxHealthattack"/>
+            <AccumulatorArray value="UmojanBattleTankFocalisedMaxShieldattack"/>
+        </Amount>
+        <Death value="Blast"/>
+        <Maximum value="200"/>
+    </CEffectDamage>
+    <CEffectSet id="UmojanBattleTankFocalisedRailCannonSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanBattleTankFocalisedRailCannonDamageDisplay"/>
+        <EffectArray value="UmojanBattleTankFocalisedRailCannonDamage"/>
+        <EffectArray value="UmojanBattleTankFocalisedRailCannonDamageNoShield"/>
+    </CEffectSet>
+    <CEffectLaunchMissile id="UmojanPathfinderGladiusMissileLM">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactEffect value="UmojanPathfinderGladiusMissileDamage"/>
+        <AmmoUnit value="UmojanWeaponUnitGladiusMissile"/>
+        <Movers Link="UmojanPathfinderMissile"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="UmojanPathfinderGladiusMissileDamage" parent="DU_WEAP_MISSILE">
+        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Armored" value="10"/>
+        <Visibility value="Visible"/>
+        <Amount value="10"/>
+    </CEffectDamage>
     <CEffectSwitch id="DisguiseEx3">
         <CaseArray Validator="ZerojanDisguiseAsMarineWithShield" Effect="ZerojanDisguiseAsPretorianWithShieldCU"/>
         <CaseArray Validator="ZerojanDisguiseAsMarineWithoutShield" Effect="ZerojanDisguiseAsPretorianWithoutShieldCU"/>
     </CEffectSwitch>
-    <CEffectApplyBehavior id="UmojanMistDecoyABDeepCloak">
+    <CEffectApplyBehavior id="UmojanCommandoFlashGrenadeAB">
         <EditorCategories value="Race:Terran"/>
-        <Behavior value="UmojanDeepCloakDecoy"/>
+        <Behavior value="UmojanCommandoFlashGrenadeBlind"/>
     </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="UmojanMistDecoyABDeepCloakCaster">
+    <CEffectDamage id="UmojanCommandoFlashGrenadeDamage">
+        <EditorCategories value="Race:Terran"/>
+        <Amount value="8"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="UmojanCommandoFlashGrenadeLM">
+        <EditorCategories value="Race:Terran"/>
+        <AmmoUnit value="UmojanWeaponFlashGrenadeWeapon"/>
+        <Movers Link="KD8ChargeWeaponCloseRange" IfRangeLTE="1"/>
+        <Movers Link="KD8ChargeWeapon" IfRangeLTE="500"/>
+        <Marker>
+            <MatchFlags index="Link" value="1"/>
+            <MismatchFlags index="Id" value="1"/>
+        </Marker>
+        <ImpactEffect value="UmojanCommandoFlashGrenadeSearchArea"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="UmojanCommandoFlashGrenadeSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <AINotifyFlags index="HurtFriend" value="1"/>
+        <AINotifyFlags index="HurtEnemy" value="1"/>
+        <AINotifyFlags index="MinorDanger" value="1"/>
+        <SearchFilters value="Ground;Player,Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1" Effect="UmojanCommandoFlashGrenadeSet"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="UmojanCommandoAmbushAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="UmojanCommandoAmbush"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="UmojanCommandoAmbushCDAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="UmojanCommandoAmbushCD"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="UmojanCommandoAmbushBuffAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="UmojanCommandoAmbushBuff"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="UmojanCommandoFlashGrenadeSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanCommandoFlashGrenadeDamage"/>
+        <EffectArray value="UmojanCommandoFlashGrenadeAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="UmojanK14RailriflePersistantAcc">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <PeriodCount value="7"/>
+        <PeriodicValidator value="CasterNotDead"/>
+        <PeriodicEffectArray value="UmojanMarineWeaponPowerAccumulatorConsumeBuff"/>
+        <PeriodicEffectArray value="UmojanK14RailrifleSwitch"/>
+        <PeriodicEffectArray value="UmojanK14RailrifleSwitch"/>
+        <PeriodicEffectArray value="UmojanK14RailrifleSwitch"/>
+        <PeriodicEffectArray value="UmojanK14RailrifleSwitch"/>
+        <PeriodicEffectArray value="UmojanK14RailrifleSwitch"/>
+        <PeriodicEffectArray value="UmojanMarineWeaponPowerAccumulatorApplyBuff"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="0.05"/>
+        <PeriodicPeriodArray value="4.8"/>
+    </CEffectCreatePersistent>
+    <CEffectSwitch id="UmojanK14RailrifleSwitchAcc">
+        <EditorCategories value="Race:Terran"/>
+        <CaseArray Validator="UmojanHasWeaponPowerAccumulatorBuff" Effect="UmojanK14RailriflePersistantAcc"/>
+        <CaseDefault value="UmojanK14RailriflePersistant"/>
+    </CEffectSwitch>
+    <CEffectTeleport id="UmojanBattleTankWarpTeleport">
+        <ValidatorArray value="CasterNotFungalGrowthed"/>
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
-        <Behavior value="UmojanDeepCloakDecoy"/>
-    </CEffectApplyBehavior>
-    <CEffectSet id="UmojanMistDecoySet">
+        <ClearQueuedOrders value="0"/>
+        <PlacementAround Value="CasterUnit"/>
+        <Range value="500"/>
+        <TargetLocation Value="TargetPoint"/>
+        <TeleportFlags index="TestCliff" value="1"/>
+    </CEffectTeleport>
+    <CEffectDamage id="UmojanBattleTankRailCannonDamage" parent="DU_WEAP">
+        <ValidatorArray value="UmojanIsShieldCapable"/>
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanMistDecoyCreateDecoy"/>
-        <EffectArray value="UmojanMistDecoyABDeepCloakCaster"/>
+        <ResponseFlags index="Acquire" value="0"/>
+        <ResponseFlags index="Flee" value="0"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
+        <Flags index="Notification" value="0"/>
+        <Flags index="NoScaledDealtBonus" value="1"/>
+        <Flags index="NoFractionDealtBonus" value="1"/>
+        <Flags index="NoUnscaledDealtBonus" value="1"/>
+        <Kind value="Spell"/>
+        <Amount value="20">
+            <AccumulatorArray value="UmojanBattleTankMaxHealthattack"/>
+            <AccumulatorArray value="UmojanBattleTankMaxShieldattack"/>
+        </Amount>
+        <Death value="Blast"/>
+        <Maximum value="200"/>
+    </CEffectDamage>
+    <CEffectRemoveBehavior id="UmojanMarineWeaponPowerAccumulatorConsumeBuff">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="UmojanWeaponPowerAccumulator"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="UmojanTrancientWeaponTrackerSetBattlecat">
+        <ValidatorArray value="UmojanBattlecatNotTooClose"/>
+        <ValidatorArray value="UmojanBattlecatCouldShoot"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanTrancientWeaponTrackerTrack"/>
+        <EffectArray value="UmojanTrancientWeaponTrackerAB"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="UmojanMistDecoyTimer">
+    <CEffectAddTrackedUnit id="UmojanTrancientWeaponTrackerTrack">
         <EditorCategories value="Race:Terran"/>
-        <Behavior value="UmojanMistDecoyTimedLife"/>
-    </CEffectApplyBehavior>
-    <CEffectCreateUnit id="UmojanMistDecoyCreateDecoy">
+        <BehaviorLink value="UmojanTransientAttackTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectRemoveBehavior id="UmojanTrancientWeaponTrackerRB">
         <EditorCategories value="Race:Terran"/>
-        <CreateFlags index="OffsetByRadius" value="0"/>
-        <CreateFlags index="Placement" value="0"/>
-        <CreateFlags index="ProvideFood" value="0"/>
-        <CreateFlags index="TechComplete" value="0"/>
-        <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanMistDecoyApplyBehavior"/>
-        <SpawnUnit value="UmojanMist"/>
-    </CEffectCreateUnit>
-    <CEffectSet id="UmojanMistDecoyApplyBehavior">
+        <BehaviorLink value="UmojanTransientAttackTrackerTarget"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="UmojanTrancientWeaponTrackerSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="HallucinationCreateUnitBHal"/>
-        <EffectArray value="UmojanMistDecoyTimer"/>
-        <EffectArray value="UmojanMistDecoyABDeepCloak"/>
+        <EffectArray value="UmojanTrancientWeaponTrackerTrack"/>
+        <EffectArray value="UmojanTrancientWeaponTrackerAB"/>
+    </CEffectSet>
+    <CEffectAddTrackedUnit id="UmojanWarpSignatureTrack">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="UmojanTrackerWarp"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectSet id="UmojanWarpSignatureSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanWarpSignatureLink"/>
+        <EffectArray value="UmojanWarpSignatureTrack"/>
+    </CEffectSet>
+    <CEffectRemoveBehavior id="UmojanRemoveDeepCloakEnergy">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="UmojanDeepCloakEnergy"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="UmojanWhirlwindDeathSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanAloeSendCarrierKillOf"/>
+        <EffectArray value="UmojanWhirlwindSpotKillOf"/>
     </CEffectSet>
     <CEffectCreateUnit id="ZerojanDisguiseAsPretorianWithShieldCU" parent="DisguiseEx3CU">
         <SpawnUnit value="UmojanChangelingMarineShield"/>
@@ -59,7 +306,7 @@
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>
         <SearchFilters value="-;Self,Ally,Neutral,Enemy,Structure,Missile,Item,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="6.5" Effect="UmojanCrowRecallApplyPreRecallBehavior"/>
+        <AreaArray Radius="2.5" Effect="UmojanCrowRecallApplyPreRecallBehavior"/>
         <MinCount value="1"/>
     </CEffectEnumArea>
     <CEffectSet id="UmojanCrowRecallSet">
@@ -72,77 +319,77 @@
     <CEffectTeleport id="UmojanCrowRecallTeleport">
         <EditorCategories value="Race:Terran"/>
         <PlacementArc value="360"/>
-        <PlacementAround Effect="ArbiterMPRecallSearch" Value="SourcePoint"/>
+        <PlacementAround Effect="UmojanCrowRecallSearch" Value="SourcePoint"/>
         <PlacementRange value="15"/>
-        <SourceLocation Effect="ArbiterMPRecallSearch" Value="TargetPoint"/>
-        <TargetLocation Effect="ArbiterMPRecallSearch" Value="SourcePoint"/>
+        <SourceLocation Effect="UmojanCrowRecallSearch" Value="TargetPoint"/>
+        <TargetLocation Effect="UmojanCrowRecallSearch" Value="SourcePoint"/>
         <TeleportFlags index="TestCliff" value="1"/>
         <TeleportFlags index="TestFog" value="0"/>
     </CEffectTeleport>
-    <CEffectModifyUnit id="UmojanAloeSendReconActiveReconCDIniTarget">
+    <CEffectModifyUnit id="UmojanWhirlwindSendReconActiveReconCDIniTarget">
         <EditorCategories value="Race:Terran"/>
-        <Cost Abil="UmojanSendRecon,Execute" CooldownOperation="Set" CooldownTimeUse="30"/>
+        <Cost Abil="UmojanSendSpotter,Execute" CooldownOperation="Set" CooldownTimeUse="30"/>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="UmojanAloeSendReconActiveReconCDIniSource">
+    <CEffectModifyUnit id="UmojanWhirlwindSendReconActiveReconCDIniSource">
         <EditorCategories value="Race:Terran"/>
         <ImpactUnit Value="Source"/>
-        <Cost Abil="UmojanSendRecon,Execute" CooldownOperation="Set" CooldownTimeUse="30"/>
+        <Cost Abil="UmojanSendSpotter,Execute" CooldownOperation="Set" CooldownTimeUse="30"/>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="UmojanAloeSendReconActiveReconCDSucces">
+    <CEffectModifyUnit id="UmojanWhirlwindSendReconActiveReconCDSucces">
         <EditorCategories value="Race:Terran"/>
-        <Cost Abil="UmojanSendRecon,Execute" CooldownOperation="Set" CooldownTimeUse="1"/>
+        <Cost Abil="UmojanSendSpotter,Execute" CooldownOperation="Set" CooldownTimeUse="1"/>
     </CEffectModifyUnit>
-    <CEffectEnumTrackedUnits id="UmojanAloeSendReconReturnCraftToCarrier">
+    <CEffectEnumTrackedUnits id="UmojanWhirlwindSendReconReturnCraftToCarrier">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
         <TrackerUnit Value="Source"/>
-        <Effect value="UmojanAloeSendReconReturnCraftToCarrier2"/>
+        <Effect value="UmojanWhirlwindSendReconReturnCraftToCarrierSet"/>
     </CEffectEnumTrackedUnits>
     <CEffectApplyBehavior id="UmojanAloeSendBomberReturnCraftToHangarAB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="UmojanAloeSendBomberReturnToCarrier"/>
     </CEffectApplyBehavior>
-    <CEffectAddTrackedUnit id="UmojanAloeSendBomberCarrierTrackCraft">
+    <CEffectAddTrackedUnit id="UmojanCrowSendBomberCarrierTrackCraft">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
-        <TrackerUnit Effect="UmojanAloeSendBomberOrderBomberCP" Value="Target"/>
+        <TrackerUnit Effect="UmojanCrowSendBomberOrderBomberCP" Value="Target"/>
     </CEffectAddTrackedUnit>
-    <CEffectSet id="UmojanAloeSendBomberCarrierTrackSet">
+    <CEffectSet id="UmojanCrowSendBomberCarrierTrackSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanAloeSendBomberCarrierTrackCarrier"/>
-        <EffectArray value="UmojanAloeSendBomberCarrierTrackCraft"/>
+        <EffectArray value="UmojanCrowSendBomberCarrierTrackCarrier"/>
+        <EffectArray value="UmojanCrowSendBomberCarrierTrackCraft"/>
     </CEffectSet>
-    <CEffectSet id="UmojanAloeSendReconCarrierTrackSet">
+    <CEffectSet id="UmojanWhirlwindSendReconCarrierTrackSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanAloeSendReconCarrierTrackCarrier"/>
-        <EffectArray value="UmojanAloeSendReconCarrierTrackCraft"/>
+        <EffectArray value="UmojanWhirlwindSendReconCarrierTrackCarrier"/>
+        <EffectArray value="UmojanWhirlwindSendReconCarrierTrackCraft"/>
     </CEffectSet>
     <CEffectEnumTrackedUnits id="UmojanAloeSendBomberReturnCraftToCarrier">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
         <TrackerUnit Value="Source"/>
-        <Effect value="UmojanAloeSendReconReturnCraftToHangar"/>
+        <Effect value="UmojanWhirlwindSendReconReturnCraftToHangar"/>
     </CEffectEnumTrackedUnits>
-    <CEffectAddTrackedUnit id="UmojanAloeSendReconCarrierTrackCraft">
+    <CEffectAddTrackedUnit id="UmojanWhirlwindSendReconCarrierTrackCraft">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
-        <TrackerUnit Effect="UmojanAloeSendReconOrderReconCP" Value="Target"/>
+        <TrackerUnit Effect="UmojanWhirlwindSendReconOrderReconCP" Value="Target"/>
     </CEffectAddTrackedUnit>
-    <CEffectRemoveBehavior id="UmojanAloeSendReconActiveReconRB">
+    <CEffectRemoveBehavior id="UmojanWhirlwindSendReconActiveReconRB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="UmojanAloeSendReconActiveRecon"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="UmojanAloeSendReconActiveReconAB">
+    <CEffectApplyBehavior id="UmojanWhirlwindSendReconActiveReconAB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="UmojanAloeSendReconActiveRecon"/>
     </CEffectApplyBehavior>
-    <CEffectAddTrackedUnit id="UmojanAloeSendReconCarrierTrackCarrier">
+    <CEffectAddTrackedUnit id="UmojanWhirlwindSendReconCarrierTrackCarrier">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
-        <TrackedUnit Effect="UmojanAloeSendReconOrderReconCP" Value="Target"/>
+        <TrackedUnit Effect="UmojanWhirlwindSendReconOrderReconCP" Value="Target"/>
     </CEffectAddTrackedUnit>
     <CEffectEnumTrackedUnits id="UmojanAloeSendCarrierKillOf">
         <EditorCategories value="Race:Terran"/>
@@ -154,46 +401,48 @@
         <BehaviorLink value="UmojanAloeHealSoloTracker"/>
         <TrackedUnit Value="Target"/>
     </CEffectAddTrackedUnit>
-    <CEffectAddTrackedUnit id="UmojanAloeSendBomberCarrierTrackCarrier">
+    <CEffectAddTrackedUnit id="UmojanCrowSendBomberCarrierTrackCarrier">
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanTrackerCarrier"/>
-        <TrackedUnit Effect="UmojanAloeSendBomberOrderBomberCP" Value="Target"/>
+        <TrackedUnit Effect="UmojanCrowSendBomberOrderBomberCP" Value="Target"/>
     </CEffectAddTrackedUnit>
-    <CEffectCreateUnit id="UmojanAloeSendReconCreateRecon">
+    <CEffectCreateUnit id="UmojanWhirlwindSendReconCreateRecon">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="CasterUnit"/>
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanAloeSendReconOrderReconCP"/>
+        <SpawnEffect value="UmojanWhirlwindSendReconOrderReconCP"/>
         <SpawnUnit value="UmojanNightwish"/>
         <SpawnRange value="0.1"/>
     </CEffectCreateUnit>
-    <CEffectCreatePersistent id="UmojanAloeSendReconDummyCP">
+    <CEffectCreatePersistent id="UmojanWhirlwindSendReconDummyCP">
         <EditorCategories value="Race:Terran"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="UmojanAloeSendReconCreateRecon"/>
+        <InitialEffect value="UmojanWhirlwindSendReconActiveReconAB"/>
+        <PeriodCount value="2"/>
+        <PeriodicEffectArray value="UmojanWhirlwindSendReconCreateRecon"/>
+        <PeriodicEffectArray value="UmojanWhirlwindSpotCreateSpot"/>
         <PeriodicPeriodArray value="0"/>
-        <InitialEffect value="UmojanAloeSendReconActiveReconAB"/>
+        <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
-    <CEffectIssueOrder id="UmojanAloeSendReconMove">
+    <CEffectIssueOrder id="UmojanWhirlwindSendReconMove">
         <EditorCategories value="Race:Terran"/>
-        <WhichUnit Effect="UmojanAloeSendReconOrderReconCP"/>
+        <WhichUnit Effect="UmojanWhirlwindSendReconOrderReconCP"/>
         <Abil value="move"/>
         <Player Value="Source"/>
         <Target Value="TargetPoint"/>
     </CEffectIssueOrder>
-    <CEffectCreatePersistent id="UmojanAloeSendBomberOrderBomberCP">
+    <CEffectCreatePersistent id="UmojanCrowSendBomberOrderBomberCP">
         <EditorCategories value="Race:Terran"/>
-        <WhichLocation Effect="UmojanAloeSendBomberDummyCP"/>
+        <WhichLocation Effect="UmojanCrowSendBomberDummyCP"/>
         <OffsetVectorStartLocation Value="CasterUnit"/>
-        <OffsetVectorEndLocation Effect="UmojanAloeSendBomberDummyCP"/>
-        <InitialEffect value="UmojanAloeSendBomberOrderBomberStrikeArea"/>
-        <ExpireEffect value="UmojanAloeSendBomberReturnCraftToHangar"/>
-        <FinalEffect value="UmojanAloeSendBomberCarrierTrackSet"/>
+        <OffsetVectorEndLocation Effect="UmojanCrowSendBomberDummyCP"/>
+        <InitialEffect value="UmojanCrowSendBomberOrderBomberStrikeArea"/>
+        <ExpireEffect value="UmojanCrowSendBomberReturnCraftToHangar"/>
+        <FinalEffect value="UmojanCrowSendBomberCarrierTrackSet"/>
         <PeriodCount value="11"/>
-        <PeriodicEffectArray value="UmojanAloeSendBomberMove"/>
+        <PeriodicEffectArray value="UmojanCrowSendBomberMove"/>
         <PeriodicOffsetArray value="0,-1,0"/>
         <PeriodicOffsetArray value="0.098,-1.618,0"/>
         <PeriodicOffsetArray value="0.382,-2.176,0"/>
@@ -206,40 +455,40 @@
         <PeriodicOffsetArray value="3.902,-1.618,0"/>
         <PeriodicOffsetArray value="4,-1,0"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="UmojanAloeSendBomberDummyCP">
+    <CEffectCreatePersistent id="UmojanCrowSendBomberDummyCP">
         <EditorCategories value="Race:Terran"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="UmojanAloeSendBomberCreateBomber"/>
+        <PeriodicEffectArray value="UmojanCrowSendBomberCreateBomber"/>
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="UmojanAloeSendReconOrderReconCP">
+    <CEffectCreatePersistent id="UmojanWhirlwindSendReconOrderReconCP">
         <EditorCategories value="Race:Terran"/>
-        <WhichLocation Effect="UmojanAloeSendReconDummyCP"/>
+        <WhichLocation Effect="UmojanWhirlwindSendReconDummyCP"/>
         <OffsetVectorStartLocation Value="TargetUnit"/>
-        <OffsetVectorEndLocation Effect="UmojanAloeSendReconDummyCP"/>
-        <FinalEffect value="UmojanAloeSendReconActiveReconRB"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="UmojanAloeSendReconMove"/>
-        <PeriodicOffsetArray value="4.794,-0.251,0"/>
+        <OffsetVectorEndLocation Effect="UmojanWhirlwindSendReconDummyCP"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <InitialEffect value="UmojanAloeSendReconCarrierTrackSet"/>
+        <InitialEffect value="UmojanWhirlwindSendReconCarrierTrackSet"/>
+        <FinalEffect value="UmojanWhirlwindSendReconActiveReconRB"/>
+        <PeriodCount value="1"/>
         <PeriodicValidator value="UmojanAloeSendReconCPValidator"/>
+        <PeriodicEffectArray value="UmojanWhirlwindSendReconMove"/>
+        <PeriodicOffsetArray value="4.794,-0.251,0"/>
         <PeriodicPeriodArray value="0.15"/>
     </CEffectCreatePersistent>
-    <CEffectIssueOrder id="UmojanAloeSendBomberReturnCraftToHangar">
+    <CEffectIssueOrder id="UmojanCrowSendBomberReturnCraftToHangar">
         <EditorCategories value="Race:Terran"/>
-        <WhichUnit Effect="UmojanAloeSendBomberOrderBomberCP"/>
+        <WhichUnit Effect="UmojanCrowSendBomberOrderBomberCP"/>
         <Abil value="UmojanReturnCraftToHangarBomber"/>
         <CmdFlags index="Queued" value="1"/>
         <Player Value="Source"/>
         <Target Value="CasterUnit"/>
     </CEffectIssueOrder>
-    <CEffectSet id="UmojanAloeSendReconReturnCraftToCarrier2">
+    <CEffectSet id="UmojanWhirlwindSendReconReturnCraftToCarrierSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanAloeSendBomberReturnCraftToHangar"/>
-        <EffectArray value="UmojanAloeSendReconActiveReconCDIniTarget"/>
+        <EffectArray value="UmojanCrowSendBomberReturnCraftToHangar"/>
+        <EffectArray value="UmojanWhirlwindSendReconActiveReconCDIniTarget"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="UmojanAloeSendReconReturnCraftToHangarAB">
+    <CEffectApplyBehavior id="UmojanWhirlwindSendReconReturnCraftToHangarAB">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="UmojanAloeSendReconReturnToCarrier"/>
@@ -250,52 +499,52 @@
         <PeriodicEffectArray value="UmojanAloeSendBomberReturnCraftToHangarAB"/>
         <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="UmojanAloeSendReconReturnCraftToHangarCP">
+    <CEffectCreatePersistent id="UmojanWhirlwindSendReconReturnCraftToHangarCP">
         <EditorCategories value="Race:Terran"/>
         <PeriodCount value="1"/>
-        <PeriodicEffectArray value="UmojanAloeSendReconReturnCraftToHangarAB"/>
+        <PeriodicEffectArray value="UmojanWhirlwindSendReconReturnCraftToHangarAB"/>
         <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
-    <CEffectSet id="UmojanAloeSendReconReturnCraftToHangarSet">
-        <EditorCategories value=""/>
-        <EffectArray value="UmojanAloeSendReconActiveReconCDSucces"/>
+    <CEffectSet id="UmojanWhirlwindSendReconReturnCraftToHangarSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="UmojanWhirlwindSendReconActiveReconCDSucces"/>
         <EffectArray value="UmojanSuicideRemoveSource"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="UmojanAloeTemporalFieldApplyBehavior">
+    <CEffectApplyBehavior id="UmojanCrowTemporalFieldApplyBehavior">
         <ValidatorArray index="0" value="NotFrenzied"/>
         <EditorCategories value="Race:Terran"/>
-        <Behavior value="UmojanAloeTimeBomb"/>
+        <Behavior value="UmojanCrowTimeBomb"/>
     </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="UmojanAloeTemporalFieldCreatePersistent">
+    <CEffectCreatePersistent id="UmojanCrowTemporalFieldCreatePersistent">
         <EditorCategories value="Race:Terran"/>
-        <InitialEffect value="UmojanAloeTemporalFieldSearchAreaImpactDummy"/>
+        <InitialEffect value="UmojanCrowTemporalFieldSearchAreaImpactDummy"/>
         <PeriodCount value="160"/>
-        <PeriodicEffectArray value="UmojanAloeTemporalFieldSearchArea"/>
+        <PeriodicEffectArray value="UmojanCrowTemporalFieldSearchArea"/>
         <PeriodicPeriodArray value="0.0625"/>
     </CEffectCreatePersistent>
-    <CEffectDamage id="UmojanAloeTemporalFieldDamageDummy" parent="DU_WEAP">
+    <CEffectDamage id="UmojanCrowTemporalFieldDamageDummy" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
         <Kind value="Spell"/>
     </CEffectDamage>
-    <CEffectEnumArea id="UmojanAloeTemporalFieldSearchArea">
+    <CEffectEnumArea id="UmojanCrowTemporalFieldSearchArea">
         <EditorCategories value="Race:Terran"/>
         <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="UmojanAloeTemporalFieldApplyBehavior"/>
+        <AreaArray Radius="2.5" Effect="UmojanCrowTemporalFieldApplyBehavior"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="UmojanAloeTemporalFieldSearchAreaImpactDummy">
+    <CEffectEnumArea id="UmojanCrowTemporalFieldSearchAreaImpactDummy">
         <EditorCategories value="Race:Terran"/>
-        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2.5" Effect="UmojanAloeTemporalFieldDamageDummy"/>
         <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2.5" Effect="UmojanCrowTemporalFieldDamageDummy"/>
     </CEffectEnumArea>
-    <CEffectIssueOrder id="UmojanAloeSendBomberOrderBomberStrikeArea">
+    <CEffectIssueOrder id="UmojanCrowSendBomberOrderBomberStrikeArea">
         <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="UmojanCrowSendBomberOrderBomberCP"/>
         <Abil value="UmojanTimeBomb"/>
-        <Target Value="TargetPoint"/>
-        <WhichUnit Effect="UmojanAloeSendBomberOrderBomberCP"/>
         <Player Value="Source"/>
+        <Target Value="TargetPoint"/>
     </CEffectIssueOrder>
-    <CEffectIssueOrder id="UmojanAloeSendReconReturnCraftToHangar">
+    <CEffectIssueOrder id="UmojanWhirlwindSendReconReturnCraftToHangar">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Source"/>
         <Abil value="UmojanReturnCraftToHangarRecon"/>
@@ -304,11 +553,11 @@
     </CEffectIssueOrder>
     <CEffectUseMagazine id="UmojanAloeRaptor">
         <EditorCategories value="Race:Terran"/>
-        <MagazineAbil value="UmojanAloeHangar"/>
+        <MagazineAbil value="UmojanHexaremeHangar"/>
     </CEffectUseMagazine>
-    <CEffectEnumArea id="UmojanAloeSendReconFakeSearch">
+    <CEffectEnumArea id="UmojanWhirlwindSendReconFakeSearch">
         <EditorCategories value="Race:Terran"/>
-        <AreaArray Radius="9"/>
+        <AreaArray Radius="7"/>
     </CEffectEnumArea>
     <CEffectDamage id="UmojanRaptorBeamDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
@@ -330,10 +579,9 @@
         <ValidatorArray value="UmojanCasterIsNotYoinked"/>
         <ValidatorArray value="CasterDoesNotHaveScramblerMissileBehavior"/>
         <ValidatorArray value="UmojanBattleshipPlacementCheck"/>
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <Flags index="Channeled" value="1"/>
         <InitialEffect value="UmojanHyperjumpInitialDelaySuppressWeaponAB"/>
-        <FinalEffect value="UmojanHyperjumpInitialDelaySuppressWeaponRB"/>
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="UmojanHyperjumpCreatePrecursor"/>
         <PeriodicPeriodArray value="1.4"/>
@@ -344,7 +592,7 @@
         <Behavior value="UmojanHyperjumpInitialDelaySuppressWeapon"/>
     </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="UmojanHyperjumpInitialDelaySuppressWeaponRB">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="UmojanHyperjumpInitialDelaySuppressWeapon"/>
     </CEffectRemoveBehavior>
@@ -363,7 +611,7 @@
     </CEffectCreateUnit>
     <CEffectModifyUnit id="UmojanHyperJumpBattleshipTargetTriggerCD">
         <ValidatorArray value="UmojanTargetNotTacticalJumping"/>
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <Cost Abil="UmojanHyperjump,Execute" CooldownTimeUse="120"/>
     </CEffectModifyUnit>
     <CEffectTeleport id="UmojanHyperjumpTeleport">
@@ -404,22 +652,19 @@
         <EffectArray value="UmojanHyperjumpTeleport"/>
         <EffectArray value="UmojanHyperjumpTeleportAB"/>
     </CEffectSet>
-    <CEffectCreateHealer id="MedivacHeal">
-        <ValidatorArray value="UmojanAloeHealAreaNotIsBeeingHealed"/>
-        <ValidatorArray value="UmojanAloeHealSoloNotInArea"/>
-    </CEffectCreateHealer>
-    <CEffectCreateUnit id="UmojanAloeSendBomberCreateBomber">
+    <CEffectCreateUnit id="UmojanCrowSendBomberCreateBomber">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="CasterUnit"/>
         <CreateFlags index="OffsetByRadius" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanAloeSendBomberOrderBomberCP"/>
+        <SpawnEffect value="UmojanCrowSendBomberOrderBomberCP"/>
         <SpawnUnit value="UmojanThunderbird"/>
         <SpawnRange value="0.1"/>
     </CEffectCreateUnit>
     <CEffectDamage id="UmojanSuicideRemoveSource">
+        <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="SourceUnit"/>
         <Flags index="Kill" value="1"/>
         <Flags index="NoKillCredit" value="1"/>
@@ -546,19 +791,8 @@
         <Death value="Fire"/>
         <AreaArray Radius="1.5" Fraction="1"/>
         <ExcludeArray Value="Target"/>
-        <SearchFilters value="Air;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
-    <CEffectSet id="UmojanAskForMountAndMovePretorian">
-        <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanAskForMountPretorian"/>
-        <EffectArray value="UmojanBattlecatMove"/>
-    </CEffectSet>
-    <CEffectIssueOrder id="UmojanBattlecatMove">
-        <EditorCategories value="Race:Terran"/>
-        <WhichUnit Value="Caster"/>
-        <Abil value="move"/>
-        <Target Value="TargetUnit"/>
-    </CEffectIssueOrder>
     <CEffectIssueOrder id="UmojanAskForMountPretorian">
         <EditorCategories value="Race:Terran"/>
         <Abil value="UmojanSearchPretorian"/>
@@ -597,17 +831,13 @@
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanBattlecatStayatRange"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="UmojanBattlecatCuirassierDoT">
+    <CEffectApplyBehavior id="UmojanBattlecatCuirassierAttackDoT">
         <ValidatorArray index="0" value="UmojanResearchBattlelinkSystemResearched"/>
         <ValidatorArray value="UmojanCasterIsCuirassier"/>
         <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Behavior value="UmojanPlasmaBurn"/>
-    </CEffectApplyBehavior>
-    <CEffectApplyBehavior id="UmojanPowertotheWeaponBattlecat">
-        <ValidatorArray index="0" value="UmojanCasterIsSpahi"/>
-        <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
     <CEffectCreateHealer id="UmojanRepairTower">
         <ValidatorArray value="noMarkers"/>
@@ -629,22 +859,11 @@
         <ExpireEffect value="UmojanLockOnTowerTurretClear"/>
         <FinalEffect value="UmojanLockOnTowerTurretClear"/>
     </CEffectCreateHealer>
-    <CEffectSwitch id="UmojanRetributionFieldSwitch">
-        <EditorCategories value="Race:Terran"/>
-        <CaseDefault value="UmojanRetributionFieldSearch"/>
-    </CEffectSwitch>
     <CEffectApplyBehavior id="UmojanStayatRange">
         <EditorCategories value="Race:Terran"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="UmojanBattlecatStayatRange"/>
     </CEffectApplyBehavior>
-    <CEffectDamage id="UmojanBattlecatLookAt">
-        <ValidatorArray value="UmojanBattlecatNotTooClose"/>
-        <ValidatorArray value="UmojanBattlecatCouldShoot"/>
-        <EditorCategories value="Race:Terran"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
-    </CEffectDamage>
     <CEffectApplyBehavior id="UmojanLockdownAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="UmojanLockdown"/>
@@ -668,6 +887,7 @@
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
         <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <SelectTransferUnit Value="Caster"/>
     </CEffectModifyUnit>
     <CEffectModifyUnit id="UmojanBattlecatDismountSetHealthEnergy">
         <EditorCategories value="Race:Terran"/>
@@ -688,8 +908,9 @@
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
         <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <SelectTransferUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="BattlecatMountSetHealthPretorian">
+    <CEffectModifyUnit id="UmojanBattlecatSpahiSetHealth">
         <EditorCategories value="Race:Terran"/>
         <VitalArray index="Life">
             <Change value="0">
@@ -704,8 +925,11 @@
             </Change>
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
+        <CopyOrderCount value="32"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <SelectTransferUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="BattlecatMountSetHealthPlasmabat">
+    <CEffectModifyUnit id="UmojanBattlecatCuirrasierSetHealth">
         <EditorCategories value="Race:Terran"/>
         <VitalArray index="Life">
             <Change value="0">
@@ -720,8 +944,11 @@
             </Change>
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
+        <CopyOrderCount value="32"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <SelectTransferUnit Value="Caster"/>
     </CEffectModifyUnit>
-    <CEffectModifyUnit id="BattlecatMountSetHealthShadowguard">
+    <CEffectModifyUnit id="UmojanBattlecatLancerSetHealth">
         <EditorCategories value="Race:Terran"/>
         <VitalArray index="Life">
             <Change value="0">
@@ -741,14 +968,18 @@
             </Change>
         </VitalArray>
         <ModifyFlags index="SetVitals" value="1"/>
+        <CopyOrderCount value="32"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+        <SelectTransferUnit Value="Caster"/>
     </CEffectModifyUnit>
     <CEffectDamage id="UmojanBattlecat">
         <EditorCategories value="Race:Terran"/>
         <ArmorReduction value="1"/>
         <Flags index="Notification" value="1"/>
         <Kind value="Melee"/>
-        <Amount value="15"/>
+        <Amount value="10"/>
         <Death value="Eviscerate"/>
+        <AttributeBonus index="Light" value="5"/>
     </CEffectDamage>
     <CEffectCreateUnit id="UmojanBattlecatSpahiCreatePretorian">
         <EditorCategories value="Race:Terran"/>
@@ -798,7 +1029,7 @@
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="SetFacing" value="1"/>
         <RallyUnit Value="Caster"/>
-        <SpawnEffect value="BattlecatMountSetHealthShadowguard"/>
+        <SpawnEffect value="UmojanBattlecatLancerSetHealth"/>
         <SpawnUnit value="UmojanBattlecatLancer"/>
         <SelectUnit Value="Caster"/>
     </CEffectCreateUnit>
@@ -808,6 +1039,7 @@
         <EffectArray value="UmojanBattlecatSpahiCreateSpahi"/>
         <EffectArray value="UmojanBattlecatMountRemoveRider"/>
         <EffectArray value="UmojanBattlecatMountRemoveBattlecat"/>
+        <SetSource value="1"/>
     </CEffectSet>
     <CEffectSet id="UmojanBattlecatCuirassierGetPlasmabat">
         <ValidatorArray value="UmojanIsPlasmabat"/>
@@ -825,15 +1057,8 @@
     <CEffectDamage id="UmojanBattlecatMountRemoveBattlecat">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="CasterUnit"/>
-        <Flags index="Kill" value="1"/>
         <Death value="Remove"/>
-    </CEffectDamage>
-    <CEffectEnumMagazine id="UmojanBattlecatRiderGetRider">
-        <EditorCategories value="Race:Terran"/>
-    </CEffectEnumMagazine>
-    <CEffectDamage id="UmojanBattlecatRiderGetMount">
-        <EditorCategories value="Race:Terran"/>
-        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
     </CEffectDamage>
     <CEffectCreateUnit id="UmojanBattlecatCuirrasierCreatePlasmabat">
         <EditorCategories value="Race:Terran"/>
@@ -854,7 +1079,7 @@
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="SetFacing" value="1"/>
         <RallyUnit Value="Caster"/>
-        <SpawnEffect value="UmojanBattlecatDismountSetHealth"/>
+        <SpawnEffect value="UmojanBattlecatDismountCreateBattlecatSet"/>
         <SpawnUnit value="UmojanBattlecat"/>
         <SelectUnit Value="Caster"/>
     </CEffectCreateUnit>
@@ -866,7 +1091,7 @@
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="SetFacing" value="1"/>
         <RallyUnit Value="Caster"/>
-        <SpawnEffect value="BattlecatMountSetHealthPretorian"/>
+        <SpawnEffect value="UmojanBattlecatSpahiSetHealth"/>
         <SpawnUnit value="UmojanBattlecatSpahi"/>
         <SelectUnit Value="Caster"/>
     </CEffectCreateUnit>
@@ -878,7 +1103,7 @@
         <CreateFlags index="PlacementIgnoreBlockers" value="1"/>
         <CreateFlags index="SetFacing" value="1"/>
         <RallyUnit Value="Caster"/>
-        <SpawnEffect value="BattlecatMountSetHealthPlasmabat"/>
+        <SpawnEffect value="UmojanBattlecatCuirrasierSetHealth"/>
         <SpawnUnit value="UmojanBattlecatCuirassier"/>
         <SelectUnit Value="Caster"/>
     </CEffectCreateUnit>
@@ -891,7 +1116,8 @@
     </CEffectSet>
     <CEffectDamage id="UmojanRetributionFieldDamage">
         <EditorCategories value="Race:Terran"/>
-        <Amount value="20"/>
+        <Amount value="10"/>
+        <AttributeBonus index="Light" value="10"/>
     </CEffectDamage>
     <CEffectEnumArea id="UmojanRetributionFieldSearch">
         <EditorCategories value="Race:Terran"/>
@@ -903,16 +1129,18 @@
     <CEffectSet id="UmojanRetributionFieldSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="UmojanBattlecat"/>
-        <EffectArray value="UmojanRetributionFieldSwitch"/>
+        <EffectArray value="UmojanRetributionFieldSearch"/>
+        <EffectArray value="UmojanBattlecatCuirassierAttackDoT"/>
     </CEffectSet>
     <CEffectSet id="UmojanBattleshipWeaponSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanBattleshipWeaponTrackerAB"/>
+        <EffectArray value="UmojanTrancientWeaponTrackerSet"/>
         <EffectArray value="UmojanBattleshipWeaponSwitch"/>
+        <ValidatorArray value="UmojanBattleshipCanShootCombine"/>
     </CEffectSet>
-    <CEffectApplyBehavior id="UmojanBattleshipWeaponTrackerAB">
+    <CEffectApplyBehavior id="UmojanTrancientWeaponTrackerAB">
         <EditorCategories value="Race:Terran"/>
-        <Behavior value="UmojanBattleshipAttackTracker"/>
+        <Behavior value="UmojanTransientAttackTrackerTarget"/>
     </CEffectApplyBehavior>
     <CEffectSwitch id="UmojanBattleshipWeaponSwitch">
         <EditorCategories value="Race:Terran"/>
@@ -1091,10 +1319,6 @@
         <Movers Link="MissileDefault" IfRangeLTE="1"/>
         <Movers Link="ArbiterMPWeaponMissile" IfRangeLTE="4"/>
     </CEffectLaunchMissile>
-    <CEffectRemoveBehavior id="UmojanShadowguardSabotageTargetRemove">
-        <EditorCategories value="Race:Terran"/>
-        <BehaviorLink value="UmojanSabotageTarget"/>
-    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="UmojanShieldTransferGiverAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="UmojanShieldTransferGiver"/>
@@ -1139,7 +1363,7 @@
     <CEffectEnumArea id="UmojanStasisFieldSearch">
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Structure,Missile,Item,Stasis,Dead,Hidden"/>
+        <SearchFilters value="-;Self,Structure,Missile,Item,Stasis,Dead,Hidden"/>
         <AreaArray Radius="3.5" Effect="UmojanStasisFieldApply"/>
     </CEffectEnumArea>
     <CEffectDamage id="UmojanFrenrirCannonBlast" parent="CrucioShockCannonBlast">
@@ -1198,8 +1422,8 @@
     </CEffectCreatePersistent>
     <CEffectDamage id="UmojanFrenrirsClawsDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeBonus index="Massive" value="20"/>
-        <AttributeBonus index="Structure" value="20"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
         <Kind value="Ranged"/>
         <Amount value="30"/>
         <Death value="Blast"/>
@@ -1247,22 +1471,6 @@
         <EditorCategories value="Race:Terran"/>
         <BehaviorLink value="UmojanScienceGreen"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="UmojanDisruptionWebApply">
-        <EditorCategories value="Race:Terran"/>
-        <Behavior value="UmojanDisruptionWeb"/>
-    </CEffectApplyBehavior>
-    <CEffectCreatePersistent id="UmojanDisruptionWebCreatePersistent">
-        <EditorCategories value="Race:Terran"/>
-        <InitialEffect value="UmojanDisruptionWebSearch"/>
-        <PeriodCount value="60"/>
-        <PeriodicEffectArray value="UmojanDisruptionWebSearch"/>
-        <PeriodicPeriodArray value="0.25"/>
-    </CEffectCreatePersistent>
-    <CEffectEnumArea id="UmojanDisruptionWebSearch">
-        <EditorCategories value="Race:Terran"/>
-        <AreaArray Radius="3" Effect="UmojanDisruptionWebApply"/>
-        <SearchFilters value="-;Dead"/>
-    </CEffectEnumArea>
     <CEffectDamage id="UmojanPhaseDisruptors">
         <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -1273,26 +1481,21 @@
         <Amount value="32"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="UmojanRailCannonDamage" parent="DU_WEAP">
+    <CEffectDamage id="UmojanBattleTankRailCannonDamageDisplay" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeBonus index="Massive" value="20"/>
-        <AttributeBonus index="Structure" value="20"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
         <Kind value="Ranged"/>
         <Amount value="20"/>
         <Death value="Blast"/>
-        <VitalFractionMax index="Life" value="0.1"/>
-        <VitalFractionMax index="Shields" value="0.1"/>
-        <Maximum value="200"/>
     </CEffectDamage>
-    <CEffectDamage id="UmojanFocalisedRailCannonDamage" parent="DU_WEAP">
+    <CEffectDamage id="UmojanBattleTankFocalisedRailCannonDamageDisplay" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeBonus index="Massive" value="20"/>
-        <AttributeBonus index="Structure" value="20"/>
+        <AttributeBonus index="Massive" value="40"/>
+        <AttributeBonus index="Structure" value="40"/>
         <Kind value="Ranged"/>
         <Amount value="25"/>
         <Death value="Blast"/>
-        <VitalFractionMax index="Life" value="0.1"/>
-        <VitalFractionMax index="Shields" value="0.1"/>
         <Maximum value="200"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="UmojanATAPlasmaBatteryLM">
@@ -1348,7 +1551,7 @@
     <CEffectCreatePersistent id="UmojanHowlerAirburstCP">
         <EditorCategories value="Race:Terran"/>
         <Flags index="Channeled" value="1"/>
-        <PeriodCount value="15"/>
+        <PeriodCount value="20"/>
         <PeriodicEffectArray value="UmojanHowlerAirburstSearch"/>
         <PeriodicOffsetArray value="0,-1,0"/>
         <PeriodicOffsetArray value="0,1,0"/>
@@ -1358,14 +1561,14 @@
         <PeriodicOffsetArray value="-1,1,0"/>
         <PeriodicOffsetArray value="1,-1,0"/>
         <PeriodicOffsetArray value="1,1,0"/>
-        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="0.15"/>
         <PeriodicValidator value="CasterNotDead"/>
         <AINotifyEffect value="UmojanHowlerAirburstSearch"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="UmojanHowlerAirburstDamage">
         <EditorCategories value="Race:Terran"/>
-        <Amount value="3"/>
-        <AttributeBonus index="Light" value="4"/>
+        <Amount value="4"/>
+        <AttributeBonus index="Light" value="3"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="UmojanHowlerAirburstFakeShotCP">
         <EditorCategories value="Race:Terran"/>
@@ -1417,7 +1620,7 @@
         <Amount value="15"/>
         <ValidatorArray value="UmojanNotHoldingFireorShadowguard"/>
     </CEffectDamage>
-    <CEffectDamage id="UmojanK24Railgun" parent="DU_WEAP">
+    <CEffectDamage id="UmojanMistK24RailgunDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
         <Kind value="Ranged"/>
         <Amount value="12"/>
@@ -1435,6 +1638,7 @@
         <EditorCategories value="Race:Terran"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="UmojanSuicideRemoveTarget">
+        <EditorCategories value="Race:Terran"/>
         <LaunchLocation Value="TargetUnit"/>
         <ImpactLocation Value="TargetUnit"/>
         <Flags index="Kill" value="1"/>
@@ -1446,7 +1650,7 @@
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="UmojanWarptoLocationDisplayEffect">
         <EditorCategories value="Race:Terran"/>
-        <WhichUnit Value="Source"/>
+        <WhichUnit Value="Caster"/>
         <Behavior value="UmojanIsWarpingOut"/>
     </CEffectApplyBehavior>
     <CEffectRemoveBehavior id="UmojanWarptoLocationRemoveEffect">
@@ -1458,10 +1662,14 @@
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanWarpSignatureLink"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="UmojanWarpSignatureSet"/>
         <SpawnUnit value="UmojanWarpingSignatureAcademy"/>
     </CEffectCreateUnit>
     <CEffectSet id="UmojanWarptoLocationSignatureSetShipyard">
@@ -1480,10 +1688,14 @@
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanWarpSignatureLink"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="UmojanWarpSignatureSet"/>
         <SpawnUnit value="UmojanWarpingSignatureWorkshop"/>
     </CEffectCreateUnit>
     <CEffectSet id="UmojanWarptoLocationSignatureSetWorkshop">
@@ -1508,20 +1720,28 @@
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanWarpSignatureLink"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="UmojanWarpSignatureSet"/>
         <SpawnUnit value="UmojanWarpingSignatureShipyard"/>
     </CEffectCreateUnit>
     <CEffectCreateUnit id="UmojanWarptoLocationSignatureBunker">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanWarpSignatureLink"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="UmojanWarpSignatureSet"/>
         <SpawnUnit value="UmojanWarpingSignatureBunker"/>
     </CEffectCreateUnit>
     <CEffectEnumArea id="UmojanWarptoLocationTPOutSearch">
@@ -1584,6 +1804,7 @@
         <SearchFilters value="Ground;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="CallForHelp" value="1"/>
         <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <AttributeBonus index="Armored" value="50"/>
     </CEffectDamage>
     <CEffectSet id="UmojanStrikeMinesSet">
         <EditorCategories value="Race:Terran"/>
@@ -1598,13 +1819,13 @@
     </CEffectApplyBehavior>
     <CEffectDamage id="UmojanK38ScytheRailPistol" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeBonus index="Light" value="4"/>
+        <AttributeBonus index="Light" value="6"/>
         <Kind value="Ranged"/>
         <Amount value="4"/>
     </CEffectDamage>
     <CEffectDamage id="UmojanK38ScytheRailPistolRight" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <AttributeBonus index="Light" value="4"/>
+        <AttributeBonus index="Light" value="6"/>
         <Kind value="Ranged"/>
         <Amount value="4"/>
     </CEffectDamage>
@@ -1619,12 +1840,16 @@
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.122"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="UmojanK24RailgunPersistant">
+    <CEffectCreatePersistent id="UmojanMistK24RailgunPersistant">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetUnit"/>
-        <PeriodCount value="3"/>
+        <PeriodCount value="4"/>
         <PeriodicValidator value="CasterNotDead"/>
-        <PeriodicEffectArray value="UmojanK24RailgunSwitch"/>
+        <PeriodicEffectArray value="UmojanRemoveDeepCloakEnergy"/>
+        <PeriodicEffectArray value="UmojanMistK24RailgunSwitch"/>
+        <PeriodicEffectArray value="UmojanMistK24RailgunSwitch"/>
+        <PeriodicEffectArray value="UmojanMistK24RailgunSwitch"/>
+        <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.1"/>
         <PeriodicPeriodArray value="0.1"/>
@@ -1634,31 +1859,31 @@
         <WhichLocation Value="TargetUnit"/>
         <PeriodCount value="3"/>
         <PeriodicValidator value="CasterAndTargetNotDead"/>
-        <PeriodicEffectArray value="UmojanTwinGatlingCannonsAG"/>
+        <PeriodicEffectArray value="UmojanMoiraTwinGatlingCannonAGDamage"/>
         <PeriodicEffectArray value="UmojanTwinGatlingCannonDummy"/>
         <PeriodicEffectArray value="UmojanTwinGatlingCannonDummy"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0.2"/>
         <PeriodicPeriodArray value="0.2"/>
     </CEffectCreatePersistent>
-    <CEffectEnumArea id="UmojanK24RailgunSearch">
+    <CEffectEnumArea id="UmojanMistK24RailgunSearch">
         <EditorCategories value="Race:Terran"/>
         <SearchFilters value="Ground,Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <TargetSorts RequestCount="1" RequestPercentage="0.125">
             <SortArray value="TSDistanceToTarget"/>
         </TargetSorts>
-        <AreaArray Radius="1" Effect="UmojanK24Railgun"/>
+        <AreaArray Radius="1" Effect="UmojanMistK24RailgunDamage"/>
         <MaxCount value="1"/>
     </CEffectEnumArea>
-    <CEffectSwitch id="UmojanK24RailgunSwitch">
+    <CEffectSwitch id="UmojanMistK24RailgunSwitch">
         <EditorCategories value="Race:Terran"/>
-        <CaseArray Validator="UmojanTargetIsAllyorPlayerorNeutral" Effect="UmojanK24Railgun"/>
-        <CaseDefault value="UmojanK24RailgunSearch"/>
+        <CaseArray Validator="UmojanTargetIsAllyorPlayerorNeutral" Effect="UmojanMistK24RailgunDamage"/>
+        <CaseDefault value="UmojanMistK24RailgunSearch"/>
     </CEffectSwitch>
     <CEffectDamage id="UmojanHowlerAirstrikeDamage">
         <EditorCategories value="Race:Terran"/>
-        <Amount value="3"/>
-        <AttributeBonus index="Light" value="4"/>
+        <Amount value="4"/>
+        <AttributeBonus index="Light" value="3"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="UmojanHowlerAirstrikeFakeShotCP">
         <EditorCategories value="Race:Terran"/>
@@ -1680,7 +1905,7 @@
     <CEffectCreatePersistent id="UmojanHowlerAirstrikeCP">
         <EditorCategories value="Race:Terran"/>
         <Flags index="Channeled" value="1"/>
-        <PeriodCount value="15"/>
+        <PeriodCount value="20"/>
         <PeriodicEffectArray value="UmojanHowlerAirstrikeSearch"/>
         <PeriodicOffsetArray value="0,-1,0"/>
         <PeriodicOffsetArray value="0,1,0"/>
@@ -1690,7 +1915,7 @@
         <PeriodicOffsetArray value="-1,1,0"/>
         <PeriodicOffsetArray value="1,-1,0"/>
         <PeriodicOffsetArray value="1,1,0"/>
-        <PeriodicPeriodArray value="0.25"/>
+        <PeriodicPeriodArray value="0.15"/>
         <PeriodicValidator value="CasterNotDead"/>
         <AINotifyEffect value="UmojanHowlerAirstrikeSearch"/>
     </CEffectCreatePersistent>
@@ -1757,9 +1982,8 @@
         <TeleportFlags index="TestCliff" value="1"/>
     </CEffectTeleport>
     <CEffectDamage id="UmojanShadowguardSabotageDamage">
-        <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Terran"/>
-        <Amount value="750"/>
+        <Amount value="350"/>
         <Death value="Blast"/>
     </CEffectDamage>
     <CEffectDamage id="UmojanPlasmabatCorrosiveBlastDoTEffect">
@@ -1771,6 +1995,8 @@
     <CEffectApplyBehavior id="UmojanShadowguardSabotageTarget">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="UmojanSabotageTarget"/>
+        <ValidatorArray index="0" value="noMarkers"/>
+        <ValidatorArray value="UmojanIsNotBeeningSabotaged"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="UmojanPlasmabatCorrosiveBlastDoT">
         <EditorCategories value="Race:Terran"/>
@@ -1800,14 +2026,14 @@
         <ImpactLocation Value="TargetPoint"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray RectangleWidth="1.5" RectangleHeight="3" Effect="UmojanPlasmaThrowerDamage"/>
+        <AreaArray RectangleWidth="1.5" RectangleHeight="3" Effect="UmojanPlasmabatPlasmaThrowerDamage"/>
     </CEffectEnumArea>
     <CEffectSet id="UmojanPlasmaThrowerSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="UmojanPlasmaThrowerPersistant"/>
-        <EffectArray value="UmojanPlasmaThrowerDamage"/>
+        <EffectArray value="UmojanPlasmabatPlasmaThrowerDamage"/>
     </CEffectSet>
-    <CEffectDamage id="UmojanPlasmaThrowerDamage" parent="DU_WEAP_SPLASH">
+    <CEffectDamage id="UmojanPlasmabatPlasmaThrowerDamage" parent="DU_WEAP_SPLASH">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Terran"/>
         <AttributeBonus index="Armored" value="10"/>
@@ -1821,9 +2047,9 @@
         <Target Value="TargetPoint"/>
         <Player Value="Caster"/>
     </CEffectIssueOrder>
-    <CEffectIssueOrder id="UmojanAloeSendBomberMove">
+    <CEffectIssueOrder id="UmojanCrowSendBomberMove">
         <EditorCategories value="Race:Terran"/>
-        <WhichUnit Effect="UmojanAloeSendBomberOrderBomberCP"/>
+        <WhichUnit Effect="UmojanCrowSendBomberOrderBomberCP"/>
         <Abil value="move"/>
         <CmdFlags index="Queued" value="1"/>
         <Player Value="Source"/>
@@ -1892,15 +2118,14 @@
     </CEffectSwitch>
     <CEffectCreatePersistent id="UmojanWhirlwindMissileBarragePersistent">
         <EditorCategories value="Race:Terran"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
         <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicValidator value="HasVisionOfTarget"/>
+        <PeriodicValidator value="UmojanWhirlwindSpotterAtRange"/>
         <PeriodicEffectArray value="UmojanWhirlwindMissileBarrageCooldown"/>
         <PeriodicEffectArray value="UmojanWhirlwindMissileBarrageVolley"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="6"/>
+        <ValidatorArray value="UmojanWhirlwindSpotterAtRange"/>
     </CEffectCreatePersistent>
     <CEffectModifyUnit id="UmojanWhirlwindMissileBarrageCooldown">
         <EditorCategories value="Race:Terran"/>
@@ -1908,12 +2133,11 @@
         <ImpactUnit Value="Source"/>
     </CEffectModifyUnit>
     <CEffectCreatePersistent id="UmojanWhirlwindMissileStrikePersistent">
+        <ValidatorArray value="UmojanWhirlwindSpotterAtLongRange"/>
         <EditorCategories value="Race:Terran"/>
-        <ResponseFlags index="Acquire" value="1"/>
-        <ResponseFlags index="Flee" value="1"/>
         <Flags index="Channeled" value="1"/>
         <Flags index="PersistUntilDestroyed" value="1"/>
-        <PeriodicValidator value="HasVisionOfTarget"/>
+        <PeriodicValidator value="UmojanWhirlwindSpotterAtLongRange"/>
         <PeriodicEffectArray value="UmojanWhirlwindMissileStrikeCooldown"/>
         <PeriodicEffectArray value="UmojanWhirlwindAttackWeaponMissileTargetSwitch"/>
         <PeriodicPeriodArray value="0"/>
@@ -1960,42 +2184,11 @@
         <PeriodicEffectArray value="UmojanWhirlwindAttackWeaponLaunchMissileSideSwitch"/>
         <PeriodicPeriodArray value="4"/>
     </CEffectCreatePersistent>
-    <CEffectCreatePersistent id="UmojanTornadoMissileCP">
-        <ValidatorArray value="TornadoMaxDistance"/>
-        <ValidatorArray value="UmojanTornadoMissileFilters"/>
+    <CEffectDamage id="UmojanMoiraTwinGatlingCannonAGDamage" parent="DU_WEAP">
         <EditorCategories value="Race:Terran"/>
-        <WhichLocation Value="TargetUnit"/>
-        <TimeScaleSource Value="Caster"/>
-        <PeriodCount value="1"/>
-        <PeriodicEffectArray value="UmojanTornadoMissileLMSet"/>
-        <PeriodicPeriodArray value="0.125"/>
-    </CEffectCreatePersistent>
-    <CEffectDamage id="UmojanTornadoMissileDamage" parent="DU_WEAP">
-        <EditorCategories value="Race:Terran"/>
-        <Kind value="Ranged"/>
-        <Amount value="15"/>
-        <AreaArray Radius="1.5" Fraction="1"/>
-        <SearchFilters value="Ground,Light,Visible;Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-    </CEffectDamage>
-    <CEffectLaunchMissile id="UmojanTornadoMissileLM">
-        <ValidatorArray index="0" value="UmojanTornadoMissileFilters"/>
-        <ValidatorArray value="NotHidden"/>
-        <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="UmojanTornadoMissileDamage"/>
-        <AmmoUnit value="TornadoMissileWeapon"/>
-        <Movers Link="TornadoMissileWeaponClose" IfRangeLTE="6"/>
-        <Movers Link="TornadoMissileWeapon" IfRangeLTE="20"/>
-        <ImpactLocation Value="TargetPoint"/>
-    </CEffectLaunchMissile>
-    <CEffectSet id="UmojanTornadoMissileLMSet">
-        <EditorCategories value="Race:Terran"/>
-        <EffectArray value="UmojanTornadoMissileLM"/>
-    </CEffectSet>
-    <CEffectDamage id="UmojanTwinGatlingCannonsAG" parent="DU_WEAP">
-        <EditorCategories value="Race:Terran"/>
+        <AttributeBonus index="Light" value="6"/>
         <Kind value="Ranged"/>
         <Amount value="12"/>
-        <AttributeBonus index="Light" value="6"/>
     </CEffectDamage>
     <CEffectCreatePersistent id="UmojanK14RailriflePersistant">
         <EditorCategories value="Race:Terran"/>
@@ -2019,14 +2212,14 @@
     </CEffectEnumArea>
     <CEffectSwitch id="UmojanK14RailrifleSwitch">
         <EditorCategories value="Race:Terran"/>
-        <CaseArray Validator="UmojanTargetIsAllyorPlayerorNeutral" Effect="UmojanK14Railrifle"/>
+        <CaseArray Validator="TargetNotDead" Effect="UmojanK14Railrifle"/>
         <CaseDefault value="UmojanK14RailrifleSearch"/>
     </CEffectSwitch>
     <CEffectSet id="UmojanWarptoLocationSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="UmojanWarptoLocationTP"/>
         <EffectArray value="UmojanWarptoLocationTPOutSearch"/>
-        <EffectArray value="UmojanWarptoLocationSignatureRemoveSearch"/>
+        <EffectArray value="UmojanWarptoLocationSignatureRemoveTracked"/>
         <EffectArray value="UmojanWarptoLocationRemoveEffect"/>
         <TargetLocationType value="Point"/>
     </CEffectSet>
@@ -2034,24 +2227,26 @@
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetPoint"/>
         <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="DropOff" value="0"/>
+        <CreateFlags index="OffsetByRadius" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
         <CreateFlags index="ProvideFood" value="0"/>
         <CreateFlags index="TechComplete" value="0"/>
         <CreateFlags index="UseFood" value="0"/>
-        <SpawnEffect value="UmojanWarpSignatureLink"/>
+        <CreateFlags index="NormalizeSpawnOffset" value="0"/>
+        <SpawnEffect value="UmojanWarpSignatureSet"/>
         <SpawnUnit value="UmojanWarpingSignatureCommandHub"/>
     </CEffectCreateUnit>
     <CEffectDamage id="UmojanWarptoLocationSignatureRemove" parent="TimedLifeFate">
         <Name value="Effect/Name/UmojanWarptoLocationSignatureRemove"/>
-        <ValidatorArray value="UmojanIsWarpSignature"/>
         <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="TargetUnit"/>
     </CEffectDamage>
-    <CEffectEnumArea id="UmojanWarptoLocationSignatureRemoveSearch">
+    <CEffectEnumTrackedUnits id="UmojanWarptoLocationSignatureRemoveTracked">
         <EditorCategories value="Race:Terran"/>
-        <ImpactLocation Value="TargetPoint"/>
-        <SearchFilters value="-;Ally,Neutral,Enemy"/>
-        <AreaArray Radius="1" Effect="UmojanWarptoLocationSignatureRemove"/>
-    </CEffectEnumArea>
+        <BehaviorLink value="UmojanTrackerWarp"/>
+        <Effect value="UmojanWarptoLocationSignatureRemove"/>
+    </CEffectEnumTrackedUnits>
     <CEffectTeleport id="UmojanWarptoLocationTPOut">
         <EditorCategories value="Race:Terran"/>
         <ClearQueuedOrders value="0"/>
@@ -2099,7 +2294,7 @@
         <AINotifyFlags index="HurtFriend" value="1"/>
         <AINotifyFlags index="HurtEnemy" value="1"/>
         <Kind value="Splash"/>
-        <Amount value="60"/>
+        <Amount value="30"/>
         <Death value="Blast"/>
         <AreaArray Radius="0.4" Fraction="1"/>
         <AreaArray Radius="1" Fraction="0.5"/>
@@ -2107,6 +2302,7 @@
         <SearchFilters value="Ground;Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="OffsetByUnitRadius" value="0"/>
         <ImpactLocation Value="TargetPoint"/>
+        <AttributeBonus index="Armored" value="15"/>
     </CEffectDamage>
     <CEffectDamage id="UmojanWhirlwindAttackWeaponDummyArea" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
@@ -2151,30 +2347,34 @@
         <WhichUnit Value="Caster"/>
         <BehaviorLink value="UmojanWhirlwindWeaponLaunchMissileAlternate"/>
     </CEffectRemoveBehavior>
-    <CEffectApplyBehavior id="UmojanPowertotheWeapon">
+    <CEffectApplyBehavior id="UmojanMarineWeaponPowerAccumulatorApplyBuff">
         <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="UmojanWeaponPowerAccumulator"/>
     </CEffectApplyBehavior>
-    <CEffectLaunchMissile id="UmojanRomaMissilesLaunchMissileLeft">
+    <CEffectLaunchMissile id="UmojanMistRomaMissilesLaunchMissileLeft">
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="UmojanRomaMissiles"/>
+        <ImpactEffect value="UmojanMistRomaMissiles"/>
         <AmmoUnit value="UmojanMistAirLeft"/>
     </CEffectLaunchMissile>
-    <CEffectCreatePersistent id="UmojanRomaMissilesPersistent">
+    <CEffectCreatePersistent id="UmojanMistRomaMissilesPersistent">
         <EditorCategories value="Race:Terran"/>
         <WhichLocation Value="TargetUnitOrPoint"/>
         <Flags index="Channeled" value="1"/>
-        <PeriodCount value="2"/>
-        <PeriodicEffectArray value="UmojanRomaMissilesLaunchMissileLeft"/>
-        <PeriodicEffectArray value="UmojanRomaMissilesLaunchMissileRight"/>
+        <PeriodCount value="3"/>
+        <PeriodicEffectArray value="UmojanRemoveDeepCloakEnergy"/>
+        <PeriodicEffectArray value="UmojanMistRomaMissilesLaunchMissileLeft"/>
+        <PeriodicEffectArray value="UmojanMistRomaMissilesLaunchMissileRight"/>
+        <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0"/>
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
-    <CEffectLaunchMissile id="UmojanRomaMissilesLaunchMissileRight">
+    <CEffectLaunchMissile id="UmojanMistRomaMissilesLaunchMissileRight">
         <EditorCategories value="Race:Terran"/>
-        <ImpactEffect value="UmojanRomaMissiles"/>
+        <ImpactEffect value="UmojanMistRomaMissiles"/>
         <AmmoUnit value="UmojanMistAirWeaponRight"/>
     </CEffectLaunchMissile>
-    <CEffectDamage id="UmojanRomaMissiles" parent="DU_WEAP_MISSILE">
+    <CEffectDamage id="UmojanMistRomaMissiles" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
         <AttributeBonus index="Armored" value="15"/>
         <Visibility value="Visible"/>
@@ -2188,7 +2388,7 @@
     </CEffectLaunchMissile>
     <CEffectModifyUnit id="UmojanWhirlwindMissileStrikeCooldown">
         <EditorCategories value="Race:Terran"/>
-        <Weapon Weapon="UmojanHeliosMissilePod" CooldownOperation="Set" CooldownAmount="2"/>
+        <Weapon Weapon="UmojanHeliosMissilePod" CooldownOperation="Add" CooldownAmount="1.9"/>
         <ImpactUnit Value="Source"/>
     </CEffectModifyUnit>
     <CEffectSet id="YoinkSet">

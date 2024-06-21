@@ -68,6 +68,7 @@ Behavior/Name/AlgoritmAttackCitadelAbility=Magnetic wave acceleration
 Behavior/Name/AlgoritmCloakingDroneUED=CloakingDroneUED
 Behavior/Name/AlgoritmDruseBeatanField=Beatania Field
 Behavior/Name/AlgoritmGarmrPeriodAttack=Garmr's Blood
+Behavior/Name/AlgoritmHonograundPrioritetAttackAbility=Приоритет цели
 Behavior/Name/AlgoritmIrradiationBMField=Irradiated
 Behavior/Name/AlgoritmOtklTowerMining=The tower is disabled
 Behavior/Name/AlgoritmRadarCrimsonEye=Radar
@@ -105,6 +106,7 @@ Behavior/Tooltip/AlgoritmAttackCitadelAbility=Attack speed and range are increas
 Behavior/Tooltip/AlgoritmCloakingDroneUED=This unit is disguised. If he opens fire, the disguise will fall off.
 Behavior/Tooltip/AlgoritmDruseBeatanField=Mineral druse is saturated with beatin, so that when processing it, you can get 1 more mineral from it.
 Behavior/Tooltip/AlgoritmGarmrPeriodAttack=Toxic substances slow down move speed and cause damage.
+Behavior/Tooltip/AlgoritmHonograundPrioritetAttackAbility=
 Behavior/Tooltip/AlgoritmIrradiationBMField=This unit has recently been exposed to low-frequency electromagnetic radiation. Masking is temporarily unavailable.
 Behavior/Tooltip/AlgoritmOtklTowerMining=Beatanium is redistributed and actively embedded in the crystal lattice of a stable alloy, increasing its strength.
 Behavior/Tooltip/AlgoritmStrikeGrenade=Attack speed is reduced.
@@ -149,7 +151,7 @@ Button/Name/AuthorizePrototypePositronicWeaponry=Authorize Prototype Positronic 
 Button/Name/AuthorizeSalvoFiringPatterns=Authorization Request: Salvo Firing Patterns
 Button/Name/AuthorizeStrikeGrenades=Authorize Strike Grenades
 Button/Name/AuthorizeTandemReactiveArmor=Authorize Tandem Reactive Armor
-Button/Name/AuthorizeTowerMining=Authorization Request: Enrichment Tower
+Button/Name/AuthorizeTowerMining=Authorization request: Reinforced enrichment tower
 Button/Name/BeathaniumInfusionField=Beathanium Infusion Field
 Button/Name/BuildArsenal=Calldown Arsenal
 Button/Name/BuildBeacon=Request Beacon
@@ -169,14 +171,17 @@ Button/Name/ButtonRadarCrimsonYea=Radar mode
 Button/Name/ButtonStrikeFighterAirAttack=Anti-aircraft mode
 Button/Name/ButtonStrikeFighterGroundAttack=Anti-ground mode
 Button/Name/ButtonStrikeFighterSpeed=Plasma fuel
+Button/Name/ButtonStrikeFighterSpeedUpgrade=Authorization Request: Plasma fuel
 Button/Name/ButtonTowerMiningOtkl=Disable the Tower
 Button/Name/ButtonTowerMiningVkl=Turn on the Tower
 Button/Name/ButtonUEDResearchLightArmory=Research Light Armor, Level 1
 Button/Name/ButtonUEDResearchLightArmory2=Research Light Armor, Level 2
 Button/Name/ButtonUEDResearchLightArmory3=Research Light Armor, Level 3
+Button/Name/ButtonUEDUpgadeStatDefense=Authorization Request: Increased durability
+Button/Name/ButtonUEDUpgadeStrikeFighter=Authorization Request: Aerial Combat
 Button/Name/ButtonUEDUpgradePenemundeRange=Authorization Request: Retribution Protocol
 Button/Name/ButtonUpgadeStrikeFighterSpeed=Authorization Request: Plasma Fuel
-Button/Name/ButtonUpgradeDrakkar=Authorization Request: Light Alloy Beatania
+Button/Name/ButtonUpgradeDrakkar=Authorization Request: Shooting mode
 Button/Name/ButtonUpgradeNapoleonDefense=Authorization Request: Shield Generator
 Button/Name/ButtonUpgradePhosphoricFire=Authorization Request: Phosphoric fire
 Button/Name/ButtonUpgraideDrakkar=Authorization Request: Light alloy beatania
@@ -262,6 +267,7 @@ Button/Name/UEDButtonCitadelUpgrade=Authorization Request: Magnetic wave acceler
 Button/Name/UEDButtonCrimsonEyePenemunde=Ballistic missile guidance
 Button/Name/UEDButtonGoliath=Request Goliath Combat Robot
 Button/Name/UEDButtonGoliathPassive=Long-range missiles
+Button/Name/UEDButtonHonograundAbility=Boomerang Missile Launchers
 Button/Name/UEDButtonLazarusbattery=Lazarus Battery
 Button/Name/UEDButtonPenemundeCanAttack=Standard attack
 Button/Name/UEDButtonSpartan=Request Spartan AAC
@@ -280,6 +286,7 @@ Button/Name/UnknownButton2=Research Beathanium Defensive Programming, Level 2
 Button/Name/UnknownButton22=Research Beathanium Defensive Programming, Level 3
 Button/Name/UnknownButton3=Beatan magnetic field emitter
 Button/Name/UnknownButton4=Radiation of Beatania
+Button/Name/UpgradeCrimsonEyeEnergy=Authorization request: Beatanium Generator
 Button/Name/VespenePurificationPlant=Calldown Vespene Purification Plant
 Button/Tooltip/ArmorpiercingMode2=Allows the Ruby Eye to see camouflaged and buried troops in the field of view, as well as activates the radar.
 Button/Tooltip/Arsenal=Provides Logistics Capacity.<n/>Logistics allow you to deploy additional units.<n/>Can be transformed into a variety of defense towers.
@@ -298,33 +305,36 @@ Button/Tooltip/AuthorizePrototypePositronicWeaponry=Allows Honorguards to launch
 Button/Tooltip/AuthorizeSalvoFiringPatterns=New firing protocols for <c val="FFFF80">Typhoon LMT</c> allow to increase area damage to enemy units increased to 100%.
 Button/Tooltip/AuthorizeStrikeGrenades=Increases the effect of slowing down an attack  from a strike grenade <c val="FFFF80">Political Advisor </c> up to 20%.
 Button/Tooltip/AuthorizeTandemReactiveArmor=The second layer of dynamic protection increases the maximum health reserve <c val="FFFF80">Napoleon MBT</c> by 60 units.
-Button/Tooltip/AuthorizeTowerMining=Allows <c val="FFFF80">Operations Headquarters</c> to call enrichment towers.
+Button/Tooltip/AuthorizeTowerMining=Increases the number of irradiated druzes <c val="FFFF80">Enrichment tower</c> up to 8.
 Button/Tooltip/Beacon=UED engineering vehicle. Can be deployed at a specified site in order to calldown Operation Headquarters from orbit.
 Button/Tooltip/BeaconUED=UED engineering vehicle. Can be deployed at a specified site in order to calldown Operation Headquarters from orbit.
 Button/Tooltip/BeathaniumInfusionField=Infuses staballoy plating of nearby units with purified beathanium, slowly regenerating their health.
 Button/Tooltip/BurrowChargeGarmr=Burrow and charge towards the target point. Upon unburrowing, all units in the vicinity are knocked back and take damage.
 Button/Tooltip/ButtonAuthorizeChargeNapoleon=Allows <c val="ffff8a">Napoleon</c> accumulate special projectiles until he attacks. Each is spent when fired, but increases the attack range by 1 and the attack speed by 0.5. Maximum 6 shells.
 Button/Tooltip/ButtonChargeNapoleon=Increases attack range by 1 and attack speed by 0.5.
-Button/Tooltip/ButtonDetectorCrimsonYea=It evades the viewing range and allows you to see camouflaged and buried troops in it, but reduces the speed of movement.
+Button/Tooltip/ButtonDetectorCrimsonYea=It evades the viewing range and allows you to see camouflaged and buried troops in it.
 Button/Tooltip/ButtonDrakkarFastMove=Drakkar APC moves faster, but an attack from within becomes impossible.
-Button/Tooltip/ButtonDrakkarFireMode=Allows you to fire from the internal compartment of the Drakkar APC.
+Button/Tooltip/ButtonDrakkarFireMode=It allows you to fire on the move both from the mounted cannon and from the internal compartment of the Drakkar APC.
 Button/Tooltip/ButtonHurrakanUED=Increases movement speed by 50%.
 Button/Tooltip/ButtonIonRecharging=Restores health by 200% stronger. Duration 20 sec.
 Button/Tooltip/ButtonNapoleonDefense=Creates a self-healing protective barrier for 75 shields for 14 seconds.
-Button/Tooltip/ButtonRadarCrimsonYea=Allows you to track the movement of enemies within a radius of 21, at the same time, all other abilities and movement are unavailable. Does not open the terrain.<n/><n/><c val="f078ff">Consumes <d ref="-1 * (Behavior,AlgoritmRadarCrimsonEye,Modification.VitalRegenArray[2] + Unit,CrimsonEye,EnergyRegenRate)" precision="1"/> ед. энергии в секунду.</c>
-Button/Tooltip/ButtonStrikeFighterAirAttack=Take on board weapons against aerial targets.
-Button/Tooltip/ButtonStrikeFighterGroundAttack=Take on board weapons against ground targets.
+Button/Tooltip/ButtonRadarCrimsonYea=Allows you to track the movement of enemies within a radius of 21, at the same time movement are unavailable. Does not open the terrain.<n/><n/><c val="f078ff">Consumes <d ref="-1 * (Behavior,AlgoritmRadarCrimsonEye,Modification.VitalRegenArray[2] + Unit,CrimsonEye,EnergyRegenRate)" precision="1"/> ед. энергии в секунду.</c>
+Button/Tooltip/ButtonStrikeFighterAirAttack=Can attack only aerial targets.
+Button/Tooltip/ButtonStrikeFighterGroundAttack=Can attack only ground targets.
 Button/Tooltip/ButtonStrikeFighterSpeed=The speed of movement increases significantly within 4 seconds.
+Button/Tooltip/ButtonStrikeFighterSpeedUpgrade=A small injection of prepared plasma greatly increases the speed of the <c val="FFFF80"> Strikefighter </c> by 4 seconds.
 Button/Tooltip/ButtonTowerMiningOtkl=To stop irradiation of mineral druze with beatings.
 Button/Tooltip/ButtonTowerMiningVkl=Resume irradiation of mineral druze with beatings.
 Button/Tooltip/ButtonUEDResearchLightArmory=Improves <c val="ffff8a">armor</c> of all biological units of the UED.
 Button/Tooltip/ButtonUEDResearchLightArmory2=Improves <c val="ffff8a">armor</c> of all biological units of the UED.
 Button/Tooltip/ButtonUEDResearchLightArmory3=Improves <c val="ffff8a">armor</c> of all biological units of the UED.
-Button/Tooltip/ButtonUEDUpgradePenemundeRange=Allows <c val="FFFF80">Peenemunde MRLS</c> to fire at a distance of up to 25 using a Crimson Eye.
+Button/Tooltip/ButtonUEDUpgadeStatDefense=Increases the strength of the static defense of the UED:<n/><c val="FFFF80">Suppression tower </c> +50 strength.<n/><c val="FFFF80">Heavy Tower </c>+75 strength.<n/><c val="FFFF80"val="FFFF80">Infusion Tower</c> +50 strength.<n/><c val="FFFF80">Missile Tower </c>+100 strength.
+Button/Tooltip/ButtonUEDUpgadeStrikeFighter=Allows <c val="FFFF80"> Strikefighter </c> to change modes (air, ground).
+Button/Tooltip/ButtonUEDUpgradePenemundeRange=Increases the guidance radius of the <c val="FFFF80">Peenemunde MRLS</c> missiles around the Crimson Eye to 13.
 Button/Tooltip/ButtonUpgadeStrikeFighterSpeed=A small injection of prepared plasma greatly increases the speed of the <c val="FFFF80"> Strikefighter </c> by 4 seconds.
-Button/Tooltip/ButtonUpgradeDrakkar=Replacing the internal compartment <c val="#ColorAttackInfo">Drakkar APC</c> increases the speed of movement by 15%, and also makes it possible to fight without leaving the car.
+Button/Tooltip/ButtonUpgradeDrakkar=Replacing the internal compartment <c val="#ColorAttackInfo">Drakkar APC</c> makes it possible to fight without leaving the car on move.
 Button/Tooltip/ButtonUpgradeNapoleonDefense=Allows <c val="FFFF80">Napoleon MBT</c> to create a self-healing protective barrier for 75 shields around itself for 14 seconds.
-Button/Tooltip/ButtonUpgradePhosphoricFire=<c val="FFFF80">Hurakans</c> get a bonus damage on buildings of 8 units and ignoring the armor of buildings.
+Button/Tooltip/ButtonUpgradePhosphoricFire=<c val="FFFF80">Hurakans</c> get a bonus damage on buildings of 6 units + ignoring the armor of buildings.
 Button/Tooltip/ButtonUpgraideDrakkar=Replacing the internal compartment <c val="#ColorAttackInfo">Drakkar APC</c> increases the speed of movement by 15%, and also makes it possible to fight without leaving the car.
 Button/Tooltip/ButtonUpgraideDrakkarUnit=Allows you to fire from the internal compartment of the Drakkar APC on the move.
 Button/Tooltip/ButtonUpgraideHurrakan=Increases the movement speed of <c val="FFFF80">hurakan</c> by 50%.
@@ -333,12 +343,12 @@ Button/Tooltip/CitadelAAT=Advanced armored unit, equipped with heavy composite a
 Button/Tooltip/CloakingDrone=The specified combat unit receives a disguise before causing any damage to other combat units, but no more than 121 seconds. Movement speed increases.<n/><n/><c val="#ColorAttackInfo">The unit does not attack on its own until the attack command is given.
 Button/Tooltip/CorruptionAbility2=Covers the target enemy unit in Zerg slime, increasing the damage taken by 20% for <d time="30"/>.
 Button/Tooltip/CrimsonEye=Low-altitude scouting drone.<n/><n/><c val="FFE303">There is a detection function</c>
-Button/Tooltip/CrimsonEyeRepair=Restores a friendly mechanical unit.<n/><n/><c val="f078ff">Regenerates <d ref="Effect,CrimsonEyeRepair,RechargeVitalRate" precision="1"/> health units per second. Spends at the same time <d ref="Effect,CrimsonEyeRepair,RechargeVitalRate*Effect,CrimsonEyeRepair,DrainVitalCostFactor-Unit,CrimsonEye,EnergyRegenRate" precision="1"/> units of energy.</c>
+Button/Tooltip/CrimsonEyeRepair=Restores a friendly mechanical unit.<n/><n/><c val="f078ff">Regenerates <d ref="Effect,CrimsonEyeRepair,RechargeVitalRate"precision="1"/> health units per second. Spends at the same time <d ref="Effect,CrimsonEyeRepair,RechargeVitalRate*Effect,CrimsonEyeRepair,DrainVitalCostFactor-Unit,CrimsonEye,EnergyRegenRate"precision="1"/> units of energy.</c><n/>
 Button/Tooltip/DeployPsionicSuppressionField=All targets affected by the suppression of psionic activity in the specified area will be able to deal only 50% of the damage from abilities for 12 sec.
 Button/Tooltip/DrakkaAPCrLoad=Loads units into the APC's hold.
 Button/Tooltip/DrakkarAPC=Infantry armored personnel carrier, from the inside you can attack only ground targets and from a maximum distance of 5. When the Drakkar is destroyed, the soldiers inside do not die and safely leave the car.<n/><n/><c val="FFFF8A">Can attack ground targets.</c>
 Button/Tooltip/DrakkarUnloadAll=Unloads all units.
-Button/Tooltip/DroneRepairModule=Allows <c val="FFFF80">Crimson Eye</c> to repair mechanical units 2 times faster.
+Button/Tooltip/DroneRepairModule=Allows <c val="FFFF80">Crimson Eye</c> to repair mechanical units 60% more efficiently (more HP for the same energy).
 Button/Tooltip/DropHeavyTower=Anti-ground defensive structure, effective against armored targets.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c><n/><c val="FFE303">Detector</c>
 Button/Tooltip/DropInfusionTower=Support structure. Regenerates health for all nearby allied units.
 Button/Tooltip/DropMissileTower=Anti-air defensive structure.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c><n/><c val="FFE303">Detector</c>
@@ -368,11 +378,11 @@ Button/Tooltip/OperationHeadquarters=Primary structure. Used to receive gathered
 Button/Tooltip/OpticalFlare=Shoot a powerful light grenade. In the field of action, all enemy targets will be deprived of the function of invisibility, detector and vision for 8.5 seconds. Opens the terrain.
 Button/Tooltip/PeenemundeMRLS=Long-range artillery. Launches missiles that deal devastating damage in the target area.<n/><n/><c val="#ColorAttackInfo">Can attack ground units.</c>
 Button/Tooltip/PermanentlyCloakedCrimsonEye=The Observer is permanently cloaked.
-Button/Tooltip/PhosphoricFire=Ignoring the armor of buildings and bonus damage 8 units for bildings.
+Button/Tooltip/PhosphoricFire=Bonus damage <d ref="Effect,DamageOnBuildingHurakan,Amount-4"/> units for bildings.
 Button/Tooltip/PoliticalAdvisor=Master of ideological warfare. Can inspire troops around her to fight harder. It can throw shock and light grenades.<n/><n/><c val="ffff8a">Can attack ground and air units.</c><n/><c val="FFE303">
 Button/Tooltip/PrecisionStrike=Releases a cruise missile into the specified area, applying <d ref="Effect,PeenemundeMRLS_Damage,Amount"/> units. slows the enemy's movement by 25% + deals ever-increasing damage until he comes out of the flame (maximum possible damage is 100 per second). You can take up to 100 damage from one missile. Lasts 6 seconds.<n/><n/>To increase the range, use the Crimson Eye.
 Button/Tooltip/PrecisionStrikeDescription=Fires a cruise missile at the point where the target was, setting fire to the area. When hit, it deals <d ref="Effect,PeenemundeMRLS_Damage,Amount"/> damage. Causes <d ref="5*Effect,PenemundeDamageDiscreteMinimum,Amount"/> damage in sec and lasts 4 seconds.
-Button/Tooltip/ProjectedGravitySheild=Creates a barrier for 100 shields, hiding the attributes of the unit (light, armored, large) for 11 seconds.
+Button/Tooltip/ProjectedGravitySheild=Creates a barrier for 100 shields, hiding the attributes of the unit (light, armored, large) for 14 seconds.
 Button/Tooltip/RallyUED=Sends constructed units to the designated point. Workers rallied to resources will begin gathering automatically.
 Button/Tooltip/RapidRegeneration2=Infuses staballoy plating of nearby units with purified beathanium, slowly regenerating their health.
 Button/Tooltip/RequestInfantry=
@@ -404,12 +414,13 @@ Button/Tooltip/UEDBuildAdvanced=Request advanced structures from the orbiting fl
 Button/Tooltip/UEDBuildEazy=Request basic structures from the orbiting fleet.
 Button/Tooltip/UEDButtonAcelerationMorphNode=Improve the teleportation node, which will speed up the call of troops by 25%. It will also increase the strength of the structure by 100 units + 1 armor points.
 Button/Tooltip/UEDButtonAmmunitionDepot=Allows you to store ammunition for a Strikefighters and issue it as needed.
-Button/Tooltip/UEDButtonBallisticRange=With the help of the Crimson Eye, ballistic missiles can be guided at a distance of 12 to 25. At the same time, the aiming time takes 2 seconds.
+Button/Tooltip/UEDButtonBallisticRange=With the help of the Crimson Eye, ballistic missiles can be guided at a distance of 13 to 25. At the same time, the aiming time takes 2 seconds.
 Button/Tooltip/UEDButtonCitadelAbility=The device temporarily creates strong magnetic fields that immobilizes the tank, but allows you to fire faster with a longer range and the effect of buckshot behind standing targets.
 Button/Tooltip/UEDButtonCitadelUpgrade=Activate the Wave Accelerator device, starting a short charge-up cycle, temporarily immobilizing the <c val="FFFF80">Citadel AAT</c>. When powered, the device will allow the tank's primary cannon to fire 3.5 times faster, increase its range by 3, as well as enable the shell to penetrate its main target, dealing additional damage to enemies behind it.
-Button/Tooltip/UEDButtonCrimsonEyePenemunde=It helps to direct missiles to <c val="#ColorAttackInfo">Peenemunde MRLS </c> in a radius of 11 around itself at a huge distance.
+Button/Tooltip/UEDButtonCrimsonEyePenemunde=It helps to direct missiles to <c val="#ColorAttackInfo">Peenemunde MRLS </c> in a radius of 13 around itself at a huge distance.
 Button/Tooltip/UEDButtonGoliath=Universal combat robot, effective against aerial targets.<n/><n/><c val="FFFF8A">Can attack ground and air targets.</c>
 Button/Tooltip/UEDButtonGoliathPassive=Increases the range of attack on air targets by 3.
+Button/Tooltip/UEDButtonHonograundAbility=Fires 11 missiles at a random target in radius 4.5 with the force <d ref="Effect,LiberatorMissileDamage3,Amount"/> and <d ref="Effect,LiberatorMissileDamage3,Amount+4"/> at armored ones.<n/>
 Button/Tooltip/UEDButtonLazarusbattery=Gives +25 to the initial and +50 to the maximum energy. Reduces the energy loss of the resurrected unit only by 50% of the maximum.
 Button/Tooltip/UEDButtonPenemundeCanAttack=Allow firing in normal mode.
 Button/Tooltip/UEDButtonSpartan=Universal combat robot, effective against aerial targets.<n/><n/><c val="FFFF8A">Can attack ground and air targets.</c>
@@ -430,12 +441,13 @@ Button/Tooltip/UnknownButton2=Improves <c val="ffff8a">armor</c> for mechanical 
 Button/Tooltip/UnknownButton22=Improves <c val="ffff8a">armor</c> for mechanical UED units.
 Button/Tooltip/UnknownButton3=Irradiate everyone with a Beatan magnetic field in the specified area.<n/>Units at the same time <c val="FFFF00">lose invisibility for 10 seconds.
 Button/Tooltip/UnknownButton4=It was noticed that beatanium can be embedded in the crystal lattice of mineral druse and thereby increase the amount of extracted resources by 1 unit.
+Button/Tooltip/UpgradeCrimsonEyeEnergy=Increases the energy recovery rate of the <c val="FFFF80"> Crimson Eye</c> by 50%.
 Button/Tooltip/Valkyrie=Dedicated AA corvette, capable of eliminating entire squadrons with a single salvo.<n/><n/><c val="#ColorAttackInfo">Can attack air units.</c>
 Button/Tooltip/VespenePurificationPlant=Calldown onto a Vespene Geyser to allow harvesting of vespene gas.
 Commander/Name/UED=UED
 ConsoleSkin/Description/ConsoleUED=The best invention of the best UED minds. Everything is perfect here
 ConsoleSkin/Name/ConsoleUED=ConsoleUED
-DocInfo/DescLong=UED race<n/>Author: TomSawyer<n/>https://discord.gg/2RbcjRkddw<n/>
+DocInfo/DescLong=Includes UED race to All Races Mods<n/>Developed by:<n/>UEDCommander<n/>Dagahan<n/>Visceroid<n/>TomSawyer<n/>Romanesko<n/>SpektoR<n/>nazzzar502<n/><n/>https://discord.gg/2RbcjRkddw<n/>
 DocInfo/Name=[AR2] UED
 DocInfo/PatchNote001=DrakkarAPC Speed 3.1992 -> 3.5
 DocInfo/PatchNote002=DrakkarAPC Cost 100/50 -> 150/0
@@ -464,6 +476,7 @@ Effect/Name/ATSLaserBatteryU2=ATS Laser Battery
 Effect/Name/ATSLaserBatteryU3=ATS Laser Battery
 Effect/Name/AcidSalivaLM2=Needle Spines (Missile)
 Effect/Name/AcidSalivaU2=Needle Spines
+Effect/Name/ApplyAlgoritmHonograundMarker=Маркер
 Effect/Name/ApplyIncapBehavior=Apply Incap Behavior
 Effect/Name/ApplyIncapStandUpTimer=Apply Incap Stand Up Timer
 Effect/Name/ArsenalHealAB=ArsenalHealAB
@@ -567,6 +580,7 @@ Effect/Name/Onwards=Onwards (Apply Buff)
 Effect/Name/OracleWeaponCreatePersistent2=Oracle Weapon Create Persistent
 Effect/Name/PeenemundeMRLS=Peenemunde MRLS
 Effect/Name/PeenemundeMRLSLM=Peenemunde MRLS LM
+Effect/Name/PeenemundeMRLS_Damage=Урон основной
 Effect/Name/PhaserArray=Phaser Array
 Effect/Name/PsiDecimatorDamage=ArsenalDamage
 Effect/Name/RemoveCoreRecallingBehaviorVikingAir2=Remove Core Recalling Behavior Viking Air
@@ -735,6 +749,7 @@ RequirementNode/Tooltip/CountUpgradeStrikeGrenadeCompleteOnly3906007869TechTreeC
 RequirementNode/Tooltip/CountUpgradeUEDLazarusbatteryCompleteOnly1851522583TechTreeCheat=Request authorization for a Lazarus Battery at the field office.
 RequirementNode/Tooltip/CountUpgradeUEDSpeedProjectileCompleteOnly248930777TechTreeCheat=Authorize a speed projectile in the ammunition factory.
 RequirementNode/Tooltip/CountUpgradeUEDUpgradeGoliathCompleteOnly3730296824TechTreeCheat=Request long-range missiles from the ammunition factory.
+RequirementNode/Tooltip/CountUpgradeUEDUpgradeStrikeFighterCompleteOnly2376924074=Request authorization for air combat at the starship maintenance plant.
 RequirementNode/Tooltip/CountUpgradeUpgradeAbilityCitadelUEDCompleteOnly4231854201TechTreeCheat=Request authorization for the magnetic wave accelerator at the military research station.
 RequirementNode/Tooltip/CountUpgradeUpgradeAbilityNapoleonCompleteOnly112302149TechTreeCheat=Request authorization for the shield generator in the ammunition factory.
 RequirementNode/Tooltip/CountUpgradeUpgradeEnergeCrimsonEyeCompleteOnly1822776953TechTreeCheat=Request authorization additional battery at the Military Research Station
@@ -746,7 +761,7 @@ RequirementNode/Tooltip/CountUpgradeUpgradeSpeedHurakanCompleteOnly2128754568Tec
 RequirementNode/Tooltip/CountUpgradeUpgradeSpeedStrikeFighterCompleteOnly1813016030TechTreeCheat=Request authorization for plasma fuel at the starship maintenance plant.
 RequirementNode/Tooltip/CountUpgradeUpgradeTowerMiningCompleteOnly2951428645TechTreeCheat=Request authorization for the enrichment tower in the Tactics Academy.
 RequirementNode/Tooltip/CountUpgradeUpgraideDrakkarCompleteOnly3974058837TechTreeCheat=Request authorization for an internal motion stabilizer at the Academy of Tactics.
-RequirementNode/Tooltip/CountUpgradeUpgraideDrakkarCompleteOnly658754647TechTreeCheat=Request authorization for light alloy beatania at the Tactics Academy 
+RequirementNode/Tooltip/CountUpgradeUpgraideDrakkarCompleteOnly753916929TechTreeCheat=Request authorization for shooting mode at the Academy of Tactics.
 RequirementNode/Tooltip/Not3932054009CountBehaviorUEDAlgoritmHaveTrainQueuedOrBetterAtUnit=Lack of production
 RequirementNode/Tooltip/Or3028896835CountUnitMunitionsFactoryCompleteOnly242926954TechTreeCheatCountUnitStarshipMaintenancePlantCompleteOnly971994468TechTreeCheat=Munitions Factory or Starship Maintenance
 RequirementNode/Tooltip/Or3319937022CountUnitArsenalCompleteOnly774868845TechTreeCheatCountUnitMissileTowerCompleteOnlyTechTreeCheatCountUnitHeavyTowerCompleteOnlyTechTreeCheatCountUnitSuppressionTowerCompleteOnlyTechTreeCheatCountUnitInfusionTowerCompleteOnlyTechTreeCheat=Arsenal or Any Tower
@@ -860,6 +875,7 @@ Upgrade/Name/UEDOrbitalConstruction=UEDOrbitalConstruction
 Upgrade/Name/UEDPackageOfMedicines=Package of medicines
 Upgrade/Name/UEDSpeedProjectile=Speed projectile
 Upgrade/Name/UEDUpgradeGoliath=Long-range missiles
+Upgrade/Name/UEDUpgradeStrikeFighterSpeed=Plasma fuel
 Upgrade/Name/UEDVehicalsLevel1=Heavy Weaponry Targeting Adjustment, level 1
 Upgrade/Name/UEDVehicalsLevel2=Heavy Weaponry Targeting Adjustment, level 2
 Upgrade/Name/UEDVehicalsLevel3=Heavy Weaponry Targeting Adjustment, level 3
@@ -876,7 +892,7 @@ Upgrade/Name/UpgradeSpeedCrimsonEye=Reinforced engine
 Upgrade/Name/UpgradeSpeedHurakan=Calibration of the motors
 Upgrade/Name/UpgradeSpeedStrikeFighter=Plasma fuel
 Upgrade/Name/UpgradeTowerMining=Enrichment Tower
-Upgrade/Name/UpgraideDrakkar=Light alloy beatania
+Upgrade/Name/UpgraideDrakkar=Shooting mode
 Weapon/Name/145mmMachineGun=Coaxial 14.5mm Machine Gun
 Weapon/Name/157mmGaussCannon=157mm Gauss Cannon
 Weapon/Name/90mmCannons22=157mm Gauss Cannon
@@ -914,9 +930,9 @@ Weapon/Name/UEDPenemundeGunClose=Precision strike
 Weapon/Name/UEDPenemundeGunRange=Ballistic missile "Retaliation"
 Weapon/Tip/BoomerangMissileLaunchers=
 Weapon/Tip/Cremator=
-Weapon/Tip/HALOMissiles=<c val="#ColorAttackInfo">Deals area damage<n/>within a radius of up to 1.5
+Weapon/Tip/HALOMissiles=<c val="#ColorAttackInfo">Deals area damage<n/>within a radius of up to 2
 Weapon/Tip/HALOMissiles2=<c val="#ColorAttackInfo">Deals damage to an area within a radius of 0.8.
 Weapon/Tip/HighPoweredShot=<c val="#ColorAttackInfo">Minimum Range: 5
 Weapon/Tip/TachyonLaserCannons=
 Weapon/Tip/TyphoonWeaponGrond=<c val="#ColorAttackInfo">Deals damage to an area<n/>within a radius 0.8.
-Weapon/Tip/UEDPenemundeGunRange=<c val="#ColorAttackInfo">Deals damage to an area within<n/>a radius of 1.25, ignores armor.
+Weapon/Tip/UEDPenemundeGunRange=<c val="#ColorAttackInfo">Deals damage to an area within<n/>a radius of 1.25.

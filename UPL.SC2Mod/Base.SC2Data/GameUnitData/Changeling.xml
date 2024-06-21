@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CValidatorUnitCompareField id="DisguiseAsInfantryRifle">
-        <Field value="Race"/>
-        <Value value="UPL"/>
-    </CValidatorUnitCompareField>
     <CEffectSwitch id="DisguiseEx3">
         <CaseArray Validator="DisguiseAsInfantryRifle" Effect="DisguiseAsInfantryRifleCU"/>
     </CEffectSwitch>
@@ -19,6 +15,10 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CValidatorUnitCompareField id="DisguiseAsInfantryRifle">
+        <Field value="Race"/>
+        <Value value="UPL"/>
+    </CValidatorUnitCompareField>
     <CActorUnit id="ChangelingInfantryRifle" parent="InfantryRifle" unitName="ChangelingInfantryRifle">
         <AcceptedHostedPropTransfers index="Scale" value="0"/>
         <On index="0" Terms="UnitBirth.ChangelingInfantryRifle" Send="Create SoundEmitter ChangelingVolt_Ambience"/>
@@ -33,6 +33,10 @@
         <SoundArray index="What" value="Changeling_What"/>
         <SoundArray index="Yes" value="Changeling_Yes"/>
         <DeathArray index="Normal" ModelLink="ChangelingDeath" SoundLink="Changeling_Death"/>
+        <Model value="DarrenRodgers"/>
+        <BuildModel value="DarrenRodgers"/>
+        <PlacementModel value="DarrenRodgers"/>
+        <PortraitModel value="DarrenRodgersPortrait"/>
     </CActorUnit>
     <CUnit id="ChangelingInfantryRifle" parent="InfantryRifle">
         <Name value="Unit/Name/ChangelingInfantryRifle"/>
@@ -66,8 +70,12 @@
         <HotkeyAlias value="Changeling"/>
         <SelectAlias value="Changeling"/>
         <SubgroupAlias value="Changeling"/>
-        <GlossaryCategory value=""/>
         <RepairTime value="30.4"/>
         <WeaponArray index="0" removed="1"/>
+        <ScoreMake value="50"/>
+        <ScoreKill value="50"/>
+        <ReviveType value="DarrenRodgers"/>
+        <LifeStart value="45"/>
+        <LifeMax value="45"/>
     </CUnit>
 </Catalog>

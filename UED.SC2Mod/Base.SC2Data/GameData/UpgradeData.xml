@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUpgrade id="UEDHightDurability" parent="Research">
+        <Icon value="Assets\Textures\btn-ability-tychus-medic-restorativeburst.dds"/>
+        <Alert value="ResearchComplete_ued"/>
+        <Race value="UED"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Unit,InfusionTower,LifeMax" Value="50"/>
+        <EffectArray Reference="Unit,SuppressionTower,LifeStart" Value="50"/>
+        <EffectArray Reference="Unit,MissileTower,LifeStart" Value="100"/>
+        <EffectArray Reference="Unit,InfusionTower,LifeStart" Value="50"/>
+        <EffectArray Reference="Unit,MissileTower,LifeMax" Value="100"/>
+        <EffectArray Reference="Unit,SuppressionTower,LifeMax" Value="50"/>
+        <EffectArray Reference="Unit,HeavyTower,LifeStart" Value="75"/>
+        <EffectArray Reference="Unit,HeavyTower,LifeMax" Value="75"/>
+        <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="InfusionTower"/>
+        <AffectedUnitArray value="SuppressionTower"/>
+        <AffectedUnitArray value="HeavyTower"/>
+        <AffectedUnitArray value="MissileTower"/>
+        <LeaderAlias value="UpgradeEnergeSupportShutl"/>
+    </CUpgrade>
     <CUpgrade id="UEDSpeedProjectile" parent="Research">
         <Icon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
         <Alert value="ResearchComplete_ued"/>
@@ -123,6 +144,15 @@
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="UEDUnitSpartan"/>
     </CUpgrade>
+    <CUpgrade id="UEDUpgradeStrikeFighterSpeed" parent="Research">
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
+        <Alert value="ResearchComplete_ued"/>
+        <Race value="UED"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
+        <AffectedUnitArray value="Strikefighter"/>
+    </CUpgrade>
     <CUpgrade id="UpgradeAbilityNapoleon" parent="Research">
         <Icon value="Assets\Textures\btn-ability-protoss-hardenedshields-color.dds"/>
         <Alert value="ResearchComplete_ued"/>
@@ -139,12 +169,11 @@
         <Race value="UED"/>
         <ScoreAmount value="200"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Operation="Set" Reference="Weapon,UEDPenemundeGunRangeHidden,Options[Disabled]" Value="0"/>
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="PeenemundeMRLS"/>
     </CUpgrade>
-    <CUpgrade id="UpgradeSpeedStrikeFighter" parent="Research">
-        <Icon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
+    <CUpgrade id="UEDUpgradeStrikeFighter" parent="Research">
+        <Icon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
         <Alert value="ResearchComplete_ued"/>
         <Race value="UED"/>
         <ScoreAmount value="200"/>
@@ -178,7 +207,7 @@
         <Race value="UED"/>
         <ScoreAmount value="200"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Operation="Multiply" Reference="Unit,DrakkarAPC,Speed" Value="1.148400"/>
+        <EffectArray Operation="Set" Reference="Weapon,DrakkarMachineGun,AllowedMovement" Value="Moving"/>
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="DrakkarAPC"/>
     </CUpgrade>
@@ -204,16 +233,7 @@
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="OperationHeadquarters"/>
         <LeaderAlias value="UpgradeEnergeSupportShutl"/>
-    </CUpgrade>
-    <CUpgrade id="UpgradeLazarusRegenHealf" parent="Research">
-        <Icon value="Assets\Textures\btn-ability-dehaka-healing.dds"/>
-        <Race value="UED"/>
-        <ScoreAmount value="200"/>
-        <ScoreResult value="BuildOrder"/>
-        <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
-        <AffectedUnitArray value="Lazarus"/>
-        <LeaderAlias value="UpgradeEnergeSupportShutl"/>
-        <Alert value="ResearchComplete_ued"/>
+        <EffectArray Operation="Set" Reference="Effect,UEDSetIrradiationStart,EffectArray[0]" Value="SearchAreaMineralDruseAfter"/>
     </CUpgrade>
     <CUpgrade id="UpgradeOpticalFlare" parent="Research">
         <Icon value="Assets\Textures\btn-upgrade-nova-btn-upgrade-nova-flashgrenade.dds"/>
@@ -260,12 +280,12 @@
         <EffectArray Operation="Subtract" Reference="Behavior,AlgoritmStrikeGrenadeAlone,Modification.AttackSpeedMultiplier" Value="0.1"/>
         <EffectArray Operation="Subtract" Reference="Behavior,AlgoritmStrikeGrenadeDouble,Modification.AttackSpeedMultiplier" Value="0.1"/>
     </CUpgrade>
-    <CUpgrade id="UpgradeSpeedCrimsonEye">
-        <Icon value="Assets\Textures\btn-upgrade-terran-jotunboosters.dds"/>
+    <CUpgrade id="UpgradeBeataniumGenerator">
+        <Icon value="Assets\Textures\btn-upgrade-terran-internalizedtechmodule.dds"/>
         <Alert value="TrainComplete_ued"/>
         <ScoreAmount value="200"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Operation="Multiply" Reference="Unit,CrimsonEye,Speed" Value="1.199200"/>
+        <EffectArray Operation="Multiply" Reference="Unit,CrimsonEye,EnergyRegenRate" Value="1.511700"/>
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="CrimsonEye"/>
     </CUpgrade>
@@ -276,7 +296,8 @@
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="CrimsonEye"/>
-        <EffectArray Operation="Divide" Reference="Effect,CrimsonEyeRepair,DrainVitalCostFactor" Value="1.7"/>
+        <EffectArray Operation="Divide" Reference="Effect,CrimsonEyeRepair,DrainVitalCostFactor" Value="1.6"/>
+        <EffectArray Operation="Multiply" Reference="Effect,CrimsonEyeRepair,RechargeVitalRate" Value="1.601500"/>
         <Alert value="ResearchComplete_ued"/>
     </CUpgrade>
     <CUpgrade id="AtmosphericOperationsLoadout" parent="Research">
@@ -636,7 +657,7 @@
         <EffectArray Reference="Effect,UEDDamageCitadelSplash,Amount" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDPenemundeGunRange,Icon" Value="Assets\weapon-tank-icon-upgrade-2.dds"/>
         <EffectArray Reference="Weapon,UEDPenemundeGunRange,Level" Value="1"/>
-        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="2"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDSpartanGunGround,Icon" Value="Assets\weapon-tank-icon-upgrade-2.dds"/>
         <EffectArray Reference="Weapon,UEDSpartanGunGround,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDSpartanGunAir,Icon" Value="Assets\weapon-tank-icon-upgrade-2.dds"/>
@@ -713,7 +734,7 @@
         <EffectArray Reference="Effect,UEDDamageCitadelSplash,Amount" Value="1"/>
         <EffectArray Reference="Weapon,UEDPenemundeGunRange,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDPenemundeGunRange,Icon" Value="Assets\weapon-tank-icon-upgrade-3.dds"/>
-        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="2"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDSpartanGunGround,Icon" Value="Assets\weapon-tank-icon-upgrade-3.dds"/>
         <EffectArray Reference="Weapon,UEDSpartanGunGround,Level" Value="1"/>
         <EffectArray Reference="Weapon,UEDSpartanGunAir,Level" Value="1"/>
@@ -825,7 +846,7 @@
         <EffectArray Reference="Effect,UEDDamageCitadelSplash,Amount" Value="1"/>
         <EffectArray Reference="Weapon,UEDPenemundeGunRange,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDPenemundeGunRange,Icon" Value="Assets\weapon-tank-icon-upgrade-1.dds"/>
-        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,PeenemundeMRLS_Damage,Amount" Value="2"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDSpartanGunGround,Icon" Value="Assets\weapon-tank-icon-upgrade-1.dds"/>
         <EffectArray Reference="Weapon,UEDSpartanGunGround,Level" Value="1"/>
         <EffectArray Operation="Set" Reference="Weapon,UEDSpartanGunAir,Icon" Value="Assets\weapon-tank-icon-upgrade-1.dds"/>
@@ -975,7 +996,7 @@
         <EditorCategories value="Race:UED,UpgradeType:SpellResearch"/>
         <AffectedUnitArray value="Huracan"/>
         <Alert value="ResearchComplete_ued"/>
-        <EffectArray Reference="Effect,DamageOnBuildingHurakan,Amount" Value="8"/>
+        <EffectArray Reference="Effect,DamageOnBuildingHurakan,Amount" Value="6"/>
         <EffectArray Operation="Subtract" Reference="Effect,DamageOnBuildingHurakan,ArmorReduction" Value="1"/>
     </CUpgrade>
 </Catalog>

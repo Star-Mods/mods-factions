@@ -17,7 +17,7 @@
     </CEffectLaunchMissile>
     <CEffectDamage id="StingerWeapon@Damage" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:Terran"/>
-        <Amount value="8"/>
+        <Amount value="6"/>
     </CEffectDamage>
     <CEffectDamage id="ArbiterSCBWWeapon@Damage"/>
     <CEffectDamage id="CorsairSCBWWeapon@Damage"/>
@@ -215,7 +215,7 @@
         <DisplayEffect value="StingerWeapon@Damage"/>
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="6"/>
-        <Period value="0.8"/>
+        <Period value="1"/>
         <Effect value="StingerWeapon@Damage"/>
     </CWeaponLegacy>
     <CMoverMissile id="StingerMissileWeapon@Missile">
@@ -428,7 +428,7 @@
         <LifeMax value="130"/>
         <LifeArmor value="1"/>
         <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
-        <Speed value="3.8984"/>
+        <Speed value="3.0703"/>
         <Acceleration value="1000"/>
         <LateralAcceleration value="46"/>
         <StationaryTurningRate value="1499.9414"/>
@@ -458,18 +458,18 @@
         <Radius value="0.625"/>
         <SeparationRadius value="0.75"/>
         <InnerRadius value="0.5"/>
-        <CargoSize value="2"/>
-        <ScoreMake value="100"/>
-        <ScoreKill value="100"/>
+        <CargoSize value="4"/>
+        <ScoreMake value="125"/>
+        <ScoreKill value="125"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="12"/>
         <MinimapRadius value="0.625"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryCategory value="Unit/Category/TerranStorySCBW"/>
+        <GlossaryCategory value="Unit/Category/0UPLUnits"/>
         <GlossaryPriority value="42"/>
         <GlossaryStrongArray value="Zergling"/>
         <GlossaryWeakArray value="Stalker"/>
-        <HotkeyCategory value="Unit/Category/TerranStorySCBW"/>
+        <HotkeyCategory value="Unit/Category/UPLUnits"/>
     </CUnit>
     <CUnit id="StingerMissileWeapon@Missile" parent="MISSILE">
         <Race value="Terr"/>

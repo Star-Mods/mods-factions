@@ -22,13 +22,13 @@
         <Amount value="24"/>
     </CEffectDamage>
     <CEffectDamage id="CARRGrenadeLauncherDamage" parent="DU_SPELL">
-        <AttributeBonus index="Armored" value="30"/>
+        <AttributeBonus index="Armored" value="20"/>
         <Amount value="30"/>
     </CEffectDamage>
     <CEffectEnumArea id="CARRAirSearch">
         <EditorCategories value="Race:UPL"/>
         <SearchFilters value="Air,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <AreaArray Radius="2" Effect="CARRAirDamage"/>
+        <AreaArray Effect="CARRAirDamage"/>
         <IncludeArray Value="Target"/>
     </CEffectEnumArea>
     <CEffectLaunchMissile id="CARRGrenadeLauncherLaunch">
@@ -172,6 +172,7 @@
         <Icon value="Assets\Textures\btn-unit-upl-carr.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-upl-carr.dds"/>
         <EditorCategories value="Race:UPL"/>
+        <Universal value="1"/>
     </CButton>
     <CButton id="CARRGrenadeLauncher">
         <Icon value="Assets\Textures\btn-ability-UPL-GrenadeLauncher.dds"/>
@@ -358,8 +359,8 @@
         <DeathArray index="Normal" ModelLink="CARRDeath"/>
         <PortraitModel value="CARRPortrait"/>
         <WalkAnimMoveSpeed value="1.3007"/>
-        <BarOffset value="45"/>
-        <BarWidth value="42"/>
+        <BarOffset value="95"/>
+        <BarWidth value="110"/>
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-upl-carr.dds"/>
         </GroupIcon>
@@ -372,6 +373,7 @@
         <UnitKillRank Text="UnitKillRank/CARR"/>
         <UnitBorderNormalColor value="150,150,150"/>
         <UnitBorderSubgroupColor value="255,255,255"/>
+        <Scale value="1.400000"/>
     </CActorUnit>
     <CActorAction id="CARRAirAttack" parent="GenericAttack" effectImpact="CARRAirDamage" effectLaunch="CARRAirLaunch">
         <LaunchAttachQuery Methods="PatternAARocket"/>
@@ -909,8 +911,11 @@
         <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
     </CUnit>
     <CUnit id="CARR" parent="UPLHeroBase">
+        <Attributes index="Light" value="0"/>
         <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="0"/>
         <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Massive" value="1"/>
         <LifeStart value="275"/>
         <LifeMax value="275"/>
         <LifeArmor value="3"/>
@@ -918,7 +923,7 @@
         <LifeArmorName value="Unit/LifeArmorName/UPLVehiclePlating"/>
         <LateralAcceleration value="46.0625"/>
         <Sight value="9"/>
-        <CostResource index="Minerals" value="350"/>
+        <CostResource index="Minerals" value="400"/>
         <CostResource index="Vespene" value="150"/>
         <KillXP value="20"/>
         <AbilArray Link="CARRGrenadeLauncher"/>
@@ -939,19 +944,21 @@
             </LayoutButtons>
             <LayoutButtons Face="CARRNaniteRegeneration" Type="Passive" Row="1" Column="0"/>
         </CardLayouts>
-        <InnerRadius value="0.5"/>
-        <CargoSize value="2"/>
-        <ScoreMake value="100"/>
-        <ScoreKill value="100"/>
-        <SubgroupPriority value="91"/>
+        <InnerRadius value="0.625"/>
+        <CargoSize value="8"/>
+        <ScoreMake value="550"/>
+        <ScoreKill value="550"/>
+        <SubgroupPriority value="45"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryPriority value="52"/>
-        <HotkeyCategory value="Unit/Category/UPLStory"/>
+        <GlossaryPriority value="100"/>
         <Fidget>
             <ChanceArray index="Anim" value="20"/>
             <ChanceArray index="Idle" value="70"/>
             <ChanceArray index="Turn" value="10"/>
         </Fidget>
+        <Food value="-6"/>
+        <Radius value="0.75"/>
+        <Speed value="2.8007"/>
     </CUnit>
     <CUnit id="CARRGrenadeLauncherBoss@Missile" parent="MISSILE_INVULNERABLE">
         <Race value="UPL"/>

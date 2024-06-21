@@ -947,48 +947,6 @@
         <Pitch value="-5.000000,-3.000000"/>
         <Volume value="-6.000000,-5.000000"/>
     </CSound>
-    <CUnit id="UPLGuardian" parent="UPLInfantryBase">
-        <UserTag value="Unit/ShortName/UPLGuardian"/>
-        <FlagArray index="AlwaysThreatens" value="1"/>
-        <Attributes index="Armored" value="1"/>
-        <LifeStart value="95"/>
-        <LifeMax value="95"/>
-        <LifeArmor value="1"/>
-        <CostResource index="Minerals" value="50"/>
-        <AbilArray Link="UPLGuardianSwapToPistol"/>
-        <AbilArray Link="UPLGuardianSwapToRifle"/>
-        <AbilArray Link="UPLGuardianSwapToShotgun"/>
-        <AbilArray Link="UPLGuardianSwapToRockets"/>
-        <AbilArray Link="UPLGuardianSwapToShield"/>
-        <AbilArray Link="UPLGuardianSwapToGrenades"/>
-        <AbilArray Link="MyraDavisHealingPatch"/>
-        <AbilArray Link="UPLGuardianFlameGrenade"/>
-        <AbilArray Link="UPLGuardianFlashBangGrenade"/>
-        <AbilArray Link="MyraDavisHeadshot"/>
-        <!--BehaviorArray Link="UPLGuardianShotgun"/-->
-        <!--BehaviorArray Link="UPLGuardianRifle"/-->
-        <CardLayouts index="0">
-            <LayoutButtons Face="UPLGuardianSwapToPistol" Type="AbilCmd" AbilCmd="UPLGuardianSwapToPistol,Execute" Row="2" Column="0"/>
-            <LayoutButtons Face="UPLGuardianSwapToRifle" Type="AbilCmd" AbilCmd="UPLGuardianSwapToRifle,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="UPLGuardianSwapToShotgun" Type="AbilCmd" AbilCmd="UPLGuardianSwapToShotgun,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="UPLGuardianSwapToRockets" Type="AbilCmd" AbilCmd="UPLGuardianSwapToRockets,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="UPLGuardianShield" Type="AbilCmd" AbilCmd="UPLGuardianSwapToShield,Execute" Row="2" Column="4"/>
-            <LayoutButtons Face="UPLGuardianSwapToGrenades" Type="AbilCmd" AbilCmd="UPLGuardianSwapToGrenades,Execute" Row="1" Column="3"/>
-            <LayoutButtons Face="UPLGuardianFlashBangGrenade" Type="AbilCmd" AbilCmd="UPLGuardianFlashBangGrenade,Execute" Row="1" Column="0"/>
-            <LayoutButtons Face="UPLGuardianFlameGrenade" Type="AbilCmd" AbilCmd="UPLGuardianFlameGrenade,Execute" Row="1" Column="1"/>
-            <LayoutButtons Face="MyraDavisHeadshot" Type="AbilCmd" AbilCmd="MyraDavisHeadshot,Execute" Row="1" Column="2"/>
-        </CardLayouts>
-        <!--LayoutButtons Face="MyraDavisHeadshot" Type="AbilCmd" AbilCmd="MyraDavisHeadshot,Execute" Row="1" Column="3"/>
-            <LayoutButtons Face="MyraDavisHealingPatch" Type="AbilCmd" AbilCmd="MyraDavisHealingPatch,Execute" Row="1" Column="4"/>
-            <LayoutButtons Face="MyraDavisSwapToRifle" Type="AbilCmd" AbilCmd="MyraDavisSwapToRifle,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="MyraDavisSwapToShotgun" Type="AbilCmd" AbilCmd="MyraDavisSwapToShotgun,Execute" Row="2" Column="4"/-->
-        <SubgroupPriority value="97"/>
-        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryCategory value="Unit/Category/0UPLHeroes"/>
-        <GlossaryPriority value="12"/>
-        <HotkeyCategory value=""/>
-        <AlliedPushPriority value="20"/>
-    </CUnit>
     <CUnit id="UPLGuardianFlameGrenadeMissile" parent="MISSILE_INVULNERABLE">
         <Race value="UPL"/>
         <Mover value="MyraDavisFlameGrenadeMissileMover2"/>

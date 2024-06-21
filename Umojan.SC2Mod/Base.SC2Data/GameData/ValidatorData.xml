@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorUnitCompareBehaviorCount id="UmojanAttackTrackedByUnit">
+        <Compare value="GT"/>
+        <Behavior value="UmojanTransientAttackTrackerTarget"/>
+        <RequireCasterUnit Value="Caster"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationCompareRange id="UmojanBattlecruiserTargetWithinWeaponRange">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="9.5"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareVital id="UmojanIsNotShieldCapable">
+        <Compare value="LT"/>
+        <Type value="Maximum"/>
+        <Value value="1"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitFilters id="UmojanCasterNotCloaked">
+        <ResultFailed value="CantTargetCloakedUnits"/>
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Cloaked"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareSpeed id="UmojanCasterIsNotMoving">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Value value="0.1992"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitCompareBehaviorCount id="UmojanHasWeaponPowerAccumulatorBuff">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="UmojanWeaponPowerAccumulator"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorLocationCompareRange id="UmojanDistanceLessThan10">
         <WhichLocation Value="TargetUnit"/>
         <Compare value="LT"/>
         <Range value="10"/>
     </CValidatorLocationCompareRange>
+    <CValidatorPlayerRequirement id="UmojanHasMarineWeaponUpgrade">
+        <WhichPlayer Value="Target"/>
+        <Find value="1"/>
+        <Value value="UmojanResearchWeaponPowerAccumulator"/>
+    </CValidatorPlayerRequirement>
     <CValidatorUnitFilters id="UmojanIsHeroic">
         <Filters value="HeroUnit;-"/>
     </CValidatorUnitFilters>
+    <CValidatorUnitCompareBehaviorCount id="UmojanIsNotBlind">
+        <Behavior value="UmojanCommandoFlashGrenadeBlind"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="UmojanCasterisCloakingthearea">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="UmojanCloakField"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareVital id="UmojanIsShieldCapable">
+        <Compare value="GE"/>
+        <Type value="Maximum"/>
+        <Value value="1"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorIsUnitTracked id="UmojanWhirlwindSpotter">
+        <Find value="1"/>
+        <BehaviorLink value="UmojanTrackerSpot"/>
+        <TrackedUnit Value="Target"/>
+    </CValidatorIsUnitTracked>
+    <CValidatorLocationEnumArea id="UmojanWhirlwindSpotterAtRange">
+        <AreaArray Radius="7" Validator="UmojanWhirlwindSpotter"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Dead"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="UmojanWhirlwindSpotterAtLongRange">
+        <AreaArray Radius="9" Validator="UmojanWhirlwindSpotter"/>
+        <SearchFilters value="-;Ally,Neutral,Enemy,Missile,Dead"/>
+    </CValidatorLocationEnumArea>
     <CValidatorCombine id="ZerojanDisguiseAsMarineWithoutShield">
         <Type value="And"/>
         <CombineArray value="ZerojanDisguiseAsMarine"/>
@@ -15,7 +78,7 @@
     </CValidatorCombine>
     <CValidatorPlayerRequirement id="ZerojanMissingMarineShieldUpgrade">
         <WhichPlayer Value="Target"/>
-        <Value value="UmojanUseShieldWall"/>
+        <Value value="UmojanResearchShieldWall"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitCompareField id="ZerojanDisguiseAsMarine">
         <Field value="Race"/>
@@ -29,10 +92,10 @@
     <CValidatorPlayerRequirement id="UmojanHasMarineShieldUpgrade">
         <WhichPlayer Value="Target"/>
         <Find value="1"/>
-        <Value value="UmojanUseShieldWall"/>
+        <Value value="UmojanResearchShieldWall"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanNoMarineShield">
-        <Value value="UmojanUseShieldWall"/>
+        <Value value="UmojanResearchShieldWall"/>
     </CValidatorPlayerRequirement>
     <CValidatorCombine id="UmojanAIBattelshipStasisValidTargets">
         <Type value="And"/>
@@ -134,12 +197,12 @@
         <Type value="And"/>
         <CombineArray value="CasterAndTargetNotDead"/>
         <CombineArray value="UmojanAloeHaveActiveRecon"/>
-        <CombineArray value="UmojanAloeat17units"/>
+        <CombineArray value="UmojanWhirlwindAtRange"/>
     </CValidatorCombine>
-    <CValidatorLocationCompareRange id="UmojanAloeat17units">
-        <WhichLocation Effect="UmojanAloeSendReconDummyCP"/>
+    <CValidatorLocationCompareRange id="UmojanWhirlwindAtRange">
+        <WhichLocation Effect="UmojanWhirlwindSendReconDummyCP"/>
         <Compare value="LE"/>
-        <Range value="17.2"/>
+        <Range value="32.2"/>
     </CValidatorLocationCompareRange>
     <CValidatorUnitCompareBehaviorCount id="UmojanBattleshipCanShoot">
         <WhichUnit Value="Caster"/>
@@ -157,7 +220,7 @@
     </CValidatorUnitCompareOrderCount>
     <CValidatorPlayerRequirement id="UmojanResearchOverchargeGeneratorResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchOverchargeGeneratorResearched"/>
+        <Value value="UmojanResearchOverchargeGenerator"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitState id="UmojanTargetIsDetector">
         <Enabled value="1"/>
@@ -271,16 +334,6 @@
     <CValidatorUnitOrderQueue id="UmojanBattleshipIsYamatoing">
         <AbilLink value="UmojanStasisGun"/>
     </CValidatorUnitOrderQueue>
-    <CValidatorUnitCompareBehaviorCount id="UmojanAttackTrackedByBattleship">
-        <Compare value="GT"/>
-        <Behavior value="UmojanBattleshipAttackTracker"/>
-        <RequireCasterUnit Value="Caster"/>
-    </CValidatorUnitCompareBehaviorCount>
-    <CValidatorLocationCompareRange id="UmojanBattlecruiserTargetWithinWeaponRange">
-        <WhichLocation Value="TargetUnit"/>
-        <Compare value="LE"/>
-        <Range value="6.5"/>
-    </CValidatorLocationCompareRange>
     <CValidatorUnitType id="UmojanIsPlasmabat">
         <Value value="UmojanPlasmabat"/>
     </CValidatorUnitType>
@@ -300,18 +353,18 @@
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerRequirement id="UmojanResearchSecondaryHangarResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchSecondaryHangarResearched"/>
+        <Value value="UmojanResearchSecondaryHangar"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchLockdownResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchLockdownResearched"/>
+        <Value value="UmojanResearchLockdown"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitCompareAttackPriority id="UmojanThreatensBattleship" parent="ThreatensUnit" unitLink="Hydralisk">
         <AttackerAlternateType value="UmojanBattleship"/>
     </CValidatorUnitCompareAttackPriority>
-    <CValidatorUnitCompareBehaviorCount id="UmojanTransientTrackedByBattleship">
+    <CValidatorUnitCompareBehaviorCount id="UmojanUnitIsTrackedToBeAttacked">
         <Compare value="GT"/>
-        <Behavior value="BattlecruiserTransientTracker"/>
+        <Behavior value="UmojanTransientAttackTrackerTarget"/>
         <RequireCasterUnit Value="Caster"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorPlayerCompareType id="UmojanNotAIControlCaster">
@@ -329,15 +382,15 @@
     </CValidatorUnitState>
     <CValidatorPlayerRequirement id="UmojanResearchSelfGuidedMissileResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchSelfGuidedMissileResearched"/>
+        <Value value="UmojanResearchSelfGuidedMissile"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchPersonalCloakingResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchPersonalCloakingResearched"/>
+        <Value value="UmojanResearchPersonalCloaking"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchBlinkResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchBlinkResearched"/>
+        <Value value="UmojanResearchBlink"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchStasisGunResearched">
         <Find value="1"/>
@@ -345,23 +398,23 @@
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchBattlelinkSystemResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchBattlelinkSystemResearched"/>
+        <Value value="UmojanResearchBattlelinkSystem"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchCloakingFieldResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchCloakingFieldResearched"/>
+        <Value value="UmojanResearchCloakingField"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchEngineeringSuitResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchEngineeringSuitResearched"/>
+        <Value value="UmojanResearchEngineeringSuit"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchMobileTargetingResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchMobileTargetingResearched"/>
+        <Value value="UmojanResearchMobileTargeting"/>
     </CValidatorPlayerRequirement>
     <CValidatorPlayerRequirement id="UmojanResearchStrikeMineReserveResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchStrikeMineReserveResearched"/>
+        <Value value="UmojanResearchStrikeMineReserve"/>
     </CValidatorPlayerRequirement>
     <CValidatorUnitCompareBehaviorCount id="UmojanShieldTransferNoReceive">
         <Behavior value="UmojanShieldTransferGiver"/>
@@ -379,7 +432,7 @@
     <CValidatorUnitCompareDamageDealtTime id="UmojanCasterNotDealingDamageShort">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
-        <Value value="1"/>
+        <Value value="0.1"/>
     </CValidatorUnitCompareDamageDealtTime>
     <CValidatorUnitCompareDamageDealtTime id="UmojanCasterNotDealingDamageLong">
         <WhichUnit Value="Caster"/>
@@ -544,11 +597,9 @@
         <Value value="UmojanCrow"/>
         <Find value="0"/>
     </CValidatorUnitType>
-    <CValidatorUnitCompareBehaviorCount id="UmojanIsBeeningSabotaged">
+    <CValidatorUnitCompareBehaviorCount id="UmojanIsNotBeeningSabotaged">
         <ResultFailed value="AlreadyTargeted"/>
         <ResultNoUnit value="AlreadyTargeted"/>
-        <Compare value="LT"/>
-        <Value value="1"/>
         <Behavior value="UmojanSabotageTarget"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="UmojanIsNotPlasmaBlastBurning">
@@ -595,7 +646,7 @@
         <CombineArray value="TacticalStimpackHostiles"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="UmojanTacticalStimpackTestBuff">
-        <Behavior value="UmojanPowertotheWeapon"/>
+        <Behavior value="UmojanWeaponPowerAccumulator"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareVital id="UmojanShieldTransferMaxShield">
         <WhichUnit Effect="UmojanShieldTransferSearchGiver"/>
@@ -604,16 +655,13 @@
         <Value value="1"/>
         <Vital value="Shields"/>
     </CValidatorUnitCompareVital>
-    <CValidatorUnitFilters id="UmojanTornadoMissileFilters">
-        <Filters value="Ground,Light,Visible;Self,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
-    </CValidatorUnitFilters>
     <CValidatorUnitComparePowerUserLevel id="UmojanPowerLevel0">
         <WhichUnit Value="Caster"/>
         <Compare value="GE"/>
     </CValidatorUnitComparePowerUserLevel>
     <CValidatorPlayerRequirement id="UmojanResearchVigilantTurretResearched">
         <Find value="1"/>
-        <Value value="UmojanResearchVigilantTurretResearched"/>
+        <Value value="UmojanResearchVigilantTurret"/>
     </CValidatorPlayerRequirement>
     <CValidatorCombine id="UmojanResearchVigilantTurretNotResearched">
         <CombineArray value="UmojanResearchVigilantTurretResearched"/>

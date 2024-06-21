@@ -5571,6 +5571,7 @@
     <CActorMissile id="HarbingerAirAttackMissile" parent="GenericAttackMissile" unitName="HeraldEnergyCannonsLMWeapon">
         <Model value="HarbingerAirAttackMissile"/>
     </CActorMissile>
+    <CActorModel/>
     <CActorUnit id="Aegis" parent="GenericUnitKeiron" unitName="Aegis">
         <On Terms="Behavior.AegisShieldAura.On" Send="AnimBracketStart StandWork Stand,Work,Start Stand,Work Stand,Work,End"/>
         <On Terms="Behavior.AegisShieldAura.On" Send="ModelSwap AegisShielded"/>

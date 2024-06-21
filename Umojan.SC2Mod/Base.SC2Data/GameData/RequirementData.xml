@@ -8,18 +8,30 @@
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="EqCountUpgradeUmojanOverchargeGeneratorQueuedOrBetter0"/>
     </CRequirement>
-    <CRequirement id="UmojanArmRaptor">
+    <CRequirement id="LearnUmojanBattleTankWarp">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="EqCountUpgradeUmojanWarpBattletankQueuedOrBetter0"/>
+    </CRequirement>
+    <CRequirement id="UmojanArmRaptor6">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
-        <NodeArray index="Use" Link="LT979712484CountUnitUmojanRaptorQueuedOrBetterAtUnit6"/>
+        <NodeArray index="Use" Link="LT3369360179CountUnitUmojanRaptorQueuedOrBetterAtUnit6"/>
     </CRequirement>
     <CRequirement id="LearnUmojanLockdown">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="EqCountUpgradeUmojanLockdownQueuedOrBetter0"/>
     </CRequirement>
+    <CRequirement id="UmojanArmRaptor8">
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <NodeArray index="Use" Link="LT979712484CountUnitUmojanRaptorQueuedOrBetterAtUnit8"/>
+    </CRequirement>
     <CRequirement id="UmojanHaveActiveRecon">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
         <NodeArray index="Use" Link="CountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit"/>
         <NodeArray index="Show" Link="CountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UmojanHaveActiveReconLight">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit1673332186"/>
     </CRequirement>
     <CRequirement id="UmojanHaveNoActiveReconandSecondaryHangar">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
@@ -31,26 +43,29 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitNukeCompleteOnly3748442553"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchSecondaryHangarResearched">
+    <CRequirement id="UmojanResearchWarpBattletank">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanSecondaryHangarCompleteOnly"/>
+        <NodeArray index="Use" Link="AndCountUpgradeUmojanWarpBattletankCompleteOnly615931837CountBehaviorUmojanPowerLevel1CompleteOnlyAtUnit759495325"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchLockdownResearched">
+    <CRequirement id="UmojanResearchSecondaryHangar">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanLockdownCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanSecondaryHangarCompleteOnly205992868"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchEngineeringSuitResearchedandAcademy">
+    <CRequirement id="UmojanResearchLockdown">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="AndCountUpgradeUmojanEngineeringSuitCompleteOnlyTechTreeCheatCountUnitUmojanBarracksCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanLockdownCompleteOnly3535647452"/>
     </CRequirement>
     <CRequirement id="UmojanHaveNoActiveRecon">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="NotCountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit"/>
-        <NodeArray index="Show" Link="NotCountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit"/>
+        <NodeArray index="Use" Link="Not221391944CountBehaviorUmojanAloeSendReconActiveReconCompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchOverchargeGeneratorResearched">
+    <CRequirement id="UmojanResearchOverchargeGenerator">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanOverchargeGeneratorCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanOverchargeGeneratorCompleteOnly1523737165"/>
+    </CRequirement>
+    <CRequirement id="UmojanResearchWeaponPowerAccumulator2">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorUmojanWeaponPowerAccumulatorCompleteOnlyAtUnit286254288TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="UmojanStayingatRange">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
@@ -84,10 +99,6 @@
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="EqCountUpgradeUmojanVigilantTurretQueuedOrBetter0"/>
     </CRequirement>
-    <CRequirement id="LearnUmojanMedivacSpeedBoostUpgrade">
-        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Show" Link="EqCountUpgradeUmojanMedivacIncreaseSpeedBoostQueuedOrBetter0"/>
-    </CRequirement>
     <CRequirement id="LearnUmojanSelfGuidedMissile">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="EqCountUpgradeUmojanSelfGuidedMissileQueuedOrBetter0"/>
@@ -110,15 +121,15 @@
     </CRequirement>
     <CRequirement id="LearnUmojanDisruptionWeb">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Show" Link="AndEqCountUpgradeUmojanDisruptionWebQueuedOrBetter0OrCountBehaviorUmojanScienceRedCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="AndEqCountUpgradeUmojanTransferShieldPowerQueuedOrBetter0OrCountBehaviorUmojanScienceRedCompleteOnlyAtUnit"/>
     </CRequirement>
     <CRequirement id="LearnUmojanCombatShield">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Show" Link="AndEqCountUpgradeUmojanCombatShieldQueuedOrBetter0OrCountBehaviorUmojanScienceRedCompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="LearnUmojanPowertotheWeapons">
+    <CRequirement id="LearnUmojanWeaponPowerAccumulator">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Show" Link="AndEqCountUpgradeUmojanPowertotheWeaponsQueuedOrBetter0OrCountBehaviorUmojanScienceRedCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="AndEqCountUpgradeUmojanWeaponPowerAccumulatorQueuedOrBetter0OrCountBehaviorUmojanScienceRedCompleteOnlyAtUnit"/>
     </CRequirement>
     <CRequirement id="LearnUmojanEngineeringSuit">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
@@ -243,10 +254,10 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitUmojanBarracksCompleteOnlyTechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanHaveFleetCoreandNoFrenrir">
+    <CRequirement id="UmojanHaveFleetCoreandNoBattleship">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <CanBeSuppressed index="Use" value="0"/>
-        <NodeArray index="Use" Link="AndCountUnitUmojanFusionCoreCompleteOnlyTechTreeCheatEq1859133417CountUnitUmojanFrenrirQueuedOrBetter0"/>
+        <NodeArray index="Use" Link="AndCountUnitUmojanFusionCoreCompleteOnlyTechTreeCheatEq2632350612CountUnitUmojanBattleshipQueuedOrBetter0"/>
     </CRequirement>
     <CRequirement id="UmojanHaveScienceFacility">
         <EditorCategories value="Race:Terran,TechType:Unit"/>
@@ -258,41 +269,33 @@
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="CountUnitUmojanCommandCenterCompleteOnlyTechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchPersonalCloakingResearched">
+    <CRequirement id="UmojanResearchPersonalCloaking">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanPersonalCloakingCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanPersonalCloakingCompleteOnly1350349511"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchBlinkResearched">
+    <CRequirement id="UmojanResearchBlink">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanBlinkCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanBlinkCompleteOnly168788081"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchStasisGunResearched">
+    <CRequirement id="UmojanResearchCloakingField">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanStasisGunCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanCloakingFieldCompleteOnly1368482278"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchRapidReignitionSystemResearched">
+    <CRequirement id="UmojanResearchSelfGuidedMissile">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanMedivacIncreaseSpeedBoostCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanSelfGuidedMissileCompleteOnly2547495955"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchCloakingFieldResearched">
-        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanCloakingFieldCompleteOnly"/>
-    </CRequirement>
-    <CRequirement id="UmojanResearchSelfGuidedMissileResearched">
-        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanSelfGuidedMissileCompleteOnly"/>
-    </CRequirement>
-    <CRequirement id="UmojanResearchEngineeringSuitResearched">
+    <CRequirement id="UmojanResearchEngineeringSuit">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
         <NodeArray index="Use" Link="CountUpgradeUmojanEngineeringSuitCompleteOnly"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchMobileTargetingResearched">
+    <CRequirement id="UmojanResearchMobileTargeting">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanMobileTargetingCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanMobileTargetingCompleteOnly421508784"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchStrikeMineReserveResearched">
+    <CRequirement id="UmojanResearchStrikeMineReserve">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanStrikeMineReserveCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanStrikeMineReserveCompleteOnly2331502941"/>
     </CRequirement>
     <CRequirement id="UmojanScienceBlueResearch">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
@@ -310,7 +313,7 @@
         <NodeArray index="Show" Link="OrCountBehaviorUmojanScienceGreenCompleteOnlyAtUnitCountBehaviorUmojanScienceGreenCompleteOnlyAtUnit"/>
     </CRequirement>
     <CRequirement id="UmojanScienceGreenBuildFleetCore">
-        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="AndTechTreeCheatCountBehaviorUmojanScienceConsumerValidatorGreenCompleteOnlyAtUnitCountUnitUmojanFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirement>
@@ -340,13 +343,13 @@
         <NodeArray index="Use" Link="CountUnitUmojanFusionCoreCompleteOnlyTechTreeCheat"/>
     </CRequirement>
     <CRequirement id="UmojanScienceBlueBuildFoundry">
-        <EditorCategories value="Race:Terran,TechType:Unit"/>
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
         <CanBeSuppressed index="Use" value="0"/>
         <NodeArray index="Use" Link="AndTechTreeCheatCountBehaviorUmojanScienceConsumerValidatorBlueCompleteOnlyAtUnitCountUnitUmojanArmoryCompleteOnlyTechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanResearchVigilantTurretResearched">
+    <CRequirement id="UmojanResearchVigilantTurret">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanVigilantTurretCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanVigilantTurretCompleteOnly478627300"/>
     </CRequirement>
     <CRequirement id="UmojanScienceBlue">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
@@ -403,36 +406,24 @@
         <EditorCategories value="Race:Terran,TechType:Unit"/>
         <NodeArray index="Show" Link="CountBehaviorUmojanPowerLevel3CompleteOnlyAtUnit"/>
     </CRequirement>
-    <CRequirement id="UmojanUseStasisGun">
-        <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanStasisGunCompleteOnly2140304198TechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UmojanUseOverloadWeapons">
+    <CRequirement id="UmojanResearchOverloadWeapons">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
         <NodeArray index="Use" Link="CountUpgradeUmojanOverloadWeaponsCompleteOnly361988169TechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanUseAdvancedBallistic">
+    <CRequirement id="UmojanResearchWeaponPowerAccumulator">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanSelfGuidedMissileCompleteOnly361988169TechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanWeaponPowerAccumulatorCompleteOnly296250993TechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanUsePowertotheWeapons">
-        <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanPowertotheWeaponsCompleteOnly1801557862TechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UmojanResearchBattlelinkSystemResearched">
+    <CRequirement id="UmojanResearchBattlelinkSystem">
         <EditorCategories value="Race:Terran,TechType:Upgrade"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanBattlelinkSystemCompleteOnly"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanBattlelinkSystemCompleteOnly4198994775"/>
     </CRequirement>
-    <CRequirement id="UmojanUseCloakingField">
+    <CRequirement id="UmojanResearchTransferShieldPower">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanCloakingFieldCompleteOnly1368482278TechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanTransferShieldPowerCompleteOnly2993519311TechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UmojanUseDisruptionWeb">
+    <CRequirement id="UmojanResearchShieldWall">
         <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanDisruptionWebCompleteOnly774268094TechTreeCheat"/>
-    </CRequirement>
-    <CRequirement id="UmojanUseShieldWall">
-        <EditorCategories value="Race:Terran,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUmojanCombatShieldCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUmojanCombatShieldCompleteOnly3441060099TechTreeCheat"/>
     </CRequirement>
 </Catalog>

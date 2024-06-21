@@ -5,6 +5,46 @@
         <Tooltip value="Button/Tooltip/##originButton##"/>
         <AlertTooltip value="Button/Tooltip/##originButton##"/>
     </CButton>
+    <CButton id="AdvancePoliceSecurity">
+        <Icon value="LocalizedData\Editor\btn-RiotBlaster2.dds"/>
+        <AlertIcon value="LocalizedData\Editor\btn-RiotBlaster2.dds"/>
+        <EditorCategories value="Race:UPL"/>
+    </CButton>
+    <CButton id="CalldownMULE2">
+        <Icon value="Assets\Textures\wireframe-destructible-debris.dds"/>
+        <AlertIcon value="Assets\Textures\wireframe-destructible-debris.dds"/>
+    </CButton>
+    <CButton id="CreateBattleStation">
+        <EditorCategories value="Race:UPL"/>
+        <Icon value="Assets\Textures\BattleStation 2.dds"/>
+    </CButton>
+    <CButton id="Explode2">
+        <Icon value="Assets\Textures\btn-upgrade-protoss-fenix-purificationblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-protoss-fenix-purificationblast.dds"/>
+    </CButton>
+    <CButton id="ResearchHornetRacing">
+        <Icon value="LocalizedData\Editor\btn-HornetRacing.dds"/>
+        <EditorCategories value="Race:UPL"/>
+        <AlertIcon value="LocalizedData\Editor\btn-HornetRacing.dds"/>
+    </CButton>
+    <CButton id="ResearchRiotOfficerShield" parent="ResearchButton">
+        <Icon value="Assets\Textures\btn-ability-UPL-ShieldDefense.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-UPL-ShieldDefense.dds"/>
+    </CButton>
+    <CButton id="SeekerShell">
+        <Icon value="Assets\Textures\btn-upgrade-seekerdrone-permanentlycloaked.dds"/>
+        <EditorCategories value="Race:UPL"/>
+    </CButton>
+    <CButton id="StarArmor">
+        <Icon value="LocalizedData\Editor\btn-StarArmorIcon2.dds"/>
+        <AlertIcon value="LocalizedData\Editor\btn-StarArmorIcon2.dds"/>
+        <EditorCategories value="Race:UPL"/>
+    </CButton>
+    <CButton id="StarMecha">
+        <Icon value="LocalizedData\Editor\btn-StarMechaIcon.dds"/>
+        <AlertIcon value="LocalizedData\Editor\btn-StarMechaIcon.dds"/>
+        <EditorCategories value="Race:UPL"/>
+    </CButton>
     <CButton id="UPLHeavyGunnerSieged">
         <Icon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
         <AlertIcon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
@@ -295,11 +335,11 @@
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="InfantryFlamethrowerIncendiary">
-        <Icon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="InfantryFlamethrowerBurningUpgraded">
-        <Icon value="Assets\textures\btn-ability-UPL-NaniteIgnition.dds"/>
+        <Icon value="Assets\icons\Button_InfantryFlameThrower\btn-ability-UPL-NaniteIgnition.dds"/>
         <EditorCategories value="Race:UPL"/>
         <HotkeyAlias value="InfantryFlamethrowerIncendiary"/>
     </CButton>
@@ -333,8 +373,8 @@
         <HotkeyAlias value="InfantryRocketAOEResearched"/>
     </CButton>
     <CButton id="ResearchRaptorIncendiary">
-        <Icon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
-        <AlertIcon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
+        <AlertIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="ResearchMiningDroneGrenadeLauncher">
@@ -369,6 +409,11 @@
     <CButton id="ResearchZ1EnergyUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-nova-equipment-jetpack.dds"/>
         <EditorCategories value="Race:UPL"/>
+    </CButton>
+    <CButton id="UnknownButton">
+        <Icon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
+        <EditorCategories value="Race:UPL"/>
+        <AlertIcon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
     </CButton>
     <CButton id="Z1EnergyUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-nova-equipment-jetpack.dds"/>

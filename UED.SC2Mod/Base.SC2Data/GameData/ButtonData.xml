@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
-    <CButton id="AuthorizeLazarusRegenHealf">
-        <Icon value="Assets\Textures\btn-ability-dehaka-healing.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-dehaka-healing.dds"/>
-        <EditorCategories value="Race:UED"/>
-        <TintRacially value="1"/>
-    </CButton>
-    <CButton id="ButtonUpgadeStrikeFighterSpeed">
+    <CButton id="ButtonStrikeFighterSpeedUpgrade">
         <Icon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
-        <Hotkey value="Button/Hotkey/ButtonStrikeFighterSeedButtonUpgadeStrikeFighterSpeed"/>
+        <Hotkey value="Button/Hotkey/ButtonStrikeFighterSeedButtonStrikeFighterSpeedUpgrade"/>
+        <EditorCategories value="Race:UED"/>
+    </CButton>
+    <CButton id="ButtonUEDUpgadeStrikeFighter">
+        <Icon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-stetmann-corruptormissilebarrage.dds"/>
+        <Hotkey value="Button/Hotkey/ButtonStrikeFighterSeedButtonUEDUpgadeStrikeFighter"/>
+        <EditorCategories value="Race:UED"/>
+    </CButton>
+    <CButton id="ButtonUEDUpgadeStatDefense">
+        <Icon value="Assets\Textures\btn-ability-tychus-medic-restorativeburst.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-tychus-medic-restorativeburst.dds"/>
+        <Hotkey value="Button/Hotkey/ButtonStrikeFighterSeedButtonUEDUpgadeStatDefense"/>
         <EditorCategories value="Race:UED"/>
     </CButton>
     <CButton id="ButtonUpgradeNapoleonDefense">
@@ -42,6 +48,11 @@
         <AlertIcon value="Assets\Textures\btn-ability-mengsk-battlecruiser-decksights.dds"/>
         <EditorCategories value="Race:UED"/>
     </CButton>
+    <CButton id="UEDButtonHonograundAbility">
+        <Icon value="Assets\Textures\btn-ability-zerg-yagdra-aoe.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-zerg-yagdra-aoe.dds"/>
+        <EditorCategories value="Race:UED"/>
+    </CButton>
     <CButton id="UEDButtonBallisticRange">
         <Icon value="Assets\Textures\btn-ability-mengsk-battlecruiser-decksights.dds"/>
         <EditorCategories value="Race:UED"/>
@@ -63,8 +74,8 @@
         <TintRacially value="1"/>
     </CButton>
     <CButton id="UEDButtonSpartan">
-        <Icon value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
-        <AlertIcon value="Assets\Textures\btn-unit-UEDSpartan.dds"/>
+        <Icon value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-Spartan_(BomberHurricane_Renegades).dds"/>
         <EditorCategories value="Race:UED"/>
     </CButton>
     <CButton id="PrecisionStrikeDescription">
@@ -100,9 +111,6 @@
         <Icon value="Assets\Textures\btn-upgrade-terran-behemothreactor.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-behemothreactor.dds"/>
         <EditorCategories value="Race:UED"/>
-    </CButton>
-    <CButton id="ButtonDrakkarFastMove">
-        <Icon value="Assets\Textures\btn-ability-mengsk-viking-speed.dds"/>
     </CButton>
     <CButton id="ButtonRadarCrimsonYea">
         <Icon value="Assets\Textures\btn-status-radar.dds"/>
@@ -186,6 +194,7 @@
     </CButton>
     <CButton id="ButtonDrakkarFireMode">
         <Icon value="Assets\Textures\btn-ability-terran-detectionconedebuff.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-detectionconedebuff.dds"/>
     </CButton>
     <CButton id="ButtonUpgraideHurrakan">
         <Icon value="Assets\Textures\btn-ability-mengsk-medivac-igniteafterburners.dds"/>
@@ -200,11 +209,6 @@
         <Icon value="Assets\Textures\btn-ability-protoss-voidstasis.dds"/>
         <EditorCategories value="Race:UED"/>
         <ChargeText value="Napoleon"/>
-    </CButton>
-    <CButton id="LazarsRegenHealfButton">
-        <Icon value="Assets\Textures\btn-ability-dehaka-healing.dds"/>
-        <EditorCategories value="Race:UED"/>
-        <TintRacially value="1"/>
     </CButton>
     <CButton id="IcarusCatalyst">
         <Icon value="Assets\Textures\btn-ability-mengsk-ghost-pyrokineticimmolation_orange.dds"/>
@@ -649,9 +653,9 @@
         <AlertIcon value="Assets\Textures\BTN-UED-CrimsonEye.dds"/>
         <EditorCategories value="Race:UED"/>
     </CButton>
-    <CButton id="EngineSurchargeProtocols">
-        <Icon value="Assets\Textures\btn-upgrade-terran-jotunboosters.dds"/>
-        <AlertIcon value="Assets\Textures\btn-upgrade-terran-jotunboosters.dds"/>
+    <CButton id="UpgradeCrimsonEyeEnergy">
+        <Icon value="Assets\Textures\btn-upgrade-terran-internalizedtechmodule.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-internalizedtechmodule.dds"/>
         <EditorCategories value="Race:UED"/>
     </CButton>
     <CButton id="TachyonRelay">

@@ -39,6 +39,11 @@
         <EditorCategories value="Race:UED"/>
         <Behavior value="UEDAlgoritmConstAccelerationTrain"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ApplyAlgoritmHonograundMarker">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:UED"/>
+        <Behavior value="AlgoritmHonograundPrioritetAttackAbility"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ApplyAlgoritmSupresionFieldDelay">
         <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:UED"/>
@@ -60,6 +65,34 @@
         <EditorCategories value="Race:UED"/>
         <BehaviorLink value="UEDAlgoritmDelayHelpSupresionField"/>
     </CEffectRemoveBehavior>
+    <CEffectEnumArea id="SearchAreaHonograund">
+        <EditorCategories value="Race:UED"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <TargetSorts>
+            <SortArray value="UEDSortingValidatatorHonograund"/>
+        </TargetSorts>
+        <AreaArray Radius="6.5" Effect="LiberatorMissileBurstPersistent3"/>
+        <MinCount value="1"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="SearchAreaMineralDruseAfter">
+        <ValidatorArray value="NotHiddenSelf"/>
+        <ValidatorArray value="ValidateCountDruseMaksEight"/>
+        <EditorCategories value="Race:UED"/>
+        <SearchFilters value="HarvestableResource;Player,Ally,Enemy"/>
+        <AreaArray Radius="9" Effect="EffektPeriodConnektVSTowerMining"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="UEDSetIrradiationStart">
+        <EditorCategories value="Race:UED"/>
+        <EffectArray value="SearchAreaMineralDruseBefor"/>
+    </CEffectSet>
+    <CEffectSet id="SetUEDCancelAlgoritmStrickeFighter">
+        <EditorCategories value="Race:UED"/>
+        <EffectArray value="UEDCancelStrikeFighterGroundAttack"/>
+        <EffectArray value="UEDCancelStrikeFighterStartAlgotitm"/>
+    </CEffectSet>
     <CEffectApplyBehavior id="UEDApplyAlgotitmDownRange">
         <ValidatorArray index="0" value="UEDValidateDownRangeTotal"/>
         <ValidatorArray value="NotStructureTarget"/>
@@ -81,6 +114,12 @@
         <PeriodicEffectArray value="UEDDamageSpartanGround"/>
         <PeriodicPeriodArray value="0"/>
     </CEffectCreatePersistent>
+    <CEffectRemoveBehavior id="UEDCancelStrikeFighterStartAlgotitm">
+        <ValidatorArray index="0" removed="1"/>
+        <EditorCategories value="Race:UED"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="AlgoritmStrikeFighterStartUnit"/>
+    </CEffectRemoveBehavior>
     <CEffectSet id="UEDSetPenemundePeriodDamage">
         <EditorCategories value="Race:UED"/>
         <EffectArray value="ApplyAlgotitmMaxDPS"/>
@@ -183,13 +222,13 @@
         <Behavior value="AlgoritmStrikeFighterSpeed"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ApplyAlgoritmStrikeFighterGroundAttack">
-        <ValidatorArray index="0" value="ValidateUEDAirStructureArea"/>
+        <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:UED"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="AlgoritmStrikeFighterGroundAttack"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="ApplyAlgoritmStrikeFighterAirAttack">
-        <ValidatorArray index="0" value="ValidateUEDAirStructureArea"/>
+        <ValidatorArray index="0" removed="1"/>
         <EditorCategories value="Race:UED"/>
         <WhichUnit Value="Caster"/>
         <Behavior value="AlgoritmStrikeFighterAirAttack"/>
@@ -221,7 +260,7 @@
         <ValidatorArray value="IsStructureTarget"/>
         <EditorCategories value="Race:UED"/>
         <Kind value="Ranged"/>
-        <Amount value="4"/>
+        <Amount value="10"/>
         <AttributeBonus index="Light" value="8"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="ATALaserBatteryLM2">
@@ -611,9 +650,9 @@
         <SearchFilters value="-;Ally,Neutral,Enemy"/>
         <AreaArray Radius="0.1" Effect="EffektPeriodConnectComandCentrVSTowerMining"/>
     </CEffectEnumArea>
-    <CEffectEnumArea id="SearchAreaMineralDruse">
+    <CEffectEnumArea id="SearchAreaMineralDruseBefor">
         <ValidatorArray value="NotHiddenSelf"/>
-        <ValidatorArray value="ValidateCountDruseMaks"/>
+        <ValidatorArray value="ValidateCountDruseMaksFour"/>
         <EditorCategories value="Race:UED"/>
         <SearchFilters value="HarvestableResource;Player,Ally,Enemy"/>
         <AreaArray Radius="9" Effect="EffektPeriodConnektVSTowerMining"/>
@@ -1361,9 +1400,9 @@
         <EditorCategories value="Race:UED"/>
     </CEffectIssueOrder>
     <CEffectSet id="TransfusionImpactSet2">
+        <ValidatorArray value="UEDTotalValidatorForGravitionShields"/>
         <EditorCategories value="Race:UED"/>
         <EffectArray value="StrengtheningShieldAB"/>
-        <ValidatorArray value="ValidateNoGravitationShield"/>
     </CEffectSet>
     <CEffectCreatePersistent id="Type769BattleRifleMultishot">
         <EditorCategories value="Race:UED"/>
@@ -1413,13 +1452,14 @@
         <EditorCategories value="Race:UED"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
         <Kind value="Splash"/>
-        <Amount value="10"/>
+        <KindSplash value="Ranged"/>
+        <Amount value="20"/>
         <Death value="Squish"/>
         <AreaArray Radius="1.25" Fraction="1"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Ground;RawResource,HarvestableResource,Missile,Stasis,Dead,Hidden"/>
-        <KindSplash value="Ranged"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="PeenemundeMRLSLMTarget">
         <ValidatorArray index="0" value="ValidateAnyTargetUED"/>
@@ -1443,6 +1483,7 @@
         <PeriodCount value="1"/>
         <PeriodicEffectArray value="HonorguardLazerLM"/>
         <PeriodicPeriodArray value="0.3"/>
+        <InitialEffect value="ApplyAlgoritmHonograundMarker"/>
     </CEffectCreatePersistent>
     <CEffectApplyBehavior id="CrimsonEyeStarWind">
         <EditorCategories value="Race:UED"/>
@@ -1474,7 +1515,7 @@
     <CEffectCreatePersistent id="BacklashRockets2">
         <EditorCategories value="Race:UED"/>
         <WhichLocation Value="TargetUnit"/>
-        <PeriodCount value="3"/>
+        <PeriodCount value="2"/>
         <PeriodicEffectArray value="BacklashRocketsLM2"/>
         <PeriodicPeriodArray value="0.2"/>
         <InitialEffect value="BacklashRocketsLM2"/>
@@ -1489,7 +1530,7 @@
     </CEffectLaunchMissile>
     <CEffectDamage id="BacklashRocketsU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:UED"/>
-        <Amount value="7"/>
+        <Amount value="6"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectSet id="BattlecruiserDamageSet2">
@@ -1612,7 +1653,6 @@
     <CEffectCreatePersistent id="LiberatorMissileBurstPersistent3">
         <EditorCategories value="Race:UED"/>
         <WhichLocation Value="TargetUnit"/>
-        <Flags index="Channeled" value="1"/>
         <Flags index="RandomOffset" value="1"/>
         <PeriodCount value="11"/>
         <PeriodicEffectArray value="LiberatorDamageMissileLM3"/>
@@ -1659,9 +1699,9 @@
     </CEffectCreatePersistent>
     <CEffectDamage id="LanzerTorpedoesDamage2" parent="DU_WEAP_SPLASH">
         <EditorCategories value="Race:UED"/>
-        <AttributeBonus index="Armored" value="5"/>
+        <AttributeBonus index="Massive" value="2"/>
         <Kind value="Ranged"/>
-        <Amount value="9"/>
+        <Amount value="7"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="LanzerTorpedoesLM2">
         <ValidatorArray index="0" value="RangeCheckLE15"/>
@@ -1694,7 +1734,7 @@
         <LaunchLocation Value="SourceUnitOrPoint"/>
         <Amount value="5"/>
         <Death value="Fire"/>
-        <AreaArray Radius="1.5" Fraction="0.75"/>
+        <AreaArray Radius="2" Fraction="1"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Air;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <KindSplash value="Ranged"/>
@@ -1720,7 +1760,7 @@
     <CEffectDamage id="LongboltMissileU2" parent="DU_WEAP_MISSILE">
         <EditorCategories value="Race:UED"/>
         <Amount value="8"/>
-        <AreaArray Radius="0.8" Fraction="0.5"/>
+        <AreaArray Radius="0.8" Fraction="1"/>
         <SearchFilters value="Air;-"/>
         <ExcludeArray Value="Target"/>
     </CEffectDamage>
@@ -1765,7 +1805,7 @@
         <Death value="Blast"/>
         <AreaArray Radius="0.8" Fraction="0.5"/>
         <ExcludeArray Value="Target"/>
-        <SearchFilters value="Ground;Neutral,Enemy,RawResource,HarvestableResource,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Player,Ally,Neutral,Enemy,RawResource,HarvestableResource,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CEffectDamage>
     <CEffectDamage id="UEDWH1">
         <EditorCategories value="Race:UED"/>

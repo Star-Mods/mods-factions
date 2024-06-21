@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff default="1" id="TerranBuildingSCBW@AddonAttached">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableRichVespeneGeyserGas">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableRichVespeneGeyserGasProtoss">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableRichVespeneGeyserGasZerg">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGas">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasProtoss">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CarryHarvestableVespeneGeyserGasZerg">
+        <InitialEffect value="CarryHarvestableVespeneGeyserGasInitial"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestedTerranSCBW@Notify">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <AINotifyEffect value="InfestedTerranSCBWWeapon@DamageAccum"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HatcherySCBW@SpawnLarvaDisable">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DurationRandomMin value="0.625"/>
+        <Requirements value="LarvaSCBW@CountAtUnitLT3"/>
+        <DurationRandomMax value="2.75"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LineMovement">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="LineMovement" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorCreepSource id="QueenSCBWEnsnare@CreepDummy">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Start value="QueenSCBWEnsnare@CreepStart"/>
+        <Birth value="QueenSCBWEnsnare@CreepStart"/>
+        <Grown value="QueenSCBWEnsnare@CreepGrown"/>
+        <Period value="0.25"/>
+    </CBehaviorCreepSource>
+    <CBehaviorBuff id="FungalGrowth">
+        <BehaviorCategories index="Restorable" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GeyserExhaustedRaw">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\icon-gas.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GeyserRawIsExhausted"/>
+        <Period value="0.0625"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="GeyserExhausted"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GeyserExhaustedHarvestable">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\icon-gas.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Modification>
+            <ResourceHarvestAmountMultiplier index="Vespene" value="-0.75"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FirebatSCBWWeapon@Bunker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="InsideTransport"/>
+        <Modification>
+            <WeaponEnableArray value="FirebatSCBWWeapon@Bunker"/>
+            <WeaponDisableArray value="FirebatSCBWWeapon"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GeyserExhaustedRawRich">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\icon-gas.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="GeyserRawIsExhausted"/>
+        <Period value="0.0625"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="RichGeyserExhausted"/>
+    </CBehaviorBuff>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGas">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGasProtoss">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableRichVespeneGeyserGasZerg">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableVespeneGeyserGas">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableVespeneGeyserGasProtoss">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="HarvestableVespeneGeyserGasZerg">
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorBuff id="LurkerSCBWWeapon@Disabled">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Modification>
+            <WeaponDisableArray value="LurkerSCBWWeapon"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorResource id="RawRichVespeneGeyserGas">
+        <Capacity value="1000000"/>
+        <Contents value="5000"/>
+        <HarvestAmount value="16"/>
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorResource id="RawVespeneGeyserGas">
+        <Capacity value="1000000"/>
+        <Contents value="5000"/>
+        <HarvestAmount value="8"/>
+        <EmptyHarvestAmount value="2"/>
+    </CBehaviorResource>
+    <CBehaviorBuff id="QueenSCBWEnsnare@CreepDummyTimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <Duration value="20"/>
+        <ExpireEffect value="SuicideRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SC1_MissChance">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DamageResponse>
+            <MissingChance value="0">
+                <AccumulatorArray value="SC1_MissChance_Formula"/>
+            </MissingChance>
+        </DamageResponse>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="IsGroundUnit"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SC1_ArmorTracker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AddonIsWorkingSCBW">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="AddonIsWorkingSCBW@Disable"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArbiterSCBWCloakField">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\BTN-Ability-Protoss-CloakField.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <BuffFlags index="DisableWhileUnderConstruction" value="1"/>
+        <DisableValidatorArray value="ArbiterSCBWCloakField@Disable"/>
+        <Period value="0.2"/>
+        <PeriodicEffect value="ArbiterSCBWCloakField@Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ArbiterSCBWCloakField@Effect">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-cloakfield.dds"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="ArbiterSCBWCloakField@Effect@Disable"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="0.5"/>
+        <Modification>
+            <StateFlags index="Cloak" value="1"/>
+        </Modification>
+        <RemoveValidatorArray value="ArbiterSCBWCloakField@Effect@Remove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevourerSCBWWeapon">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RefreshStack" value="1"/>
+        <MaxStackCount value="9"/>
+        <Duration value="30"/>
+        <Modification AttackSpeedMultiplier="0.875">
+            <ModifyFlags index="Detected" value="1"/>
+        </Modification>
+        <DamageResponse>
+            <ModifyAmount value="1"/>
+            <Chance value="1"/>
+        </DamageResponse>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-acidspores.dds"/>
+        <Alignment value="Negative"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestedCommandCenterSCBW@Queue">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <Requirements value="CommandCenterReactorResearched"/>
+        <Modification QueueCount="1" QueueSize="3"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InfestedCommandCenterSCBW@TransportDummy">
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorWander id="LarvaSCBW@Wander">
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <Leash value="1"/>
+        <Range value="0.6"/>
+        <Delay value="2"/>
+    </CBehaviorWander>
+    <CBehaviorBuff id="OverlordSCBW@Transport">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Units"/>
+        <MaxStackCount value="20"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BroodlingSCBW@WalkStaggerStaggered">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DurationRandomMin value="0.375"/>
+        <DurationRandomMax value="0.1875"/>
+        <Modification MoveSpeedMaximum="0.0625"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BroodlingSCBW@WalkStaggerTracker">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.0625"/>
+        <PeriodicEffect value="BroodlingSCBW@WalkStaggerTrackerSwitch"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="InShrub">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VulturePlaceSpiderMineSCBW@Stun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="2.375"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpiderMineSCBWWeapon@InvisSearchTargets">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="SCBW_NotStasisNotStunned"/>
+        <DisableValidatorArray value="NotHidden"/>
+        <DisableValidatorArray value="NotBurrowed"/>
+        <Period value="0.5"/>
+        <PeriodicEffect value="SpiderMineSCBWWeapon@InvisEnum"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpiderMineSCBWWeapon@InvisTargetMarker">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <MaxStackCount value="65535"/>
+        <MaxStackCountPerCaster value="1"/>
+        <Duration value="2"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TerranBuildingSCBW@Burnout">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Structures"/>
+        <DisableValidatorArray value="BurnDownFire"/>
+        <Period value="1.25"/>
+        <PeriodicEffect value="TerranBuildingSCBW@BurnoutDamage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TerranBuildingSCBW@AddonDetached">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <DisableValidatorArray value="TerranBuildingSCBW@AddonDetached"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilArmMagazine" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+            <AbilClassDisableArray index="CAbilResearch" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpiderMineSCBW@Invulnerable">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Modification>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Untargetable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpiderMineSCBW@BurrowFirst">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <InitialEffect value="SpiderMineSCBW@BurrowOrder"/>
+        <DisableValidatorArray value="NoOrdersAndNoMove"/>
+        <DisableValidatorArray value="SCBW_NotStasisNotStunned"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VulturePlaceSpiderMineSCBW@CasterStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.8"/>
+        <Modification>
+            <ModifyFlags index="OrdersUninterruptible" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Yoink">
+        <BehaviorCategories index="Stun" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ZealotSCBWWeapon@SuppressMovement">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Duration value="0.25"/>
+        <Modification>
+            <ModifyFlags index="SuppressMoving" value="1"/>
+            <ModifyFlags index="OrdersUninterruptible" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorCreepSource id="ZergBuildingSCBW@CreepGrowthSmall">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Period value="0.75"/>
+        <Start value="ZergBuildingSCBW@CreepGrowthSmallGrown"/>
+        <Birth value="ZergBuildingSCBW@CreepGrowthSmallStart"/>
+        <Grown value="ZergBuildingSCBW@CreepGrowthSmallGrown"/>
+    </CBehaviorCreepSource>
+    <CBehaviorCreepSource id="ZergBuildingSCBW@CreepGrowthLarge">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Period value="0.75"/>
+        <Start value="Footprint8x6CreepSourceGrown"/>
+        <Birth value="Footprint8x6CreepSourceStart"/>
+        <Grown value="Footprint8x6CreepSourceGrown"/>
+    </CBehaviorCreepSource>
+    <CBehaviorCreepSource id="ZergBuildingSCBW@CreepGrowthMedium">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Zerg,AbilityorEffectType:Structures"/>
+        <Period value="0.75"/>
+        <Start value="Footprint4x4CreepSourceGrown"/>
+        <Birth value="Footprint4x4CreepSourceStart"/>
+        <Grown value="Footprint4x4CreepSourceGrown"/>
+    </CBehaviorCreepSource>
+    <CBehaviorBuff id="DropshipSCBWSpeedBoost">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-terran-jotunboosters.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="8"/>
+        <Modification MoveSpeedMultiplier="1.3825" AccelerationBonus="500" DecelerationBonus="500"/>
+    </CBehaviorBuff>
+</Catalog>

@@ -41,13 +41,13 @@
     <CEffectDamage id="RiotShieldDamage" parent="DU_WEAP">
         <Amount value="16"/>
         <EditorCategories value="Race:UPL"/>
-        <AttributeBonus index="Structure" value="25"/>
+        <AttributeBonus index="Structure" value="10"/>
     </CEffectDamage>
     <CAbilEffectInstant id="DarrenRodgersSwapToShield">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown Link="Abil/DarrenRodgersWeaponSwitch" Location="Unit" TimeUse="1"/>
+            <Cooldown Link="Abil/DarrenRodgersWeaponSwitch" Location="Unit" TimeUse="2"/>
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="DarrenRodgersSwapToShield" Requirements="HasNotDarrenRodgersShield"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
@@ -56,7 +56,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Flags index="Transient" value="1"/>
         <Cost>
-            <Cooldown Link="Abil/DarrenRodgersWeaponSwitch" Location="Unit" TimeUse="1"/>
+            <Cooldown Link="Abil/DarrenRodgersWeaponSwitch" Location="Unit" TimeUse="2"/>
         </Cost>
         <CmdButtonArray index="Execute" DefaultButtonFace="MyraDavisSwapToShotgun" Requirements="HasNotDarrenRodgersShotgun"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
@@ -73,6 +73,7 @@
         </CmdButtonArray>
     </CAbilEffectInstant>
     <CRequirement id="HasNotDarrenRodgersShield">
+        <NodeArray index="Use" Link="CountUpgradeRiotOfficerShieldCompleteOnly3245113607TechTreeCheat"/>
         <NodeArray index="Show" Link="NotCountBehaviorDarrenRodgersShieldCompleteOnlyAtUnit"/>
         <EditorCategories value="Race:UPL"/>
     </CRequirement>
@@ -89,6 +90,9 @@
         <AlertIcon value="Assets\Textures\btn-ability-UPL-AssaultRifle.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
+    <CRequirementCountUpgrade id="CountUpgradeRiotOfficerShieldCompleteOnly3245113607TechTreeCheat">
+        <Count Link="RiotOfficerShield" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
     <CRequirementNot id="NotCountBehaviorDarrenRodgersShieldCompleteOnlyAtUnit">
         <OperandArray index="0" value="CountBehaviorDarrenRodgersShieldCompleteOnlyAtUnit"/>
     </CRequirementNot>
@@ -401,9 +405,7 @@
             </LayoutButtons>
             <LayoutButtons Face="DarrenRodgersShield" Type="AbilCmd" AbilCmd="DarrenRodgersSwapToShield,Execute" Row="2" Column="0"/>
         </CardLayouts>
-        <SubgroupPriority value="97"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
-        <GlossaryCategory value="Unit/Category/0UPLHeroes"/>
         <GlossaryPriority value="12"/>
         <HotkeyCategory value=""/>
         <AlliedPushPriority value="20"/>
@@ -411,6 +413,8 @@
         <RepairTime value="28"/>
         <ScoreMake value="50"/>
         <ScoreKill value="50"/>
+        <LifeMax value="45"/>
+        <LifeStart value="45"/>
         <!--            <AbilArray Link="UPLGuardianSwapToShotgun"/>-->
         <!--            <AbilArray Link="UPLGuardianSwapToPistol"/>-->
         <!--            <AbilArray Link="UPLGuardianSwapToShield"/>-->
@@ -438,11 +442,16 @@
         <InfoFlags index="Hidden" value="0"/>
         <InfoIcon value="Assets\Textures\btn-ability-UPL-ShieldDefense.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
-        <Modification MoveSpeedMultiplier="0.6">
+        <Modification HealTakenMultiplier="0.5" MoveSpeedMultiplier="0.66">
             <StateFlags index="UnitAttrOnArmored" value="1"/>
             <StateFlags index="UnitAttrOffLight" value="1"/>
             <StateFlags index="SuppressPassenger" value="1"/>
-            <LifeArmorBonus value="6"/>
+            <DamageTakenFraction index="Spell" value="-0.5"/>
+            <DamageTakenFraction index="Melee" value="-0.5"/>
+            <DamageTakenFraction index="Ranged" value="-0.5"/>
+            <DamageTakenFraction index="Splash" value="-0.5"/>
+            <DamageTakenFraction index="NoProc" value="-0.5"/>
+            <LifeArmorBonus value="2"/>
             <WeaponArray index="0" Link="RiotShield"/>
         </Modification>
     </CBehaviorBuff>

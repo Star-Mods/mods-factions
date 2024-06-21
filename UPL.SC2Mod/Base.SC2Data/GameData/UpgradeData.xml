@@ -454,12 +454,86 @@
         <AffectedUnitArray value="KatherineHalseyElder"/>
         <LeaderAlias value="TechInfantryWeapons"/>
     </CUpgrade>
+    <CUpgrade id="HornetRacing">
+        <Icon value="LocalizedData\Editor\btn-StarArmorIcon2.dds"/>
+        <Race value="UPL"/>
+        <ScoreAmount value="200"/>
+        <EffectArray Operation="Multiply" Reference="Unit,UPLStinger,Speed" Value="1.250000"/>
+        <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+        <AffectedUnitArray value="UPLStinger"/>
+    </CUpgrade>
     <CUpgrade id="LotC_InfantryCamoSkin">
         <Flags index="UpgradeCheat" value="0"/>
         <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
         <AffectedUnitArray value="InfantryRifle"/>
         <AffectedUnitArray value="InfantryRocket"/>
         <AffectedUnitArray value="InfantryMortar"/>
+    </CUpgrade>
+    <CUpgrade id="RiotOfficerShield">
+        <Icon value="Assets\Textures\btn-ability-UPL-ShieldDefense.dds"/>
+        <Race value="UPL"/>
+        <ScoreAmount value="300"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeStart" Value="15"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeMax" Value="15"/>
+        <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+        <AffectedUnitArray value="DarrenRodgers"/>
+    </CUpgrade>
+    <CUpgrade id="SeekerShell">
+        <Icon value="Assets\Textures\btn-upgrade-seekerdrone-permanentlycloaked.dds"/>
+        <ScoreAmount value="400"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeMax" Value="20"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeStart" Value="20"/>
+        <EditorCategories value="UpgradeType:Talents"/>
+        <AffectedUnitArray value="UPLSeekerDrone"/>
+    </CUpgrade>
+    <CUpgrade id="SpaceSandbag">
+        <Icon value="Assets\Textures\btn-unit-heavygunner-sieged.dds"/>
+        <Race value="UPL"/>
+        <ScoreAmount value="100"/>
+        <ScoreResult value="BuildOrder"/>
+        <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+        <AffectedUnitArray value="InfantryHeavy"/>
+        <AffectedUnitArray value="InfantryHeavySieged"/>
+    </CUpgrade>
+    <CUpgrade id="StarArmor">
+        <Icon value="LocalizedData\Editor\btn-StarArmorIcon2.dds"/>
+        <ScoreAmount value="600"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Unit,RoutheTank,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,Osprey,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,OspreyLanded,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,Condor,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,CondorLanded,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmor" Value="2"/>
+        <EffectArray Reference="Unit,RoutheTank,LifeArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,Osprey,LifeArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,CondorLanded,LifeArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,Condor,LifeArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,OspreyLanded,LifeArmorLevel" Value="2"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmorLevel" Value="2"/>
+        <EditorCategories value="Race:UPL,UpgradeType:ArmorBonus"/>
+        <AffectedUnitArray value="RoutheTank"/>
+        <AffectedUnitArray value="Osprey"/>
+        <AffectedUnitArray value="OspreyLanded"/>
+        <AffectedUnitArray value="Condor"/>
+        <AffectedUnitArray value="CondorLanded"/>
+        <AffectedUnitArray value="UPLBehemoth"/>
+    </CUpgrade>
+    <CUpgrade id="StarMecha">
+        <Icon value="LocalizedData\Editor\btn-StarMechaIcon.dds"/>
+        <ScoreAmount value="200"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Unit,CARR,LifeMax" Value="55"/>
+        <EffectArray Reference="Unit,Z1,LifeMax" Value="30"/>
+        <EffectArray Reference="Unit,UPLZ2,LifeMax" Value="36"/>
+        <EffectArray Reference="Unit,CARR,LifeStart" Value="55"/>
+        <EffectArray Reference="Unit,Z1,LifeStart" Value="30"/>
+        <EffectArray Reference="Unit,UPLZ2,LifeStart" Value="36"/>
+        <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+        <AffectedUnitArray value="CARR"/>
+        <AffectedUnitArray value="Z1"/>
+        <AffectedUnitArray value="UPLZ2"/>
     </CUpgrade>
     <CUpgrade id="UPLShipPlatingLevel1" parent="UPLShipArmor" path="Assets\Textures\btn-upgrade-terran-shipplatinglevel" lvl="1">
         <ScoreAmount value="300"/>
@@ -488,51 +562,168 @@
     <CUpgrade id="UPLVehiclePlatingLevel1" parent="UPLVehicleArmor" path="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl" lvl="1">
         <ScoreAmount value="200"/>
         <LeaderLevel value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLBehemoth,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl1.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLSeekerDrone,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl1.dds"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Stinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl1.dds"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmorLevel" Value="1"/>
+        <AffectedUnitArray value="UPLBehemoth"/>
+        <AffectedUnitArray value="UPLSeekerDrone"/>
+        <AffectedUnitArray value="UPLStinger"/>
     </CUpgrade>
     <CUpgrade id="UPLVehiclePlatingLevel2" parent="UPLVehicleArmor" path="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl" lvl="2">
         <ScoreAmount value="350"/>
         <LeaderLevel value="2"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLBehemoth,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl2.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLSeekerDrone,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl2.dds"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmor" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Stinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl2.dds"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmorLevel" Value="1"/>
+        <AffectedUnitArray value="UPLBehemoth"/>
+        <AffectedUnitArray value="UPLSeekerDrone"/>
     </CUpgrade>
     <CUpgrade id="UPLVehiclePlatingLevel3" parent="UPLVehicleArmor" path="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl" lvl="3">
         <ScoreAmount value="500"/>
         <LeaderLevel value="3"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLBehemoth,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl3.dds"/>
+        <EffectArray Operation="Set" Reference="Actor,UPLSeekerDrone,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl3.dds"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLBehemoth,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLSeekerDrone,LifeArmorLevel" Value="1"/>
+        <EffectArray Operation="Set" Reference="Actor,Stinger,LifeArmorIcon" Value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl3.dds"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeArmorLevel" Value="1"/>
+        <AffectedUnitArray value="UPLBehemoth"/>
+        <AffectedUnitArray value="UPLSeekerDrone"/>
     </CUpgrade>
     <CUpgrade id="UPLVehicleWeaponsLevel1" parent="UPLVehicleWeapons" path="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl" lvl="1">
         <ScoreAmount value="200"/>
         <LeaderLevel value="1"/>
+        <EffectArray index="11" Reference="Effect,A6WeaponDamage,Amount" Value="1"/>
+        <EffectArray index="15" Reference="Effect,RoutheTankDamageStructure,Amount" Value="5"/>
+        <EffectArray index="18" Reference="Effect,RoutheTankDamageDisplay,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray index="46" Reference="Effect,Z2Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,StingerWeapon@Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,BehemothBombDamage,Amount" Value="10"/>
+        <EffectArray Reference="Weapon,BehemothBombs,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="UPLVehicleWeaponsLevel2" parent="UPLVehicleWeapons" path="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl" lvl="2">
         <ScoreAmount value="350"/>
         <LeaderLevel value="2"/>
+        <EffectArray index="11" Reference="Effect,A6WeaponDamage,Amount" Value="1"/>
+        <EffectArray index="15" Reference="Effect,RoutheTankDamageStructure,Amount" Value="5"/>
+        <EffectArray index="18" Reference="Effect,RoutheTankDamageDisplay,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray index="46" Reference="Effect,Z2Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,StingerWeapon@Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,BehemothBombDamage,Amount" Value="10"/>
+        <EffectArray Reference="Weapon,BehemothBombs,Level" Value="1"/>
     </CUpgrade>
     <CUpgrade id="UPLVehicleWeaponsLevel3" parent="UPLVehicleWeapons" path="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl" lvl="3">
         <ScoreAmount value="500"/>
         <LeaderLevel value="3"/>
         <Race value="Terr"/>
+        <EffectArray index="11" Reference="Effect,A6WeaponDamage,Amount" Value="1"/>
+        <EffectArray index="15" Reference="Effect,RoutheTankDamageStructure,Amount" Value="5"/>
+        <EffectArray index="18" Reference="Effect,RoutheTankDamageDisplay,AttributeBonus[Structure]" Value="5"/>
+        <EffectArray index="46" Reference="Effect,Z2Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,StingerWeapon@Damage,Amount" Value="1"/>
+        <EffectArray Reference="Effect,BehemothBombDamage,Amount" Value="10"/>
+        <EffectArray Reference="Weapon,BehemothBombs,Level" Value="1"/>
     </CUpgrade>
-    <CUpgrade id="UPLInfantryArmorLevel1" parent="UPLInfantryArmor" path="Assets\Textures\btn-upgrades-upl-infantryarmor-lvl" lvl="1"/>
+    <CUpgrade id="UPLInfantryArmorLevel1" parent="UPLInfantryArmor" path="Assets\Textures\btn-upgrades-upl-infantryarmor-lvl" lvl="1">
+        <EffectArray Reference="Effect,RiotShieldDamage,Amount" Value="3"/>
+        <EffectArray Operation="Set" Reference="Weapon,RiotShield,Level" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmor" Value="1"/>
+    </CUpgrade>
     <CUpgrade id="UPLInfantryArmorLevel2" parent="UPLInfantryArmor" path="Assets\Textures\btn-upgrades-upl-infantryarmor-lvl" lvl="2">
         <ScoreAmount value="350"/>
         <LeaderLevel value="2"/>
+        <EffectArray Reference="Effect,RiotShieldDamage,Amount" Value="3"/>
+        <EffectArray Operation="Set" Reference="Weapon,RiotShield,Level" Value="2"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,UPLSpecOps,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,UPLScout,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavy,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,UPLSpecOps,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,UPLScout,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavy,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryFlamethrower,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryFlamethrower,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryMortar,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryMortar,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeStart" Value="5"/>
     </CUpgrade>
     <CUpgrade id="UPLInfantryArmorLevel3" parent="UPLInfantryArmor" path="Assets\Textures\btn-upgrades-upl-infantryarmor-lvl" lvl="3">
         <ScoreAmount value="500"/>
         <LeaderLevel value="3"/>
+        <EffectArray index="3" Reference="Unit,InfantryHeavy,LifeMax" Value="5"/>
+        <EffectArray index="53" Operation="Set" Reference="Weapon,RiotShield,Level" Value="3"/>
+        <EffectArray Reference="Effect,RiotShieldDamage,Amount" Value="3"/>
+        <EffectArray Reference="Unit,InfantryRifle,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryRifle,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,DarrenRodgers,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,UPLSpecOps,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,UPLSpecOps,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmorLevel" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavy,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,UPLScout,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,UPLScout,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryFlamethrower,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryFlamethrower,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryMortar,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryMortar,LifeStart" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavy,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeArmor" Value="1"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeMax" Value="5"/>
+        <EffectArray Reference="Unit,InfantryHeavySieged,LifeStart" Value="5"/>
     </CUpgrade>
     <CUpgrade id="UPLInfantryWeaponsLevel1" parent="UPLInfantryWeapons" path="Assets\Textures\btn-upgrades-upl-infantryweapons-lvl" lvl="1">
         <InfoTooltipPriority value="0"/>
         <ScoreAmount value="200"/>
         <LeaderLevel value="1"/>
+        <EffectArray index="12" Reference="Effect,InfantryRocketDamage,Amount" Value="2"/>
+        <EffectArray index="13" Reference="Effect,InfantryOfficerDamage,Amount" Value="3"/>
+        <EffectArray index="22" Reference="Effect,UPLScout,Amount" Value="1"/>
+        <EffectArray index="59" Reference="Effect,UPLRiotOfficerShotgunDamage,Amount" Value="2"/>
+        <EffectArray index="60" Reference="Effect,UPLRiotOfficerShotgunDamage,AttributeBonus[Light]" Value="0"/>
+        <EffectArray Reference="Effect,InfantryMortarDamage,AttributeBonus[Structure]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="UPLInfantryWeaponsLevel2" parent="UPLInfantryWeapons" path="Assets\Textures\btn-upgrades-upl-infantryweapons-lvl" lvl="2">
         <InfoTooltipPriority value="0"/>
         <ScoreAmount value="350"/>
         <LeaderLevel value="2"/>
+        <EffectArray index="12" Reference="Effect,InfantryRocketDamage,Amount" Value="2"/>
+        <EffectArray index="13" Reference="Effect,InfantryOfficerDamage,Amount" Value="3"/>
+        <EffectArray index="22" Reference="Effect,UPLScout,Amount" Value="1"/>
+        <EffectArray index="59" Reference="Effect,UPLRiotOfficerShotgunDamage,Amount" Value="2"/>
+        <EffectArray index="60" Reference="Effect,UPLRiotOfficerShotgunDamage,AttributeBonus[Light]" Value="0"/>
+        <EffectArray Reference="Effect,InfantryMortarDamage,AttributeBonus[Structure]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="UPLInfantryWeaponsLevel3" parent="UPLInfantryWeapons" path="Assets\Textures\btn-upgrades-upl-infantryweapons-lvl" lvl="3">
         <InfoTooltipPriority value="0"/>
         <ScoreAmount value="500"/>
         <LeaderLevel value="3"/>
+        <EffectArray index="12" Reference="Effect,InfantryRocketDamage,Amount" Value="2"/>
+        <EffectArray index="13" Reference="Effect,InfantryOfficerDamage,Amount" Value="3"/>
+        <EffectArray index="22" Reference="Effect,UPLScout,Amount" Value="1"/>
+        <EffectArray index="59" Reference="Effect,UPLRiotOfficerShotgunDamage,Amount" Value="2"/>
+        <EffectArray index="60" Reference="Effect,UPLRiotOfficerShotgunDamage,AttributeBonus[Light]" Value="0"/>
+        <EffectArray Reference="Effect,InfantryMortarDamage,AttributeBonus[Structure]" Value="10"/>
     </CUpgrade>
     <CUpgrade id="UPLRenameZerg">
         <EffectArray Operation="Set" Reference="Unit,Larva,Name" Value="Unit/Name/LarvaUPL"/>
@@ -639,5 +830,15 @@
         <EffectArray Operation="Set" Reference="Unit,EvolutionChamber,Name" Value="Unit/Name/EvolutionChamberUPL"/>
         <EffectArray Operation="Set" Reference="Actor,EvolutionChamber,HighlightTooltip" Value="Unit/Name/EvolutionChamberUPL"/>
         <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+    </CUpgrade>
+    <CUpgrade id="UnknownUpgrade">
+        <Icon value="LocalizedData\Editor\btn-RiotBlaster2.dds"/>
+        <Race value="UPL"/>
+        <ScoreAmount value="400"/>
+        <ScoreResult value="BuildOrder"/>
+        <EffectArray Reference="Effect,UPLRiotOfficerShotgunDamage,Amount" Value="6"/>
+        <EffectArray Reference="Weapon,UPLRiotOfficerShotgun,Level" Value="2"/>
+        <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
+        <AffectedUnitArray value="DarrenRodgers"/>
     </CUpgrade>
 </Catalog>

@@ -46,14 +46,23 @@
         <AssetArray File="Assets\Sounds\PrimalToughGuy_Ready_01.ogg"/>
         <AssetArray File="Assets\Sounds\PrimalToughGuy_Ready_02.ogg"/>
     </CSound>
-    <CSound id="AuroraConduitAttackLaunch" parent="Combat">
-        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact0.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact1.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact2.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact3.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact4.wav" FacialGroup=""/>
-        <Pitch value="-10.000000,-8.000000"/>
+    <CSound id="ArkwyrmTerritorialDiveImpactSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpIn_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpIn_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpIn_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
         <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="AuroraConduitAttackLaunch" parent="Combat">
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_05.wav" FacialGroup=""/>
+        <Pitch value="8.000000,10.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="AuroraConduitAttack1Launch" parent="Combat">
@@ -66,7 +75,16 @@
         <Volume value="-1.000000,1.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
-    <CSound id="BrimstoneDemolisherScorchingBlazeStart">
+    <CSound id="ArkwyrmTerritorialDiveCastSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_PreCast_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_PreCast_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_CrashingCharge_PreCast_02.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="BrimstoneDemolisherInfernalBreathStart">
+        <EditorCategories value="Race:Dragon"/>
         <AssetArray File="Assets\Sounds\Spell_Firebreath_End_00.wav"/>
         <AssetArray File="Assets\Sounds\Spell_Firebreath_End_01.wav"/>
         <AssetArray File="Assets\Sounds\Spell_Firebreath_End_02.wav"/>
@@ -81,7 +99,6 @@
         <AssetArray File="Assets\Sounds\Spell_Firebreath_Launch_05.wav"/>
         <Pitch value="-1.000000,1.000000"/>
         <Volume value="-7.000000,-5.000000"/>
-        <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="DragonAscendSound" parent="Spell">
         <AssetArray File="Assets\Sounds\Cut_Kerrigan_Eye_Flare_01.ogg" FacialGroup=""/>
@@ -141,6 +158,51 @@
         <Pitch value="-1.000000,1.000000"/>
         <Volume value="-7.000000,-5.000000"/>
     </CSound>
+    <CSound id="GrimGliderEmaciateSoundEnd" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="GrimGliderEmaciateSoundStart" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
+    <CSound id="GrimGliderMortalitysEclipseSoundEnd" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Abathur_Symbiote_Shield_End01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Abathur_Symbiote_Shield_End02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Abathur_Symbiote_Shield_End03.wav" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="GrimGliderEmaciateSoundLoop" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Viper_Consume_LP.wav" FacialGroup=""/>
+        <LoopCount value="-1"/>
+        <Pitch value="-7.000000,-5.000000"/>
+        <Volume value="2.000000,4.000000"/>
+    </CSound>
+    <CSound id="GrimGliderNullifyImpactSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\HighTemplar_Taldarim_Launch_04.wav" FacialGroup=""/>
+        <DupeMaximumMethod value="Replace"/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HandofPowerAttackImpact" parent="Combat">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact0.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact1.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact2.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact3.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Protoss\VoidSeeker\VoidSeeker_AttackImpact4.wav" FacialGroup=""/>
+        <Pitch value="-4.000000,-2.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
+    </CSound>
     <CSound id="HandofPowerCrushingGravityLoop" parent="Spell">
         <AssetArray File="Assets\Sounds\Protoss\Obelisk\Obelisk_WarpJumpLoop.wav"/>
         <LoopCount value="-1"/>
@@ -182,14 +244,47 @@
         <Volume value="-7.000000,-5.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
-    <CSound id="HandofPowerFrenzySound" parent="Spell">
+    <CSound id="HandofPowerPortalEntranceSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_HallucinationLaunchSmall.wav" FacialGroup=""/>
+        <Pitch value="11.000000,13.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HandofPowerPortalEntranceSoundLoop" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_VortexLoop0.wav" FacialGroup=""/>
+        <LoopCount value="-1"/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HandofPowerPortalEntranceSoundStart" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_VortexStart0.wav" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HandofPowerPortalEntranceSoundEnd" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\Mothership\Mothership_VortexEnd0.wav" FacialGroup=""/>
+        <Pitch value="2.000000,4.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="ArkwyrmTerritorialDiveLaunchSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpOut_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpOut_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_HyperionJumpOut_02.wav" FacialGroup=""/>
+        <Pitch value="-1.000000,1.000000"/>
+        <Volume value="-1.000000,1.000000"/>
+    </CSound>
+    <CSound id="HornedMagusFrenzySound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
         <AssetArray File="Assets\Sounds\Uni\Units\DiabloSmall\DiabloSmall_voxRoar_01.wav"/>
         <AssetArray File="Assets\Sounds\Uni\Units\DiabloSmall\DiabloSmall_voxRoar_02.wav"/>
         <AssetArray File="Assets\Sounds\Uni\Units\DiabloSmall\DiabloSmall_voxRoar_03.wav"/>
         <AssetArray File="Assets\Sounds\Uni\Units\DiabloSmall\DiabloSmall_voxRoar_04.wav"/>
         <Pitch value="5.000000,7.000000"/>
         <Volume value="-4.000000,-2.000000"/>
-        <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="FleshrenderInfernalEffigyImpact" parent="Combat">
         <AssetArray File="Assets\Sounds\Protoss\SharedEffects\Explosions\Protoss_ExplosionSmall0.wav" FacialGroup=""/>
@@ -212,6 +307,12 @@
         <Pitch value="8.000000,10.000000"/>
         <Volume value="-7.000000,-5.000000"/>
         <EditorCategories value="Race:Dragon"/>
+    </CSound>
+    <CSound id="HandofPowerShroudSound" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
+        <AssetArray File="Assets\Sounds\Protoss\Sentry\Sentry_HallucinationLaunchLarge.wav" FacialGroup=""/>
+        <Pitch value="5.000000,7.000000"/>
+        <Volume value="-4.000000,-2.000000"/>
     </CSound>
     <CSound id="RazorbackUrticatingQuillsImpact" parent="Combat">
         <AssetArray File="Assets\Sounds\Zerg\Hydralisk\Hydralisk_AttackLaunchRanged0.wav"/>
@@ -414,11 +515,8 @@
     </CSound>
     <CSound id="SunkenGuardianAttackImpact" parent="Combat">
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive00.ogg"/>
-        <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive00.wav"/>
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive01.ogg"/>
-        <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive01.wav"/>
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive02.ogg"/>
-        <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive02.wav"/>
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive03.ogg"/>
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive04.ogg"/>
         <AssetArray File="Assets\Sounds\PhysicsImpactSound_Flesh_Massive05.ogg"/>
@@ -436,7 +534,7 @@
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackImpactLargeSlice3.wav"/>
         <AssetArray File="Assets\Sounds\Zerg\SharedEffects\Attacks\Zerg_AttackImpactLargeSlice4.wav"/>
         <Pitch value="11.000000,13.000000"/>
-        <Volume value="-7.000000,-5.000000"/>
+        <Volume value="-10.000000,-8.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="Dragon_Death" parent="Death">
@@ -491,12 +589,14 @@
         <Pitch value="2.000000,4.000000"/>
     </CSound>
     <CSound id="AuroraConduitAttackImpact" parent="Combat">
-        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact0.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact1.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact2.wav" FacialGroup=""/>
-        <AssetArray File="Assets\Sounds\Protoss\Stalker\Stalker_AttackImpact3.wav" FacialGroup=""/>
-        <Pitch value="-4.000000,-2.000000"/>
-        <Volume value="-10.000000,-8.000000"/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_00.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_02.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_03.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_04.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Spell_Fireball_Impact_05.wav" FacialGroup=""/>
+        <Pitch value="5.000000,7.000000"/>
+        <Volume value="-7.000000,-5.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="Fleshrender_Ready" parent="AuroraConduit_Ready">
@@ -607,12 +707,12 @@
         <Volume value="-7.000000,-5.000000"/>
         <EditorCategories value="Race:Dragon"/>
     </CSound>
-    <CSound id="BrimstoneDemolisherScorchingBlazeLoop" parent="Spell">
+    <CSound id="BrimstoneDemolisherInfernalBreathLoop" parent="Spell">
+        <EditorCategories value="Race:Dragon"/>
         <AssetArray File="Assets\Sounds\Spell_Firebreath_Loop_00.wav"/>
         <LoopCount value="-1"/>
         <Pitch value="-1.000000,1.000000"/>
         <Volume value="-7.000000,-5.000000"/>
-        <EditorCategories value="Race:Dragon"/>
     </CSound>
     <CSound id="GrimGlider_Death" parent="Death">
         <AssetArray File="Assets\Sounds\CreepTower_Death_00.wav"/>
@@ -1147,6 +1247,13 @@
     </CSound>
     <CSound id="Flamespitter_Yes" parent="Dragon_Yes">
         <Pitch value="14.000000,16.000000"/>
+    </CSound>
+    <CSound id="RazorbackAscend" parent="Razorback_Attack">
+        <Flags index="Ignorable" value="0"/>
+        <Flags index="Purgable" value="1"/>
+        <Flags index="Stream" value="0"/>
+        <Category value="Spell"/>
+        <Volume value="-4.000000,-2.000000"/>
     </CSound>
     <CSound id="Razorback_What" parent="Dragon_What"/>
     <CSound id="Flamespitter_Ready" parent="Dragon_Ready">

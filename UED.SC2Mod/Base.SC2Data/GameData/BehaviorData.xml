@@ -17,6 +17,20 @@
         </Modification>
         <BehaviorCategories index="User9" value="1"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="AlgoritmHonograundPrioritetAttackAbility">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-yagdra-aoe.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
+        <Duration value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlgoritmStrikeFighterStartUnit">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-upgrade-terran-nova-specialordance.dds"/>
+        <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
+        <Modification>
+            <WeaponEnableArray value="BacklashRockets2"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="UEDAlgoritmMorphAcelerationTrain">
         <Alignment value="Negative"/>
         <InfoFlags index="Hidden" value="1"/>
@@ -31,7 +45,7 @@
         <DisplayShield index="Neutral" value="1"/>
         <DisplayShield index="Enemy" value="1"/>
         <BuffFlags index="Countdown" value="0"/>
-        <Duration value="45"/>
+        <Duration value="21"/>
         <ExpireEffect value="ApplyAlgoritmAcelerationTrain"/>
         <Modification>
             <AbilClassDisableArray index="CAbilTrain" value="1"/>
@@ -150,7 +164,7 @@
         <InfoFlags index="Hidden" value="1"/>
         <InfoIcon value="Assets\Textures\btn-ability-hornerhan-raven-analyzetarget.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
-        <Duration value="2.8"/>
+        <Duration value="0.5"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AlgoritmPenemundeSpalshMos">
         <Alignment value="Negative"/>
@@ -165,11 +179,9 @@
         <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
         <RemoveValidatorArray value="CanSpendEnergy"/>
         <RemoveValidatorArray value="hasEnergy"/>
-        <Modification MoveSpeedBonus="-1.1992" Radar="21" RadarFilters="-;Neutral,RawResource,HarvestableResource,Missile,Buried,Cloaked,Dead,Hidden">
+        <Modification Radar="21" RadarFilters="-;Neutral,RawResource,HarvestableResource,Missile,Buried,Cloaked,Dead,Hidden">
             <ModifyFlags index="SuppressMoving" value="1"/>
             <VitalRegenArray index="Energy" value="-0.8476"/>
-            <AbilLinkDisableArray value="AbilitiDetection"/>
-            <AbilLinkDisableArray value="CrimsonEyeRepair"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="AlgoritmHightRegeneraishonHealf">
@@ -235,7 +247,7 @@
         <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
         <Period value="1.7"/>
         <PeriodCount value="1"/>
-        <PeriodicEffect value="UEDCancelStrikeFighterGroundAttack"/>
+        <PeriodicEffect value="SetUEDCancelAlgoritmStrickeFighter"/>
         <Modification>
             <WeaponEnableArray value="LanzerTorpedoes2"/>
         </Modification>
@@ -353,12 +365,7 @@
         <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
         <EditorCategories value="Race:UED,AbilityorEffectType:Units"/>
         <Duration value="17"/>
-        <Modification>
-            <SightBonus value="3"/>
-            <MoveSpeedBonus value="-1.1992"/>
-            <Detect value="10"/>
-            <DetectBonus value="3"/>
-        </Modification>
+        <Modification SightBonus="3" Detect="10" DetectBonus="3"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Detector1122" parent="Detector">
         <Alignment value="Positive"/>
@@ -387,22 +394,6 @@
         <RemoveValidatorArray value="ValidateNotUltralisk"/>
         <BehaviorCategories index="Stun" value="1"/>
         <BehaviorCategories index="User15" value="1"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DrakkarAlgoritmBoost">
-        <InfoFlags index="Hidden" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-ability-terran-detectionconedebuff.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
-        <Duration value="4.5"/>
-        <Modification MoveSpeedBonus="1.0703" AccelerationBonus="2"/>
-    </CBehaviorBuff>
-    <CBehaviorBuff id="DrakkarAlgoritmFireMode">
-        <InfoFlags index="Hidden" value="1"/>
-        <InfoIcon value="Assets\Textures\btn-ability-terran-detectionconedebuff.dds"/>
-        <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
-        <Modification MoveSpeedBonus="-0.6992">
-            <BehaviorLinkDisableArray value="DrakkarAlgoritmBoost"/>
-            <WeaponEnableArray value="DrakkarMachineGunMove"/>
-        </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="DrakkarAlgoritmForComrades">
         <InfoFlags index="Hidden" value="1"/>
@@ -435,7 +426,7 @@
         <InfoIcon value="Assets\Textures\btn-ability-terran-detectionconedebuff.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
         <MaxStackCount value="4"/>
-        <Modification MoveSpeedBonus="-0.125" AccelerationBonus="-0.875" DecelerationBonus="-0.875">
+        <Modification>
             <StateFlags index="SuppressPassenger" value="1"/>
         </Modification>
     </CBehaviorBuff>
@@ -533,7 +524,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:UED"/>
         <DisableValidatorArray value="ValidateForBeginTowerSetInvis"/>
         <Period value="0.2"/>
-        <PeriodicEffect value="SearchAreaMineralDruse"/>
+        <PeriodicEffect value="UEDSetIrradiationStart"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="AlgoritmKolichestvoDruse">
         <InfoFlags index="Hidden" value="1"/>
@@ -705,13 +696,14 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <BuffFlags index="RefreshStack" value="1"/>
-        <Duration value="15"/>
+        <Duration value="20"/>
         <Modification>
             <StateFlags index="UnitAttrOffLight" value="1"/>
             <StateFlags index="UnitAttrOffArmored" value="1"/>
             <StateFlags index="UnitAttrOffMassive" value="1"/>
             <VitalMaxArray index="Shields" value="100"/>
         </Modification>
+        <RefreshEffect value="StrengtheningShield"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="UnitDeathPrevention">
         <InfoFlags index="AlwaysUseGameText" value="1"/>

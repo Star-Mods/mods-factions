@@ -79,8 +79,8 @@
         <NodeArray index="Use" Link="CountUnitUPLSeekerDroneCompleteOnlyAtUnit"/>
     </CRequirement>
     <CButton id="UPLSeekerDrone">
-        <Icon value="Assets\Textures\btn-ability-seekerdrone-seekermode.dds"/>
-        <AlertIcon value="Assets\Textures\btn-ability-seekerdrone-seekermode.dds"/>
+        <Icon value="Assets\Textures\SeekerDroneIcon.dds"/>
+        <AlertIcon value="Assets\Textures\btn_SeekerDroneIcon2.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="ReleaseSeekerDrones">
@@ -102,7 +102,31 @@
         <Tooltip value=""/>
         <Count Link="UPLSeekerDrone" State="CompleteOnlyAtUnit"/>
     </CRequirementCountUnit>
-    <CActorUnit id="UPLSeekerDrone" parent="GenericUnitBase" unitName="UPLSeekerDrone">
+    <CActorUnit id="UPLSeekerDrone3" parent="GenericUnitBase" unitName="UPLSeekerDrone">
+        <Aliases value="_UnitMedium"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" ModelLink="UPLSeekerDroneDeath2" SoundLink="Raven_TargetingDroneExplode"/>
+        <PlacementModel value="PointDefenseDronePlacement"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <PlacementActorModel value="PointDefenseDronePlacementModel"/>
+        <PlaceholderActorModel value="PointDefenseDronePlaceholderModel"/>
+        <PortraitModel value="AdjutantPortrait2"/>
+        <BarOffset value="20"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-seekerdrone-toshsgoons.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-seekerdrone-toshsgoons.dds"/>
+        <HighlightTooltip value="Unit/Name/UPLSeekerDrone3"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <SoundArray index="What" value="Raven_PointDefenseDroneWhat"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-seekerdrone-toshsgoons.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-PointDefenseDrone.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-seekerdrone-toshsgoons.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="UPLSeekerDrone2" parent="GenericUnitBase" unitName="UPLSeekerDrone2">
         <Aliases value="_UnitMedium"/>
         <ModelFlags index="OutlineEmitter" value="1"/>
         <DeathArray index="Normal" ModelLink="UPLSeekerDroneDeath2" SoundLink="Raven_TargetingDroneExplode"/>
@@ -123,6 +147,33 @@
         <Wireframe>
             <Image value="Assets\Textures\Wireframe-Terran-PointDefenseDrone.dds"/>
         </Wireframe>
+        <Model value="UPLSeekerDrone"/>
+        <BuildModel value="UPLSeekerDrone"/>
+    </CActorUnit>
+    <CActorUnit id="UPLSeekerDrone" parent="GenericUnitBase" unitName="UPLSeekerDrone">
+        <Aliases value="_UnitMedium"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <DeathArray index="Normal" ModelLink="UPLSeekerDroneDeath2" SoundLink="Raven_TargetingDroneExplode"/>
+        <PlacementModel value="UPLSeekerDrone2"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <PlacementActorModel value="PointDefenseDronePlacementModel"/>
+        <PlaceholderActorModel value="PointDefenseDronePlaceholderModel"/>
+        <PortraitModel value=""/>
+        <BarOffset value="20"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-seekerdrone-toshsgoons.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-terran-seekerdrone-toshsgoons.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <SoundArray index="What" value="Raven_PointDefenseDroneWhat"/>
+        <UnitIcon value="Assets\Textures\btn-unit-terran-seekerdrone-toshsgoons.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-PointDefenseDrone.dds"/>
+            <Image value="Assets\Textures\wireframe-terran-seekerdrone-toshsgoons.dds"/>
+        </Wireframe>
+        <Model value="UPLSeekerDrone2"/>
+        <BuildModel value="UPLSeekerDrone2"/>
     </CActorUnit>
     <CActorSite id="UPLSeekerDronePayloadSite">
         <EditorCategories value=""/>
@@ -153,6 +204,20 @@
     <CActorRange id="ReleaseSeekerDronesRange" parent="RangeAbil" abil="ReleaseSeekerDrones">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
     </CActorRange>
+    <CModel id="UPLSeekerDrone2" parent="Unit" Race="Terran">
+        <Model value="Assets\Units\Test\HitTestSphere\HitTestSphere.m3"/>
+        <EditorCategories value="Race:UPL"/>
+        <PlanetPanelCamera value="Star2CamerMid05"/>
+        <Radius value="0.600000"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <ScaleMin value="0.400000,0.400000,0.400000"/>
+        <SelectionLayer value="1"/>
+        <SelectionRadius value="0.857100"/>
+        <ShadowRadius value="0.857100"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+    </CModel>
     <CModel id="UPLSeekerDronePayload">
         <Model value="assets\effects\terran\hornerhan_strikefighter_bomb\hornerhan_strikefighter_bomb.m3"/>
         <ScaleMax value="0.500000,0.500000,0.500000"/>
@@ -178,6 +243,56 @@
         <LowQualityModel value="TerranLargeUnitDeathLow"/>
         <EditorCategories value="Race:UPL"/>
     </CModel>
+    <CUnit id="UPLSeekerDrone2">
+        <DeathRevealRadius value="3"/>
+        <Race value="UPL"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="30"/>
+        <LifeMax value="30"/>
+        <LifeArmorName value="Unit/LifeArmorName/UPLShipPlating"/>
+        <Mover value="Fly"/>
+        <Speed value="2.75"/>
+        <Acceleration value="6"/>
+        <StationaryTurningRate value="999.8437"/>
+        <Sight value="11"/>
+        <Height value="4"/>
+        <VisionHeight value="4"/>
+        <Food value="-1"/>
+        <CostCategory value="Army"/>
+        <RepairTime value="12"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="30"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <Radius value="0.8125"/>
+        <SeparationRadius value="0.8"/>
+        <ScoreMake value="175"/>
+        <ScoreKill value="175"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="15"/>
+        <MinimapRadius value="0.75"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <GlossaryCategory value="Unit/Category/0UPLUnits"/>
+        <GlossaryPriority value="125"/>
+        <HotkeyCategory value="Unit/Category/UPLUnits"/>
+        <KillDisplay value="Always"/>
+        <RankDisplay value="Always"/>
+    </CUnit>
     <CUnit id="UPLSeekerDrone">
         <DeathRevealRadius value="3"/>
         <Race value="UPL"/>
@@ -191,8 +306,8 @@
         <Collide index="Flying" value="1"/>
         <Attributes index="Light" value="1"/>
         <Attributes index="Mechanical" value="1"/>
-        <LifeStart value="40"/>
-        <LifeMax value="40"/>
+        <LifeStart value="30"/>
+        <LifeMax value="30"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLShipPlating"/>
         <Mover value="Fly"/>
         <Speed value="2.75"/>
@@ -202,9 +317,9 @@
         <Height value="4"/>
         <VisionHeight value="4"/>
         <CostCategory value="Army"/>
-        <CostResource index="Minerals" value="25"/>
-        <CostResource index="Vespene" value="25"/>
-        <RepairTime value="41.6667"/>
+        <CostResource index="Minerals" value="75"/>
+        <CostResource index="Vespene" value="100"/>
+        <RepairTime value="12"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
         <DamageTakenXP value="1"/>
@@ -212,8 +327,7 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="move"/>
         <AbilArray Link="attack"/>
-        <AbilArray Link="SapStructure"/>
-        <AbilArray Link="Explode"/>
+        <AbilArray Link="Explode2"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -221,22 +335,24 @@
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
-            <LayoutButtons Face="SapStructure" Type="AbilCmd" AbilCmd="SapStructure,Execute" Row="2" Column="1"/>
-            <LayoutButtons Face="Explode" Type="AbilCmd" AbilCmd="Explode,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Explode2" Type="AbilCmd" AbilCmd="Explode2,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.8125"/>
         <SeparationRadius value="0.8"/>
-        <ScoreMake value="50"/>
-        <ScoreKill value="50"/>
+        <ScoreMake value="175"/>
+        <ScoreKill value="175"/>
         <ScoreResult value="BuildOrder"/>
-        <SubgroupPriority value="18"/>
+        <SubgroupPriority value="15"/>
         <MinimapRadius value="0.75"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="52"/>
+        <GlossaryPriority value="125"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
+        <Food value="-1"/>
+        <BehaviorArray Link="BanelingExplode2"/>
+        <WeaponArray Link="VolatileBurst2"/>
     </CUnit>
     <CBehaviorBuff id="ReleaseSeekerDronesTimedLife" parent="TimedLife">
         <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>

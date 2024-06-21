@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorPlayerRequirement id="UEDHaveUpgradeDrakkar">
+        <Value value="UseDrakkarUpgrade"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="UEDTotalValidatorForGravitionShields">
+        <CombineArray value="ValidateNoGravitationShield"/>
+        <CombineArray value="ShieldLQuarter"/>
+    </CValidatorCombine>
     <CValidatorUnitCompareOrderCount id="UEDValidatorTrainUnit1">
         <Compare value="GT"/>
         <AbilLink value="TeleportationNodeTrain"/>
@@ -10,7 +17,7 @@
     </CValidatorCombine>
     <CValidatorLocationCompareRange id="UEDRadiusAttackPenemunde">
         <Compare value="LE"/>
-        <Range value="12"/>
+        <Range value="13"/>
     </CValidatorLocationCompareRange>
     <CValidatorPlayerRequirement id="UEDHaveUpgradeStrikeGrenade">
         <Find value="1"/>
@@ -151,6 +158,20 @@
         <CombineArray value="UEDValidatorTrainUnit18"/>
         <CombineArray value="UEDValidatorTrainUnit19"/>
     </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="ValidateCountDruseMaksEight">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="8"/>
+        <Behavior value="AlgoritmKolichestvoDruse"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ValidateForCrimsonEyeAvtoRepear">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="AlgoritmRadarCrimsonEye"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="ValidateHonograndMarker">
+        <Compare value="GT"/>
+        <Behavior value="AlgoritmHonograundPrioritetAttackAbility"/>
+    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="ValidatePenemundeMaxDPSOne">
         <Value value="10"/>
         <Behavior value="PenemundeAlgoritmMaxDPS"/>
@@ -195,7 +216,7 @@
         <AreaArray>
             <Compare value="GE"/>
             <Count value="1"/>
-            <Radius value="11"/>
+            <Radius value="13"/>
             <Validator value="ValidateCrimsonEyeRadar"/>
         </AreaArray>
         <SearchFilters value="Air,Visible;Neutral,Enemy,RawResource,HarvestableResource,Missile,Stasis,Dead,Hidden"/>
@@ -255,7 +276,7 @@
     <CValidatorCombine id="ValidateOtklGunInDrakkar">
         <CombineArray value="IsHiddenSelf"/>
         <CombineArray value="ValidateHaveInvisDronUEDCaster"/>
-        <CombineArray value="ValidateDrakkarFireMode"/>
+        <CombineArray value="UEDHaveUpgradeDrakkar"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="ValidateHaveInvisDronUEDCaster">
         <WhichUnit Value="Caster"/>
@@ -304,10 +325,6 @@
     <CValidatorUnitCompareBehaviorCount id="ValidateDrakkarOtklAttack">
         <Behavior value="DrakkarAlgoritmOtklAttack"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="ValidateDrakkarFireMode">
-        <WhichUnit Value="Caster"/>
-        <Behavior value="DrakkarAlgoritmFireMode"/>
-    </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="ValidateVklTowerMining">
         <WhichUnit Value="Caster"/>
         <Compare value="GT"/>
@@ -340,10 +357,10 @@
         <Compare value="GT"/>
         <Behavior value="AlgoritmCloakingDroneUED"/>
     </CValidatorUnitCompareBehaviorCount>
-    <CValidatorUnitCompareBehaviorCount id="ValidateCountDruseMaks">
+    <CValidatorUnitCompareBehaviorCount id="ValidateCountDruseMaksFour">
         <WhichUnit Value="Caster"/>
         <Compare value="LT"/>
-        <Value value="12"/>
+        <Value value="4"/>
         <Behavior value="AlgoritmKolichestvoDruse"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="ValidateNoFieldBeatan">

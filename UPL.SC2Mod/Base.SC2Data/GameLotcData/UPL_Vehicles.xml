@@ -7,27 +7,8 @@
     </CEffectSwitch>
     <CEffectSet id="RaptorCloak">
         <EditorCategories value="Race:UPL"/>
-        <EffectArray value="RaptorCloakClearAttackOrder"/>
-        <EffectArray value="RaptorCloakClearScatterOrder"/>
         <EffectArray value="RaptorCloakAB"/>
     </CEffectSet>
-    <CEffectCancelOrder id="RaptorCloakClearAttackOrder">
-        <WhichUnit Value="Caster"/>
-        <AbilCmd value="attack,Execute"/>
-        <Flags index="Queued" value="1"/>
-        <EditorCategories value="Race:UPL"/>
-    </CEffectCancelOrder>
-    <CEffectCancelOrder id="RaptorCloakClearScatterOrder">
-        <WhichUnit Value="Caster"/>
-        <AbilCmd value="RaptorJetScatterBombs,Execute"/>
-        <Flags index="Queued" value="1"/>
-        <EditorCategories value="Race:UPL"/>
-    </CEffectCancelOrder>
-    <CEffectRemoveBehavior id="RaptorJetClearCloak">
-        <WhichUnit Value="Source"/>
-        <BehaviorLink value="RaptorCloak"/>
-        <EditorCategories value="Race:UPL"/>
-    </CEffectRemoveBehavior>
     <CEffectApplyBehavior id="RaptorCloakAB">
         <EditorCategories value="Race:UPL"/>
         <Behavior value="RaptorCloak"/>
@@ -394,7 +375,7 @@
         <ImpactLocation Value="SourceUnit"/>
         <ExcludeArray/>
         <SearchFilters value="Mechanical;Self,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
-        <AreaArray Radius="4" Effect="CSVSupplyLineManagementBuff"/>
+        <AreaArray Radius="7.5" Effect="CSVSupplyLineManagementBuff"/>
         <EditorCategories value="Race:UPL"/>
     </CEffectEnumArea>
     <CEffectApplyBehavior id="CSVSupplyLineManagementBuff">
@@ -406,7 +387,7 @@
     </CEffectDamage>
     <CEffectDamage id="A6WeaponDamage" parent="DU_WEAP_RANGED">
         <Amount value="15"/>
-        <AreaArray Radius="2" Fraction="0.5" Validator="A6ExplosiveRoundsResearched"/>
+        <AreaArray Radius="2" Fraction="0.08" Validator="A6ExplosiveRoundsResearched"/>
         <ExcludeArray Value="Target"/>
         <SearchFilters value="Air;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <SearchFlags index="OffsetByUnitRadius" value="0"/>
@@ -452,8 +433,8 @@
     <CEffectCreateHealer id="CSVRepairHealer">
         <PeriodicPeriod value="0.25"/>
         <DrainVital value="Energy"/>
-        <DrainVitalCostFactor value="0.5"/>
-        <RechargeVitalRate value="9"/>
+        <DrainVitalCostFactor value="0.25"/>
+        <RechargeVitalRate value="40"/>
         <ValidatorArray value="noMarkers"/>
         <ValidatorArray value="NotWarpingIn"/>
         <ValidatorArray value="HiddenCompareAB"/>
@@ -465,11 +446,8 @@
     <CEffectCreateHealer id="CSVTransportHealer">
         <Flags index="Channeled" value="0"/>
         <PeriodCount value="4"/>
-        <PeriodicValidator value="CasterHasEnergy"/>
         <PeriodicEffect value="CSVVisualDummyset"/>
         <PeriodicPeriod value="0.25"/>
-        <DrainVital value="Energy"/>
-        <DrainVitalCostFactor value="0.25"/>
         <RechargeVitalRate value="5"/>
         <EditorCategories value="Race:UPL"/>
     </CEffectCreateHealer>
@@ -605,6 +583,7 @@
         <ImpactLocation Value="TargetUnit"/>
         <Amount value="25"/>
         <EditorCategories value="Race:UPL"/>
+        <Visibility value="Visible"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="OspreyAirLaunchLeft">
         <ImpactEffect value="OspreyAirDamage"/>
@@ -616,10 +595,10 @@
         <EditorCategories value="Race:UPL"/>
     </CEffectApplyBehavior>
     <CEffectDamage id="RaptorAirBurningDamage" parent="DU_SPELL">
-        <ImpactLocation Value="SourceUnit"/>
-        <Amount value="2"/>
         <ValidatorArray value="NotInvulnerable"/>
         <ValidatorArray value="NotStasis"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <Amount value="2"/>
         <Death value="Fire"/>
     </CEffectDamage>
     <CEffectLaunchMissile id="RaptorAirLaunchLeft">
@@ -829,9 +808,9 @@
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
         <CmdButtonArray index="LoadAll" DefaultButtonFace="StingerTransportLoad"/>
-        <MaxCargoCount value="2"/>
+        <MaxCargoCount value="4"/>
         <MaxCargoSize value="1"/>
-        <TotalCargoSpace value="2"/>
+        <TotalCargoSpace value="4"/>
         <UnloadPeriod value="0.25"/>
         <TargetFilters value="Visible;Self,Ally,Neutral,Enemy,Buried,UnderConstruction,Dead,Hidden"/>
         <LoadValidatorArray value="NotWidowMineTarget"/>
@@ -943,7 +922,7 @@
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="RallyReset" value="1"/>
         <Flags index="SuppressMovement" value="1"/>
-        <InfoArray Unit="CSVDeployed" RandomDelayMax="0.5">
+        <InfoArray Unit="CSVDeployed">
             <SectionArray index="Abils">
                 <DurationArray index="Delay" value="0.5"/>
             </SectionArray>
@@ -955,7 +934,7 @@
             </SectionArray>
             <SectionArray index="Stats">
                 <DurationArray index="Delay" value="0.5"/>
-                <DurationArray index="Duration" value="3"/>
+                <DurationArray index="Duration" value="1"/>
                 <EffectArray index="Finish" value="CSVDeployedAB"/>
             </SectionArray>
         </InfoArray>
@@ -975,12 +954,12 @@
         <ActorKey value="Undeploy"/>
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="RallyReset" value="1"/>
-        <InfoArray Unit="CSV" RandomDelayMax="0.5">
+        <InfoArray Unit="CSV">
             <SectionArray index="Actor">
                 <DurationArray index="Duration" value="3"/>
             </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="3"/>
+                <DurationArray index="Duration" value="1"/>
                 <EffectArray index="Start" value="CSVDeployedRB"/>
             </SectionArray>
         </InfoArray>
@@ -1001,19 +980,19 @@
         <Flags index="AutoCastOn" value="1"/>
         <Flags index="ReExecutable" value="1"/>
         <Flags index="Smart" value="1"/>
-        <TargetFilters value="Mechanical,Visible;Self,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <TargetFilters value="Visible;Self,Enemy,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
         <TargetSorts RequestCount="1">
             <SortArray value="TSAlliancePassive"/>
             <SortArray value="TSDistance"/>
             <SortArray value="TSLifeFraction"/>
         </TargetSorts>
-        <Range value="4"/>
+        <Range value="6"/>
         <Arc value="360"/>
         <SmartValidatorArray value="healSmartTargetFilters"/>
         <SmartValidatorArray value="NotWarpingIn"/>
         <AutoCastAcquireLevel value="Defensive"/>
-        <AutoCastFilters value="Mechanical,Visible;Self,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
-        <AutoCastRange value="4"/>
+        <AutoCastFilters value="Visible;Self,Neutral,Enemy,Structure,Missile,Stasis,UnderConstruction,Dead,Hidden"/>
+        <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="CSVHasEnergy"/>
         <AutoCastValidatorArray value="CSVDeployed"/>
         <AutoCastValidatorArray value="CasterNotDeadNotStunnedNotStasis"/>
@@ -1157,9 +1136,9 @@
         <CmdButtonArray index="LoadAll" Requirements="CondorLanded">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
-        <MaxCargoCount value="12"/>
+        <MaxCargoCount value="16"/>
         <MaxCargoSize value="8"/>
-        <TotalCargoSpace value="12"/>
+        <TotalCargoSpace value="16"/>
         <UnloadPeriod value="0.125"/>
         <LoadValidatorArray value="TargetIsTransportable"/>
         <LoadValidatorArray value="TargetNotRooted"/>
@@ -1185,19 +1164,19 @@
         <ActorKey value="FlyMode"/>
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="RallyReset" value="1"/>
-        <InfoArray Unit="Osprey" RandomDelayMax="0.5">
+        <InfoArray Unit="Osprey">
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="2.34"/>
+                <DurationArray index="Duration" value="0.05"/>
             </SectionArray>
             <SectionArray index="Collide">
-                <DurationArray index="Delay" value="1.5"/>
+                <DurationArray index="Delay" value="0.05"/>
             </SectionArray>
             <SectionArray index="Mover">
-                <DurationArray index="Delay" value="0.6"/>
+                <DurationArray index="Delay" value="0.05"/>
                 <DurationArray index="Duration" value="1.733"/>
             </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="2.34"/>
+                <DurationArray index="Duration" value="0.05"/>
                 <EffectArray index="Start" value="OspreyLandedRB"/>
             </SectionArray>
         </InfoArray>
@@ -1219,18 +1198,18 @@
         <Flags index="IgnoreFacing" value="1"/>
         <Flags index="IgnorePlacement" value="0"/>
         <Flags index="RallyReset" value="1"/>
-        <InfoArray Unit="OspreyLanded" RandomDelayMax="0.5">
+        <InfoArray Unit="OspreyLanded">
             <SectionArray index="Abils">
-                <DurationArray index="Duration" value="2.34"/>
+                <DurationArray index="Duration" value="2"/>
             </SectionArray>
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="2.34"/>
+                <DurationArray index="Duration" value="2"/>
             </SectionArray>
             <SectionArray index="Mover">
                 <DurationArray index="Duration" value="2.34"/>
             </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="2.34"/>
+                <DurationArray index="Duration" value="2"/>
                 <EffectArray index="Finish" value="OspreyLandedAB"/>
             </SectionArray>
         </InfoArray>
@@ -1238,25 +1217,25 @@
     <CAbilTransport id="OspreyTransport">
         <AbilSetId value="ULdM"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
-        <CmdButtonArray index="Load" DefaultButtonFace="OspreyLoad" Requirements="OspreyLanded">
+        <CmdButtonArray index="Load" DefaultButtonFace="OspreyLoad">
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="UnloadAll" DefaultButtonFace="OspreyUnloadAll" Requirements="OspreyLanded">
+        <CmdButtonArray index="UnloadAll" DefaultButtonFace="OspreyUnloadAll">
             <Flags index="ShowInGlossary" value="1"/>
             <Flags index="ToSelection" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="UnloadAt" Requirements="OspreyLanded">
+        <CmdButtonArray index="UnloadAt">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="UnloadUnit" Requirements="OspreyLanded">
+        <CmdButtonArray index="UnloadUnit">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
-        <CmdButtonArray index="LoadAll" Requirements="OspreyLanded">
+        <CmdButtonArray index="LoadAll">
             <Flags index="Hidden" value="1"/>
         </CmdButtonArray>
-        <MaxCargoCount value="2"/>
+        <MaxCargoCount value="8"/>
         <MaxCargoSize value="1"/>
-        <TotalCargoSpace value="2"/>
+        <TotalCargoSpace value="8"/>
         <UnloadPeriod value="0.125"/>
         <LoadValidatorArray value="TargetIsTransportable"/>
         <LoadValidatorArray value="TargetNotRooted"/>
@@ -1273,7 +1252,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Effect index="0" value="RaptorGroundMainPersistent"/>
         <Cost>
-            <Vital index="Energy" value="50"/>
+            <Vital index="Energy" value="25"/>
             <Cooldown TimeUse="1"/>
         </Cost>
         <Range value="8"/>
@@ -1320,7 +1299,7 @@
         <Effect index="0" value="TR17StarburstPreLaunchPersistent"/>
         <Flags index="RequireTargetVision" value="0"/>
         <Cost>
-            <Cooldown TimeUse="35"/>
+            <Cooldown TimeUse="75"/>
         </Cost>
         <Range value="14"/>
         <Arc value="0.9997"/>
@@ -1672,9 +1651,9 @@
         <Universal value="1"/>
     </CButton>
     <CButton id="RaptorJetScatterBombs">
-        <Icon value="Assets\textures\btn-ability-UPL-ScatterShotBomb.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-ScatterShotBomb.dds"/>
         <EditorCategories value="Race:UPL"/>
-        <AlertIcon value="Assets\textures\btn-ability-UPL-ScatterShotBomb.dds"/>
+        <AlertIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-ScatterShotBomb.dds"/>
     </CButton>
     <CButton id="RoutheTankArmorPlating">
         <Icon value="Assets\Textures\btn-ability-UPL-UnobtaniumArmorPlating.dds"/>
@@ -1725,8 +1704,8 @@
         <AlertIcon value="Assets\Textures\btn-ability-UPL-FirstAid.dds"/>
     </CButton>
     <CButton id="UPLTrainRaptorJet">
-        <Icon value="Assets\textures\btn-unit-UPL-RaptoFighterJet.dds"/>
-        <AlertIcon value="Assets\textures\btn-unit-UPL-RaptoFighterJet.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-unit-UPL-RaptoFighterJet.dds"/>
+        <AlertIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-unit-UPL-RaptoFighterJet.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="UPLTrainA6">
@@ -1749,8 +1728,8 @@
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="RaptorIncendiary">
-        <Icon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
-        <AlertIcon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
+        <AlertIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="UPLTrainCondor">
@@ -1764,8 +1743,8 @@
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CButton id="UPLTrainOsprey">
-        <Icon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
-        <AlertIcon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <Icon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <AlertIcon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
         <EditorCategories value="Race:UPL"/>
     </CButton>
     <CRequirementAnd id="AndCountUpgradeCSVPersonnelCarrierCompleteOnly2906837920TechTreeCheatCountBehaviorCSVInjuredInfantryNearbyCompleteOnlyAtUnit3144596217">
@@ -2653,7 +2632,7 @@
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-upl-osprey.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <HeroIcon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl0.dds"/>
         <NameOffset value="50"/>
         <SoundArray index="Birth" value="Osprey_Birth"/>
@@ -2669,7 +2648,7 @@
         <SoundArray index="Click" value="Osprey_Click"/>
         <SoundArray index="ClickError" value="Osprey_ClickError"/>
         <SoundArray index="Highlight" value="Osprey_Highlight"/>
-        <UnitIcon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <UnitIcon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-upl-osprey.dds"/>
         </Wireframe>
@@ -2746,7 +2725,7 @@
         <Host Subject="_Selectable"/>
     </CActorSound>
     <CActorRange id="CSVRepairPulseAbilRange" parent="RangeAbil" abil="CSVRepairPulse">
-        <Range value="4.000000"/>
+        <Range value="6.000000"/>
         <Icon value="Assets\Textures\radaricon2.dds"/>
         <IconArcLength value="1.800000"/>
         <IconTint value="225,224,224,224"/>
@@ -2938,9 +2917,9 @@
     </CActorModelMaterial>
     <CActorRange id="CSVRepairPulseRange" parent="RangeBehavior" behavior="CSVRepairPulse">
         <Behavior value=""/>
-        <Range value="4.000000"/>
-        <On index="1" Terms="Behavior.CSVRepairPulse.On; !ScopeContains CSVRepairPulseRange" Send="Create"/>
-        <On index="2" Terms="Behavior.CSVRepairPulse.Off; !ValidateUnit CSVSupplyLineManagement" Send="Destroy"/>
+        <Range value="6.000000"/>
+        <On index="1" Terms="Behavior.CSVRepairPulse.On; ScopeContains CSVRepairPulseRange" Send="Create"/>
+        <On index="2" Terms="Behavior.CSVRepairPulse.Off; ValidateUnit CSVSupplyLineManagement" Send="Destroy"/>
         <On Terms="Behavior.CSVSupplyLineManagement.On; !ScopeContains CSVRepairPulseRange" Send="Create"/>
         <On Terms="Behavior.CSVSupplyLineManagement.Off" Send="Destroy"/>
         <Icon value="Assets\Textures\radaricon2.dds"/>
@@ -3075,9 +3054,10 @@
         </Layers>
     </CActorSound>
     <CActorModel id="CSVRepairBuff" parent="ModelAnimationStyleContinuousUNIT">
-        <On index="0" Terms="ActorCreation" Send="$Birth PlayForever"/>
-        <On index="2" Terms="Effect.CSVRepairHealer.Start; At Target" Send="Create"/>
-        <On Terms="Effect.CSVRepairHealer.Stop; At Target" Send="Destroy"/>
+        <On index="1" Terms="ActorOrphan" Send="AnimBracketStop BSD Instant"/>
+        <On index="2" Terms="AnimBracketState.CSVRepairBuff; AnimName BSD" Send="Destroy"/>
+        <On Terms="Effect.CSVRepairHealer.TargetStart" Send="Create"/>
+        <On Terms="Effect.CSVRepairHealer.TargetStop" Send="Destroy"/>
         <HostSiteOps Ops="SOpAttachOverhead"/>
     </CActorModel>
     <CActorSound id="CSVUndeploySound" parent="SoundOneShot">
@@ -3533,7 +3513,7 @@
         <HeroIcon value="Assets\textures\btn-unit-UPL-RaptoFighterJet.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl0.dds"/>
         <NameOffset value="50"/>
-        <UnitIcon value="Assets\textures\btn-unit-UPL-RaptoFighterJet.dds"/>
+        <UnitIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-unit-UPL-RaptoFighterJet.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-upl-raptorjet.dds"/>
         </Wireframe>
@@ -3576,10 +3556,10 @@
         <GroupIcon>
             <Image value="Assets\Textures\wireframe-upl-osprey.dds"/>
         </GroupIcon>
-        <HeroIcon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <HeroIcon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
         <LifeArmorIcon value="Assets\Textures\btn-upgrades-upl-vehicleplating-lvl0.dds"/>
         <NameOffset value="50"/>
-        <UnitIcon value="Assets\textures\btn-unit-UPL-OspreyHelicopter.dds"/>
+        <UnitIcon value="Assets\icons\Button_Osprey Helicopter\btn-unit-UPL-OspreyHelicopter.dds"/>
         <Wireframe>
             <Image value="Assets\Textures\wireframe-upl-osprey.dds"/>
         </Wireframe>
@@ -4092,8 +4072,8 @@
         <Model value="Assets\Units\UPL\Condor\Condor.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraLow09"/>
-        <ScaleMax value="2.400000,2.400000,2.400000"/>
-        <ScaleMin value="2.400000,2.400000,2.400000"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
         <SelectionRadius value="0.750000"/>
         <ShadowRadius value="1.071200"/>
         <SquibTypeDefault value="Metal"/>
@@ -4108,8 +4088,8 @@
         <Model value="Assets\Units\UPL\Condor\Condor.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraLow09"/>
-        <ScaleMax value="2.400000,2.400000,2.400000"/>
-        <ScaleMin value="2.400000,2.400000,2.400000"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
         <SelectionOffset value="0.000000,0.000000,-0.500000"/>
         <SelectionRadius value="0.750000"/>
         <ShadowRadius value="1.071200"/>
@@ -4205,10 +4185,11 @@
         </Events>
     </CModel>
     <CModel id="A6AttackUpgradedImpact" parent="ImpactFX">
-        <Model value="Assets\Effects\UPL\A6AttackImpact\A6AttackImpact.m3"/>
+        <Model value="Assets\Effects\UPL\APCSmokeGrenadeCloud\APCSmokeGrenadeCloud.m3"/>
         <EditorCategories value="Race:UPL"/>
-        <ScaleMin value="1.150000,1.150000,1.150000"/>
-        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="0.100000,0.100000,0.100000"/>
+        <ScaleMax value="0.400000,0.400000,0.400000"/>
+        <OccludingOpacity value="0.330000"/>
     </CModel>
     <CModel id="A6AttackImpact" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\Liberator_Missile_Impact\Liberator_Missile_Impact.m3"/>
@@ -4589,8 +4570,8 @@
     <CModel id="Condor" parent="Unit" Race="UPL">
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraLow09"/>
-        <ScaleMax value="2.400000,2.400000,2.400000"/>
-        <ScaleMin value="2.400000,2.400000,2.400000"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
         <SelectionOffset value="0.000000,0.000000,-0.500000"/>
         <SelectionRadius value="0.750000"/>
         <ShadowRadius value="1.071200"/>
@@ -4683,13 +4664,12 @@
     <CWeaponLegacy id="RaptorJet">
         <EditorCategories value="Race:UPL"/>
         <Options index="OnlyFireWhileInAttackOrder" value="0"/>
-        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
         <Icon value="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl0.dds"/>
         <DisplayEffect value="RaptorAirDamage"/>
         <DisplayAttackCount value="2"/>
         <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="9"/>
-        <Arc value="4.9987"/>
+        <Arc value="180"/>
         <ArcSlop value="0"/>
         <Period value="2"/>
         <Effect value="RaptorAirLaunchSet"/>
@@ -4709,7 +4689,7 @@
         <Range value="7"/>
         <!--        <Period value="2"/>-->
         <Period value="4"/>
-        <Arc value="59.9963"/>
+        <Arc value="360"/>
         <Effect value="OspreyAirLaunchSet"/>
         <AllowedMovement value="Moving"/>
     </CWeaponLegacy>
@@ -4741,21 +4721,6 @@
         <TargetFilters value="Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <Range value="3"/>
         <Effect value="Z1Dummy"/>
-    </CWeaponLegacy>
-    <CWeaponLegacy id="RaptorJetDummyWeapon">
-        <EditorCategories value="Race:UPL"/>
-        <Options index="Hidden" value="1"/>
-        <Icon value="Assets\Textures\btn-upgrades-upl-vehicleweapons-lvl0.dds"/>
-        <DisplayEffect value="RaptorAirDamage"/>
-        <DisplayAttackCount value="2"/>
-        <TargetFilters value="Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable"/>
-        <Range value="9"/>
-        <Arc value="4.9987"/>
-        <ArcSlop value="0"/>
-        <!--        <Period value="0.2"/>-->
-        <DamagePoint value="0"/>
-        <Effect value="RaptorJetClearCloak"/>
-        <Period value="3"/>
     </CWeaponLegacy>
     <CMoverMissile id="TR17StarburstMissileMover" parent="MissileDefault">
         <MotionPhases index="0">
@@ -4867,7 +4832,7 @@
             <Speed value="2"/>
             <MaxSpeed value="2"/>
             <Gravity value="30"/>
-            <Outro value="0.5,0.55"/>
+            <Outro value="0.5,1"/>
             <Timeout value="10"/>
             <ThrowVector value="0,-1,0"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
@@ -4876,10 +4841,10 @@
         </MotionPhases>
         <MotionPhases>
             <Driver value="Guidance"/>
-            <Acceleration value="18"/>
-            <MinSpeed value="5"/>
+            <Acceleration value="19"/>
+            <MinSpeed value="14"/>
             <MaxSpeed value="15"/>
-            <Outro value="1,1.25"/>
+            <Outro value="1,11"/>
             <Timeout value="10"/>
             <ThrowBandYaw value="-360,-360,-360,-360"/>
             <ThrowBandPitch value="-360,-360,-360,-360"/>
@@ -5859,12 +5824,12 @@
         <Attributes index="Massive" value="1"/>
         <LifeStart value="350"/>
         <LifeMax value="350"/>
-        <LifeArmor value="2"/>
+        <LifeArmor value="4"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLShipPlating"/>
         <Speed value="2.25"/>
         <Acceleration value="1000"/>
         <Sight value="11"/>
-        <Food value="-4"/>
+        <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="50"/>
@@ -5878,6 +5843,8 @@
         <AbilArray Link="CondorFly"/>
         <AbilArray Link="Rally"/>
         <BehaviorArray Link="UPLCondorCloak"/>
+        <BehaviorArray Link="CSVTransportHealer"/>
+        <BehaviorArray Link="Detector10"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -5919,7 +5886,7 @@
         <HotkeyAlias value="Condor"/>
         <SelectAlias value="Condor"/>
         <SubgroupAlias value="Condor"/>
-        <GlossaryPriority value="53"/>
+        <GlossaryPriority value="200"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <AIEvaluateAlias value="Condor"/>
         <EffectArray index="Create" value="CondorLandedAB"/>
@@ -5928,6 +5895,12 @@
         <KillDisplay value="Never"/>
         <AlliedPushPriority value="15"/>
         <ScoreLost value="250"/>
+        <LifeRegenRate value="7"/>
+        <LifeDamageGain index="Spell" value="0.25"/>
+        <LifeDamageGain index="Melee" value="0.25"/>
+        <LifeDamageGain index="Ranged" value="0.25"/>
+        <LifeDamageGain index="Splash" value="0.25"/>
+        <LifeDamageGain index="NoProc" value="0.25"/>
     </CUnit>
     <CUnit id="OspreyLanded">
         <DeathRevealRadius value="3"/>
@@ -5951,8 +5924,8 @@
         <Sight value="11"/>
         <Food value="-3"/>
         <CostCategory value="Army"/>
-        <CostResource index="Minerals" value="125"/>
-        <CostResource index="Vespene" value="75"/>
+        <CostResource index="Minerals" value="275"/>
+        <CostResource index="Vespene" value="125"/>
         <RepairTime value="41.6667"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
@@ -5988,7 +5961,7 @@
         <Radius value="0.875"/>
         <SeparationRadius value="0.875"/>
         <InnerRadius value="0.875"/>
-        <ScoreKill value="200"/>
+        <ScoreKill value="400"/>
         <SubgroupPriority value="17"/>
         <MinimapRadius value="0.75"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
@@ -5996,7 +5969,7 @@
         <HotkeyAlias value="Osprey"/>
         <SelectAlias value="Osprey"/>
         <SubgroupAlias value="Osprey"/>
-        <GlossaryPriority value="52"/>
+        <GlossaryPriority value="110"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <StationaryTurningRate value="999.8437"/>
         <TechAliasArray value="Alias_Osprey"/>
@@ -6008,6 +5981,10 @@
         <RankDisplay value="Always"/>
         <AlliedPushPriority value="15"/>
         <LifeArmor value="1"/>
+        <LifeRegenRate value="3"/>
+        <BehaviorArray Link="CSVTransportHealer"/>
+        <BehaviorArray Link="CSVInjuredInfantryNearby"/>
+        <ScoreMake value="400"/>
     </CUnit>
     <CUnit id="CSVDeployed">
         <Name value="Unit/Name/CSV"/>
@@ -6034,7 +6011,7 @@
         <EnergyMax value="250"/>
         <EnergyRegenRate value="0.75"/>
         <Sight value="11"/>
-        <Food value="-6"/>
+        <Food value="-3"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="225"/>
         <CostResource index="Vespene" value="100"/>
@@ -6046,14 +6023,11 @@
         <AbilArray Link="stop"/>
         <AbilArray Link="attack"/>
         <AbilArray Link="CSVUndeploy"/>
-        <AbilArray Link="CSVTransport"/>
         <AbilArray Link="CSVRepairPulse"/>
-        <AbilArray Link="CSVTransportDamaged"/>
-        <AbilArray Link="Rally"/>
         <AbilArray Link="APCSmokeGrenade"/>
         <BehaviorArray Link="CSVSupplyLineManagement"/>
         <BehaviorArray Link="CSVTransportHealer"/>
-        <BehaviorArray Link="CSVInjuredInfantryNearby"/>
+        <BehaviorArray Link="Detector10"/>
         <WeaponArray Link="CSV" Turret="CSVTurret"/>
         <EffectArray index="Create" value="CSVDeployedAB"/>
         <EffectArray index="Death" value="TransportDeathIterate"/>
@@ -6063,6 +6037,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="CSVDeploy" Type="AbilCmd" AbilCmd="CSVDeploy,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="APCSmokeGrenade" Type="AbilCmd" AbilCmd="APCSmokeGrenade,Execute" Row="2" Column="0"/>
             <LayoutButtons>
                 <Face value="CSVUndeploy"/>
                 <Type value="AbilCmd"/>
@@ -6073,7 +6048,6 @@
             </LayoutButtons>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="CSVRepairPulse" Type="AbilCmd" AbilCmd="CSVRepairPulse,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="CSVUnloadAll" Type="AbilCmd" AbilCmd="CSVTransport,UnloadAll" Row="2" Column="4"/>
             <LayoutButtons>
                 <Face value="CSVSupplyLineManagement"/>
                 <Type value="Passive"/>
@@ -6083,25 +6057,13 @@
                 <Row value="1"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons Face="SetRallyPointTransport" Type="AbilCmd" AbilCmd="Rally,Rally1" Row="1" Column="4"/>
-            <LayoutButtons>
-                <Face value="CSVPersonnelCarrier"/>
-                <Type value="Passive"/>
-                <Requirements value="UseCSVPersonnelCarrier"/>
-                <ShowInGlossary value="0"/>
-                <Row value="1"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="CSVLoadAll" Type="AbilCmd" AbilCmd="CSVTransportDamaged,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="CSVLoad" Type="AbilCmd" AbilCmd="CSVTransport,Load" Row="1" Column="3"/>
-            <LayoutButtons Face="APCSmokeGrenade" Type="AbilCmd" AbilCmd="APCSmokeGrenade,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.9"/>
         <SeparationRadius value="1.1"/>
         <InnerRadius value="0.9"/>
         <CargoSize value="4"/>
         <Footprint value="FootprintSieged"/>
-        <ScoreKill value="350"/>
+        <ScoreKill value="325"/>
         <SubgroupPriority value="44"/>
         <MinimapRadius value="1"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
@@ -6112,11 +6074,12 @@
         <SubgroupAlias value="CSV"/>
         <TechAliasArray value="Alias_CSV"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="44"/>
+        <GlossaryPriority value="75"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
         <AlliedPushPriority value="15"/>
+        <ScoreMake value="325"/>
     </CUnit>
     <CUnit id="TR17StarburstMissile" parent="MISSILE_INVULNERABLE">
         <Race value="UPL"/>
@@ -6179,7 +6142,7 @@
         <LateralAcceleration value="64"/>
         <TurningRate value="360"/>
         <Sight value="11"/>
-        <Food value="-6"/>
+        <Food value="-3"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="225"/>
         <CostResource index="Vespene" value="100"/>
@@ -6193,12 +6156,10 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="CSVRepairPulse"/>
         <AbilArray Link="CSVDeploy"/>
-        <AbilArray Link="CSVTransport"/>
-        <AbilArray Link="CSVTransportDamaged"/>
         <AbilArray Link="APCSmokeGrenade"/>
         <BehaviorArray Link="CSVSupplyLineManagement"/>
         <BehaviorArray Link="CSVTransportHealer"/>
-        <BehaviorArray Link="CSVInjuredInfantryNearby"/>
+        <BehaviorArray Link="Detector10"/>
         <WeaponArray Link="CSV" Turret="CSVTurret"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
@@ -6206,6 +6167,7 @@
             <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
             <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
             <LayoutButtons Face="CSVDeploy" Type="AbilCmd" AbilCmd="CSVDeploy,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="APCSmokeGrenade" Type="AbilCmd" AbilCmd="APCSmokeGrenade,Execute" Row="2" Column="0"/>
             <LayoutButtons>
                 <Face value="CSVUndeploy"/>
                 <Type value="AbilCmd"/>
@@ -6216,7 +6178,6 @@
             </LayoutButtons>
             <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
             <LayoutButtons Face="CSVRepairPulse" Type="AbilCmd" AbilCmd="CSVRepairPulse,Execute" Row="2" Column="2"/>
-            <LayoutButtons Face="CSVUnloadAll" Type="AbilCmd" AbilCmd="CSVTransport,UnloadAll" Row="2" Column="4"/>
             <LayoutButtons>
                 <Face value="CSVSupplyLineManagement"/>
                 <Type value="Passive"/>
@@ -6226,24 +6187,13 @@
                 <Row value="1"/>
                 <Column value="0"/>
             </LayoutButtons>
-            <LayoutButtons>
-                <Face value="CSVPersonnelCarrier"/>
-                <Type value="Passive"/>
-                <Requirements value="HaveCSVPersonnelCarrier"/>
-                <ShowInGlossary value="0"/>
-                <Row value="1"/>
-                <Column value="1"/>
-            </LayoutButtons>
-            <LayoutButtons Face="CSVLoadAll" Type="AbilCmd" AbilCmd="CSVTransportDamaged,Execute" Row="2" Column="3"/>
-            <LayoutButtons Face="CSVLoad" Type="AbilCmd" AbilCmd="CSVTransport,Load" Row="1" Column="3"/>
-            <LayoutButtons Face="APCSmokeGrenade" Type="AbilCmd" AbilCmd="APCSmokeGrenade,Execute" Row="2" Column="0"/>
         </CardLayouts>
         <Radius value="0.9"/>
         <SeparationRadius value="1.1"/>
         <InnerRadius value="0.9"/>
         <CargoSize value="4"/>
-        <ScoreMake value="350"/>
-        <ScoreKill value="350"/>
+        <ScoreMake value="325"/>
+        <ScoreKill value="325"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="44"/>
         <MinimapRadius value="1"/>
@@ -6251,7 +6201,7 @@
         <AIEvalFactor value="1.2"/>
         <TechAliasArray value="Alias_CSV"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="44"/>
+        <GlossaryPriority value="75"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <Fidget>
             <ChanceArray index="Anim" value="33"/>
@@ -6328,16 +6278,16 @@
         <Attributes index="Massive" value="1"/>
         <LifeStart value="350"/>
         <LifeMax value="350"/>
-        <LifeArmor value="2"/>
+        <LifeArmor value="4"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLShipPlating"/>
         <Mover value="Fly"/>
-        <Speed value="2.25"/>
+        <Speed value="2.5"/>
         <Acceleration value="1.8125"/>
         <StationaryTurningRate value="249.961"/>
         <TurningRate value="249.961"/>
-        <Sight value="13.5"/>
-        <VisionHeight value="4"/>
-        <Food value="-4"/>
+        <Sight value="16"/>
+        <VisionHeight value="6"/>
+        <Food value="-2"/>
         <CostCategory value="Army"/>
         <CostResource index="Minerals" value="200"/>
         <CostResource index="Vespene" value="50"/>
@@ -6354,6 +6304,8 @@
         <AbilArray Link="CondorLandCinematic"/>
         <AbilArray Link="CondorLandCinematicInstantMorph"/>
         <BehaviorArray Link="CondorFlying"/>
+        <BehaviorArray Link="CSVTransportHealer"/>
+        <BehaviorArray Link="Detector10"/>
         <CardLayouts>
             <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
             <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
@@ -6395,7 +6347,7 @@
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <AIEvalFactor value="0.2"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="53"/>
+        <GlossaryPriority value="200"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <Height value="4"/>
         <TechAliasArray value="Alias_Condor"/>
@@ -6461,14 +6413,14 @@
         <SeparationRadius value="0.875"/>
         <InnerRadius value="0.875"/>
         <CargoSize value="4"/>
-        <ScoreMake value="275"/>
-        <ScoreKill value="275"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="12"/>
         <MinimapRadius value="1"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="43"/>
+        <GlossaryPriority value="48"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <AlliedPushPriority value="15"/>
     </CUnit>
@@ -6527,15 +6479,15 @@
         <InnerRadius value="0.875"/>
         <SeparationRadius value="0.875"/>
         <CargoSize value="4"/>
-        <ScoreMake value="275"/>
-        <ScoreKill value="275"/>
+        <ScoreMake value="175"/>
+        <ScoreKill value="175"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="12"/>
         <MinimapRadius value="1"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <AIEvalFactor value="1.5"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="44"/>
+        <GlossaryPriority value="55"/>
         <GlossaryStrongArray value="Marine"/>
         <GlossaryStrongArray value="Hydralisk"/>
         <GlossaryStrongArray value="Stalker"/>
@@ -6568,8 +6520,8 @@
         <VisionHeight value="4"/>
         <Food value="-3"/>
         <CostCategory value="Army"/>
-        <CostResource index="Minerals" value="125"/>
-        <CostResource index="Vespene" value="100"/>
+        <CostResource index="Minerals" value="275"/>
+        <CostResource index="Vespene" value="125"/>
         <RepairTime value="41.6667"/>
         <AttackTargetPriority value="20"/>
         <DamageDealtXP value="1"/>
@@ -6604,18 +6556,20 @@
         </CardLayouts>
         <Radius value="0.875"/>
         <SeparationRadius value="0.8"/>
-        <ScoreMake value="200"/>
-        <ScoreKill value="200"/>
+        <ScoreMake value="400"/>
+        <ScoreKill value="400"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="18"/>
         <MinimapRadius value="0.75"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="52"/>
+        <GlossaryPriority value="110"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <StationaryTurningRate value="999.8437"/>
         <Height value="4"/>
         <BehaviorArray Link="OspreyFlying"/>
+        <BehaviorArray Link="CSVTransportHealer"/>
+        <BehaviorArray Link="CSVInjuredInfantryNearby"/>
         <TechAliasArray value="Alias_Osprey"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
@@ -6640,7 +6594,7 @@
         <LifeStart value="100"/>
         <LifeMax value="100"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLVehiclePlating"/>
-        <Speed value="2"/>
+        <Speed value="2.3984"/>
         <Acceleration value="1000"/>
         <LateralAcceleration value="64"/>
         <TurningRate value="360"/>
@@ -6675,14 +6629,14 @@
         <SeparationRadius value="0.875"/>
         <InnerRadius value="0.875"/>
         <CargoSize value="4"/>
-        <ScoreMake value="275"/>
-        <ScoreKill value="275"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
         <ScoreResult value="BuildOrder"/>
         <SubgroupPriority value="42"/>
         <MinimapRadius value="1"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="45"/>
+        <GlossaryPriority value="50"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <AlliedPushPriority value="15"/>
     </CUnit>
@@ -6700,9 +6654,9 @@
         <LifeStart value="130"/>
         <LifeMax value="130"/>
         <LifeArmorName value="Unit/LifeArmorName/UPLShipPlating"/>
-        <EnergyStart value="50"/>
-        <EnergyMax value="100"/>
-        <EnergyRegenRate value="0.5625"/>
+        <EnergyStart value="20"/>
+        <EnergyMax value="50"/>
+        <EnergyRegenRate value="0.1406"/>
         <Mover value="Fly"/>
         <Speed value="3.75"/>
         <Acceleration value="3.25"/>
@@ -6746,15 +6700,15 @@
         </CardLayouts>
         <Radius value="0.75"/>
         <SeparationRadius value="0.75"/>
-        <ScoreMake value="250"/>
-        <ScoreKill value="250"/>
+        <ScoreMake value="350"/>
+        <ScoreKill value="350"/>
         <ScoreResult value="BuildOrder"/>
-        <SubgroupPriority value="51"/>
+        <SubgroupPriority value="15"/>
         <MinimapRadius value="0.75"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <AIEvalFactor value="0.7"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="51"/>
+        <GlossaryPriority value="120"/>
         <GlossaryStrongArray value="VoidRay"/>
         <GlossaryStrongArray value="Mutalisk"/>
         <GlossaryWeakArray value="Battlecruiser"/>
@@ -6824,13 +6778,13 @@
         <Radius value="0.625"/>
         <InnerRadius value="0.5"/>
         <CargoSize value="2"/>
-        <ScoreMake value="125"/>
-        <ScoreKill value="125"/>
+        <ScoreMake value="325"/>
+        <ScoreKill value="325"/>
         <ScoreResult value="BuildOrder"/>
-        <SubgroupPriority value="40"/>
+        <SubgroupPriority value="50"/>
         <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
         <GlossaryCategory value="Unit/Category/0UPLUnits"/>
-        <GlossaryPriority value="50"/>
+        <GlossaryPriority value="58"/>
         <HotkeyCategory value="Unit/Category/UPLUnits"/>
         <Fidget>
             <ChanceArray index="Anim" value="33"/>
@@ -6937,7 +6891,6 @@
         <Duration value="10"/>
         <Modification>
             <StateFlags index="Cloak" value="1"/>
-            <WeaponDisableArray value="RaptorJet"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="CSVInjuredInfantryNearby">
@@ -6947,7 +6900,7 @@
         <DisableValidatorArray value="CSVInjuredInfantryNearby"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="RaptorAirBurning">
-        <InfoIcon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <InfoIcon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <Duration value="3"/>
         <Requirements value="HaveRaptorIncendiary"/>
@@ -6997,11 +6950,9 @@
         <DisplayDuration index="Self" value="1"/>
         <DisplayDuration index="Ally" value="1"/>
         <Duration value="8"/>
-        <Modification MoveSpeedMultiplier="0.25">
+        <Modification>
             <StateFlags index="SuppressPassenger" value="1"/>
             <LifeArmorBonus value="8"/>
-            <AbilLinkDisableArray value="Z1BadgerBomb"/>
-            <AbilLinkDisableArray value="Z1Freeze"/>
         </Modification>
         <!--            <WeaponEnableArray value="Z1DummyWeapon"/>-->
         <!--            <WeaponDisableArray value="Z1"/>-->
@@ -7023,7 +6974,7 @@
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
         <RemoveValidatorArray value="NotFrenzied"/>
         <Duration value="8"/>
-        <Modification MoveSpeedMultiplier="0.25" AttackSpeedMultiplier="0.5"/>
+        <Modification MoveSpeedMultiplier="0.25" AttackSpeedMultiplier="0.9"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CondorFlying">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
@@ -7072,7 +7023,6 @@
         <Requirements value="UseCSVSupplyLineManagement"/>
         <DisableValidatorArray value="CasterNotHidden"/>
         <DisableValidatorArray value="CasterNotDeadNotStunnedNotStasis"/>
-        <DisableValidatorArray value="CSVDeployed"/>
         <Period value="0.5"/>
         <PeriodicEffect value="CSVSupplyLineManagement"/>
     </CBehaviorBuff>
@@ -7082,7 +7032,7 @@
         <Requirements value="UseCSVSupplyLineManagement"/>
         <Duration value="1.2"/>
         <Modification>
-            <AdditiveAttackSpeedFactor value="0.25"/>
+            <AdditiveAttackSpeedFactor value="0.15"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="CSVRepairPulse">
@@ -7097,10 +7047,8 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="CSVTransportHealer">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
-        <DisableValidatorArray value="CasterHasEnergy"/>
         <Period value="0.5"/>
         <PeriodicEffect value="CSVTransportHealerEnumTransport"/>
-        <Requirements value="UseCSVPersonnelCarrier"/>
         <InfoFlags index="Hidden" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="CondordoFly">
@@ -7141,8 +7089,6 @@
         <Modification>
             <StateFlags index="Cloak" value="1"/>
             <StateFlags index="Passive" value="1"/>
-            <WeaponEnableArray value="RaptorJetDummyWeapon"/>
-            <WeaponDisableArray value="RaptorJet"/>
         </Modification>
     </CBehaviorBuff>
     <CBehaviorBuff id="CondorLandDelay">
@@ -7162,7 +7108,7 @@
     </CBehaviorBuff>
     <CBehaviorBuff id="TR17Sieged">
         <EditorCategories value="AbilityorEffectType:Units,Race:UPL"/>
-        <Modification MoveSpeedMultiplier="0.25">
+        <Modification MoveSpeedMultiplier="0.2">
             <WeaponEnableArray value="TR17"/>
         </Modification>
         <BehaviorCategories index="User4" value="1"/>
@@ -7217,15 +7163,13 @@
         <Race value="Terr"/>
         <ScoreAmount value="450"/>
         <ScoreResult value="BuildOrder"/>
-        <EffectArray Reference="Unit,Condor,Speed" Value="0.75"/>
-        <EffectArray Reference="Unit,Osprey,Speed" Value="1.15"/>
+        <EffectArray Operation="Multiply" Reference="Unit,Condor,Speed" Value="1.250000"/>
+        <EffectArray Operation="Multiply" Reference="Unit,Osprey,Speed" Value="1.250000"/>
         <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
         <AffectedUnitArray value="Condor"/>
         <AffectedUnitArray value="Osprey"/>
     </CUpgrade>
     <CUpgrade id="RoutheTankArmorPlating">
-        <EffectArray Reference="Unit,RoutheTank,LifeArmor" Value="2"/>
-        <EffectArray Reference="Unit,RoutheTank,LifeArmorLevel" Value="2"/>
         <EffectArray Reference="Unit,RoutheTank,LifeStart" Value="75"/>
         <EffectArray Reference="Unit,RoutheTank,LifeMax" Value="75"/>
         <Race value="UPL"/>
@@ -7260,17 +7204,29 @@
         <ScoreAmount value="250"/>
         <ScoreResult value="BuildOrder"/>
         <EditorCategories value="UpgradeType:SpellResearch,Race:UPL"/>
-        <AffectedUnitArray value="CSV"/>
-        <AffectedUnitArray value="CSVDeployed"/>
+        <AffectedUnitArray value="UPLStinger"/>
+        <AffectedUnitArray value="Osprey"/>
+        <AffectedUnitArray value="OspreyLanded"/>
+        <AffectedUnitArray value="Condor"/>
+        <AffectedUnitArray value="CondorLanded"/>
         <LeaderAlias value="CSVSupplyLineManagement"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeStart" Value="30"/>
+        <EffectArray Reference="Unit,Osprey,LifeMax" Value="30"/>
+        <EffectArray Reference="Unit,Osprey,LifeStart" Value="30"/>
+        <EffectArray Reference="Unit,UPLStinger,LifeMax" Value="30"/>
+        <EffectArray Reference="Abil,StingerTransport,MaxCargoCount" Value="4"/>
+        <EffectArray Reference="Abil,StingerTransport,TotalCargoSpace" Value="4"/>
+        <EffectArray Reference="Unit,OspreyLanded,LifeMax" Value="30"/>
+        <EffectArray Reference="Unit,OspreyLanded,LifeStart" Value="30"/>
     </CUpgrade>
     <CUpgrade id="UPLRaptorIncendiary">
-        <Icon value="Assets\textures\btn-ability-UPL-Thermite.dds"/>
+        <Icon value="Assets\icons\Button_Raptor Fighter Jet\btn-ability-UPL-Thermite.dds"/>
         <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
     </CUpgrade>
     <CUpgrade id="Z1EnergyUpgrade">
         <EffectArray Reference="Unit,Z1,EnergyMax" Value="25"/>
         <EffectArray Reference="Unit,Z1,EnergyStart" Value="25"/>
+        <EffectArray Reference="Unit,Z1,EnergyRegenRate" Value="1.000000"/>
         <Icon value="Assets\Textures\btn-upgrade-nova-equipment-jetpack.dds"/>
         <EditorCategories value="Race:UPL,UpgradeType:Talents"/>
     </CUpgrade>

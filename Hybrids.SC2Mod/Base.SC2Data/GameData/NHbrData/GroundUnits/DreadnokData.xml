@@ -619,7 +619,7 @@
         <SpeakerMix index="SideRight" value="0.500000"/>
         <Volume value="-3.000000,-3.000000"/>
     </CSound>
-    <CSound id="NHbrDreadnok@Ready" parent="HoS_Voice">
+    <CSound id="NHbrDreadnok@Ready" parent="HoS_NeutralAck">
         <EditorCategories value="Race:NHbr"/>
         <AssetArray index="0">
             <File value="Assets\Sounds\Aberration_Ready_00.ogg"/>
@@ -680,7 +680,7 @@
         <Volume value="-3.000000,-3.000000"/>
         <EditorCategories value="Race:NHbr"/>
     </CSound>
-    <CSound id="NHbrDreadnok@Yes" parent="HoS_Voice">
+    <CSound id="NHbrDreadnok@Yes" parent="HoS_NeutralAck">
         <AssetArray index="0">
             <File value="Assets\Sounds\Aberration_Yes_00.ogg"/>
             <FacialAnim value=""/>

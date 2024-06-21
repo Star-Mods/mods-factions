@@ -3,7 +3,7 @@ include "TriggerLibs/NativeLib"
 include "LibNHbr_h"
 
 //--------------------------------------------------------------------------------------------------
-// Library: Factions - Hybrids
+// Library: Network Hybrid Race
 //--------------------------------------------------------------------------------------------------
 // External Library Initialization
 void libNHbr_InitLibraries () {
@@ -350,21 +350,22 @@ void libNHbr_gf_HybridTimeScaleBuffUpdateMultiplierForPlayer (int lp_player) {
 //--------------------------------------------------------------------------------------------------
 bool libNHbr_gt_InitializeNetworkHybridRace_Func (bool testConds, bool runActions) {
     // Automatic Variable Declarations
-    playergroup auto78128325_g;
-    int auto78128325_var;
+    playergroup auto014F013C_g;
+    int auto014F013C_var;
 
     // Actions
     if (!runActions) {
         return true;
     }
 
-    auto78128325_g = PlayerGroupAll();
-    auto78128325_var = -1;
+    auto014F013C_g = PlayerGroupAll();
+    auto014F013C_var = -1;
     while (true) {
-        auto78128325_var = PlayerGroupNextPlayer(auto78128325_g, auto78128325_var);
-        if (auto78128325_var < 0) { break; }
-        if ((PlayerRace(auto78128325_var) == "NHbr")) {
-            PlayerSetCommander(auto78128325_var, "NHbr");
+        auto014F013C_var = PlayerGroupNextPlayer(auto014F013C_g, auto014F013C_var);
+        if (auto014F013C_var < 0) { break; }
+        if ((PlayerRace(auto014F013C_var) == "NHbr")) {
+            PlayerSetCommander(auto014F013C_var, "NHbr");
+            TechTreeUpgradeAddLevel(auto014F013C_var, "NHbrSpray", 1);
         }
 
     }

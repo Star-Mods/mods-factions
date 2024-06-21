@@ -7,3 +7,5 @@ UI/ArmyButtonIcon_UPL=Assets\Textures\ui_console_helperbutton_icon_army_UED.dds
 UI/IdleButtonIcon_UPL=Assets\Textures\ui_console_helperbutton_icon_worker_UED.dds
 UI/1v1PanelRaceIcon_UPL=Assets\Textures\icon-1v1-upl.dds
 UI/1v1PanelSupplyIcon_UPL=Assets\Textures\btn-building-upl-uplgenerator.dds
+UI/LeaderPanelRaceIcon_UPL=Assets\Textures\UPLIcon2.dds
+UI/ResourceIcon1_UPL=Assets\Textures\icon-gas-upl-nobg.dds

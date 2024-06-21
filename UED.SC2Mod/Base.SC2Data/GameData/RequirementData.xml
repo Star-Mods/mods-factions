@@ -2,7 +2,7 @@
 <Catalog>
     <CRequirement id="CrimsonEyeStarWind">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Show" Link="NotCountUpgradeUpgradeSpeedCrimsonEyeQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUpgradeBeataniumGeneratorQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="HaveUEDOrbitalConstruction">
         <EditorCategories value="TechType:Upgrade,Race:UED"/>
@@ -13,9 +13,9 @@
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Show" Link="AndNotCountUpgradeUpgradeLazarusRegenHealfQueuedOrBetter"/>
     </CRequirement>
-    <CRequirement id="LearnSpeedStrikeFigter">
+    <CRequirement id="LearnUpgradeStrikeFigter">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Show" Link="AndNotCountUpgradeUpgradeSpeedStrikeFighterQueuedOrBetter"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeUEDUpgradeStrikeFighterQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="LearnTUEDLightArmor1">
         <EditorCategories value="Race:UED,TechType:Upgrade"/>
@@ -39,9 +39,17 @@
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Show" Link="AndNotCountUpgradeUpgradeAbilityNapoleonQueuedOrBetter"/>
     </CRequirement>
+    <CRequirement id="LearnSpeedStrikeFigter">
+        <EditorCategories value="Race:UED,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeUEDUpgradeStrikeFighterSpeedQueuedOrBetter"/>
+    </CRequirement>
     <CRequirement id="LearnUpgraudeGoliathUED">
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Show" Link="AndNotCountUpgradeUEDUpgradeGoliathQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="UEDLearnHightDurability">
+        <EditorCategories value="Race:UED,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeUEDHightDurabilityQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="UEDTrebovanieAcelerationMorhp">
         <EditorCategories value="TechType:Unit,Race:UED"/>
@@ -54,25 +62,16 @@
     </CRequirement>
     <CRequirement id="TrebovanieStrikeFighterAirAttack">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Show" Link="CountBehaviorAlgoritmStrikeFighterGroundAttackInProgressOrBetterAtUnit"/>
+        <NodeArray index="Use" Link="CountUpgradeUEDUpgradeStrikeFighterCompleteOnly2376924074"/>
+        <NodeArray index="Show" Link="OrCountBehaviorAlgoritmStrikeFighterGroundAttackInProgressOrBetterAtUnitCountBehaviorAlgoritmStrikeFighterStartUnitInProgressOrBetterAtUnit"/>
     </CRequirement>
     <CRequirement id="UEDLearnCitadelAbility">
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Show" Link="AndNotCountUpgradeUpgradeAbilityCitadelUEDQueuedOrBetter"/>
     </CRequirement>
-    <CRequirement id="TrebovanieDrakkarFastMove">
-        <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit2223558209"/>
-        <NodeArray index="Show" Link="CountUpgradeUpgraideDrakkarCompleteOnlyTechTreeCheat"/>
-    </CRequirement>
     <CRequirement id="TrebovanieHaveRadarCrimsonEye">
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Use" Link="CountBehaviorAlgoritmRadarCrimsonEyeCompleteOnlyAtUnit641276906"/>
-    </CRequirement>
-    <CRequirement id="TrebovanieDrakkarSlowMove">
-        <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Use" Link="AndCountUpgradeUpgraideDrakkarCompleteOnly658754647TechTreeCheat"/>
-        <NodeArray index="Show" Link="NotCountBehaviorDrakkarAlgoritmFireModeCompleteOnlyAtUnit"/>
     </CRequirement>
     <CRequirement id="UEDLearnPenemundeRange">
         <EditorCategories value="Race:UED,TechType:Ability"/>
@@ -89,6 +88,10 @@
     <CRequirement id="LearnUpgraideHurakan">
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Show" Link="AndNotCountUpgradeUpgradeSpeedHurakanQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="UseDrakkarUpgrade">
+        <EditorCategories value="Race:UED,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeUpgraideDrakkarCompleteOnly753916929TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="UseNapoleonAbility">
         <EditorCategories value="Race:UED,TechType:Ability"/>
@@ -124,7 +127,7 @@
     </CRequirement>
     <CRequirement id="TrebovanieDopBattary">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUpgradeSpeedCrimsonEyeCompleteOnly2850863126TechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUpgradeBeataniumGeneratorCompleteOnly622349498TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="HaveUEDCommander">
         <EditorCategories value="TechType:Upgrade,Race:UED"/>
@@ -190,7 +193,7 @@
     </CRequirement>
     <CRequirement id="EnginSurchargeProtocols">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Show" Link="NotCountUpgradeUpgradeSpeedCrimsonEyeQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUpgradeBeataniumGeneratorQueuedOrBetter"/>
     </CRequirement>
     <CRequirement id="TrebovanieKolishestvoTowerMining">
         <EditorCategories value="TechType:Unit,Race:UED"/>
@@ -318,10 +321,6 @@
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Use" Link="CountUpgradeFieldReloadingProtocolsCompleteOnly4168119920TechTreeCheat"/>
     </CRequirement>
-    <CRequirement id="UseLazarusRegenHealf">
-        <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUpgradeLazarusRegenHealfCompleteOnly75911983TechTreeCheat"/>
-    </CRequirement>
     <CRequirement id="UseProjectedGravityShield">
         <EditorCategories value="Race:UED,TechType:Ability"/>
         <NodeArray index="Use" Link="CountUpgradeProjectedGravityShieldCompleteOnly3798557834TechTreeCheat"/>
@@ -352,7 +351,7 @@
     </CRequirement>
     <CRequirement id="UseUEDSpeedStrikeFighter">
         <EditorCategories value="Race:UED,TechType:Ability"/>
-        <NodeArray index="Use" Link="CountUpgradeUpgradeSpeedStrikeFighterCompleteOnly1813016030TechTreeCheat"/>
+        <NodeArray index="Use" Link="CountUpgradeUEDUpgradeStrikeFighterSpeedCompleteOnly1813016030TechTreeCheat"/>
     </CRequirement>
     <CRequirement id="UEDUseUpgradeGoliathRetributionProtocol">
         <EditorCategories value="Race:UED,TechType:Ability"/>

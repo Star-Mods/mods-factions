@@ -27,8 +27,27 @@
         <On index="3" Terms="UnitRevive.ChangelingFlamespitter"/>
         <On index="4" Terms="UnitConstruction.ChangelingFlamespitter.Start"/>
         <On index="5" Terms="UnitConstruction.ChangelingFlamespitter.Finish"/>
-        <On Terms="AbilMorph.*.Finish; MorphTo ChangelingFlamespitter" Send="Create"/>
-        <On Terms="AbilMorph.*.Start; MorphFrom ChangelingFlamespitter" Send="Destroy"/>
+        <On index="64" Terms="AbilMorph.*.Finish; MorphTo ChangelingFlamespitter"/>
+        <On index="65" Terms="AbilMorph.*.Start; MorphFrom ChangelingFlamespitter" Send="Destroy"/>
+        <On index="66" removed="1"/>
+        <On index="67" removed="1"/>
+        <On index="68" removed="1"/>
+        <On index="69" removed="1"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+        <On index="73" removed="1"/>
+        <On index="74" removed="1"/>
+        <On index="75" removed="1"/>
+        <On index="76" removed="1"/>
+        <On index="77" removed="1"/>
+        <On index="78" removed="1"/>
+        <On index="79" removed="1"/>
+        <On index="80" removed="1"/>
+        <On index="81" removed="1"/>
+        <On index="82" removed="1"/>
+        <On index="83" removed="1"/>
+        <On index="84" removed="1"/>
         <SoundArray index="Ready" value="Changeling_Ready"/>
         <SoundArray index="What" value="Changeling_What"/>
         <SoundArray index="Yes" value="Changeling_Yes"/>

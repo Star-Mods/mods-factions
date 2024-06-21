@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
     <CTacticalOrder id="UmojanAIAloeRecon">
-        <Abil value="UmojanSendRecon"/>
+        <Abil value="UmojanSendSpotter"/>
     </CTacticalOrder>
     <CTacticalSet id="UmojanAIAloeSiege">
         <Array value="UmojanAIAloeUndeploy"/>
@@ -12,7 +12,7 @@
         <Validator value="UmojanAIBattleTankTacticalSeige"/>
     </CTacticalOrder>
     <CTacticalOrder id="UmojanAIAloeDeploy">
-        <Abil value="UmojanAloeMorphtoAG"/>
+        <Abil value="UmojanHexaremeMorphtoAG"/>
         <Validator value="UmojanAIAloeTacticalSeige"/>
     </CTacticalOrder>
     <CTacticalSet id="UmojanAIBattlecat">
@@ -66,11 +66,11 @@
         <Array value="UmojanAIWhirlwindSmallAoE"/>
     </CTacticalSet>
     <CTacticalOrder id="UmojanAIHowlerAA">
-        <Abil value="UmojanHowlerAirburst"/>
+        <Abil value="UmojanDiraAirburst"/>
         <TargetFind value="UmojanAirburst"/>
     </CTacticalOrder>
     <CTacticalOrder id="UmojanAIHowlerAG">
-        <Abil value="UmojanHowlerAirstrike"/>
+        <Abil value="UmojanDiraAirstrike"/>
         <TargetFind value="UmojanAirstrike"/>
     </CTacticalOrder>
     <CTacticalOrder id="UmojanAIPathfinderMine">
@@ -98,7 +98,7 @@
         <TargetFind value="UmojanShadowguardSnipe"/>
     </CTacticalOrder>
     <CTacticalOrder id="UmojanAIAloeUndeploy">
-        <Abil value="UmojanAloeMorphtoAA"/>
+        <Abil value="UmojanHexaremeMorphtoAA"/>
         <Validator value="UmojanAIAloeTacticalUnsiege"/>
     </CTacticalOrder>
 </Catalog>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="CalldownMULE2">
+        <EditorCategories value="Race:UPL,AbilityorEffectType:Units"/>
+        <Effect index="0" value="CalldownMULECreateUnit2"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="30"/>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <TimeUse value="6"/>
+            </Charge>
+            <Cooldown Operation="Add" TimeUse="6"/>
+        </Cost>
+        <Range value="13"/>
+        <Arc value="360"/>
+        <PrepTime value="3"/>
+        <ShowProgressArray index="Prep" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CalldownMULE2"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Explode2">
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Effect index="0" value="VolatileBurst2"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Explode2"/>
+    </CAbilEffectInstant>
+</Catalog>
