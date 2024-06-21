@@ -1,6 +1,7 @@
 # All Races Factions
 
 This repository contains Factions mods sources for Star Craft 2 All Races PVP mod
+Used with `assets-allraces` and `mods-dependencies` to work
 
 ## installation
 
